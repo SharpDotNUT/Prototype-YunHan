@@ -1,18 +1,48 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, type Ref } from 'vue'
 import { searchAchievement, SearchPlatforms as D_SearchPlatform } from './index'
-import AchievementData from '@/data/achievement/Achievement.json'
-import _TextMap from '@/data/achievement/TextMap.json'
 import type { t_AchievementGroup } from '@/data/achievement/types'
 import { stringIndexOfIgnoreCase } from '@/script/tools'
 import { useI18n } from 'vue-i18n'
+import { useMainStore } from '@/stores/main'
 
-const TextMap: any = _TextMap
+const AchievementData: any = ref(null)
+const TextMap: Ref<{
+  [lang: string]: {
+    [id: string]: string
+  }
+}> = ref({})
 const { locale } = useI18n()
-const f_Versions: any = { '-1': AchievementData.versions }
-for (const goal of AchievementData.data) {
-  f_Versions[goal.order - 1] = goal.versions
+const mainStore = useMainStore()
+const f_Versions: Ref<{
+  [key: string]: Array<string>
+}> = ref({})
+
+mainStore.RM.get({
+  id: 'achievement/meta'
+}).then(async (res) => {
+  AchievementData.value = await res.json()
+  DataLoaded()
+  search()
+})
+function DataLoaded() {
+  f_Versions.value = { '-1': AchievementData.value.versions }
+  for (const goal of AchievementData.value.data) {
+    f_Versions.value[goal.order - 1] = goal.versions
+  }
 }
+function loadTextMap() {
+  mainStore.RM.get({
+    id: 'achievement/text-map',
+    variant: locale.value
+  }).then(async (res) => {
+    TextMap.value[locale.value] = await res.json()
+  })
+}
+loadTextMap()
+watch(locale, () => {
+  loadTextMap()
+})
 
 const f_selectedGoal = ref(-1)
 const f_searchPlatform = ref('miyoushe')
@@ -28,11 +58,11 @@ const ui_SearchedAchievementList: any = ref([])
 function search() {
   let data: Array<any> = []
   if (f_selectedGoal.value == -1) {
-    for (const goal of AchievementData.data) {
+    for (const goal of AchievementData.value.data) {
       data = data.concat(goal.achievementGroups)
     }
   } else {
-    data = AchievementData.data[f_selectedGoal.value].achievementGroups
+    data = AchievementData.value.data[f_selectedGoal.value].achievementGroups
   }
   data = data.filter((achievements: t_AchievementGroup) => {
     let _version = true
@@ -46,7 +76,7 @@ function search() {
       _text = true
     } else if (
       stringIndexOfIgnoreCase(
-        TextMap[locale.value][achievements.name],
+        TextMap.value[locale.value][achievements.name],
         f_search.value.text
       )
     ) {
@@ -55,7 +85,7 @@ function search() {
       for (const achievement of achievements.achievements) {
         if (
           stringIndexOfIgnoreCase(
-            TextMap[locale.value][achievement.description],
+            TextMap.value[locale.value][achievement.description],
             f_search.value.text
           )
         ) {
@@ -74,13 +104,17 @@ watch(
   ],
   () => {
     search()
-  },
-  { immediate: true }
+  }
 )
 </script>
 
 <template>
-  <div class="__container">
+  <div
+    v-if="AchievementData == null || TextMap[locale] == null"
+    class="__container">
+    <var-loading :description="$t('global.loading')"></var-loading>
+  </div>
+  <div v-else class="__container">
     <var-paper id="bar">
       <div id="form">
         <var-input

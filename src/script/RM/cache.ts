@@ -87,7 +87,7 @@ class CacheManager {
       variant: variant
     })
     // 返回缓存对象
-    return this.cache.match(keyString)
+    return this.cache.match(keyString) as Promise<Response>
   }
 
   // 获取资源元数据

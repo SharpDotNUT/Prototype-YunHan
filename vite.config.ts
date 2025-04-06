@@ -7,7 +7,8 @@ import { VitePWA } from 'vite-plugin-pwa'
 const res = await fetch(
   'https://api.github.com/repos/Sharpdotnut/prototype/commits'
 )
-const commit = (await res.json())[0]
+const json: any = await res.json()
+const commit = json[0]
 
 export default defineConfig({
   plugins: [

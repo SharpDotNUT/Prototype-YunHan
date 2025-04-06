@@ -1,5 +1,6 @@
 .__container {
   display: flex;
+  justify-content: center;
   gap: 10px;
   height: 100%;
   padding: 20px;
@@ -16,7 +17,7 @@
     #goal-list {
       overflow-y: auto;
 
-      > * {
+      >* {
         border-left: 0px solid var(--color-text);
         transition: border 0.3s ease-in-out;
       }

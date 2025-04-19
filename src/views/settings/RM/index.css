@@ -1,0 +1,9 @@
+.--rm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#table-content {
+    width: 100%;
+}

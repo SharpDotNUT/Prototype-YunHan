@@ -20,8 +20,8 @@ const f_Versions: Ref<{
 
 mainStore.RM.get({
   id: 'achievement/meta'
-}).then(async (res) => {
-  AchievementData.value = await res.json()
+}).then(async (data) => {
+  AchievementData.value = data
   DataLoaded()
   search()
 })
@@ -35,8 +35,8 @@ function loadTextMap() {
   mainStore.RM.get({
     id: 'achievement/text-map',
     variant: locale.value
-  }).then(async (res) => {
-    TextMap.value[locale.value] = await res.json()
+  }).then(async (data) => {
+    TextMap.value[locale.value] = data
   })
 }
 loadTextMap()

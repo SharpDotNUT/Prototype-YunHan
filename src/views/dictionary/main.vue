@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { Snackbar } from '@varlet/ui'
 import { useI18n } from 'vue-i18n'
 const { locale } = useI18n()
 import { isEqual } from 'lodash-es'
@@ -11,9 +10,9 @@ import { useMainStore } from '@/stores/main'
 
 let Words: t_word[] = []
 const mainStore = useMainStore()
-mainStore.RM.get({ id: 'dictionary/genshin' }).then(async (res) => {
-  if (res) {
-    Words = await res.json()
+mainStore.RM.get({ id: 'dictionary/genshin' }).then(async (data) => {
+  if (data) {
+    Words = data
     Words_loaded.value = true
     search(null, true)
   }

@@ -16,8 +16,8 @@ export const useMainStore = defineStore('main', () => {
   const theme = ref('')
   const isUsingTeyvatFont = ref(false)
   const windowSize = ref({
-    width: window.innerHeight,
-    height: window.innerWidth
+    width: window.innerWidth,
+    height: window.innerHeight
   })
   let beforeInstallPromptEvent = ref(null)
   window.addEventListener('beforeinstallprompt', function (e: any) {
@@ -55,8 +55,8 @@ export const useMainStore = defineStore('main', () => {
   }
   window.addEventListener('resize', () => {
     windowSize.value = {
-      width: window.innerHeight,
-      height: window.innerWidth
+      width: window.innerWidth,
+      height: window.innerHeight
     }
   })
   const RM = new ResourceManager(import.meta.env.VITE_RESOURCE_HOST)

@@ -16,5 +16,4 @@ export type t_UpdateLog = Array<{
     'content-zh': string
     'content-en': string
   }>
-  commits?: Array<string>
 }>

@@ -13,7 +13,22 @@ export const routes: RouteRecordRaw[] = [
   {
     path: '/settings',
     name: 'settings',
-    component: () => import('../views/settings/index.vue' as any)
+    component: () => import('../views/settings/index.vue' as any),
+    children: [
+      {
+        path: '',
+        name: 'settings-home',
+        redirect: '/settings/general'
+      },
+      {
+        path: 'general',
+        component: () => import('../views/settings/General/index.vue' as any)
+      },
+      {
+        path: 'rm',
+        component: () => import('../views/settings/RM/index.vue' as any)
+      }
+    ]
   },
   {
     path: '/update-log',

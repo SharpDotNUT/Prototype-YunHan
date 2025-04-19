@@ -21,25 +21,25 @@
 }
 
 *[lang='en'] {
-  --font-family: Outfit, Noto Sans, sans-serif;
+  --font-family: Noto Sans, sans-serif;
   font-family: var(--font-family);
 }
 
 *[lang='zh-Hans'] {
-  --font-family: Outfit, Noto Sans, 'Noto Sans SC', sans-serif;
+  --font-family: Noto Sans, 'Noto Sans SC', sans-serif;
   font-family: var(--font-family);
 }
 
 *[lang='zh-Hant'] {
-  --font-family: Outfit, Noto Sans, 'Noto Sans TC', sans-serif;
+  --font-family: Noto Sans, 'Noto Sans TC', sans-serif;
   font-family: var(--font-family);
 }
 
 *[lang='ja'] {
-  --font-family: Outfit, Noto Sans, 'Noto Sans JP', sans-serif;
+  --font-family: Noto Sans, 'Noto Sans JP', sans-serif;
   font-family: var(--font-family);
 }
 
 *.teyvat {
-  --font-family: Teyvat, Outfit, Noto Sans, 'Noto Sans SC', sans-serif;
+  --font-family: Teyvat, Noto Sans, 'Noto Sans SC', sans-serif;
 }

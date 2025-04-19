@@ -17,7 +17,7 @@
     #goal-list {
       overflow-y: auto;
 
-      >* {
+      > * {
         border-left: 0px solid var(--color-text);
         transition: border 0.3s ease-in-out;
       }

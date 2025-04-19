@@ -2,6 +2,39 @@ import type { t_UpdateLog } from './types'
 
 const log: t_UpdateLog = [
   {
+    version: '2.2.0',
+    'name-zh': '遐蝶',
+    'name-en': 'Castorice',
+    date: '2025-04-20T00:00:00+0800',
+    items: [
+      {
+        area: 'app',
+        type: 'Feature',
+        'content-zh': '使用「资源管理器」来管理资源',
+        'content-en': 'Use "Resource Manager" to manage resources'
+      },
+      {
+        area: 'app',
+        type: 'UI & UX',
+        'content-zh': '英文字体由 Outfit 替换会 Noto Sans',
+        'content-en': 'English font replaced back to Noto Sans'
+      },
+      {
+        area: 'app',
+        type: 'Development',
+        'content-zh': 'TypeScript 迁移基本完成',
+        'content-en': 'TypeScript migration is basically complete'
+      },
+      {
+        area: 'setting',
+        type: 'UI & UX',
+        'content-zh': '优化设置界面，改为二级页面，初步支持资源管理',
+        'content-en':
+          'Optimize the setting interface, change to secondary page, support resource management initially'
+      }
+    ]
+  },
+  {
     version: '2.1.1',
     date: '2025-04-04T23:00:00+0800',
     items: [
@@ -65,8 +98,7 @@ const log: t_UpdateLog = [
         'content-zh': '更新了 README.md',
         'content-en': 'Updated README.md'
       }
-    ],
-    commits: ['bee94830c15a75a8414a7585ce70842e967f6baf']
+    ]
   },
   {
     version: '2.0.1',
@@ -85,8 +117,7 @@ const log: t_UpdateLog = [
         'content-zh': '更改路径为 `/update-log`',
         'content-en': 'Changed path to `/update-log`'
       }
-    ],
-    commits: ['7f10a7d7220c92609bf2c06748518b80065af418']
+    ]
   },
   {
     version: '2.0.0',
@@ -118,22 +149,8 @@ const log: t_UpdateLog = [
         'content-zh': '升级 Vue@3.5，Vite@6',
         'content-en': 'Bump Vue@3.5, Vite@6'
       }
-    ],
-    commits: [
-      '98beeb776a9ede83c4fc501cbc128ac55a2851e0',
-      '7485bb22dc624e7cbbb9f2fedd698262af47206b',
-      '8e1d530942588d8e49fb6dec1bafa655dbf0f3a6',
-      '1df70efd1fd68ae3015fea469554918783e5b290',
-      'b84c2d5d66d2074a47f9be0c4369222c2fa4af09',
-      'd99d83552a5b3f5339279f8e7ab451f7d16d13b2'
     ]
   }
 ]
-
-if (log[0].commits) {
-  log[0].commits.unshift(__LAST_COMMIT.sha)
-} else {
-  log[0].commits = [__LAST_COMMIT.sha]
-}
 
 export default log

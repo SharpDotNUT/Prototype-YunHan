@@ -31,12 +31,12 @@
   border-right: 1px solid var(--color-primary);
   flex-shrink: 0;
 
-  >a {
+  > a {
     padding: 10px;
     border-radius: 10px;
   }
 
-  >a:hover {
+  > a:hover {
     background-color: var(--color-primary);
     color: var(--color-body);
   }

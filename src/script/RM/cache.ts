@@ -1,4 +1,5 @@
 // 导入类型定义和工具函数
+import { get, set } from 'idb-keyval'
 import type { CacheResourceRecord, StaticResourceMetaRecord } from './types'
 import { resourceKeyToString } from './utils'
 
@@ -65,35 +66,21 @@ class CacheMeta {
 
 // 定义缓存管理类
 class CacheManager {
-  // 定义缓存对象
-  private cache: Cache | undefined
   // 定义缓存元数据对象
   private meta = new CacheMeta()
 
-  // 构造函数，传入缓存名称
-  constructor(CacheName: string) {
-    // 打开缓存
-    caches.open(CacheName).then((cache) => {
-      this.cache = cache
-    })
-  }
-
   getResource(ResMeta: StaticResourceMetaRecord, variant?: string) {
-    // 判断缓存是否准备好
-    if (!this.cache) throw new Error('Cache is not ready')
     // 将资源元数据转换为字符串
     const keyString = resourceKeyToString({
       id: ResMeta.id,
       variant: variant
     })
     // 返回缓存对象
-    return this.cache.match(keyString) as Promise<Response>
+    return get(keyString)
   }
 
   // 获取资源元数据
   getResourceMeta(ResMeta: StaticResourceMetaRecord, variant?: string) {
-    // 判断缓存是否准备好
-    if (!this.cache) throw new Error('Cache is not ready')
     // 将资源元数据转换为字符串
     const keyString = resourceKeyToString({
       id: ResMeta.id,
@@ -115,8 +102,6 @@ class CacheManager {
     variant: string | undefined,
     resp: Response
   ) {
-    // 判断缓存是否准备好
-    if (!this.cache) throw new Error('Cache is not ready')
     // 将资源元数据转换为字符串
     const keyString = resourceKeyToString({
       id: ResMeta.id,
@@ -135,14 +120,12 @@ class CacheManager {
     }
     // 将资源存入缓存
     console.log(keyString)
-    await this.cache.put(keyString, resp)
+    await set(keyString, await resp.json())
     // 设置缓存元数据
     return this.meta.set(keyString, ResMeta, variant, size)
   }
 
   async removeResource(ResMeta: StaticResourceMetaRecord, variant?: string) {
-    // 判断缓存是否准备好
-    if (!this.cache) throw new Error('Cache is not ready')
     // 将资源元数据转换为字符串
     const keyString = resourceKeyToString({
       id: ResMeta.id,
@@ -150,7 +133,7 @@ class CacheManager {
     })
     // 从缓存中删除资源
     this.meta.delete(keyString)
-    await this.cache.delete(keyString)
+    await set(keyString, undefined)
   }
 
   async getAllMeta() {

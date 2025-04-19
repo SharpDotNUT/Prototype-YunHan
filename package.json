@@ -24,6 +24,7 @@
     "dom-to-image": "^2.6.0",
     "filesize": "^10.1.6",
     "github-markdown-css": "^5.5.1",
+    "idb-keyval": "^6.2.1",
     "lodash-es": "^4.17.21",
     "markdown-it": "^14.1.0",
     "pinia": "^2.1.7",

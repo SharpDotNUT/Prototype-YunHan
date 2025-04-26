@@ -1,4 +1,5 @@
-// achievementUtilsts
+import type { Ref } from 'vue'
+import type { t_AchievementData } from './types'
 
 export function filterAchievements(
   achievementData: any,
@@ -57,20 +58,7 @@ export function filterAchievements(
   return _out
 }
 
-export const UIAF_to_userUIAF = (UIAF: any) => {
-  let userUIAF: any = {}
-  try {
-    for (const achievement of UIAF.list) {
-      userUIAF[achievement.id] = achievement
-    }
-  } catch (e) {
-    console.log(e)
-  }
-  console.log(userUIAF)
-  return userUIAF
-}
-
-export const SearchPlatforms = {
+export const SearchPlatforms: any = {
   bilibili: {
     name: '哔哩哔哩(Bilibili)',
     url: (name: string) => {
@@ -103,4 +91,34 @@ export function searchAchievement(name: string, platform: string) {
   //@ts-ignore
   let url = SearchPlatforms[platform].url(name)
   window.open(url)
+}
+
+export function parseUIAF(data: any, achievementData: t_AchievementData) {
+  let _out = []
+  for (const goal in achievementData.data) {
+    for (const group in achievementData.data[goal].achievementGroups) {
+      const _group = achievementData.data[goal].achievementGroups[group]
+      const id = _group.achievements[0].id
+      const progress = data.list.find((item: any) => item.id == id)
+      if (progress) {
+        _out.push({
+          id: id,
+          name: _group.name
+        })
+        _group.progress = progress
+        _group.status = progress.status
+        if (progress.status == 3) {
+          _group.progress.current = Math.max(
+            _group.finalProgress,
+            progress.current
+          )
+          _group.status = 2
+        }
+      }
+      if (!_group.status) {
+        _group.status = 0
+      }
+    }
+  }
+  console.log(_out)
 }

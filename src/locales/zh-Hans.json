@@ -125,15 +125,7 @@
     "general": "通用",
     "rm": "资源管理器"
   },
-  "song-player": {
-    "title": "音乐播放器",
-    "description": "适用于米哈游音乐工作室 HoYo-Mix 发布音乐的音乐播放器",
-    "album": "专辑",
-    "songs": "歌曲",
-    "songs-in-total": "共 {0} 首",
-    "jump-to-current-lyric": "跳转至当前歌词",
-    "album-description": "专辑描述"
-  },
+  "song-player": {},
   "sp-key": {
     "commit-key": "提交兑换码",
     "game": "游戏",
@@ -166,5 +158,14 @@
       "i18n": "国际化",
       "others": "其他"
     }
+  },
+  "music-player": {
+    "album": "专辑",
+    "album-description": "专辑描述",
+    "description": "适用于米哈游音乐工作室 HoYo-Mix 发布音乐的音乐播放器",
+    "jump-to-current-lyric": "跳转至当前歌词",
+    "songs": "歌曲",
+    "songs-in-total": "共 {0} 首",
+    "title": "音乐播放器"
   }
 }

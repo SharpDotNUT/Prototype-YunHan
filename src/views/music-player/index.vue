@@ -1,5 +1,12 @@
 <script setup>
-import { ref, watch, watchEffect, onUnmounted, useTemplateRef } from 'vue'
+import {
+  ref,
+  watch,
+  watchEffect,
+  onUnmounted,
+  useTemplateRef,
+  onMounted
+} from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import SvgIcon from '@jamescoyle/vue-icon'
 import LyricsView from './lyrics-view.vue'
@@ -15,30 +22,18 @@ import {
   mdiTextBox,
   mdiImageArea
 } from '@mdi/js'
+import { useMainStore } from '@/stores/main'
 const ref_image = ref(null)
 
 let Data = []
 const s_dataLoaded = ref(false)
-const d_dataURL = 'https://prototype-oss.sharpdotnut.com/song_meta.json'
-caches.open('prototype').then((cache) =>
-  cache.match(d_dataURL).then(async (res) => {
-    if (res) {
-      res.json().then((data) => {
-        Snackbar('从缓存加载成功')
-        Data = data
-        init()
-      })
-    } else {
-      const res = await fetch(d_dataURL)
-      cache.put(d_dataURL, res.clone())
-      res.json().then((data) => {
-        Snackbar('从网络下载成功')
-        Data = data
-        init()
-      })
-    }
-  })
-)
+const mainStore = useMainStore()
+mainStore.RM.get({ id: 'music/meta' }).then((res) => {
+  if (res) {
+    Data = res
+    init()
+  }
+})
 function init() {
   s_dataLoaded.value = true
   songMetaData.value = Data
@@ -119,7 +114,10 @@ const timeFormat = (time) => {
 }
 
 watch(audio, () => {
+  console.log(audio.value)
+  if (!audio.value) return
   watchEffect(() => {
+    if (!audio.value) return
     audio.value.src = `https://music.163.com/song/media/outer/url?id=${currentSongID.value}.mp3`
     audio.value.muted = isMuted.value
   })

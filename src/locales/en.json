@@ -125,15 +125,7 @@
     "general": "General",
     "rm": "Resources Manager"
   },
-  "song-player": {
-    "title": "Music Player",
-    "description": "A music player for tracks released by HoYo-Mix, the music studio of HoYoVERSE",
-    "album": "Album",
-    "songs": "Songs",
-    "songs-in-total": "{0} songs in total",
-    "jump-to-current-lyric": "Jump to Current Lyric",
-    "album-description": "Album Description"
-  },
+  "song-player": {},
   "sp-key": {
     "commit-key": "Submit Code",
     "game": "Game",
@@ -166,5 +158,14 @@
       "i18n": "Internationalization",
       "others": "Others"
     }
+  },
+  "music-player": {
+    "album": "Album",
+    "album-description": "Album Description",
+    "description": "A music player for tracks released by HoYo-Mix, the music studio of HoYoVERSE",
+    "jump-to-current-lyric": "Jump to Current Lyric",
+    "songs": "Songs",
+    "songs-in-total": "{0} songs in total",
+    "title": "Music Player"
   }
 }

@@ -125,15 +125,7 @@
     "general": "",
     "rm": ""
   },
-  "song-player": {
-    "title": "ミュージックプレイヤー",
-    "description": "HoYoVERSE音楽スタジオ「HoYo-Mix」の楽曲に対応した音楽プレイヤー",
-    "album": "アルバム",
-    "songs": "楽曲",
-    "songs-in-total": "全{0}曲",
-    "jump-to-current-lyric": "現在の歌詞にジャンプ",
-    "album-description": "アルバム説明"
-  },
+  "song-player": {},
   "sp-key": {
     "commit-key": "コード登録",
     "game": "ゲーム",
@@ -166,5 +158,14 @@
       "i18n": "国際化",
       "others": "他の"
     }
+  },
+  "music-player": {
+    "album": "アルバム",
+    "album-description": "アルバム説明",
+    "description": "HoYoVERSE音楽スタジオ「HoYo-Mix」の楽曲に対応した音楽プレイヤー",
+    "jump-to-current-lyric": "現在の歌詞にジャンプ",
+    "songs": "楽曲",
+    "songs-in-total": "全{0}曲",
+    "title": "ミュージックプレイヤー"
   }
 }

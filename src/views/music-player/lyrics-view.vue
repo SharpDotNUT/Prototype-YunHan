@@ -155,7 +155,7 @@ defineExpose({ play, scrollToCurrentLyric })
       style="position: sticky; top: 0px; padding: 20px; width: 100%"
       @click="(scrollToCurrentLyric(), (isUserScrolling = false))">
       <var-button block>
-        {{ $t('song-player.jump-to-current-lyric') }}
+        {{ $t('music-player.jump-to-current-lyric') }}
       </var-button>
     </div>
     <div

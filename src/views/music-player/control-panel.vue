@@ -25,7 +25,7 @@ const selectedSong = defineModel('selectedSong', { type: Number, default: 0 })
         position: isMobileWidth ? 'absolute' : 'relative',
         right: ui_tabIsAlbum || !isMobileWidth ? '0%' : '100%'
       }">
-      <p>{{ $t('song-player.album') }}</p>
+      <p>{{ $t('music-player.album') }}</p>
       <div class="list">
         <div
           class="cell"
@@ -49,7 +49,7 @@ const selectedSong = defineModel('selectedSong', { type: Number, default: 0 })
               <br />
               <span class="sub-text">
                 <span>
-                  {{ $t('song-player.songs-in-total', [item.songs.length]) }}
+                  {{ $t('music-player.songs-in-total', [item.songs.length]) }}
                 </span>
                 <span>&nbsp-&nbsp</span>
                 <span>
@@ -72,7 +72,7 @@ const selectedSong = defineModel('selectedSong', { type: Number, default: 0 })
           </var-button>
         </div>
       </div>
-      <p>{{ $t('song-player.album-description') }}</p>
+      <p>{{ $t('music-player.album-description') }}</p>
       <div style="flex-shrink: 0; max-height: 40%; overflow-y: auto">
         <pre
           lang="zh-Hans"
@@ -90,7 +90,7 @@ const selectedSong = defineModel('selectedSong', { type: Number, default: 0 })
         <var-button round @click="ui_tabIsAlbum = true" v-if="isMobileWidth">
           <SvgIcon type="mdi" :path="mdiArrowLeft" />
         </var-button>
-        {{ $t('song-player.songs') }}
+        {{ $t('music-player.songs') }}
       </p>
       <div class="list">
         <div

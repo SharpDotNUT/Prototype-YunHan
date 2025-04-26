@@ -46,9 +46,9 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('../views/translator/index.vue' as any)
   },
   {
-    name: 'song-player',
-    path: '/song-player',
-    component: () => import('../views/song/player/index.vue' as any)
+    name: 'music-player',
+    path: '/music-player',
+    component: () => import('../views/music-player/index.vue' as any)
   },
   {
     name: 'question',

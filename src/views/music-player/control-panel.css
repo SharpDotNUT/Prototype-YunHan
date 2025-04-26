@@ -35,21 +35,21 @@
         cursor: pointer;
         border-radius: 10px;
         transition:
-          background-color 1s ease-in-out,
+          background-color 0.3s ease-in-out,
+          color 0.3s ease-in-out,
           border 0.3s ease-in-out;
       }
 
-      .cell.selected,
-      .cell:hover {
-        background-color: color-mix(
-          in srgb,
-          var(--color-text) 20%,
-          transparent
-        );
+      .cell.selected {
+        color: var(--color-primary);
       }
 
       .cell:hover {
-        transition: background-color 0.3s ease-in-out;
+        background-color: color-mix(
+          in srgb,
+          var(--color-text) 10%,
+          transparent
+        );
       }
 
       .sub-text {

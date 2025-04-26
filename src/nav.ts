@@ -13,8 +13,8 @@ export const NavigationData = [
     path: '/translator'
   },
   {
-    name: 'song-player',
-    path: '/song-player'
+    name: 'music-player',
+    path: '/music-player'
   },
   {
     name: 'achievement',

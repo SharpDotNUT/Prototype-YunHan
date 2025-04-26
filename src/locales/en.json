@@ -19,7 +19,13 @@
     "import-export": "Import/Export",
     "numbers": "{0} Achievement Groups - {1} Achievements",
     "search-with": "Search on {0}",
-    "description": "An achievement management/query/record tool for Genshin Impact"
+    "description": "An achievement management/query/record tool for Genshin Impact",
+    "status": {
+      "0": "No data",
+      "1": "Not completed",
+      "2": "Completed",
+      "3": "Progress achieved"
+    }
   },
   "dictionary": {
     "search-text": "Text to Search",

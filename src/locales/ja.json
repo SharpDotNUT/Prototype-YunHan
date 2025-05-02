@@ -77,7 +77,8 @@
     "action": {
       "delete": "消去"
     },
-    "menu": "メニュー"
+    "menu": "メニュー",
+    "author": "作者"
   },
   "home": {
     "welcome": "いらしていたのですね。近頃とてもお忙しいようですが…<br/> たまには座って劇を見たり、お茶を飲んだりしてみてはいかがでしょう。心身ともに安らぎますよ。",
@@ -89,6 +90,15 @@
     "use": "今すぐ使う",
     "install": "PWAアプリとしてインストール",
     "title": "紹介ページ"
+  },
+  "music-player": {
+    "album": "アルバム",
+    "album-description": "アルバム説明",
+    "description": "HoYoVERSE音楽スタジオ「HoYo-Mix」の楽曲に対応した音楽プレイヤー",
+    "jump-to-current-lyric": "現在の歌詞にジャンプ",
+    "songs": "楽曲",
+    "songs-in-total": "全{0}曲",
+    "title": "ミュージックプレイヤー"
   },
   "name": "「試作•雲翰」",
   "question": {
@@ -103,7 +113,21 @@
     }
   },
   "quiz": {
-    "title": "クイズ"
+    "title": "クイズ",
+    "home": {
+      "download-list": "GitHubから問題リストをダウンロード中、お待ちください...",
+      "download-list-success": "問題リストのダウンロードが成功しました",
+      "download-list-fail": "問題リストのダウンロードに失敗しました",
+      "download-bank": "GitHubから問題集をダウンロード中、お待ちください...",
+      "download-bank-success": "問題集のダウンロードが成功しました",
+      "download-bank-fail": "問題集のダウンロードに失敗しました",
+      "start": "クイズを開始"
+    },
+    "answer": {
+      "true": "真",
+      "false": "偽"
+    },
+    "description": " "
   },
   "setting": {
     "theme": {
@@ -122,8 +146,8 @@
       "title": "について"
     },
     "title": "設定",
-    "general": "",
-    "rm": ""
+    "general": "汎用",
+    "rm": "リソースマネージャー"
   },
   "song-player": {},
   "sp-key": {
@@ -158,14 +182,5 @@
       "i18n": "国際化",
       "others": "他の"
     }
-  },
-  "music-player": {
-    "album": "アルバム",
-    "album-description": "アルバム説明",
-    "description": "HoYoVERSE音楽スタジオ「HoYo-Mix」の楽曲に対応した音楽プレイヤー",
-    "jump-to-current-lyric": "現在の歌詞にジャンプ",
-    "songs": "楽曲",
-    "songs-in-total": "全{0}曲",
-    "title": "ミュージックプレイヤー"
   }
 }

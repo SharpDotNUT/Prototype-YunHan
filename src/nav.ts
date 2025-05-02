@@ -30,8 +30,7 @@ export const NavigationData = [
   },
   {
     name: 'quiz',
-    path: '/quiz',
-    beta: true
+    path: '/quiz'
   },
   {
     name: 'gacha.view',

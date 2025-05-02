@@ -2,6 +2,44 @@ import type { t_UpdateLog } from './types'
 
 const log: t_UpdateLog = [
   {
+    version: '2.3.0',
+    'name-zh': '阿那克萨戈拉斯',
+    'name-en': 'Anaksagoras',
+    date: '2025-05-01T00:00:00+0800',
+    items: [
+      {
+        area: 'quiz',
+        type: 'Feature',
+        'content-zh': '发布 Alpha 版本，基本完善，可以使用。',
+        'content-en': 'Released Alpha version, basically complete, can be used.'
+      },
+      {
+        area: 'app',
+        type: 'Performance',
+        'content-zh': '使用 IndexDB 替换 Web Cache API 存储数据',
+        'content-en': 'Use IndexDB to replace Web Cache API to store data'
+      },
+      {
+        area: 'achievement',
+        type: 'Feature',
+        'content-zh': '支持导入成就和浏览完成进度',
+        'content-en':
+          'Support import achievements and browse completion progress'
+      },
+      {
+        //[Music Player] Change path; UI & UX; use RM; Bug fix
+        area: 'music',
+        type: 'Performance',
+        'content-zh':
+          '改变路径为 `/music-player`；使用「资源管理器」； ' +
+          '修复退出时由于 DOM 卸载导致的 bug',
+        'content-en':
+          'Change path to `/music-player`; Use "Resource Manager"; ' +
+          'Fix bug caused by DOM unmount when exiting'
+      }
+    ]
+  },
+  {
     version: '2.2.0',
     'name-zh': '遐蝶',
     'name-en': 'Castorice',
@@ -30,7 +68,8 @@ const log: t_UpdateLog = [
         type: 'UI & UX',
         'content-zh': '优化设置界面，改为二级页面，初步支持资源管理',
         'content-en':
-          'Optimize the setting interface, change to secondary page, support resource management initially'
+          'Optimize the setting interface, change to secondary page, ' +
+          'support resource management initially'
       }
     ]
   },
@@ -44,7 +83,8 @@ const log: t_UpdateLog = [
         'content-zh':
           '增强 TypeScript 支持；组件库改为全量引入；升级 Vue-I18n@11',
         'content-en':
-          'Enhanced TypeScript support; component library changed to full import; upgraded Vue-I18n@11'
+          'Enhanced TypeScript support; component library changed to full import; ' +
+          'upgraded Vue-I18n@11'
       },
       {
         area: 'dictionary',

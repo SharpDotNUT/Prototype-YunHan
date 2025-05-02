@@ -9,11 +9,8 @@ body {
 }
 
 :root {
-  --base-width: min(100%, 1000px);
-}
-
-.base-width {
-  width: var(--base-width);
+  --base-width: 800px;
+  --base-padding: max(20px, calc(50vw - var(--base-width) / 2));
 }
 
 body {

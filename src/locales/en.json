@@ -77,7 +77,8 @@
     "action": {
       "delete": "Delete"
     },
-    "menu": "Menu"
+    "menu": "Menu",
+    "author": "Author"
   },
   "home": {
     "welcome": "Ah, you've arrived, {0}. I couldn't help but notice how busy you are these days...<br/>If you could manage to find the time to sit and enjoy an opera together or share a pot of tea... Taking a moment to slow down and enjoy the finer things in life is always beneficial to your body and soul.",
@@ -89,6 +90,15 @@
     "use": "Use Now",
     "install": "Install as PWA App",
     "title": "Introduction Page"
+  },
+  "music-player": {
+    "album": "Album",
+    "album-description": "Album Description",
+    "description": "A music player for tracks released by HoYo-Mix, the music studio of HoYoVERSE",
+    "jump-to-current-lyric": "Jump to Current Lyric",
+    "songs": "Songs",
+    "songs-in-total": "{0} songs in total",
+    "title": "Music Player"
   },
   "name": "「Prototype : Yun Han」",
   "question": {
@@ -103,7 +113,21 @@
     }
   },
   "quiz": {
-    "title": "Quiz"
+    "title": "Quiz",
+    "home": {
+      "download-list": "Downloading question bank list from GitHub, please wait...",
+      "download-list-success": "Question bank list downloaded successfully",
+      "download-list-fail": "Failed to download question bank list",
+      "download-bank": "Downloading question bank from GitHub, please wait...",
+      "download-bank-success": "Question bank downloaded successfully",
+      "download-bank-fail": "Failed to download question bank",
+      "start": "Start Quiz"
+    },
+    "answer": {
+      "true": "TRUE",
+      "false": "FALSE"
+    },
+    "description": " "
   },
   "setting": {
     "theme": {
@@ -158,14 +182,5 @@
       "i18n": "Internationalization",
       "others": "Others"
     }
-  },
-  "music-player": {
-    "album": "Album",
-    "album-description": "Album Description",
-    "description": "A music player for tracks released by HoYo-Mix, the music studio of HoYoVERSE",
-    "jump-to-current-lyric": "Jump to Current Lyric",
-    "songs": "Songs",
-    "songs-in-total": "{0} songs in total",
-    "title": "Music Player"
   }
 }

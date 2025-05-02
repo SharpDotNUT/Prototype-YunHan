@@ -77,7 +77,8 @@
     "action": {
       "delete": "删除"
     },
-    "menu": "菜单"
+    "menu": "菜单",
+    "author": "作者"
   },
   "home": {
     "welcome": "{0}，你来了呀。看你最近来去匆忙…<br/>要是能偶尔坐下来听戏饮茶,享受闲适的趣味,会更有益身心哦。",
@@ -89,6 +90,15 @@
     "use": "立即使用",
     "install": "安装为 PWA 应用",
     "title": "首页"
+  },
+  "music-player": {
+    "album": "专辑",
+    "album-description": "专辑描述",
+    "description": "适用于米哈游音乐工作室 HoYo-Mix 发布音乐的音乐播放器",
+    "jump-to-current-lyric": "跳转至当前歌词",
+    "songs": "歌曲",
+    "songs-in-total": "共 {0} 首",
+    "title": "音乐播放器"
   },
   "name": "「试作 · 云翰」",
   "question": {
@@ -103,7 +113,21 @@
     }
   },
   "quiz": {
-    "title": "答题"
+    "title": "答题",
+    "home": {
+      "download-list": "正在从 GitHub 下载题库列表，请稍候",
+      "download-list-success": "题库列表下载成功",
+      "download-list-fail": "题库列表下载失败",
+      "download-bank": "正在从 GitHub 下载题库，请稍候",
+      "download-bank-success": "题库下载成功",
+      "download-bank-fail": "题库下载失败",
+      "start": "开始答题"
+    },
+    "answer": {
+      "true": "对",
+      "false": "错"
+    },
+    "description": " "
   },
   "setting": {
     "theme": {
@@ -158,14 +182,5 @@
       "i18n": "国际化",
       "others": "其他"
     }
-  },
-  "music-player": {
-    "album": "专辑",
-    "album-description": "专辑描述",
-    "description": "适用于米哈游音乐工作室 HoYo-Mix 发布音乐的音乐播放器",
-    "jump-to-current-lyric": "跳转至当前歌词",
-    "songs": "歌曲",
-    "songs-in-total": "共 {0} 首",
-    "title": "音乐播放器"
   }
 }

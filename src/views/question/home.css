@@ -1,5 +1,13 @@
+#list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 20px var(--base-padding);
+  overflow: auto;
+}
+
 .question-bank {
-  width: 200px;
-  height: 100px;
-  border-radius: 20px;
+  width: 100%;
+  font-size: 1em;
 }

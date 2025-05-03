@@ -2,6 +2,21 @@ import type { t_UpdateLog } from './types'
 
 const log: t_UpdateLog = [
   {
+    version: '2.3.1',
+    released: false,
+    date: '2025-05-03T21:50:00+0800',
+    items: [
+      {
+        area: 'music-player',
+        type: 'Performance',
+        'content-zh':
+          '资源使用 JSDelivr 从 github:kuriyota/hoyomix-netease-cloud-music 拉取',
+        'content-en':
+          'Resource use JSDelivr to pull from github:kuriyota/hoyomix-netease-cloud-music'
+      }
+    ]
+  },
+  {
     version: '2.3.0',
     'name-zh': '阿那克萨戈拉斯',
     'name-en': 'Anaksagoras',

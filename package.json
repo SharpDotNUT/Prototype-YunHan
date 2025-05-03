@@ -1,6 +1,6 @@
 {
   "name": "yunhan-toolbox",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
+    "@kuriyota/hoyomix-types": "^25.5.30",
     "@mdi/js": "^7.4.47",
     "@tsconfig/node22": "^22.0.1",
     "@types/dom-to-image": "^2.6.7",

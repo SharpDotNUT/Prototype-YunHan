@@ -27,13 +27,16 @@ const ref_image = ref(null)
 
 let Data = []
 const s_dataLoaded = ref(false)
-const mainStore = useMainStore()
-mainStore.RM.get({ id: 'music/meta' }).then((res) => {
-  if (res) {
-    Data = res
-    init()
-  }
-})
+fetch(
+  'https://cdn.jsdelivr.net/gh/kuriyota/hoyomix-netease-cloud-music@main/data/all.json'
+)
+  .then((res) => res.json())
+  .then((data) => {
+    if (data) {
+      Data = data
+      init()
+    }
+  })
 function init() {
   s_dataLoaded.value = true
   songMetaData.value = Data

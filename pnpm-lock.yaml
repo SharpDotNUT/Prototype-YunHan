@@ -53,6 +53,9 @@ importers:
       idb-keyval:
         specifier: ^6.2.1
         version: 6.2.1
+      json5:
+        specifier: ^2.2.3
+        version: 2.2.3
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
@@ -68,6 +71,9 @@ importers:
       typescript:
         specifier: ^5.6.2
         version: 5.7.3
+      vite-plugin-json5:
+        specifier: ^1.1.9
+        version: 1.1.9(rollup@2.79.2)(vite@6.2.3(@types/node@22.13.17)(terser@5.38.0))
       vite-plugin-vue-devtools:
         specifier: ^7.7.1
         version: 7.7.1(rollup@2.79.2)(vite@6.2.3(@types/node@22.13.17)(terser@5.38.0))(vue@3.5.13(typescript@5.7.3))
@@ -2317,6 +2323,11 @@ packages:
     peerDependenciesMeta:
       '@nuxt/kit':
         optional: true
+
+  vite-plugin-json5@1.1.9:
+    resolution: {integrity: sha512-hZmMrVv6RZXZ7qmmpbcT8LBaMbqid0sK0KFy8/ww9c/4s2lRy88/ZD03IPNHo0cbe1Ky6tBcBw6f9iPr/y3ZXA==}
+    peerDependencies:
+      vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
 
   vite-plugin-pwa@0.21.2:
     resolution: {integrity: sha512-vFhH6Waw8itNu37hWUJxL50q+CBbNcMVzsKaYHQVrfxTt3ihk3PeLO22SbiP1UNWzcEPaTQv+YVxe4G0KOjAkg==}
@@ -4937,6 +4948,14 @@ snapshots:
     transitivePeerDependencies:
       - rollup
       - supports-color
+
+  vite-plugin-json5@1.1.9(rollup@2.79.2)(vite@6.2.3(@types/node@22.13.17)(terser@5.38.0)):
+    dependencies:
+      '@rollup/pluginutils': 5.1.4(rollup@2.79.2)
+      json5: 2.2.3
+      vite: 6.2.3(@types/node@22.13.17)(terser@5.38.0)
+    transitivePeerDependencies:
+      - rollup
 
   vite-plugin-pwa@0.21.2(vite@6.2.3(@types/node@22.13.17)(terser@5.38.0))(workbox-build@7.3.0)(workbox-window@7.3.0):
     dependencies:

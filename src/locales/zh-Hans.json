@@ -176,7 +176,6 @@
     "minor-versions": "次版本号",
     "minor-version": "次要版本",
     "area": "功能",
-    "type": "类别",
     "title": "更新日志",
     "areas": {
       "i18n": "国际化",

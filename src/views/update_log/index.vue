@@ -1,55 +1,9 @@
 <template>
   <div class="update-log-container">
-    <div class="filters">
-      <div>
-        <var-select
-          v-model="selectedMajor"
-          :placeholder="$t('update-log.major-versions')">
-          <var-option value="All" :label="$t('global.all')"></var-option>
-          <var-option
-            v-for="majorVersion in majorVersions"
-            :value="majorVersion"
-            :label="majorVersion + '.x'"></var-option>
-        </var-select>
-        <var-select
-          v-model="selectedMinor"
-          :placeholder="$t('update-log.minor-versions')"
-          :disabled="selectedMajor === 'All'">
-          <var-option value="All" :label="$t('global.all')"></var-option>
-          <var-option
-            v-for="minorVersion in minorVersions"
-            :value="minorVersion"
-            :label="selectedMajor + '.' + minorVersion + '.x'"></var-option>
-        </var-select>
-      </div>
-      <div>
-        <var-select
-          v-model="selectedAreas"
-          :placeholder="$t('update-log.area')"
-          multiple>
-          <var-option
-            v-for="area in allAreas"
-            :key="area"
-            :label="getArea(area)"
-            :value="area"></var-option>
-        </var-select>
-        <var-select
-          v-model="selectedTypes"
-          :placeholder="$t('update-log.type')"
-          multiple>
-          <var-option
-            v-for="type in allTypes"
-            :key="type"
-            :value="type"
-            :label="type"></var-option>
-        </var-select>
-      </div>
-    </div>
-    <br />
     <div class="list">
-      <template v-if="filteredLogs.length > 0">
+      <template v-if="UpdateLogsData.length > 0">
         <var-card
-          v-for="log in filteredLogs"
+          v-for="log in UpdateLogsData"
           :key="log.version"
           class="version">
           <div class="version-content">
@@ -57,8 +11,8 @@
               <span style="font-family: JetBrains Mono">
                 {{ log.version }}
               </span>
-              <span v-if="log['name-zh']" lang="zh-Hans">
-                &nbsp- {{ log['name-zh'] }} {{ log['name-en'] }}
+              <span v-if="log.zh" lang="zh-Hans">
+                &nbsp- {{ log.zh }} {{ log.en }}
               </span>
             </h1>
             <h3 style="display: flex; align-items: center">
@@ -83,36 +37,12 @@
                     {{ $t('update-log.area') }} :
                     {{ getArea(item.area) }}
                   </var-chip>
-                  <span>&nbsp</span>
-                  <var-chip
-                    size="small"
-                    type="primary"
-                    text-color="#e9dbff"
-                    class="type">
-                    {{ $t('update-log.type') }} : {{ item.type }}
-                  </var-chip>
                 </div>
-                <div style="margin: 10px 0; font-size: 1.5em">
-                  <p lang="zh-Hans">{{ item['content-zh'] }}</p>
-                  <p lang="en">{{ item['content-en'] }}</p>
+                <div class="change-content">
+                  <p lang="zh-Hans">{{ item.zh }}</p>
+                  <p lang="en">{{ item.en }}</p>
                 </div>
               </div>
-            </div>
-            <var-divider />
-            <div
-              v-if="log.commits && log.commits.length > 0"
-              class="commits-section">
-              <h3>Commits:</h3>
-              <p
-                v-for="(commit, commitIndex) in log.commits"
-                style="font-family: JetBrains Mono">
-                <var-link
-                  :href="`https://github.com/${Meta.repo}/commit/${commit}`"
-                  target="_blank"
-                  :key="commitIndex">
-                  {{ commit }}
-                </var-link>
-              </p>
             </div>
           </div>
         </var-card>
@@ -125,9 +55,12 @@
 <script setup lang="ts">
 import { ref, computed, type Ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Meta from '@/meta'
-import UpdateLogsData from '@/docs/update-log/logs'
+import UpdateLogsDataText from '@/docs/update-log/logs.json5?raw'
+import type { t_UpdateLog } from '@/docs/update-log/types'
+import JSON5 from 'json5'
 import { watch } from 'vue'
+
+const UpdateLogsData = JSON5.parse(UpdateLogsDataText) as t_UpdateLog
 
 const UpdateLogs = UpdateLogsData.sort(
   // 根据 版本号降序排序
@@ -140,111 +73,6 @@ const UpdateLogs = UpdateLogsData.sort(
 
 const { locale, t } = useI18n()
 
-// 筛选状态
-const selectedMajor = ref('All')
-const selectedMinor = ref('All')
-const selectedAreas: Ref<string[]> = ref([])
-const selectedTypes: Ref<string[]> = ref([])
-
-// 计算属性
-const majorVersions = computed(() => {
-  const versions = new Set()
-  UpdateLogs.forEach((log) => {
-    const [major] = log.version.split('.')
-    versions.add(major)
-  })
-  return Array.from(versions).sort((a: any, b: any) => b - a)
-})
-
-const minorVersions = computed(() => {
-  const versions = new Set()
-  UpdateLogs.forEach((log) => {
-    const [major, minor] = log.version.split('.')
-    if (major === selectedMajor.value || selectedMajor.value === 'All') {
-      versions.add(minor)
-    }
-  })
-  return Array.from(versions).sort((a: any, b: any) => b - a)
-})
-
-const allAreas = computed(() => {
-  const areas = new Set()
-  UpdateLogs.forEach((log: { items: any[] }) => {
-    log.items.forEach((item: { area: string }) => {
-      areas.add(item.area)
-    })
-  })
-  return Array.from(areas).sort() as string[]
-})
-
-const allTypes = computed(() => {
-  const types = new Set()
-  UpdateLogs.forEach((log: { items: any[] }) => {
-    log.items.forEach((item: { type: unknown }) => {
-      types.add(item.type)
-    })
-  })
-  return Array.from(types).sort()
-})
-
-const filteredLogs = computed(() => {
-  return UpdateLogs.filter((log) => {
-    // 版本筛选
-    const [major, minor] = log.version.split('.')
-
-    // 主版本筛选
-    if (selectedMajor.value !== 'All' && major !== selectedMajor.value) {
-      return false
-    }
-
-    // 次版本筛选
-    if (
-      selectedMajor.value !== 'All' &&
-      selectedMinor.value !== 'All' &&
-      minor !== selectedMinor.value
-    ) {
-      return false
-    }
-
-    // 如果没有任何区域或类型被选中，则显示所有项目
-    if (selectedAreas.value.length === 0 && selectedTypes.value.length === 0) {
-      return true
-    }
-
-    // 检查日志项是否包含任何选中的区域或类型
-    const hasMatchingItems = log.items.some((item) => {
-      const areaMatch =
-        selectedAreas.value.length === 0 ||
-        selectedAreas.value.includes(item.area)
-      const typeMatch =
-        selectedTypes.value.length === 0 ||
-        selectedTypes.value.includes(item.type)
-      return areaMatch && typeMatch
-    })
-
-    return hasMatchingItems
-  })
-    .map((log) => {
-      // 如果筛选了区域或类型，只显示匹配的项目
-      if (selectedAreas.value.length > 0 || selectedTypes.value.length > 0) {
-        return {
-          ...log,
-          items: log.items.filter((item) => {
-            const areaMatch =
-              selectedAreas.value.length === 0 ||
-              selectedAreas.value.includes(item.area)
-            const typeMatch =
-              selectedTypes.value.length === 0 ||
-              selectedTypes.value.includes(item.type)
-            return areaMatch && typeMatch
-          })
-        }
-      }
-      return log
-    })
-    .filter((log) => log.items.length > 0) // 确保只返回有项目的日志
-})
-
 const formatDate = (timestamp: string | number | Date) => {
   return new Date(timestamp).toLocaleString(locale.value, {
     year: 'numeric',
@@ -255,10 +83,6 @@ const formatDate = (timestamp: string | number | Date) => {
     second: 'numeric'
   })
 }
-
-watch(selectedMajor, () => {
-  selectedMinor.value = 'All'
-})
 
 const areas: Ref<any> = ref({})
 watch(

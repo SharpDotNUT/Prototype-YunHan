@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { watch, ref, type Ref } from 'vue'
-import { mergeLyrics, parseLyrics, type t_Lyrics } from './lyrics'
 import { useAPIStore } from '@/stores/api'
 import { nextTick } from 'vue'
 
@@ -9,14 +8,12 @@ const props = defineProps({
 })
 defineEmits(['play'])
 
-const APIStore = useAPIStore()
-
-const raw_lyrics = ref({
-  raw: '',
-  translation: '',
-  romaji: ''
-})
-const lyrics: Ref<t_Lyrics> = ref({})
+const lyrics: Ref<Array<{
+  time: number
+  lyric: string
+  translation?: string
+  romaji?: string
+}> | null> = ref([])
 const lyricsContainer = ref<HTMLElement | null>(null)
 const ref_lyrics = ref<HTMLElement[]>([])
 const nowPlayingTime = ref(0)
@@ -29,22 +26,15 @@ let animationFrameId: number | null = null
 const s_isFetchFailed = ref(false)
 // 获取歌词数据
 async function fetchLyrics() {
-  let data: any = null
   try {
-    const res = await APIStore.fetchAPI('/lyric/' + props.song_id)
-    data = await res.json()
+    const res = await fetch(
+      `https://cdn.jsdelivr.net/gh/kuriyota/hoyomix-netease-cloud-music@main/data/lyrics/${props.song_id}.json`
+    )
+    lyrics.value = await res.json()
   } catch {
     s_isFetchFailed.value = true
     return
   }
-  raw_lyrics.value.raw = data.lrc.lyric
-  raw_lyrics.value.translation = data?.tlyric?.lyric
-  raw_lyrics.value.romaji = data?.romalrc?.lyric
-  lyrics.value = mergeLyrics(
-    parseLyrics(raw_lyrics.value.raw),
-    parseLyrics(raw_lyrics.value.translation),
-    parseLyrics(raw_lyrics.value.romaji)
-  )
 }
 
 // 播放控制
@@ -69,9 +59,8 @@ function play(timestamp = 0) {
 
 // 查找当前播放的歌词索引
 function findCurrentLyricIndex(currentTime: number): number {
-  const timestamps = Object.keys(lyrics.value)
-    .map(Number)
-    .sort((a, b) => a - b)
+  const timestamps =
+    lyrics.value?.map((l) => l.time).sort((a, b) => a - b) || []
   for (let i = timestamps.length - 1; i >= 0; i--) {
     if (currentTime >= timestamps[i]) return i
   }
@@ -159,16 +148,15 @@ defineExpose({ play, scrollToCurrentLyric })
       </var-button>
     </div>
     <div
-      v-for="(lyric, timestamp, index) in lyrics"
-      :key="timestamp"
+      v-for="(lyric, index) in lyrics"
       :ref="(el) => (ref_lyrics[index] = el as HTMLElement)"
       :class="{
         'lyric-item': true,
         'lyric-item-active': nowPlayingIndex === index
       }"
       lang="zh-Hans"
-      @click="(play(Number(timestamp)), $emit('play', Number(timestamp)))">
-      <p class="lyric-text">{{ lyric.raw }}</p>
+      @click="(play(lyric.time), $emit('play', lyric.time))">
+      <p class="lyric-text">{{ lyric.lyric }}</p>
       <p class="lyric-translation" v-if="lyric.translation">
         {{ lyric.translation }}
       </p>

@@ -11,6 +11,9 @@ importers:
       '@jamescoyle/vue-icon':
         specifier: ^0.1.2
         version: 0.1.2
+      '@kuriyota/hoyomix-types':
+        specifier: ^25.5.30
+        version: 25.5.30
       '@mdi/js':
         specifier: ^7.4.47
         version: 7.4.47
@@ -826,6 +829,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@kuriyota/hoyomix-types@25.5.30':
+    resolution: {integrity: sha512-d9vXLR90D3h3NgQP80yv2MEx6jIbGv4mUa7xMCETG6U9bG5j5H1eYuxiZAjEVM5BPHneQjKRV4Vh9CdofQY4tg==}
 
   '@mdi/js@7.4.47':
     resolution: {integrity: sha512-KPnNOtm5i2pMabqZxpUz7iQf+mfrYZyKCZ8QNz85czgEt7cuHcGorWfdzUMWYA0SD+a6Hn4FmJ+YhzzzjkTZrQ==}
@@ -1955,6 +1961,10 @@ packages:
   pretty-ms@9.2.0:
     resolution: {integrity: sha512-4yf0QO/sllf/1zbZWYnvWw3NxCQwLXKzIj0G849LSufP15BXKM0rbD2Z3wVnkMfjdn/CB0Dpp444gYAACdsplg==}
     engines: {node: '>=18'}
+
+  progress@2.0.3:
+    resolution: {integrity: sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==}
+    engines: {node: '>=0.4.0'}
 
   punycode.js@2.3.1:
     resolution: {integrity: sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==}
@@ -3333,6 +3343,10 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  '@kuriyota/hoyomix-types@25.5.30':
+    dependencies:
+      progress: 2.0.3
+
   '@mdi/js@7.4.47': {}
 
   '@polka/url@1.0.0-next.28': {}
@@ -4503,6 +4517,8 @@ snapshots:
   pretty-ms@9.2.0:
     dependencies:
       parse-ms: 4.0.0
+
+  progress@2.0.3: {}
 
   punycode.js@2.3.1: {}
 

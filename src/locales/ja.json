@@ -176,7 +176,6 @@
     "major-version": "メジャーバージョン",
     "minor-version": "マイナーバージョン",
     "area": "機能",
-    "type": "カテゴリ",
     "title": "ログを更新します",
     "areas": {
       "i18n": "国際化",

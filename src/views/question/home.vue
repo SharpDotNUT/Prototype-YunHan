@@ -12,7 +12,7 @@ const { t } = useI18n()
 
 Snackbar.loading(t('quiz.home.download-list'))
 fetch(
-  'https://cdn.jsdelivr.net/gh/SharpDotNUT/Prototype-YunHan-QuizBank@main/meta.json'
+  'https://cdn.jsdelivr.net/gh/SharpDotNUT/Prototype-YunHan.QuizBank@main/meta.json'
 )
   .then((res) => res.json())
   .then((res) => {
@@ -30,7 +30,7 @@ function renderAuthor(author: string) {
 function start(id: string) {
   Snackbar.loading(t('quiz.home.download-bank'))
   const url =
-    'https://cdn.jsdelivr.net/gh/SharpDotNUT/Prototype-YunHan-QuizBank@main/question/' +
+    'https://cdn.jsdelivr.net/gh/SharpDotNUT/Prototype-YunHan.QuizBank@main/question/' +
     id +
     '.json'
   fetch(url)

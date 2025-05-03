@@ -51,7 +51,7 @@ const exportImage = () => {
                   v-else
                   type="primary"
                   target="_blank"
-                  :href="`https://github.com/SharpDotNUT/Prototype-YunHan-QuizBank/blob/main/question/${store.bank.id}.json`">
+                  :href="`https://github.com/SharpDotNUT/Prototype-YunHan.QuizBank/blob/main/question/${store.bank.id}.json`">
                   {{ store.bank.id }}
                 </var-link>
               </td>

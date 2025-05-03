@@ -10,7 +10,7 @@
   gap: 10px;
   overflow: auto;
 
-  >div {
+  > div {
     flex-shrink: 0;
   }
 }

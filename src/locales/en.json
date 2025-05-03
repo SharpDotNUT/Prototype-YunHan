@@ -3,7 +3,8 @@
     "build-time": "Build Time: {0}",
     "thanks-to-contributors": "Thanks to all contributors",
     "copyright": "Copyright © 2025 SharpDotNUT Studio. All rights reserved.",
-    "last-commit": "Last commit"
+    "last-commit": "Last commit",
+    "last-commit-unknown": "Failed to fetch the latest commit."
   },
   "achievement": {
     "title": "Achievements",

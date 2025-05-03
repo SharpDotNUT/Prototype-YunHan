@@ -6,15 +6,18 @@
     items: [
       {
         area: 'music-player',
-        zh:
-          '资源使用 JSDelivr 从 github:kuriyota/hoyomix-netease-cloud-music 拉取',
-        en:
-          'Resource use JSDelivr to pull from github:kuriyota/hoyomix-netease-cloud-music'
+        zh: '资源使用 JSDelivr 从 github:kuriyota/hoyomix-netease-cloud-music 拉取',
+        en: 'Resource use JSDelivr to pull from github:kuriyota/hoyomix-netease-cloud-music'
       },
       {
         area: 'update-log',
-        zh:'简化界面，优化字体和间距。',
-        en:'Simplified interface, optimized font and spacing.'
+        zh: '简化界面，优化字体和间距。',
+        en: 'Simplified interface, optimized font and spacing.'
+      },
+      {
+        about: 'about',
+        zh: '修复了无法获取最新提交会导致页面崩溃的问题',
+        en: 'Fixed the problem that could cause the page to crash if the latest commit could not be obtained'
       }
     ]
   },
@@ -37,17 +40,14 @@
       {
         area: 'achievement',
         zh: '支持导入成就和浏览完成进度',
-        en:
-          'Support import achievements and browse completion progress'
+        en: 'Support import achievements and browse completion progress'
       },
       {
         //[Music Player] Change path; UI & UX; use RM; Bug fix
         area: 'music-player',
-        zh:
-          '改变路径为 `/music-player`；使用「资源管理器」；\
+        zh: '改变路径为 `/music-player`；使用「资源管理器」；\
           修复退出时由于 DOM 卸载导致的 bug',
-        en:
-          'Change path to `/music-player`; Use "Resource Manager";\
+        en: 'Change path to `/music-player`; Use "Resource Manager";\
           Fix bug caused by DOM unmount when exiting'
       }
     ]
@@ -60,19 +60,16 @@
     items: [
       {
         area: 'app',
-        zh: 
-        '使用「资源管理器」来管理资源；英文字体由 Outfit 替换会 Noto Sans\
+        zh: '使用「资源管理器」来管理资源；英文字体由 Outfit 替换会 Noto Sans\
         TypeScript 迁移基本完成',
-        en: 
-        'Use "Resource Manager" to manage resources;\
+        en: 'Use "Resource Manager" to manage resources;\
         English font replaced back to Noto Sans;\
         TypeScript migration is basically complete'
       },
       {
         area: 'setting',
         zh: '优化设置界面，改为二级页面，初步支持资源管理',
-        en:
-          'Optimize the setting interface, change to secondary page,\
+        en: 'Optimize the setting interface, change to secondary page,\
           support resource management initially'
       }
     ]
@@ -83,36 +80,29 @@
     items: [
       {
         area: 'app',
-        zh:
-          '增强 TypeScript 支持；组件库改为全量引入；升级 Vue-I18n@11',
-        en:
-          'Enhanced TypeScript support; component library changed to full import;\
+        zh: '增强 TypeScript 支持；组件库改为全量引入；升级 Vue-I18n@11',
+        en: 'Enhanced TypeScript support; component library changed to full import;\
           upgraded Vue-I18n@11'
       },
       {
         area: 'dictionary',
-        zh:
-          '改为首页和二级页面机制，为后续功能扩展做准备；优化界面；使用虚拟滚动提高性能；\
+        zh: '改为首页和二级页面机制，为后续功能扩展做准备；优化界面；使用虚拟滚动提高性能；\
           搜索结果将根据输入的关键词实时更新',
-        en:
-          'Changed to home and secondary page mechanism, preparing for future feature expansion;\
+        en: 'Changed to home and secondary page mechanism, preparing for future feature expansion;\
           optimized interface; used virtual scrolling to improve performance;\
           search results will be updated in real time based on the input keyword'
       },
       {
         area: 'translator',
-        zh:
-          '模仿 Google Translate 的界面，优化了界面和交互；\
+        zh: '模仿 Google Translate 的界面，优化了界面和交互；\
           软键盘将在一个新的对话框中打开，以避免与输入框的冲突',
-        en:
-          'Imitated the interface of Google Translate, optimized the interface and interaction;\
+        en: 'Imitated the interface of Google Translate, optimized the interface and interaction;\
           the soft keyboard will open in a new dialog box to avoid conflicts with the input box'
       },
       {
         area: 'index',
         zh: '「立即使用」按钮现在将直接跳转到主页',
-        en:
-          'The "Use Now" button will now directly jump to the homepage'
+        en: 'The "Use Now" button will now directly jump to the homepage'
       }
     ]
   },
@@ -144,8 +134,7 @@
       {
         area: 'update-log',
         zh: '补充了功能列表的翻译；优化了在日文下的字体展示',
-        en:
-          'Added translation for area list; optimized font display in Japanese'
+        en: 'Added translation for area list; optimized font display in Japanese'
       },
       {
         area: 'update-log',

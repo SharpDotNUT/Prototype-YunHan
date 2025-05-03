@@ -3,7 +3,8 @@
     "build-time": "构建时间： {0}",
     "thanks-to-contributors": "感谢所有贡献者",
     "copyright": "版权所有 © 2025 SharpDotNUT Studio. 保留所有权利",
-    "last-commit": "最后一次提交"
+    "last-commit": "最后一次提交",
+    "last-commit-unknown": "最后一次提交获取失败"
   },
   "achievement": {
     "title": "成就",

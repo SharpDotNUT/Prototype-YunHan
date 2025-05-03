@@ -4,11 +4,16 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import { VitePWA } from 'vite-plugin-pwa'
 
-const res = await fetch(
-  'https://api.github.com/repos/Sharpdotnut/prototype/commits'
-)
-const json: any = await res.json()
-const commit = json[0]
+let commit: any | undefined = undefined
+try {
+  const res = await fetch(
+    'https://api.github.com/repos/Sharpdotnut/prototype/commits'
+  )
+  const json: any = await res.json()
+  commit = json[0]
+} catch (e) {
+  console.log(e)
+}
 
 export default defineConfig({
   plugins: [

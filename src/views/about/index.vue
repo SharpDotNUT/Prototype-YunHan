@@ -61,7 +61,7 @@ const LAST_COMMIT = __LAST_COMMIT
     </var-card>
     <var-card>
       <p>{{ $t('about.last-commit') }}</p>
-      <div style="padding-left: 1em">
+      <div v-if="LAST_COMMIT">
         <p>
           Commit ID :
           <var-link
@@ -86,7 +86,10 @@ const LAST_COMMIT = __LAST_COMMIT
           </var-link>
         </p>
       </div>
-      <p>
+      <div v-else>
+        {{ $t('about.last-commit-unknown') }}
+      </div>
+      <p style="margin-top: 1em">
         {{ $t('about.build-time', [new Date(BuildTime).toLocaleString()]) }}
       </p>
       <p>{{ $t('about.copyright') }}</p>

@@ -154,10 +154,9 @@ onUnmounted(() => {
 
 <template>
   <div id="container" v-if="s_dataLoaded">
+    <img class="background" id="background" :src="picURL" />
+    <div class="background" id="background-mask"></div>
     <audio ref="audio"></audio>
-    <TitleView
-      v-show="isMobileWidth && ui_showControlPanel"
-      :data="songMetaData[selectedAlbum].songs[selectedSong]" />
     <div id="main">
       <div id="view">
         <div
@@ -172,9 +171,7 @@ onUnmounted(() => {
             width="100%"
             @load="imageLoaded = true"
             style="border-radius: 5px" />
-          <TitleView
-            v-if="!isMobileWidth"
-            :data="songMetaData[selectedAlbum].songs[selectedSong]" />
+          <TitleView :data="songMetaData[selectedAlbum].songs[selectedSong]" />
         </div>
         <LyricsView
           id="lyrics"

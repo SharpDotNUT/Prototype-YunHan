@@ -38,13 +38,14 @@ const selectedSong = defineModel('selectedSong', { type: Number, default: 0 })
           :label="item.name">
           <div style="display: flex; gap: 10px; align-items: center">
             <img
+              loading="lazy"
               :src="item.picUrl + '?param=100y100'"
               style="width: 40px; height: 40px; border-radius: 5px" />
             <p>
               <span lang="zh-Hans">{{ item.name }}</span>
               <span lang="zh-Hans" v-if="item.alias" class="sub-text">
                 <br />
-                {{ item.alias }}
+                {{ item.alias[0] }}
               </span>
               <br />
               <span class="sub-text">
@@ -103,13 +104,14 @@ const selectedSong = defineModel('selectedSong', { type: Number, default: 0 })
           :value="index"
           :label="item.name">
           <img
+            loading="lazy"
             :src="songMetaData[selectedAlbum].picUrl + '?param=100y100'"
             style="width: 40px; height: 40px; border-radius: 5px" />
           <p>
             <span lang="zh-Hans">{{ item.name }}</span>
             <span lang="zh-Hans" v-if="item.alias" class="sub-text">
               <br />
-              {{ item.alias }}
+              {{ item.alias[0] }}
             </span>
             <br />
             <span class="sub-text">

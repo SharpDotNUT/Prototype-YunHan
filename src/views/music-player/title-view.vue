@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div id="title">
+  <div class="__container_title">
     <h2 lang="zh-Hans">
       {{ data.name }}
     </h2>
@@ -17,3 +17,10 @@ const props = defineProps({
     </p>
   </div>
 </template>
+
+<style lang="css" scoped>
+.__container_title {
+  text-align: center;
+  margin: 20px 0;
+}
+</style>

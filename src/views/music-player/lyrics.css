@@ -5,7 +5,7 @@
   height: 100%;
   overflow: auto;
 
-  > div {
+  >div {
     flex-shrink: 0;
   }
 }
@@ -17,6 +17,7 @@
   color: color-mix(in srgb, var(--color-text) 80%, transparent 100%);
   transition: all 0.3s ease-in-out;
   font-size: 4vh;
+  text-align: center;
 
   .lyric-translation,
   .lyric-romaji {

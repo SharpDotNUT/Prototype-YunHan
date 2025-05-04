@@ -147,6 +147,7 @@ defineExpose({ play, scrollToCurrentLyric })
         {{ $t('music-player.jump-to-current-lyric') }}
       </var-button>
     </div>
+    <div style="height: 50%"></div>
     <div
       v-for="(lyric, index) in lyrics"
       :ref="(el) => (ref_lyrics[index] = el as HTMLElement)"
@@ -155,13 +156,16 @@ defineExpose({ play, scrollToCurrentLyric })
         'lyric-item-active': nowPlayingIndex === index
       }"
       lang="zh-Hans"
-      @click="(play(lyric.time), $emit('play', lyric.time))">
+      @click="
+        ((isUserScrolling = false), play(lyric.time), $emit('play', lyric.time))
+      ">
       <p class="lyric-text">{{ lyric.lyric }}</p>
       <p class="lyric-translation" v-if="lyric.translation">
         {{ lyric.translation }}
       </p>
       <p class="lyric-romaji" v-if="lyric.romaji">{{ lyric.romaji }}</p>
     </div>
+    <div style="height: 50%"></div>
   </div>
 </template>
 

@@ -1,6 +1,22 @@
 [
   {
+    version: '2.3.2 - build.1',
+    date: '2025-05-04T14:30:00+0800',
+    items: [
+      {
+        area: 'music-player',
+        zh: '修复了专辑别名显示不正常的问题；为专辑封面图添加阴影和悬浮特效；\
+        设置专辑封面图模糊为背景图；优化了标题显示逻辑',
+        en: 'Fixed the issue of abnormal display of album aliases; \
+        Added shadow and hover effects to album cover images;\
+        Set album cover images as background images; Optimized title display logic'
+      }
+    ]
+  },
+  {
     version: '2.3.1',
+    zh: '星穹铁道演唱会',
+    en: 'Star Rail Live',
     date: '2025-05-03T21:50:00+0800',
     items: [
       {
@@ -19,12 +35,12 @@
         en: 'Fixed the problem that could cause the page to crash if the latest commit could not be obtained'
       },
       {
-        about:'RM',
+        about: 'RM',
         zh: '资源使用 JSDelivr 从 github:Prototype-YunHan.QuizBank 拉取',
         en: 'Resource use JSDelivr to pull from github:Prototype-YunHan.QuizBank'
       },
       {
-        about:'quiz',
+        about: 'quiz',
         zh: '更改资源路径',
         en: 'Change resource path'
       }

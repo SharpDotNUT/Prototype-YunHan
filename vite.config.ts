@@ -16,6 +16,7 @@ try {
 }
 
 export default defineConfig({
+  mode: 'development',
   plugins: [
     vue(),
     vueDevTools(),

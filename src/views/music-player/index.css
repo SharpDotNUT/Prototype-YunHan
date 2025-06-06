@@ -19,16 +19,14 @@
     z-index: -2;
     background-size: cover;
     background-position: center;
-    filter: blur(3vmax);
+    filter: blur(5vmax);
   }
 
   #background-mask {
     z-index: -1;
-    background-color: color-mix(
-      in srgb,
-      var(--color-body) 100%,
-      transparent 100%
-    );
+    background-color: color-mix(in srgb,
+        var(--color-body) 50%,
+        transparent 100%);
   }
 
   #controller {
@@ -57,7 +55,7 @@
       display: flex;
       overflow-x: hidden;
 
-      > * {
+      >* {
         transition: all 0.5s ease-in-out;
       }
 

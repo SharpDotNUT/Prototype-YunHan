@@ -7,10 +7,12 @@ import Tags from '@/data/dictionary/tags.json'
 import { filter, type t_word } from './main'
 import type { Ref } from 'vue'
 import { useMainStore } from '@/stores/main'
+import { useRM } from '@/stores/resource-manager'
 
 let Words: t_word[] = []
 const mainStore = useMainStore()
-mainStore.RM.get({ id: 'dictionary/genshin' }).then(async (data) => {
+const RM = useRM()
+RM.get('dictionary/genshin').then(async (data) => {
   if (data) {
     Words = data
     Words_loaded.value = true

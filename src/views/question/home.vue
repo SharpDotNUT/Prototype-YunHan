@@ -9,6 +9,7 @@ import { useI18n } from 'vue-i18n'
 const data: Ref<Array<t_QuestionsBankBaseInfo>> = ref([])
 const store = useQuestionStore()
 const { t } = useI18n()
+const failed = ref(false)
 
 Snackbar.loading(t('quiz.home.download-list'))
 fetch(
@@ -21,6 +22,7 @@ fetch(
   })
   .catch(() => {
     Snackbar.error(t('quiz.home.download-list-fail'))
+    failed.value = true
   })
 
 function renderAuthor(author: string) {
@@ -46,7 +48,7 @@ function start(id: string) {
 </script>
 
 <template>
-  <div class="container">
+  <div v-if="!failed" class="container">
     <div id="list">
       <var-cell
         v-for="item in data"
@@ -84,6 +86,14 @@ function start(id: string) {
         </var-space>
       </var-cell>
     </div>
+  </div>
+  <div v-else id="failed">
+    <p>
+      {{ t('quiz.home.failed-to-load') }}
+    </p>
+    <router-link to="/home">
+      <var-button>{{ t('home.title') }}</var-button>
+    </router-link>
   </div>
 </template>
 

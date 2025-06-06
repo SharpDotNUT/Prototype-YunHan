@@ -7,7 +7,6 @@ import { useI18n } from 'vue-i18n'
 import { Themes, StyleProvider } from '@varlet/ui'
 
 import PackageJSON from '../../package.json'
-import ResourceManager from '@/script/RM/resource-manager'
 
 export const useMainStore = defineStore('main', () => {
   const { locale } = useI18n()
@@ -59,11 +58,7 @@ export const useMainStore = defineStore('main', () => {
       height: window.innerHeight
     }
   })
-  const RM = new ResourceManager(import.meta.env.VITE_RESOURCE_HOST)
-  //@ts-ignore
-  window.RM = RM
   return {
-    RM,
     version,
     host_name,
     theme,

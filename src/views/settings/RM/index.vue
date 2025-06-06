@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
-import type { CacheResourceRecord } from '@/script/RM/types'
 import { useMainStore } from '@/stores/main'
 import { filesize } from 'filesize'
 import { ref } from 'vue'
+import { useRM, type CacheResourceRecord } from '@/stores/resource-manager'
 const mainStore = useMainStore()
 
 const StorageUsage: Ref<null | {
@@ -12,8 +12,9 @@ const StorageUsage: Ref<null | {
   cacheUsed: number
   resources: Record<string, CacheResourceRecord>
 }> = ref(null)
+const RM = useRM()
 function loadStorageUsage() {
-  mainStore.RM.getLocalMeta().then((res) => {
+  RM.getLocalMeta().then((res) => {
     StorageUsage.value = res as {
       total: number
       used: number
@@ -38,12 +39,9 @@ loadStorageUsage()
     <var-table id="table">
       <table id="table-content">
         <tbody>
-          <tr v-for="value in StorageUsage?.resources">
+          <tr v-for="(value, key) in StorageUsage?.resources">
             <td>
-              {{ value.id }}
-            </td>
-            <td>
-              {{ value.variant }}
+              {{ key }}
             </td>
             <td>{{ filesize(value.size) }}</td>
             <td>{{ new Date(value.updatedAt).toLocaleString() }}</td>
@@ -52,10 +50,7 @@ loadStorageUsage()
                 size="small"
                 type="warning"
                 @click="
-                  mainStore.RM.remove({
-                    id: value.id,
-                    variant: value.variant
-                  }).then(() => {
+                  RM.removeByKey(key).then(() => {
                     loadStorageUsage()
                   })
                 ">

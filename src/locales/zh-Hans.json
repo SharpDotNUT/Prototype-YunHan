@@ -28,6 +28,9 @@
       "3": "进度达成"
     }
   },
+  "app": {
+    "wait-for-meta": "请等待元数据加载"
+  },
   "dictionary": {
     "search-text": "要搜索的文本",
     "title": "米哈游辞典",
@@ -122,7 +125,8 @@
       "download-bank": "正在从 GitHub 下载题库，请稍候",
       "download-bank-success": "题库下载成功",
       "download-bank-fail": "题库下载失败",
-      "start": "开始答题"
+      "start": "开始答题",
+      "failed-to-load": "无法通过 jsDelivr 从 GitHub 获取题库，请检查您的网络或国际网络连接。"
     },
     "answer": {
       "true": "对",

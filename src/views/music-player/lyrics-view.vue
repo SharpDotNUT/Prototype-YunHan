@@ -28,7 +28,7 @@ const s_isFetchFailed = ref(false)
 async function fetchLyrics() {
   try {
     const res = await fetch(
-      `https://cdn.jsdelivr.net/gh/kuriyota/hoyomix-netease-cloud-music@main/data/lyrics/${props.song_id}.json`
+      `https://unpkg.com/@kuriyota/hoyomix-ncg/data/lyrics/${props.song_id}.json`
     )
     lyrics.value = await res.json()
   } catch {

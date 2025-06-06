@@ -27,9 +27,7 @@ const ref_image = ref(null)
 
 let Data = []
 const s_dataLoaded = ref(false)
-fetch(
-  'https://cdn.jsdelivr.net/gh/kuriyota/hoyomix-netease-cloud-music@main/data/all.json'
-)
+fetch('https://unpkg.com/@kuriyota/hoyomix-ncg/data/all.json')
   .then((res) => res.json())
   .then((data) => {
     if (data) {

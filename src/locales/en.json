@@ -28,6 +28,9 @@
       "3": "Progress achieved"
     }
   },
+  "app": {
+    "wait-for-meta": "Please wait for metadata to load."
+  },
   "dictionary": {
     "search-text": "Text to Search",
     "title": "HoYoVERSE Dictionary",
@@ -122,7 +125,8 @@
       "download-bank": "Downloading question bank from GitHub, please wait...",
       "download-bank-success": "Question bank downloaded successfully",
       "download-bank-fail": "Failed to download question bank",
-      "start": "Start Quiz"
+      "start": "Start Quiz",
+      "failed-to-load": "Unable to fetch the question bank from GitHub via jsDelivr. Please check your network or international network connection."
     },
     "answer": {
       "true": "TRUE",

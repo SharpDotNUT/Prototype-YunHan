@@ -11,6 +11,7 @@ import { useI18n } from 'vue-i18n'
 import { useMainStore } from '@/stores/main'
 
 import type { t_AchievementData } from './types'
+import { useRM } from '@/stores/resource-manager'
 
 const AchievementData: Ref<t_AchievementData | null> = ref(null)
 const TextMap: Ref<{
@@ -19,7 +20,6 @@ const TextMap: Ref<{
   }
 }> = ref({})
 const { locale } = useI18n()
-const mainStore = useMainStore()
 const f_Versions: Ref<{
   [key: string]: Array<string>
 }> = ref({})
@@ -30,9 +30,9 @@ const files: Ref<
 > = ref([])
 const ui_showArchive = ref(false)
 
-mainStore.RM.get({
-  id: 'achievement/meta'
-}).then(async (data) => {
+const RM = useRM()
+RM.check()
+RM.get('achievement/meta').then(async (data) => {
   AchievementData.value = data
   DataLoaded()
   search()
@@ -46,10 +46,7 @@ function DataLoaded(UIAf?: any) {
   }
 }
 function loadTextMap() {
-  mainStore.RM.get({
-    id: 'achievement/text-map',
-    variant: locale.value
-  }).then(async (data) => {
+  RM.get('achievement/text-map', locale.value).then(async (data) => {
     TextMap.value[locale.value] = data
   })
 }

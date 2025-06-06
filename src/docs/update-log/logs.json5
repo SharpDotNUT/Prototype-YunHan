@@ -1,7 +1,7 @@
 [
   {
-    version: '2.3.2 - build.2',
-    date: '2025-06-06T17:20:00+0800',
+    version: '2.3.2',
+    date: '2025-06-07T12:30:00+0800',
     items: [
       {
         area: 'music-player',
@@ -12,6 +12,12 @@
         Added shadow and hover effects to album cover images;\
         Set album cover images as background images; Optimized title display logic;\
         Use UNPKG instead of JSDeliver to ensure normal access in China'
+      },
+      {
+        about: 'RM',
+        zh: '采用全新架构；修复了首次进入页面时因为元数据未加载导致的无内容',
+        en: 'Use new architecture; Fixed the problem of content not being displayed when \
+        entering the page for the first time because the metadata was not loaded'
       }
     ]
   },

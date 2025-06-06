@@ -28,6 +28,9 @@
       "3": "進捗が達成されました"
     }
   },
+  "app": {
+    "wait-for-meta": "メタデータのロードをお待ちください。"
+  },
   "dictionary": {
     "search-text": "検索テキスト",
     "title": "HoYoVERSE 辞書",
@@ -122,7 +125,8 @@
       "download-bank": "GitHubから問題集をダウンロード中、お待ちください...",
       "download-bank-success": "問題集のダウンロードが成功しました",
       "download-bank-fail": "問題集のダウンロードに失敗しました",
-      "start": "クイズを開始"
+      "start": "クイズを開始",
+      "failed-to-load": "jsDelivr 経由で GitHub から問題集を取得できません。ネットワークまたは国際回線接続をご確認ください。"
     },
     "answer": {
       "true": "真",

@@ -9,7 +9,6 @@ import { Themes, StyleProvider } from '@varlet/ui'
 import PackageJSON from '../../package.json'
 
 export const useMainStore = defineStore('main', () => {
-  const { locale } = useI18n()
   const version = ref(PackageJSON.version)
   const host_name = import.meta.env.VITE_API_HOST as string
   const theme = ref('')

@@ -1,6 +1,6 @@
 {
   "name": "yunhan-toolbox",
-  "version": "2.3.2",
+  "version": "2.3.3 - build.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -32,7 +32,8 @@
     "vue-i18n": "^11.1.2",
     "vue-router": "^4.3.2",
     "vue-tsc": "^2.2.8",
-    "vue-virtual-scroller": "2.0.0-beta.8"
+    "vue-virtual-scroller": "2.0.0-beta.8",
+    "workbox-window": "^7.3.0"
   },
   "description": "An open-source web-based toolkit for HoYoVERSE games.",
   "devDependencies": {

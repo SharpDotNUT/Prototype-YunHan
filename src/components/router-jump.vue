@@ -1,8 +1,6 @@
-<script setup>
-import { ref, watch } from 'vue'
+<script setup lang="ts">
 import SvgIcon from '@jamescoyle/vue-icon'
 import { mdiCog, mdiGithub, mdiInformation, mdiUpdate } from '@mdi/js'
-import { useI18n } from 'vue-i18n'
 import { useMainStore } from '@/stores/main'
 import { NavigationData as RouteData } from '@/nav'
 

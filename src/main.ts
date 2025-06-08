@@ -2,7 +2,6 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import Varlet from '@varlet/ui'
 import i18n from './locales/i18n'
-//@ts-ignore
 import App from './App.vue'
 import router from './router/index'
 

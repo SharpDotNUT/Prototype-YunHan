@@ -29,7 +29,9 @@
     }
   },
   "app": {
-    "wait-for-meta": "メタデータのロードをお待ちください。"
+    "wait-for-meta": "メタデータのロードをお待ちください。",
+    "new-version": "新しいバージョンが利用可能です。更新しますか？",
+    "update": "更新"
   },
   "dictionary": {
     "search-text": "検索テキスト",

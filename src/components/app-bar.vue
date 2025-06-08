@@ -1,12 +1,9 @@
-<script setup>
-import { ref, watch } from 'vue'
+<script setup lang="ts">
+import { ref } from 'vue'
 import { useMainStore } from '@/stores/main'
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
 import SvgIcon from '@jamescoyle/vue-icon'
-import { mdiApps, mdiCog, mdiAccount, mdiGithub, mdiTranslate } from '@mdi/js'
+import { mdiApps, mdiTranslate } from '@mdi/js'
 import RouterJump from '@/components/router-jump.vue'
-import Account from './account.vue'
 import Markdown from './markdown.vue'
 
 const title = ref('')
@@ -28,13 +25,6 @@ fetch(`${host_name}/notice`)
   .catch((err) => {})
 
 const emits = defineEmits(['changeIsFullWidth'])
-
-watch(
-  () => mainStore.title,
-  (newVal, oldVal) => {
-    title.value = newVal
-  }
-)
 </script>
 
 <template>

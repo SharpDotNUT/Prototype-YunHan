@@ -1,25 +1,38 @@
-<script setup>
-import { ref, onMounted, watch } from 'vue'
-import { RouterView, useRoute } from 'vue-router'
+<script setup lang="ts">
+import { ref, watch } from 'vue'
+import { RouterView } from 'vue-router'
 import AppBar from '@/components/app-bar.vue'
 import { useI18n } from 'vue-i18n'
-import { Locale } from '@varlet/ui'
+import { Dialog, Locale } from '@varlet/ui'
 const { locale, t } = useI18n()
-const route = useRoute()
 const loading = ref(false)
-
-onMounted(() => {
-  const lang = route.query.lang || 'request'
-  if (lang !== 'request') {
-    locale.value = lang
-  }
-})
 
 watch(locale, (newLocale) => {
   document.title = t('name')
   document.documentElement.lang = newLocale
   Locale.use(newLocale)
 })
+
+import { useRegisterSW } from 'virtual:pwa-register/vue'
+const { needRefresh, updateServiceWorker } = useRegisterSW({
+  onRegistered() {
+    console.log('SW已注册')
+  },
+  onRegisterError(error: Error) {
+    Dialog('Service Worker register error:' + error.toString())
+  }
+})
+
+console.log({ needRefresh, updateServiceWorker })
+if (needRefresh.value) {
+  Dialog({
+    message: t('app.new-version'),
+    confirmButtonText: t('app.update'),
+    onConfirm: () => {
+      updateServiceWorker(true)
+    }
+  })
+}
 </script>
 
 <template>
@@ -32,10 +45,6 @@ watch(locale, (newLocale) => {
         <RouterView />
       </div>
       <template #description>
-        <span>
-          {{ t('test') }}
-          {{ $t('test') }}
-        </span>
         {{ $t('global.loading') }}
       </template>
     </var-loading>

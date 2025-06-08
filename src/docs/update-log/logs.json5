@@ -1,5 +1,16 @@
 [
   {
+    version: '2.3.3 - build.1',
+    date: '2025-06-08T13:40:00+0800',
+    items: [
+      {
+        area: 'app',
+        zh: '支持检查并获取更新；增强 TypeScript 类型化；删除多余组件。',
+        en: 'Support to check and get updates; Enhance TypeScript typing; Delete redundant components.'
+      }
+    ]
+  },
+  {
     version: '2.3.2',
     date: '2025-06-07T12:30:00+0800',
     items: [

@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+/// <reference types="vite-plugin-pwa/client" />
 declare module 'vue-virtual-scroller'
 declare module '@jamescoyle/vue-icon'
 declare const __BUILD_TIME: string

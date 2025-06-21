@@ -51,7 +51,16 @@
     },
     "simulator": {
       "title": "Gacha Pool: Simulator"
-    }
+    },
+    "data": {
+      "single-proba": "Single-pull probability",
+      "cumulative-proba": "Cumulative probability",
+      "count": "Gacha Count",
+      "get-this": "Character Obtained (This Pull)",
+      "get-all": "Character Obtained",
+      "title": "Gacha Pool: Data"
+    },
+    "title": "Cacha"
   },
   "global": {
     "copy-success": "Copy successful",
@@ -84,7 +93,12 @@
       "delete": "Delete"
     },
     "menu": "Menu",
-    "author": "Author"
+    "author": "Author",
+    "character": "Character",
+    "weapon": "Weapon",
+    "5-star": "5-Star",
+    "4-star": "\t4-Star",
+    "probability": "Probability"
   },
   "home": {
     "welcome": "Ah, you've arrived, {0}. I couldn't help but notice how busy you are these days...<br/>If you could manage to find the time to sit and enjoy an opera together or share a pot of tea... Taking a moment to slow down and enjoy the finer things in life is always beneficial to your body and soul.",

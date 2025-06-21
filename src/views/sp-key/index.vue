@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, type Ref } from 'vue'
-import { GameList } from '@/data/games'
+import { Games } from '@/data/games'
 import { useAPIStore } from '@/stores/api'
-//@ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon'
 import { mdiContentCopy } from '@mdi/js'
 import { copyToClipboard } from '@/script/tools'
@@ -98,7 +97,7 @@ function commit() {
         <var-input v-model="form.key" :placeholder="$t('sp-key.key')" />
         <var-select v-model="form.game" :placeholder="$t('sp-key.game')">
           <var-option
-            v-for="game in GameList"
+            v-for="game in Object.keys(Games)"
             :label="$t('global.game.' + game)"
             :value="game" />
         </var-select>

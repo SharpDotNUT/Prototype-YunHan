@@ -1,9 +1,5 @@
-//@ts-ignore
 import { ref } from 'vue'
-//@ts-ignore
 import { defineStore } from 'pinia'
-import { useI18n } from 'vue-i18n'
-//@ts-ignore
 import { Themes, StyleProvider } from '@varlet/ui'
 
 import PackageJSON from '../../package.json'

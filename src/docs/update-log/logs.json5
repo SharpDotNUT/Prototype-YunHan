@@ -1,8 +1,13 @@
 [
   {
-    version: '2.3.3 - build.1',
-    date: '2025-06-08T13:40:00+0800',
+    version: '2.3.3',
+    date: '2025-06-21T16:00:00+0800',
     items: [
+      {
+        area: 'gacha',
+        zh: '添加了「数据」板块',
+        en: 'Added the "Data" section'
+      },
       {
         area: 'app',
         zh: '支持检查并获取更新；增强 TypeScript 类型化；删除多余组件。',

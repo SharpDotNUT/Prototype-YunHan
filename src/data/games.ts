@@ -4,4 +4,4 @@ export enum Games {
   ZZZ = 'Zenless Zone Zero'
 }
 
-export default []
+export default [];

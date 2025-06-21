@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import SvgIcon from '@jamescoyle/vue-icon'
-import CAutoTextarea from './CAutoTextarea.vue'
-import { mdiKeyboardClose } from '@mdi/js'
+import SvgIcon from '@jamescoyle/vue-icon';
+import CAutoTextarea from './CAutoTextarea.vue';
+import { mdiKeyboardClose } from '@mdi/js';
 
-const Keys = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const Keys = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const text = defineModel('text', {
   type: String,
   required: true
-})
+});
 const props = defineProps<{
-  font: string
-}>()
+  font: string;
+}>();
 
-const showKeyboard = defineModel<boolean>('showKeyboard')
+const showKeyboard = defineModel<boolean>('showKeyboard');
 </script>
 
 <template>

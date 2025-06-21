@@ -1,5 +1,5 @@
-import type { Ref } from 'vue'
-import type { t_AchievementData } from './types'
+import type { Ref } from 'vue';
+import type { t_AchievementData } from './types';
 
 export function filterAchievements(
   achievementData: any,
@@ -9,72 +9,72 @@ export function filterAchievements(
   finished: any,
   searchString: any
 ) {
-  console.clear()
-  let _out = []
+  console.clear();
+  let _out = [];
   function _check(_goal: any) {
-    let flag = true
+    let flag = true;
     if (searchString && _goal.name.indexOf(searchString) == -1) {
-      flag = false
-      console.log('-')
+      flag = false;
+      console.log('-');
     } else if (searchString && _goal.description.indexOf(searchString) == -1) {
-      flag = false
-      console.log('--')
+      flag = false;
+      console.log('--');
     } else if (selectedVersion != '所有' && _goal.version != selectedVersion) {
-      flag = false
-      console.log('---')
+      flag = false;
+      console.log('---');
     } else {
-      let _flag = true
+      let _flag = true;
       if (
         (finished == '已完成' && userUIAF[_goal.id].status == 0) ||
         (finished == '未完成' && userUIAF[_goal.id].status != 3)
       ) {
-        _flag = false
+        _flag = false;
       } else if (finished == '所有') {
-        _flag = true
+        _flag = true;
       }
-      flag = _flag
+      flag = _flag;
     }
-    return flag
+    return flag;
   }
   if (selectedGoal == -1) {
     for (const _goal of achievementData.data) {
       for (const _group of _goal.achievements) {
         if (_check(_group[_group.length - 1])) {
-          _out.push(_group)
+          _out.push(_group);
         }
       }
     }
   } else {
-    let _achievementsGoal = achievementData.data?.[selectedGoal]?.achievements
+    let _achievementsGoal = achievementData.data?.[selectedGoal]?.achievements;
     if (!_achievementsGoal) {
-      return []
+      return [];
     }
     _achievementsGoal.forEach((_goal: any) => {
       if (_check(_goal[_goal.length - 1])) {
-        _out.push(_goal)
+        _out.push(_goal);
       }
-    })
+    });
   }
-  return _out
+  return _out;
 }
 
 export const SearchPlatforms: any = {
   bilibili: {
     name: '哔哩哔哩(Bilibili)',
     url: (name: string) => {
-      return `https://search.bilibili.com/all?keyword=${'原神 成就 ' + name}`
+      return `https://search.bilibili.com/all?keyword=${'原神 成就 ' + name}`;
     }
   },
   miyoushe: {
     name: '米游社',
     url: (name: string) => {
-      return `https://www.miyoushe.com/ys/search?keyword=${'成就 ' + name}`
+      return `https://www.miyoushe.com/ys/search?keyword=${'成就 ' + name}`;
     }
   },
   hoyolab: {
     name: 'HoYoLab',
     url: (name: string) => {
-      return `https://www.hoyolab.com/search?keyword=${'成就 ' + name}`
+      return `https://www.hoyolab.com/search?keyword=${'成就 ' + name}`;
     }
   },
   youtube: {
@@ -82,43 +82,43 @@ export const SearchPlatforms: any = {
     url: (name: string) => {
       return `https://www.youtube.com/results?search_query=${
         'Genshin Achievement ' + name
-      }`
+      }`;
     }
   }
-}
+};
 
 export function searchAchievement(name: string, platform: string) {
   //@ts-ignore
-  let url = SearchPlatforms[platform].url(name)
-  window.open(url)
+  let url = SearchPlatforms[platform].url(name);
+  window.open(url);
 }
 
 export function parseUIAF(data: any, achievementData: t_AchievementData) {
-  let _out = []
+  let _out = [];
   for (const goal in achievementData.data) {
     for (const group in achievementData.data[goal].achievementGroups) {
-      const _group = achievementData.data[goal].achievementGroups[group]
-      const id = _group.achievements[0].id
-      const progress = data.list.find((item: any) => item.id == id)
+      const _group = achievementData.data[goal].achievementGroups[group];
+      const id = _group.achievements[0].id;
+      const progress = data.list.find((item: any) => item.id == id);
       if (progress) {
         _out.push({
           id: id,
           name: _group.name
-        })
-        _group.progress = progress
-        _group.status = progress.status
+        });
+        _group.progress = progress;
+        _group.status = progress.status;
         if (progress.status == 3) {
           _group.progress.current = Math.max(
             _group.finalProgress,
             progress.current
-          )
-          _group.status = 2
+          );
+          _group.status = 2;
         }
       }
       if (!_group.status) {
-        _group.status = 0
+        _group.status = 0;
       }
     }
   }
-  console.log(_out)
+  console.log(_out);
 }

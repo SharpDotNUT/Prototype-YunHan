@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { useRM } from '@/stores/resource-manager'
-import { watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRM } from '@/stores/resource-manager';
+import { watch } from 'vue';
+import { useRouter } from 'vue-router';
 
-const RM = useRM()
-const router = useRouter()
+const RM = useRM();
+const router = useRouter();
 
 watch(
   () => RM.StaticMetaData,
   (newValue) => {
     if (newValue !== null) {
-      router.back()
+      router.back();
     }
   },
   {
     immediate: true
   }
-)
+);
 </script>
 
 <template>

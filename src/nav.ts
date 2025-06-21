@@ -46,4 +46,4 @@ export const NavigationData = [
     path: '/gacha/simulator',
     beta: true
   }
-]
+];

@@ -1,57 +1,57 @@
 <script setup lang="ts">
-import { ref, watch, computed, nextTick } from 'vue'
-import SvgIcon from '@jamescoyle/vue-icon'
-import D_FontData from '@/data/fonts/data.json'
-import CAutoTextarea from './CAutoTextarea.vue'
-import CKeyboardEditor from './CKeyboardEditor.vue'
-import Default from './default.txt?raw'
-import { useI18n } from 'vue-i18n'
-const { locale } = useI18n()
+import { ref, watch, computed, nextTick } from 'vue';
+import SvgIcon from '@jamescoyle/vue-icon';
+import D_FontData from '@/data/fonts/data.json';
+import CAutoTextarea from './CAutoTextarea.vue';
+import CKeyboardEditor from './CKeyboardEditor.vue';
+import Default from './default.txt?raw';
+import { useI18n } from 'vue-i18n';
+const { locale } = useI18n();
 
 import {
   mdiContentCopy,
   mdiKeyboard,
   mdiSwapHorizontal,
   mdiTranslate
-} from '@mdi/js'
-import { copyToClipboard } from '@/script/tools'
+} from '@mdi/js';
+import { copyToClipboard } from '@/script/tools';
 
-const showKeyboard = ref(false)
-const text = ref(Default)
-const currentFont = ref(D_FontData[0].id)
-const mode = ref(1)
-const ref_textarea = ref(null)
+const showKeyboard = ref(false);
+const text = ref(Default);
+const currentFont = ref(D_FontData[0].id);
+const mode = ref(1);
+const ref_textarea = ref(null);
 const currentFontName = computed(() => {
   //@ts-ignore
-  const font: any = D_FontData.find((x) => x.id === currentFont.value)
-  console.log(font)
-  return font.name[locale.value]
-})
+  const font: any = D_FontData.find((x) => x.id === currentFont.value);
+  console.log(font);
+  return font.name[locale.value];
+});
 watch(mode, () => {
-  showKeyboard.value = false
+  showKeyboard.value = false;
   nextTick(() => {
-    if (!ref_textarea.value) return
+    if (!ref_textarea.value) return;
     //@ts-ignore
-    ref_textarea.value?.resizeTextarea()
-  })
-})
+    ref_textarea.value?.resizeTextarea();
+  });
+});
 watch(showKeyboard, () => {
   nextTick(() => {
-    if (!ref_textarea.value || showKeyboard.value) return
+    if (!ref_textarea.value || showKeyboard.value) return;
     //@ts-ignore
-    ref_textarea.value?.resizeTextarea()
-  })
-})
+    ref_textarea.value?.resizeTextarea();
+  });
+});
 
 function openDeepLToTranslate(text: string) {
   const lang = {
     en: 'en-us',
     ja: 'ja',
     'zh-Hans': 'zh-hans'
-  }[locale.value]
+  }[locale.value];
   window.open(
     `https://www.deepl.com/zh/translator#en/${lang}/${encodeURIComponent(text)}`
-  )
+  );
 }
 </script>
 

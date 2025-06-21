@@ -1,98 +1,98 @@
 <script setup lang="ts">
-import { ref, watch, type Ref } from 'vue'
+import { ref, watch, type Ref } from 'vue';
 import {
   searchAchievement,
   SearchPlatforms as D_SearchPlatform,
   parseUIAF
-} from './index'
-import type { t_AchievementGroup } from '@/data/achievement/types'
-import { stringIndexOfIgnoreCase } from '@/script/tools'
-import { useI18n } from 'vue-i18n'
-import { useMainStore } from '@/stores/main'
+} from './index';
+import type { t_AchievementGroup } from '@/data/achievement/types';
+import { stringIndexOfIgnoreCase } from '@/script/tools';
+import { useI18n } from 'vue-i18n';
+import { useMainStore } from '@/stores/main';
 
-import type { t_AchievementData } from './types'
-import { useRM } from '@/stores/resource-manager'
+import type { t_AchievementData } from './types';
+import { useRM } from '@/stores/resource-manager';
 
-const AchievementData: Ref<t_AchievementData | null> = ref(null)
+const AchievementData: Ref<t_AchievementData | null> = ref(null);
 const TextMap: Ref<{
   [lang: string]: {
-    [id: string]: string
-  }
-}> = ref({})
-const { locale } = useI18n()
+    [id: string]: string;
+  };
+}> = ref({});
+const { locale } = useI18n();
 const f_Versions: Ref<{
-  [key: string]: Array<string>
-}> = ref({})
+  [key: string]: Array<string>;
+}> = ref({});
 const files: Ref<
   Array<{
-    file: File
+    file: File;
   }>
-> = ref([])
-const ui_showArchive = ref(false)
+> = ref([]);
+const ui_showArchive = ref(false);
 
-const RM = useRM()
-RM.check()
+const RM = useRM();
+RM.check();
 RM.get('achievement/meta').then(async (data) => {
-  AchievementData.value = data
-  DataLoaded()
-  search()
-})
+  AchievementData.value = data;
+  DataLoaded();
+  search();
+});
 function DataLoaded(UIAf?: any) {
-  if (!AchievementData.value) return
-  if (UIAf) parseUIAF(UIAf, AchievementData.value)
-  f_Versions.value = { '-1': AchievementData.value.versions }
+  if (!AchievementData.value) return;
+  if (UIAf) parseUIAF(UIAf, AchievementData.value);
+  f_Versions.value = { '-1': AchievementData.value.versions };
   for (const goal of AchievementData.value.data) {
-    f_Versions.value[goal.order - 1] = goal.versions
+    f_Versions.value[goal.order - 1] = goal.versions;
   }
 }
 function loadTextMap() {
   RM.get('achievement/text-map', locale.value).then(async (data) => {
-    TextMap.value[locale.value] = data
-  })
+    TextMap.value[locale.value] = data;
+  });
 }
-loadTextMap()
+loadTextMap();
 watch(locale, () => {
-  loadTextMap()
-})
+  loadTextMap();
+});
 
-const f_selectedGoal = ref(-1)
-const f_searchPlatform = ref('miyoushe')
+const f_selectedGoal = ref(-1);
+const f_searchPlatform = ref('miyoushe');
 const f_search = ref({
   text: '',
   version: 'all',
   finished: 'all'
-})
+});
 watch(f_selectedGoal, () => {
-  f_search.value.version = 'all'
-})
-const ui_SearchedAchievementList: Ref<t_AchievementGroup[]> = ref([])
+  f_search.value.version = 'all';
+});
+const ui_SearchedAchievementList: Ref<t_AchievementGroup[]> = ref([]);
 function search() {
-  if (!AchievementData.value) return
-  let data: Array<any> = []
+  if (!AchievementData.value) return;
+  let data: Array<any> = [];
   if (f_selectedGoal.value == -1) {
     for (const goal of AchievementData.value.data) {
-      data = data.concat(goal.achievementGroups)
+      data = data.concat(goal.achievementGroups);
     }
   } else {
-    data = AchievementData.value.data[f_selectedGoal.value].achievementGroups
+    data = AchievementData.value.data[f_selectedGoal.value].achievementGroups;
   }
   data = data.filter((achievements: t_AchievementGroup) => {
-    let _version = true
-    let _text = false
+    let _version = true;
+    let _text = false;
     if (!(f_search.value.version == 'all')) {
       if (!(achievements.version == f_search.value.version)) {
-        _version = false
+        _version = false;
       }
     }
     if (f_search.value.text == '') {
-      _text = true
+      _text = true;
     } else if (
       stringIndexOfIgnoreCase(
         TextMap.value[locale.value][achievements.name],
         f_search.value.text
       )
     ) {
-      _text = true
+      _text = true;
     } else
       for (const achievement of achievements.achievements) {
         if (
@@ -101,12 +101,12 @@ function search() {
             f_search.value.text
           )
         ) {
-          _text = true
+          _text = true;
         }
       }
-    return _version && _text
-  })
-  ui_SearchedAchievementList.value = data
+    return _version && _text;
+  });
+  ui_SearchedAchievementList.value = data;
 }
 watch(
   [
@@ -115,19 +115,19 @@ watch(
     () => f_selectedGoal.value
   ],
   () => {
-    search()
+    search();
   }
-)
+);
 
 function loadUIAF() {
-  const file = files.value[0].file
+  const file = files.value[0].file;
   if (file) {
-    const reader = new FileReader()
+    const reader = new FileReader();
     reader.onload = (e) => {
-      DataLoaded(JSON.parse(e?.target?.result as any))
-      search()
-    }
-    reader.readAsText(file)
+      DataLoaded(JSON.parse(e?.target?.result as any));
+      search();
+    };
+    reader.readAsText(file);
   }
 }
 </script>

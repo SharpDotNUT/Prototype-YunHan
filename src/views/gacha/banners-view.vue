@@ -1,23 +1,25 @@
 <script setup>
-import { ref, watch } from 'vue'
-import Data from './data.json'
-import Banner from './banner-view.vue'
+import { ref, watch } from 'vue';
+import Data from './data.json';
+import Banner from './banner-view.vue';
 
-defineEmits(['select'])
+defineEmits(['select']);
 
 const props = defineProps({
   isNeedSelect: {
     type: Boolean,
     default: false
   }
-})
+});
 
-const s_version = ref(Object.keys(Data.data)[Object.keys(Data.data).length - 1])
-const s_bannerIndex = ref('1')
+const s_version = ref(
+  Object.keys(Data.data)[Object.keys(Data.data).length - 1]
+);
+const s_bannerIndex = ref('1');
 
 watch(s_version, () => {
-  s_bannerIndex.value = '1'
-})
+  s_bannerIndex.value = '1';
+});
 </script>
 
 <template>

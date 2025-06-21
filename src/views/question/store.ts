@@ -1,85 +1,85 @@
-import { eq, isEqual } from 'lodash-es'
-import type { t_QuestionsBank } from './types'
-import { defineStore } from 'pinia'
-import { computed, watch } from 'vue'
-import { ref, type Ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { Snackbar } from '@varlet/ui'
+import { eq, isEqual } from 'lodash-es';
+import type { t_QuestionsBank } from './types';
+import { defineStore } from 'pinia';
+import { computed, watch } from 'vue';
+import { ref, type Ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { Snackbar } from '@varlet/ui';
 
 export const useQuestionStore = defineStore('question', () => {
-  const router = useRouter()
-  const right = ref(0)
-  const bank: Ref<null | t_QuestionsBank> = ref(null)
-  const currentIndex = ref(0)
+  const router = useRouter();
+  const right = ref(0);
+  const bank: Ref<null | t_QuestionsBank> = ref(null);
+  const currentIndex = ref(0);
   const currentQuestion = computed(() => {
-    if (!bank.value) return null
-    return bank.value.questions[currentIndex.value]
-  })
-  const done = ref(true)
-  const answered = ref(false)
+    if (!bank.value) return null;
+    return bank.value.questions[currentIndex.value];
+  });
+  const done = ref(true);
+  const answered = ref(false);
   const answer = ref({
     choice: new Set() as Set<string>,
     judge: -1,
     fill: ''
-  })
+  });
   function start(data: t_QuestionsBank) {
-    bank.value = data
-    currentIndex.value = 0
-    done.value = false
-    router.push('/quiz/answer')
+    bank.value = data;
+    currentIndex.value = 0;
+    done.value = false;
+    router.push('/quiz/answer');
   }
   function submit() {
-    if (!currentQuestion.value) return
-    let isRight = false
-    answered.value = true
+    if (!currentQuestion.value) return;
+    let isRight = false;
+    answered.value = true;
     switch (currentQuestion.value.type) {
       case 'choice': {
         console.log(
           Array.from(answer.value.choice),
           currentQuestion.value.answer
-        )
+        );
         isRight = isEqual(
           Array.from(answer.value.choice).sort(),
           currentQuestion.value.answer.sort()
-        )
-        break
+        );
+        break;
       }
       case 'judge': {
         if (answer.value.judge == -1) {
-          return
+          return;
         }
-        console.log(Boolean(answer.value.judge), currentQuestion.value.answer)
-        isRight = Boolean(answer.value.judge) == currentQuestion.value.answer
-        break
+        console.log(Boolean(answer.value.judge), currentQuestion.value.answer);
+        isRight = Boolean(answer.value.judge) == currentQuestion.value.answer;
+        break;
       }
       case 'fill': {
         if (!answer.value.fill) {
-          return
+          return;
         }
-        isRight = currentQuestion.value.answer.includes(answer.value.fill)
-        break
+        isRight = currentQuestion.value.answer.includes(answer.value.fill);
+        break;
       }
     }
     if (isRight) {
-      Snackbar.success('回答正确')
-      right.value++
+      Snackbar.success('回答正确');
+      right.value++;
     } else {
-      Snackbar.error('回答错误')
+      Snackbar.error('回答错误');
     }
   }
   watch(currentIndex, () => {
-    if (!bank.value) return
+    if (!bank.value) return;
     if (currentIndex.value >= bank.value.questions.length) {
-      router.push('/quiz/result')
-      done.value = true
+      router.push('/quiz/result');
+      done.value = true;
     }
     answer.value = {
       choice: new Set(),
       judge: -1,
       fill: ''
-    }
-    answered.value = false
-  })
+    };
+    answered.value = false;
+  });
   return {
     right,
     bank,
@@ -90,5 +90,5 @@ export const useQuestionStore = defineStore('question', () => {
     done,
     start,
     submit
-  }
-})
+  };
+});

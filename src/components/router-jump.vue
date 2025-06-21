@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import SvgIcon from '@jamescoyle/vue-icon'
-import { mdiCog, mdiGithub, mdiInformation, mdiUpdate } from '@mdi/js'
-import { useMainStore } from '@/stores/main'
-import { NavigationData as RouteData } from '@/nav'
+import SvgIcon from '@jamescoyle/vue-icon';
+import { mdiCog, mdiGithub, mdiInformation, mdiUpdate } from '@mdi/js';
+import { useMainStore } from '@/stores/main';
+import { NavigationData as RouteData } from '@/nav';
 
-const mainStore = useMainStore()
-import Meta from '@/meta'
+const mainStore = useMainStore();
+import Meta from '@/meta';
 
 function openGithub() {
-  window.open(`https://github.com/${Meta.repo}`, '_blank')
+  window.open(`https://github.com/${Meta.repo}`, '_blank');
 }
 </script>
 

@@ -1,52 +1,52 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { useI18n } from 'vue-i18n'
-const { locale } = useI18n()
-import { isEqual } from 'lodash-es'
-import Tags from '@/data/dictionary/tags.json'
-import { filter, type t_word } from './main'
-import type { Ref } from 'vue'
-import { useMainStore } from '@/stores/main'
-import { useRM } from '@/stores/resource-manager'
+import { computed, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+const { locale } = useI18n();
+import { isEqual } from 'lodash-es';
+import Tags from '@/data/dictionary/tags.json';
+import { filter, type t_word } from './main';
+import type { Ref } from 'vue';
+import { useMainStore } from '@/stores/main';
+import { useRM } from '@/stores/resource-manager';
 
-let Words: t_word[] = []
-const mainStore = useMainStore()
-const RM = useRM()
+let Words: t_word[] = [];
+const mainStore = useMainStore();
+const RM = useRM();
 RM.get('dictionary/genshin').then(async (data) => {
   if (data) {
-    Words = data
-    Words_loaded.value = true
-    search(null, true)
+    Words = data;
+    Words_loaded.value = true;
+    search(null, true);
   }
-})
+});
 
-const Words_loaded = ref(false)
-const lastSearchString: Ref<undefined | string> = ref(undefined)
-const searchString = ref('')
-const lastSearchTags: Ref<undefined | string[]> = ref(undefined)
-const searchTags = ref([])
-const lastSearchFrom: Ref<undefined | string> = ref(undefined)
-const searchFrom = ref(locale.value)
-const pre_words: Ref<t_word[]> = ref([])
+const Words_loaded = ref(false);
+const lastSearchString: Ref<undefined | string> = ref(undefined);
+const searchString = ref('');
+const lastSearchTags: Ref<undefined | string[]> = ref(undefined);
+const searchTags = ref([]);
+const lastSearchFrom: Ref<undefined | string> = ref(undefined);
+const searchFrom = ref(locale.value);
+const pre_words: Ref<t_word[]> = ref([]);
 const words = computed(() => {
-  return pre_words.value
-})
-const ref_words = ref({})
+  return pre_words.value;
+});
+const ref_words = ref({});
 
 const search = (e: Event | null, force = false) => {
-  const sameString = searchString.value == lastSearchString.value
-  const sameTags = isEqual(searchTags.value, lastSearchTags.value)
-  const sameFrom = searchFrom.value == lastSearchFrom.value
+  const sameString = searchString.value == lastSearchString.value;
+  const sameTags = isEqual(searchTags.value, lastSearchTags.value);
+  const sameFrom = searchFrom.value == lastSearchFrom.value;
   if (sameString && sameTags && sameFrom && !force) {
-    return
+    return;
   }
-  lastSearchString.value = searchString.value
-  lastSearchTags.value = searchTags.value
-  lastSearchFrom.value = searchFrom.value
+  lastSearchString.value = searchString.value;
+  lastSearchTags.value = searchTags.value;
+  lastSearchFrom.value = searchFrom.value;
   pre_words.value = Words.filter((word) => {
-    return filter(word, searchString, searchTags, searchFrom)
-  })
-}
+    return filter(word, searchString, searchTags, searchFrom);
+  });
+};
 </script>
 
 <template>

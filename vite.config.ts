@@ -1,18 +1,18 @@
-import { fileURLToPath, URL } from 'node:url'
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueDevTools from 'vite-plugin-vue-devtools'
-import { VitePWA } from 'vite-plugin-pwa'
+import { fileURLToPath, URL } from 'node:url';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import vueDevTools from 'vite-plugin-vue-devtools';
+import { VitePWA } from 'vite-plugin-pwa';
 
-let commit: any | undefined = undefined
+let commit: any | undefined = undefined;
 try {
   const res = await fetch(
     'https://api.github.com/repos/Sharpdotnut/prototype/commits'
-  )
-  const json: any = await res.json()
-  commit = json[0]
+  );
+  const json: any = await res.json();
+  commit = json[0];
 } catch (e) {
-  console.log(e)
+  console.log(e);
 }
 
 export default defineConfig({
@@ -59,4 +59,4 @@ export default defineConfig({
   optimizeDeps: {
     include: ['@varlet/ui']
   }
-})
+});

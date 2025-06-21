@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import type { Ref } from 'vue'
-import { useMainStore } from '@/stores/main'
-import { filesize } from 'filesize'
-import { ref } from 'vue'
-import { useRM, type CacheResourceRecord } from '@/stores/resource-manager'
-const mainStore = useMainStore()
+import type { Ref } from 'vue';
+import { useMainStore } from '@/stores/main';
+import { filesize } from 'filesize';
+import { ref } from 'vue';
+import { useRM, type CacheResourceRecord } from '@/stores/resource-manager';
+const mainStore = useMainStore();
 
 const StorageUsage: Ref<null | {
-  total: number
-  used: number
-  cacheUsed: number
-  resources: Record<string, CacheResourceRecord>
-}> = ref(null)
-const RM = useRM()
+  total: number;
+  used: number;
+  cacheUsed: number;
+  resources: Record<string, CacheResourceRecord>;
+}> = ref(null);
+const RM = useRM();
 function loadStorageUsage() {
   RM.getLocalMeta().then((res) => {
     StorageUsage.value = res as {
-      total: number
-      used: number
-      cacheUsed: number
-      resources: Record<string, CacheResourceRecord>
-    }
-  })
+      total: number;
+      used: number;
+      cacheUsed: number;
+      resources: Record<string, CacheResourceRecord>;
+    };
+  });
 }
-loadStorageUsage()
+loadStorageUsage();
 </script>
 
 <template>
@@ -51,7 +51,7 @@ loadStorageUsage()
                 type="warning"
                 @click="
                   RM.removeByKey(key).then(() => {
-                    loadStorageUsage()
+                    loadStorageUsage();
                   })
                 ">
                 {{ $t('global.action.delete') }}

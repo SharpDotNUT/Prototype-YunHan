@@ -1,21 +1,21 @@
 <script setup lang="ts">
 //@ts-ignore
-import SvgIcon from '@jamescoyle/vue-icon'
-import { mdiArrowLeft, mdiArrowRight } from '@mdi/js'
-import { ref } from 'vue'
+import SvgIcon from '@jamescoyle/vue-icon';
+import { mdiArrowLeft, mdiArrowRight } from '@mdi/js';
+import { ref } from 'vue';
 
 const props = defineProps<{
-  songMetaData: any
-  isMobileWidth: boolean
-}>()
+  songMetaData: any;
+  isMobileWidth: boolean;
+}>();
 
-const ui_tabIsAlbum = ref(true)
+const ui_tabIsAlbum = ref(true);
 
 const selectedAlbum = defineModel('selectedAlbum', {
   type: Number,
   default: 0
-})
-const selectedSong = defineModel('selectedSong', { type: Number, default: 0 })
+});
+const selectedSong = defineModel('selectedSong', { type: Number, default: 0 });
 </script>
 
 <template>

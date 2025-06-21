@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import { useRouter } from 'vue-router'
-import { useMainStore } from '@/stores/main'
-const mainStore = useMainStore()
-import { useI18n } from 'vue-i18n'
-const { locale } = useI18n()
+import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
+import { useMainStore } from '@/stores/main';
+const mainStore = useMainStore();
+import { useI18n } from 'vue-i18n';
+const { locale } = useI18n();
 
-const ui_isTeyvatFont = ref(mainStore.isUsingTeyvatFont)
-const theme = ref('system')
-const router = useRouter()
+const ui_isTeyvatFont = ref(mainStore.isUsingTeyvatFont);
+const theme = ref('system');
+const router = useRouter();
 watch(theme, () => {
-  mainStore.setTheme(theme.value)
-})
+  mainStore.setTheme(theme.value);
+});
 
 watch(ui_isTeyvatFont, () => {
   if (ui_isTeyvatFont.value) {
-    locale.value = 'en'
-    mainStore.isUsingTeyvatFont = true
-    router.push({ query: { lang: locale.value } })
-    document.documentElement.classList.add('teyvat')
+    locale.value = 'en';
+    mainStore.isUsingTeyvatFont = true;
+    router.push({ query: { lang: locale.value } });
+    document.documentElement.classList.add('teyvat');
   } else {
-    mainStore.isUsingTeyvatFont = false
-    document.documentElement.classList.remove('teyvat')
+    mainStore.isUsingTeyvatFont = false;
+    document.documentElement.classList.remove('teyvat');
   }
-})
+});
 </script>
 
 <template>

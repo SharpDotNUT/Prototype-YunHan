@@ -1,34 +1,34 @@
 <script setup>
-import { computed, nextTick, ref, useTemplateRef } from 'vue'
-import { useQuestionStore } from './store'
-import DTI from 'dom-to-image'
-import { RouterLink, useRouter } from 'vue-router'
-const store = useQuestionStore()
-const router = useRouter()
+import { computed, nextTick, ref, useTemplateRef } from 'vue';
+import { useQuestionStore } from './store';
+import DTI from 'dom-to-image';
+import { RouterLink, useRouter } from 'vue-router';
+const store = useQuestionStore();
+const router = useRouter();
 
 const rightRate = computed(() => {
-  return ((store.right / store.bank.questions.length) * 100).toFixed(2)
-})
+  return ((store.right / store.bank.questions.length) * 100).toFixed(2);
+});
 
 if (!store.bank) {
-  router.push('/quiz')
+  router.push('/quiz');
 }
 
-const ref_result = useTemplateRef('ref_result')
-const sharing = ref(false)
+const ref_result = useTemplateRef('ref_result');
+const sharing = ref(false);
 
 const exportImage = () => {
-  sharing.value = true
+  sharing.value = true;
   nextTick(() => {
     DTI.toJpeg(ref_result.value.$el, { quality: 2 }).then((dataUrl) => {
-      const link = document.createElement('a')
-      link.download = '测试结果.png'
-      link.href = dataUrl
-      link.click()
-      sharing.value = false
-    })
-  })
-}
+      const link = document.createElement('a');
+      link.download = '测试结果.png';
+      link.href = dataUrl;
+      link.click();
+      sharing.value = false;
+    });
+  });
+};
 </script>
 
 <template>

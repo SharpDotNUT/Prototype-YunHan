@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { ref, type PropType } from 'vue'
-import { filesize } from 'filesize'
+import { ref, type PropType } from 'vue';
+import { filesize } from 'filesize';
 
 const props = defineProps({
   progress: Array as PropType<
     { name: string; loaded: number; total: number; done: boolean }[]
   >
-})
+});
 
-const show = ref(true)
+const show = ref(true);
 </script>
 
 <template>

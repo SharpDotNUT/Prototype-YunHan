@@ -1,9 +1,9 @@
 <script setup>
-import { Dialog } from '@varlet/ui'
-import { ref, onMounted } from 'vue'
+import { Dialog } from '@varlet/ui';
+import { ref, onMounted } from 'vue';
 
-const dom_audio = ref(null)
-const s_playBGM = ref(false)
+const dom_audio = ref(null);
+const s_playBGM = ref(false);
 
 onMounted(() => {
   Dialog({
@@ -12,11 +12,11 @@ onMounted(() => {
     confirmButtonText: '播放',
     cancelButtonText: '不播放',
     onConfirm: () => {
-      s_playBGM.value = true
-      dom_audio.value.play()
+      s_playBGM.value = true;
+      dom_audio.value.play();
     }
-  })
-})
+  });
+});
 </script>
 
 <template>

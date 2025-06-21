@@ -6,13 +6,13 @@ import {
   onUnmounted,
   useTemplateRef,
   onMounted
-} from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import SvgIcon from '@jamescoyle/vue-icon'
-import LyricsView from './lyrics-view.vue'
-import TitleView from './title-view.vue'
-import ControlPanel from './control-panel.vue'
-import { Snackbar, Dialog } from '@varlet/ui'
+} from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import SvgIcon from '@jamescoyle/vue-icon';
+import LyricsView from './lyrics-view.vue';
+import TitleView from './title-view.vue';
+import ControlPanel from './control-panel.vue';
+import { Snackbar, Dialog } from '@varlet/ui';
 import {
   mdiSkipNext,
   mdiSkipPrevious,
@@ -21,133 +21,133 @@ import {
   mdiListBox,
   mdiTextBox,
   mdiImageArea
-} from '@mdi/js'
-import { useMainStore } from '@/stores/main'
-const ref_image = ref(null)
+} from '@mdi/js';
+import { useMainStore } from '@/stores/main';
+const ref_image = ref(null);
 
-let Data = []
-const s_dataLoaded = ref(false)
+let Data = [];
+const s_dataLoaded = ref(false);
 fetch('https://unpkg.com/@kuriyota/hoyomix-ncg/data/all.json')
   .then((res) => res.json())
   .then((data) => {
     if (data) {
-      Data = data
-      init()
+      Data = data;
+      init();
     }
-  })
+  });
 function init() {
-  s_dataLoaded.value = true
-  songMetaData.value = Data
-  selectedAlbum.value = songMetaData.value.length - 74 // 空气蛹
-  picURL.value = songMetaData.value[selectedAlbum.value].picUrl
+  s_dataLoaded.value = true;
+  songMetaData.value = Data;
+  selectedAlbum.value = songMetaData.value.length - 74; // 空气蛹
+  picURL.value = songMetaData.value[selectedAlbum.value].picUrl;
   currentSongID.value =
-    songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id
+    songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id;
 }
 
-const route = useRoute()
-const router = useRouter()
+const route = useRoute();
+const router = useRouter();
 
-const songMetaData = ref([])
-const selectedAlbum = ref(0) // 空气蛹
-const selectedSong = ref(0)
-const currentSongID = ref({})
+const songMetaData = ref([]);
+const selectedAlbum = ref(0); // 空气蛹
+const selectedSong = ref(0);
+const currentSongID = ref({});
 watch(selectedAlbum, () => {
-  selectedSong.value = 0
+  selectedSong.value = 0;
   currentSongID.value =
-    songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id
-  picURL.value = songMetaData.value[selectedAlbum.value].picUrl
-})
+    songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id;
+  picURL.value = songMetaData.value[selectedAlbum.value].picUrl;
+});
 watch(selectedSong, () => {
   currentSongID.value =
-    songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id
+    songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id;
   if (
     selectedSong.value >= songMetaData.value[selectedAlbum.value].songs.length
   ) {
-    selectedSong.value = 0
+    selectedSong.value = 0;
   } else if (selectedSong.value < 0) {
     selectedSong.value =
-      songMetaData.value[selectedAlbum.value].songs.length - 1
+      songMetaData.value[selectedAlbum.value].songs.length - 1;
   }
-})
+});
 if (route.query.album) {
-  selectedAlbum.value = songMetaData.value.length - parseInt(route.query.album)
-  picURL.value = songMetaData.value[selectedAlbum.value].picUrl
+  selectedAlbum.value = songMetaData.value.length - parseInt(route.query.album);
+  picURL.value = songMetaData.value[selectedAlbum.value].picUrl;
 }
 if (route.query.song) {
-  selectedSong.value = parseInt(route.query.song)
+  selectedSong.value = parseInt(route.query.song);
 }
-router.push({ query: { album: undefined } })
-router.push({ query: { song: undefined } })
+router.push({ query: { album: undefined } });
+router.push({ query: { song: undefined } });
 
-const picURL = ref('')
-const imageLoaded = ref(false)
-const lyricsView = ref(null)
-const audio = useTemplateRef('audio')
-const isMuted = ref(false)
-const process = ref(0)
-const processMax = ref(0)
-const onChangeProcess = ref(false)
-const hasChangedProcess = ref(false)
-const pause = ref(true)
-const ui_showControlPanel = ref(true)
-const isMobileWidth = ref(false)
-const isViewingLyrics = ref(false)
+const picURL = ref('');
+const imageLoaded = ref(false);
+const lyricsView = ref(null);
+const audio = useTemplateRef('audio');
+const isMuted = ref(false);
+const process = ref(0);
+const processMax = ref(0);
+const onChangeProcess = ref(false);
+const hasChangedProcess = ref(false);
+const pause = ref(true);
+const ui_showControlPanel = ref(true);
+const isMobileWidth = ref(false);
+const isViewingLyrics = ref(false);
 function checkMobileWidth() {
-  isMobileWidth.value = window.innerWidth <= 800
+  isMobileWidth.value = window.innerWidth <= 800;
 }
-checkMobileWidth()
-window.addEventListener('resize', checkMobileWidth)
+checkMobileWidth();
+window.addEventListener('resize', checkMobileWidth);
 watch(pause, () => {
   if (pause.value) {
-    audio.value.pause()
+    audio.value.pause();
   } else {
-    audio.value.play()
+    audio.value.play();
   }
-})
+});
 watch(picURL, () => {
-  imageLoaded.value = false
-})
+  imageLoaded.value = false;
+});
 
 const timeFormat = (time) => {
   return `${Math.floor(time / 60)}:${Math.floor(time % 60)
     .toString()
-    .padStart(2, '0')}`
-}
+    .padStart(2, '0')}`;
+};
 
 watch(audio, () => {
-  console.log(audio.value)
-  if (!audio.value) return
+  console.log(audio.value);
+  if (!audio.value) return;
   watchEffect(() => {
-    if (!audio.value) return
-    audio.value.src = `https://music.163.com/song/media/outer/url?id=${currentSongID.value}.mp3`
-    audio.value.muted = isMuted.value
-  })
+    if (!audio.value) return;
+    audio.value.src = `https://music.163.com/song/media/outer/url?id=${currentSongID.value}.mp3`;
+    audio.value.muted = isMuted.value;
+  });
   audio.value.addEventListener('loadedmetadata', () => {
-    processMax.value = Math.ceil(audio.value.duration)
-    process.value = 0
-  })
+    processMax.value = Math.ceil(audio.value.duration);
+    process.value = 0;
+  });
   audio.value.addEventListener('canplay', () => {
     if (!pause.value) {
-      audio.value.play()
+      audio.value.play();
     }
-  })
+  });
   audio.value.addEventListener('play', () => {
-    lyricsView.value.play(Math.floor(audio.value.currentTime * 1000))
-  })
+    lyricsView.value.play(Math.floor(audio.value.currentTime * 1000));
+  });
   audio.value.addEventListener('timeupdate', () => {
-    lyricsView.value.play(Math.floor(audio.value.currentTime * 1000))
+    lyricsView.value.play(Math.floor(audio.value.currentTime * 1000));
     if (!onChangeProcess.value) {
-      process.value = Math.ceil(audio.value.currentTime)
+      process.value = Math.ceil(audio.value.currentTime);
     }
     if (hasChangedProcess.value) {
-      hasChangedProcess.value = false
+      hasChangedProcess.value = false;
     }
-  })
-})
+  });
+});
 
 onUnmounted(() => {
-  window.removeEventListener('resize', checkMobileWidth)
-})
+  window.removeEventListener('resize', checkMobileWidth);
+});
 </script>
 
 <template>
@@ -180,8 +180,8 @@ onUnmounted(() => {
           :song_id="songMetaData[selectedAlbum].songs[selectedSong].id"
           ref="lyricsView"
           @play="
-            console.log($event)
-            ;(audio.currentTime = $event / 1000), audio.play(), (pause = false)
+            console.log($event);
+            (audio.currentTime = $event / 1000), audio.play(), (pause = false);
           "></LyricsView>
       </div>
       <ControlPanel
@@ -201,9 +201,9 @@ onUnmounted(() => {
           v-model="process"
           @start="onChangeProcess = true"
           @end="
-            ;(audio.currentTime = process),
+            (audio.currentTime = process),
               (onChangeProcess = false),
-              (hasChangedProcess = true)
+              (hasChangedProcess = true);
           "
           min="0"
           :max="Math.ceil(processMax)"

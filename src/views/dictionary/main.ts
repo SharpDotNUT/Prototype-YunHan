@@ -1,10 +1,10 @@
-import type { Ref } from 'vue'
+import type { Ref } from 'vue';
 
 export interface t_word {
-  zhCN: string
-  en: string
-  ja: string
-  tags: string[]
+  zhCN: string;
+  en: string;
+  ja: string;
+  tags: string[];
 }
 
 /**
@@ -22,11 +22,15 @@ export function filter(
   searchFrom: Ref<string>
 ): boolean {
   // 1. 文本匹配检查 (Text matching check)
-  const isTextMatch = checkTextMatch(word, searchString.value, searchFrom.value)
+  const isTextMatch = checkTextMatch(
+    word,
+    searchString.value,
+    searchFrom.value
+  );
   // 2. 标签匹配检查 (Tag matching check)
-  const areTagsMatch = checkTagsMatch(word.tags, searchTags.value)
+  const areTagsMatch = checkTagsMatch(word.tags, searchTags.value);
   // 必须同时满足文本和标签条件 (Must satisfy both text and tag conditions)
-  return isTextMatch && areTagsMatch
+  return isTextMatch && areTagsMatch;
 }
 
 /**
@@ -38,16 +42,16 @@ function checkTextMatch(
   searchField: string
 ): boolean {
   // 如果没有搜索词，则认为匹配 (If no search term, consider it a match)
-  if (!searchTerm) return true
-  const term = searchTerm.toLowerCase()
+  if (!searchTerm) return true;
+  const term = searchTerm.toLowerCase();
   // 根据指定字段搜索 (Search based on specified field)
   switch (searchField) {
     case 'zh-Hans':
-      return word.zhCN?.toLowerCase().includes(term) ?? false
+      return word.zhCN?.toLowerCase().includes(term) ?? false;
     case 'en':
-      return word.en?.toLowerCase().includes(term) ?? false
+      return word.en?.toLowerCase().includes(term) ?? false;
     case 'ja':
-      return word.ja?.toLowerCase().includes(term) ?? false
+      return word.ja?.toLowerCase().includes(term) ?? false;
     default:
       // 默认搜索所有语言字段 (Default: search all language fields)
       return (
@@ -55,7 +59,7 @@ function checkTextMatch(
           word.en?.toLowerCase().includes(term) ||
           word.ja?.toLowerCase().includes(term)) ??
         false
-      )
+      );
   }
 }
 
@@ -64,9 +68,9 @@ function checkTextMatch(
  */
 function checkTagsMatch(wordTags: string[], searchTags: string[]): boolean {
   // 如果没有指定搜索标签，则认为匹配 (If no search tags specified, consider it a match)
-  if (searchTags.length === 0) return true
+  if (searchTags.length === 0) return true;
   // 如果单词没有标签，则不匹配 (If word has no tags, no match)
-  if (!wordTags) return false
+  if (!wordTags) return false;
   // 检查所有搜索标签是否都存在于单词标签中 (Check if all search tags exist in word tags)
-  return searchTags.every((tag) => wordTags.includes(tag))
+  return searchTags.every((tag) => wordTags.includes(tag));
 }

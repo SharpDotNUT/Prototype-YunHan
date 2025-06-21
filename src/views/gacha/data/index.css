@@ -1,0 +1,13 @@
+.container-gacha-data {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.var-table {
+  width: 100%;
+  font-family:
+    JetBrains Mono,
+    monospace;
+}

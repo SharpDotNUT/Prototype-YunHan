@@ -47,11 +47,20 @@
   },
   "gacha": {
     "view": {
-      "title": "卡池-浏览"
+      "title": "卡池 · 浏览"
     },
     "simulator": {
-      "title": "卡池-模拟器"
-    }
+      "title": "卡池 · 模拟器"
+    },
+    "data": {
+      "single-proba": "单抽概率",
+      "cumulative-proba": "累计概率",
+      "count": "抽数",
+      "get-this": "这抽拿到的人",
+      "get-all": "已经拿到的人",
+      "title": "卡池 · 数据"
+    },
+    "title": "抽卡"
   },
   "global": {
     "copy-success": "复制成功",
@@ -84,7 +93,12 @@
       "delete": "删除"
     },
     "menu": "菜单",
-    "author": "作者"
+    "author": "作者",
+    "character": "角色",
+    "weapon": "武器",
+    "5-star": "5星",
+    "4-star": "4星",
+    "probability": "概率"
   },
   "home": {
     "welcome": "{0}，你来了呀。看你最近来去匆忙…<br/>要是能偶尔坐下来听戏饮茶,享受闲适的趣味,会更有益身心哦。",

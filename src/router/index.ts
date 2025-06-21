@@ -88,6 +88,11 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('@/views/gacha/simulator/index.vue' as any)
   },
   {
+    name: 'gacha-data',
+    path: '/gacha/data',
+    component: () => import('@/views/gacha/data/index.vue')
+  },
+  {
     name: 'dictionary',
     path: '/dictionary',
     component: () => import('@/views/dictionary/index.vue'),

@@ -51,7 +51,16 @@
     },
     "simulator": {
       "title": "ガチャプール：シミュレーター"
-    }
+    },
+    "data": {
+      "cumulative-proba": "累積確率",
+      "single-proba": "単発確率",
+      "count": "ガチャ回数",
+      "get-this": "今回獲得キャラ",
+      "get-all": "所持キャラ",
+      "title": "ガチャプール：データ"
+    },
+    "title": "ガチャ"
   },
   "global": {
     "copy-success": "コピー成功",
@@ -84,7 +93,12 @@
       "delete": "消去"
     },
     "menu": "メニュー",
-    "author": "作者"
+    "author": "作者",
+    "character": "キャラクター",
+    "weapon": "武器",
+    "5-star": "星5",
+    "4-star": "星4",
+    "probability": "確率"
   },
   "home": {
     "welcome": "いらしていたのですね。近頃とてもお忙しいようですが…<br/> たまには座って劇を見たり、お茶を飲んだりしてみてはいかがでしょう。心身ともに安らぎますよ。",

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import PackageJSON from '../../../package.json'
-import Meta from '@/meta'
+import PackageJSON from '../../../package.json';
+import Meta from '@/meta';
 
-const show = defineModel('show', { type: Boolean, default: true })
+const show = defineModel('show', { type: Boolean, default: true });
 
-const BuildTime = __BUILD_TIME
-const LAST_COMMIT = __LAST_COMMIT
+const BuildTime = __BUILD_TIME;
+const LAST_COMMIT = __LAST_COMMIT;
 </script>
 
 <template>

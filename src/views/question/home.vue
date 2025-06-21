@@ -1,49 +1,49 @@
 <script setup lang="ts">
-import { Snackbar } from '@varlet/ui'
-import { useQuestionStore } from './store'
-import type { t_QuestionsBankBaseInfo } from './types'
-import type { Ref } from 'vue'
-import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { Snackbar } from '@varlet/ui';
+import { useQuestionStore } from './store';
+import type { t_QuestionsBankBaseInfo } from './types';
+import type { Ref } from 'vue';
+import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
-const data: Ref<Array<t_QuestionsBankBaseInfo>> = ref([])
-const store = useQuestionStore()
-const { t } = useI18n()
-const failed = ref(false)
+const data: Ref<Array<t_QuestionsBankBaseInfo>> = ref([]);
+const store = useQuestionStore();
+const { t } = useI18n();
+const failed = ref(false);
 
-Snackbar.loading(t('quiz.home.download-list'))
+Snackbar.loading(t('quiz.home.download-list'));
 fetch(
   'https://cdn.jsdelivr.net/gh/SharpDotNUT/Prototype-YunHan.QuizBank@main/meta.json'
 )
   .then((res) => res.json())
   .then((res) => {
-    Snackbar.success(t('quiz.home.download-list-success'))
-    data.value = res
+    Snackbar.success(t('quiz.home.download-list-success'));
+    data.value = res;
   })
   .catch(() => {
-    Snackbar.error(t('quiz.home.download-list-fail'))
-    failed.value = true
-  })
+    Snackbar.error(t('quiz.home.download-list-fail'));
+    failed.value = true;
+  });
 
 function renderAuthor(author: string) {
-  return author == 'Official' ? t('name') : author
+  return author == 'Official' ? t('name') : author;
 }
 
 function start(id: string) {
-  Snackbar.loading(t('quiz.home.download-bank'))
+  Snackbar.loading(t('quiz.home.download-bank'));
   const url =
     'https://cdn.jsdelivr.net/gh/SharpDotNUT/Prototype-YunHan.QuizBank@main/question/' +
     id +
-    '.json'
+    '.json';
   fetch(url)
     .then((res) => res.json())
     .then((res) => {
-      Snackbar.success(t('quiz.home.download-bank-success'))
-      store.start(res)
+      Snackbar.success(t('quiz.home.download-bank-success'));
+      store.start(res);
     })
     .catch(() => {
-      Snackbar.error(t('quiz.home.download-bank-fail'))
-    })
+      Snackbar.error(t('quiz.home.download-bank-fail'));
+    });
 }
 </script>
 

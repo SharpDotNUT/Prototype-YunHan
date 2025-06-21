@@ -1,33 +1,33 @@
 <script setup lang="ts">
-import { computed, ref, type Ref } from 'vue'
-import { Games } from '@/data/games'
-import { useAPIStore } from '@/stores/api'
-import SvgIcon from '@jamescoyle/vue-icon'
-import { mdiContentCopy } from '@mdi/js'
-import { copyToClipboard } from '@/script/tools'
-import { reduceData, type t_Data } from './index'
-import { Snackbar } from '@varlet/ui'
+import { computed, ref, type Ref } from 'vue';
+import { Games } from '@/data/games';
+import { useAPIStore } from '@/stores/api';
+import SvgIcon from '@jamescoyle/vue-icon';
+import { mdiContentCopy } from '@mdi/js';
+import { copyToClipboard } from '@/script/tools';
+import { reduceData, type t_Data } from './index';
+import { Snackbar } from '@varlet/ui';
 
-const date = ref(new Date().toLocaleDateString())
-const time = ref('23:59:59')
-const datetime = computed(() => date.value + ' ' + time.value)
+const date = ref(new Date().toLocaleDateString());
+const time = ref('23:59:59');
+const datetime = computed(() => date.value + ' ' + time.value);
 const form = ref({
   token: '',
   key: '',
   game: 'GI',
   server: 'CN'
-})
+});
 
-const ui_commit = ref(false)
+const ui_commit = ref(false);
 
-const data: Ref<t_Data> = ref([])
+const data: Ref<t_Data> = ref([]);
 
-const API = useAPIStore()
+const API = useAPIStore();
 API.fetchAPI('/sp-key')
   .then((res) => res.json())
   .then((res) => {
-    data.value = reduceData(res)
-  })
+    data.value = reduceData(res);
+  });
 
 function commit() {
   API.fetchAPI('/sp-key', undefined, 'POST', {
@@ -39,9 +39,9 @@ function commit() {
     'available-time': new Date(datetime.value).getTime()
   }).then((res) => {
     if (res.status === 401) {
-      Snackbar.error('Commit failed. Token is invalid.')
+      Snackbar.error('Commit failed. Token is invalid.');
     }
-  })
+  });
 }
 </script>
 

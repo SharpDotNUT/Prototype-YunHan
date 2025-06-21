@@ -1,30 +1,30 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useMainStore } from '@/stores/main'
-import SvgIcon from '@jamescoyle/vue-icon'
-import { mdiApps, mdiTranslate } from '@mdi/js'
-import RouterJump from '@/components/router-jump.vue'
-import Markdown from './markdown.vue'
+import { ref } from 'vue';
+import { useMainStore } from '@/stores/main';
+import SvgIcon from '@jamescoyle/vue-icon';
+import { mdiApps, mdiTranslate } from '@mdi/js';
+import RouterJump from '@/components/router-jump.vue';
+import Markdown from './markdown.vue';
 
-const title = ref('')
-const display_account = ref(false)
-const mainStore = useMainStore()
-const host_name = mainStore.host_name
+const title = ref('');
+const display_account = ref(false);
+const mainStore = useMainStore();
+const host_name = mainStore.host_name;
 
-const notice_show = ref(false)
-const notice_content = ref('')
+const notice_show = ref(false);
+const notice_content = ref('');
 fetch(`${host_name}/notice`)
   .then((res) => res.json())
   .then((data) => {
-    console.log(data)
+    console.log(data);
     if (data.show == 'true') {
-      notice_show.value = true
-      notice_content.value = data.text
+      notice_show.value = true;
+      notice_content.value = data.text;
     }
   })
-  .catch((err) => {})
+  .catch((err) => {});
 
-const emits = defineEmits(['changeIsFullWidth'])
+const emits = defineEmits(['changeIsFullWidth']);
 </script>
 
 <template>

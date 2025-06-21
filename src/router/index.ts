@@ -1,6 +1,10 @@
-import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
-import Home from '@/views/home.vue'
-import AppWaitForMeta from '@/views/app/wait-for-meta/index.vue'
+import {
+  createRouter,
+  createWebHistory,
+  type RouteRecordRaw
+} from 'vue-router';
+import Home from '@/views/home.vue';
+import AppWaitForMeta from '@/views/app/wait-for-meta/index.vue';
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -119,12 +123,12 @@ export const routes: RouteRecordRaw[] = [
     path: '/app/wait-for-meta',
     component: AppWaitForMeta
   }
-]
+];
 
 const router = createRouter({
   //@ts-ignore
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: routes
-})
+});
 
-export default router
+export default router;

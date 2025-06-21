@@ -1,13 +1,13 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch } from 'vue';
 
-import BannerView from '../banner-view.vue'
-import BannersView from '../banners-view.vue'
-import PlayBGM from '../play-bgm.vue'
+import BannerView from '../banner-view.vue';
+import BannersView from '../banners-view.vue';
+import PlayBGM from '../play-bgm.vue';
 
-import { Simulator } from './simulator'
+import { Simulator } from './simulator';
 
-const s_openSelector = ref(false)
+const s_openSelector = ref(false);
 const d_banner = ref({
   name: '鲨鲨逐浪游',
   order: 1,
@@ -17,28 +17,28 @@ const d_banner = ref({
   from: '2024-08-28T06:00:00+08:00',
   to: '2024-09-17T17:59:00+08:00',
   img: 'https://sdk.hoyoverse.com/upload/ann/2024/08/15/51554e94cbe4323254c9951a0457f1e3_1034430603195950634.jpg'
-})
+});
 
-let simulator = new Simulator(d_banner.value)
-const count = ref(0)
-const history = ref([])
-const d_star4 = ref(0)
-const d_star5 = ref(0)
+let simulator = new Simulator(d_banner.value);
+const count = ref(0);
+const history = ref([]);
+const d_star4 = ref(0);
+const d_star5 = ref(0);
 const updateSimulator = () => {
-  simulator = new Simulator(d_banner.value)
-}
+  simulator = new Simulator(d_banner.value);
+};
 const simulate = (count) => {
   if (count <= 10000) {
-    const { newHistory, star4, star5 } = simulator.simulate(count)
-    history.value.push(...newHistory)
-    d_star4.value = star4
-    d_star5.value = star5
+    const { newHistory, star4, star5 } = simulator.simulate(count);
+    history.value.push(...newHistory);
+    d_star4.value = star4;
+    d_star5.value = star5;
   } else {
-    Snackbar.error('当前版本不支持模拟超过10000抽')
+    Snackbar.error('当前版本不支持模拟超过10000抽');
   }
-}
+};
 
-alert('临时开发版本；未完整实现大小保底和翻页功能')
+alert('临时开发版本；未完整实现大小保底和翻页功能');
 </script>
 
 <template>

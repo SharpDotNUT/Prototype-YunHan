@@ -53,25 +53,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, type Ref } from 'vue'
-import { useI18n } from 'vue-i18n'
-import UpdateLogsDataText from '@/docs/update-log/logs.json5?raw'
-import type { t_UpdateLog } from '@/docs/update-log/types'
-import JSON5 from 'json5'
-import { watch } from 'vue'
+import { ref, computed, type Ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+import UpdateLogsDataText from '@/docs/update-log/logs.json5?raw';
+import type { t_UpdateLog } from '@/docs/update-log/types';
+import JSON5 from 'json5';
+import { watch } from 'vue';
 
-const UpdateLogsData = JSON5.parse(UpdateLogsDataText) as t_UpdateLog
+const UpdateLogsData = JSON5.parse(UpdateLogsDataText) as t_UpdateLog;
 
 const UpdateLogs = UpdateLogsData.sort(
   // 根据 版本号降序排序
   (a, b) => {
-    const [aMajor, aMinor, aPatch] = a.version.split('.').map(Number)
-    const [bMajor, bMinor, bPatch] = b.version.split('.').map(Number)
-    return bMajor - aMajor || bMinor - aMinor || bPatch - aPatch
+    const [aMajor, aMinor, aPatch] = a.version.split('.').map(Number);
+    const [bMajor, bMinor, bPatch] = b.version.split('.').map(Number);
+    return bMajor - aMajor || bMinor - aMinor || bPatch - aPatch;
   }
-).filter((log) => !log.released && log.released != false)
+).filter((log) => !log.released && log.released != false);
 
-const { locale, t } = useI18n()
+const { locale, t } = useI18n();
 
 const formatDate = (timestamp: string | number | Date) => {
   return new Date(timestamp).toLocaleString(locale.value, {
@@ -81,10 +81,10 @@ const formatDate = (timestamp: string | number | Date) => {
     hour: 'numeric',
     minute: 'numeric',
     second: 'numeric'
-  })
-}
+  });
+};
 
-const areas: Ref<any> = ref({})
+const areas: Ref<any> = ref({});
 watch(
   locale,
   () => {
@@ -92,15 +92,15 @@ watch(
       app: t('name'),
       i18n: t('update-log.areas.i18n'),
       others: t('update-log.areas.others')
-    }
+    };
   },
   { immediate: true }
-)
+);
 function getArea(key: string) {
   if (areas.value[key]) {
-    return areas.value[key]
+    return areas.value[key];
   } else {
-    return t(key + '.title')
+    return t(key + '.title');
   }
 }
 </script>

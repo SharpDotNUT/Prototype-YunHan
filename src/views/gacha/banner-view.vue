@@ -1,8 +1,8 @@
 <script setup>
-import { ref } from 'vue'
-import IdToName from '@/data/id_to_name.CHS.json'
+import { ref } from 'vue';
+import IdToName from '@/data/id_to_name.CHS.json';
 
-defineEmits(['select'])
+defineEmits(['select']);
 
 const props = defineProps({
   banner: Object,
@@ -10,13 +10,13 @@ const props = defineProps({
     type: Boolean,
     default: false
   }
-})
-const img = ref(null)
+});
+const img = ref(null);
 
 img.value,
   addEventListener('load', function () {
-    console.log('图片加载完成')
-  })
+    console.log('图片加载完成');
+  });
 </script>
 
 <template>

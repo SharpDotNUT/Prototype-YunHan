@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { computed, provide, ref, watch } from 'vue'
-import { round } from 'lodash-es'
-import { getTable, type GachaType, type Games } from 'hoyo-gacha'
-import { use } from 'echarts/core'
-import { CanvasRenderer } from 'echarts/renderers'
-import { LineChart } from 'echarts/charts'
+import { computed, provide, ref, watch } from 'vue';
+import { round } from 'lodash-es';
+import { getTable, type GachaType, type Games } from 'hoyo-gacha';
+import { use } from 'echarts/core';
+import { CanvasRenderer } from 'echarts/renderers';
+import { LineChart } from 'echarts/charts';
 import {
   TitleComponent,
   TooltipComponent,
   LegendComponent,
   GridComponent
-} from 'echarts/components'
-import VChart from 'vue-echarts'
-import { useMainStore } from '@/stores/main'
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
-const mainStore = useMainStore()
+} from 'echarts/components';
+import VChart from 'vue-echarts';
+import { useMainStore } from '@/stores/main';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
+const mainStore = useMainStore();
 
 use([
   CanvasRenderer,
@@ -24,13 +24,13 @@ use([
   TooltipComponent,
   LegendComponent,
   GridComponent
-])
+]);
 
-const table = computed(() => getTable(game.value, type.value, rank.value))
+const table = computed(() => getTable(game.value, type.value, rank.value));
 
-const game = ref<Games>('GI')
-const type = ref<GachaType>('Character')
-const rank = ref<4 | 5>(5)
+const game = ref<Games>('GI');
+const type = ref<GachaType>('Character');
+const rank = ref<4 | 5>(5);
 
 const chartOption = computed(() => ({
   tooltip: {
@@ -68,7 +68,7 @@ const chartOption = computed(() => ({
       data: table.value.table.map((item) => round(item.hasGot * 100, 6))
     }
   ]
-}))
+}));
 </script>
 
 <template>

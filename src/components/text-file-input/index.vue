@@ -1,17 +1,17 @@
 <script setup>
-import { ref } from 'vue'
-defineEmits(['load'])
+import { ref } from 'vue';
+defineEmits(['load']);
 
-const data = ref()
+const data = ref();
 
 const upload = (file) => {
-  console.log(file)
-  const fileReader = new FileReader()
+  console.log(file);
+  const fileReader = new FileReader();
   fileReader.onload = (e) => {
-    data.value = JSON.stringify(JSON.parse(e.target.result), null, 4)
-  }
-  fileReader.readAsText(file.file)
-}
+    data.value = JSON.stringify(JSON.parse(e.target.result), null, 4);
+  };
+  fileReader.readAsText(file.file);
+};
 </script>
 
 <template>

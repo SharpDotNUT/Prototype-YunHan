@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import Markdown from '@/components/markdown.vue'
-import type { t_QuestionsBank } from './types'
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useQuestionStore } from './store'
+import Markdown from '@/components/markdown.vue';
+import type { t_QuestionsBank } from './types';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useQuestionStore } from './store';
 
-const isDev = import.meta.env.DEV
-const data = ref<t_QuestionsBank | null>(null)
-const router = useRouter()
-const store = useQuestionStore()
-data.value = store.bank
+const isDev = import.meta.env.DEV;
+const data = ref<t_QuestionsBank | null>(null);
+const router = useRouter();
+const store = useQuestionStore();
+data.value = store.bank;
 if (!data.value || store.done) {
-  router.push('/quiz')
+  router.push('/quiz');
 }
 function handleChoiceClick(key: string) {
   if (store.answer.choice.has(key)) {
-    store.answer.choice.delete(key)
+    store.answer.choice.delete(key);
   } else {
-    store.answer.choice.add(key)
+    store.answer.choice.add(key);
   }
-  console.log('store.answer.choice', Array.from(store.answer.choice))
+  console.log('store.answer.choice', Array.from(store.answer.choice));
 }
 </script>
 

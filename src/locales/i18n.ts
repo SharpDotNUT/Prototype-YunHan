@@ -1,19 +1,19 @@
-import { watch } from 'vue'
-import { createI18n } from 'vue-i18n'
+import { watch } from 'vue';
+import { createI18n } from 'vue-i18n';
 //@ts-ignore
-import EN from './en.json'
+import EN from './en.json';
 //@ts-ignore
-import ZHS from './zh-Hans.json'
+import ZHS from './zh-Hans.json';
 //@ts-ignore
-import JA from './ja.json'
+import JA from './ja.json';
 
 //@ts-ignore
-import { Locale } from '@varlet/ui'
-Locale.add('zh-Hans', Locale.zhCN)
-Locale.add('en', Locale.enUS)
-Locale.add('ja', Locale.jaJP)
+import { Locale } from '@varlet/ui';
+Locale.add('zh-Hans', Locale.zhCN);
+Locale.add('en', Locale.enUS);
+Locale.add('ja', Locale.jaJP);
 
-let defaultLanguage = 'zh-Hans'
+let defaultLanguage = 'zh-Hans';
 
 const i18n = createI18n<
   [typeof EN, typeof ZHS, typeof JA],
@@ -34,8 +34,8 @@ const i18n = createI18n<
   },
   warnHtmlMessage: false,
   legacy: false
-})
+});
 
-document.title = i18n.global.t('name')
+document.title = i18n.global.t('name');
 
-export default i18n
+export default i18n;

@@ -201,9 +201,9 @@ onUnmounted(() => {
           v-model="process"
           @start="onChangeProcess = true"
           @end="
-            (audio.currentTime = process),
-              (onChangeProcess = false),
-              (hasChangedProcess = true);
+            ((audio.currentTime = process),
+            (onChangeProcess = false),
+            (hasChangedProcess = true))
           "
           min="0"
           :max="Math.ceil(processMax)"

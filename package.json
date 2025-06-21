@@ -4,9 +4,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "pnpm run format && vite build",
+    "build-only": "vite build",
     "preview": "vite preview",
-    "format": "prettier --write .",
+    "format": "pnpm run format-locales && pnpm run format-code",
+    "format-code": "prettier --write .",
     "format-locales": "deno run --allow-read --allow-write .\\src\\locales\\reduce.runtime.ts",
     "check": "vue-tsc --noEmit"
   },

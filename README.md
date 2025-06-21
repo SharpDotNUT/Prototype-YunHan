@@ -7,11 +7,11 @@
 
 # 「试作」
 
-![](https://img.shields.io/github/repo-size/SharpDotNUT/Prototype)
-![](https://img.shields.io/github/license/SharpDotNUT/Prototype)
-![](https://img.shields.io/github/last-commit/SharpDotNUT/Prototype)
-![](https://img.shields.io/github/contributors/SharpDotNUT/Prototype)
-![](https://img.shields.io/github/stars/SharpDotNUT/Prototype)
+![](https://img.shields.io/github/repo-size/SharpDotNUT/Prototype-YunHan)
+![](https://img.shields.io/github/license/SharpDotNUT/Prototype-YunHan)
+![](https://img.shields.io/github/last-commit/SharpDotNUT/Prototype-YunHan)
+![](https://img.shields.io/github/contributors/SharpDotNUT/Prototype-YunHan)
+![](https://img.shields.io/github/stars/SharpDotNUT/Prototype-YunHan)
 
 「云婵娟来花婵娟，风流尽在山水间。」
 
@@ -30,7 +30,7 @@ How gently do the clouds and flowers sway, as dancing winds meander through the 
 
 All in providing a pure web page toolbox, while supporting mobile phones.
 
-[官网](https://prototype.sharpdotnut.com/)
+[官网](https://yunhan.sharpdotnut.com/)
 
 ## 支持的功能 Supported features
 
@@ -39,7 +39,8 @@ All in providing a pure web page toolbox, while supporting mobile phones.
 - [x] 基础成就管理 Achievement management
 - [x] 原神辞典 Genshin Impact Dictionary
 - [x] 前瞻兑换码查询 Special Program Redemption Code Query
-- [ ] 问答 Quiz
+- [x] 问答 Quiz
+- [x] 抽卡分析数据 Gacha Analysis Data
 - [ ] 卡池浏览 Gacha Pool Browser
 - [ ] 抽卡模拟 Gacha Simulator
 
@@ -49,14 +50,17 @@ All in providing a pure web page toolbox, while supporting mobile phones.
 
 Thanks [Cloudflare](https://www.cloudflare.com/) for providing free CDN services, as well as Pages and other services, which are the basis for the free operation of this project.
 
-![Cloudflare](https://user-images.githubusercontent.com/61003590/246605903-f19b5ae7-33f8-41ac-8130-6d0069fde27a.png)
+[<img src="https://user-images.githubusercontent.com/61003590/246605903-f19b5ae7-33f8-41ac-8130-6d0069fde27a.png" width=200></img>](https://www.cloudflare.com/)
 
 ## 启动项目
+
+> 本项目的在构建过程中定义了来自 GitHub API 的数据，所以建议在有正常网络连接的环境下进行构建。
+> This project defines data from GitHub API during the build process, so it is recommended to build in an environment with normal network connection.
 
 ```bash
 
 # 克隆仓库 Clone the repository
-git clone https://github.com/SharpDotNUT/Prototype.git
+git clone https://github.com/SharpDotNUT/Prototype-YunHan.git
 
 # 安装依赖 Install dependencies
 pnpm install
@@ -68,7 +72,3 @@ pnpm run dev
 pnpm run build
 
 ```
-
-> [!NOTE] 注意
-> 本项目的在构建过程中定义了来自 GitHub API 的数据，所以建议在有正常网络连接的环境下进行构建。
-> This project defines data from GitHub API during the build process, so it is recommended to build in an environment with normal network connection.

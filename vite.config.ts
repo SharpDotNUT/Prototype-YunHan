@@ -7,7 +7,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 let commit: any | undefined = undefined;
 try {
   const res = await fetch(
-    'https://api.github.com/repos/Sharpdotnut/prototype/commits'
+    'https://api.github.com/repos/Sharpdotnut/Prototype-YunHan/commits'
   );
   const json: any = await res.json();
   commit = json[0];

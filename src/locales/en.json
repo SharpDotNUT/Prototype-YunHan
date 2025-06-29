@@ -31,7 +31,8 @@
   "app": {
     "wait-for-meta": "Please wait for metadata to load.",
     "update": "Update",
-    "new-version": "A new version is available. Would you like to update?"
+    "new-version": "A new version is available. Would you like to update?",
+    "sw-error": "Service Worker registration failed"
   },
   "dictionary": {
     "search-text": "Text to Search",

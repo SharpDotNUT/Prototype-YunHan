@@ -10,8 +10,10 @@
       },
       {
         area: 'app',
-        zh: '支持检查并获取更新；增强 TypeScript 类型化；删除多余组件。',
-        en: 'Support to check and get updates; Enhance TypeScript typing; Delete redundant components.'
+        zh: '支持检查并获取更新；增强 TypeScript 类型化；删除多余组件。\
+          使「更新提示」可以正常展示。',
+        en: 'Support to check and get updates; Enhance TypeScript typing; Delete redundant components.\
+          Make the "Update Dialog" can be displayed normally.'
       }
     ]
   },

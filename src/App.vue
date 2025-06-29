@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { ref, watch, provide } from 'vue';
+import { ref, watch } from 'vue';
 import { RouterView } from 'vue-router';
 import AppBar from '@/components/app-bar.vue';
 import { useI18n } from 'vue-i18n';
-import { Dialog, Locale } from '@varlet/ui';
-import { useMainStore } from '@/stores/main';
+import { Dialog, Locale, Snackbar } from '@varlet/ui';
 
 const { locale, t } = useI18n();
-const mainStore = useMainStore();
 const loading = ref(false);
 
 watch(locale, (newLocale) => {
@@ -21,26 +19,23 @@ watch(loading, (newLoading) => {
   }
 });
 
+const LS = localStorage;
+
 import { useRegisterSW } from 'virtual:pwa-register/vue';
-import { THEME_KEY } from 'vue-echarts';
 const { needRefresh, updateServiceWorker } = useRegisterSW({
   onRegistered() {
-    console.log('SW已注册');
+    console.log('Service Worker registered');
   },
   onRegisterError(error: Error) {
-    Dialog('Service Worker register error:' + error.toString());
+    console.log('Service Worker register error:' + error.toString());
+    Snackbar.error(t('app.sw-error'));
   }
 });
 
+const needUpdate = ref(false);
 console.log({ needRefresh, updateServiceWorker });
 if (needRefresh.value) {
-  Dialog({
-    message: t('app.new-version'),
-    confirmButtonText: t('app.update'),
-    onConfirm: () => {
-      updateServiceWorker(true);
-    }
-  });
+  needUpdate.value = true;
 }
 </script>
 
@@ -58,6 +53,12 @@ if (needRefresh.value) {
       </template>
     </var-loading>
   </div>
+  <var-dialog v-model:show="needUpdate" @confirm="updateServiceWorker(true)">
+    <template #title>
+      {{ $t('app.update') }}
+    </template>
+    {{ $t('app.new-version') }}
+  </var-dialog>
 </template>
 
 <style>

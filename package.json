@@ -1,11 +1,10 @@
 {
   "name": "yunhan-toolbox",
-  "version": "2.3.4",
+  "version": "2.3.3",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "pnpm run format && vite build",
-    "build-only": "vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "format": "pnpm run format-locales && pnpm run format-code",
     "format-code": "prettier --write .",

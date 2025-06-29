@@ -1,6 +1,6 @@
 {
   "name": "yunhan-toolbox",
-  "version": "2.3.4",
+  "version": "2.3.3",
   "type": "module",
   "scripts": {
     "dev": "vite",

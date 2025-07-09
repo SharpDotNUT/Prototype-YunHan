@@ -1,221 +1,148 @@
 {
-  "about": {
-    "build-time": "构建时间： {0}",
-    "thanks-to-contributors": "感谢所有贡献者",
-    "copyright": "版权所有 © 2025 SharpDotNUT Studio. 保留所有权利",
-    "last-commit": "最后一次提交",
-    "last-commit-unknown": "最后一次提交获取失败"
-  },
-  "achievement": {
-    "title": "成就",
-    "select-version": "选择版本",
-    "all": "所有",
-    "finish": {
-      "finished": "已完成",
-      "is-finished": "是否完成",
-      "unfinished": "未完成"
-    },
-    "platforms-to-search": "搜索成就的平台",
-    "import-export": "导入/导出",
-    "numbers": "{0} 个成就组 - {1} 个成就",
-    "search-with": "在{0}上搜索",
-    "description": "适用于原神的成就管理/查询/记录工具",
-    "status": {
-      "0": "无数据",
-      "1": "未完成",
-      "2": "已完成",
-      "3": "进度达成"
-    }
-  },
-  "app": {
-    "wait-for-meta": "请等待元数据加载",
-    "new-version": "有新版本可用，是否更新？",
-    "update": "更新",
-    "sw-error": "Service Worker 注册失败"
-  },
-  "dictionary": {
-    "search-text": "要搜索的文本",
-    "title": "米哈游辞典",
-    "filter": "筛选标签",
-    "description": "一个用于查询 miHoYo 旗下 IP 内术语和专有名词的工具",
-    "genshin-dict": "「原神」辞典",
-    "result-count": "查询到 {0} 个词条",
-    "search-lang": "要搜索的语言"
-  },
-  "docs": {
-    "title": "文档"
-  },
-  "gacha": {
-    "view": {
-      "title": "卡池 · 浏览"
-    },
-    "simulator": {
-      "title": "卡池 · 模拟器"
-    },
-    "data": {
-      "single-proba": "单抽概率",
-      "cumulative-proba": "累计概率",
-      "count": "抽数",
-      "get-this": "这抽拿到的人",
-      "get-all": "已经拿到的人",
-      "title": "卡池 · 数据"
-    },
-    "title": "抽卡"
-  },
-  "global": {
-    "copy-success": "复制成功",
-    "copy-fail": "复制失败：{0}",
-    "about": "关于",
-    "github-os-repo": "Github 开源仓库",
-    "loading": "加载中",
-    "game": {
-      "HI": "崩坏三",
-      "GI": "原神",
-      "HSR": "崩坏：星穹铁道",
-      "ZZZ": "绝区零"
-    },
-    "expired": "已过期",
-    "commit": "提交",
-    "username": {
-      "traveler": "旅行者"
-    },
-    "time": {
-      "min-sec": "{0} 分 {1} 秒",
-      "sec": "{0} 秒"
-    },
-    "all": "所有",
-    "lang": {
-      "ja": "日文",
-      "en": "英文",
-      "zh-Hans": "简体中文"
-    },
-    "action": {
-      "delete": "删除"
-    },
-    "menu": "菜单",
-    "author": "作者",
-    "character": "角色",
-    "weapon": "武器",
-    "5-star": "5星",
-    "4-star": "4星",
-    "probability": "概率",
-    "not-installed": "未安装",
-    "search": "搜索",
-    "download": "下载",
-    "none-downloading": "没有正在下载",
-    "downloaded": "已下载",
-    "tip": {
-      "not-optimized-narrow": "本页面并未适配窄屏幕设备。"
-    }
-  },
-  "home": {
-    "welcome": "{0}，你来了呀。看你最近来去匆忙…<br/>要是能偶尔坐下来听戏饮茶,享受闲适的趣味,会更有益身心哦。",
-    "title": "主页"
-  },
-  "index": {
-    "s0": "「云婵娟来花婵娟，风流尽在山水间。」",
-    "description": "一个开源的纯网页端米哈游游戏工具箱。",
-    "use": "立即使用",
-    "install": "安装为 PWA 应用",
-    "title": "首页"
-  },
-  "music-player": {
-    "album": "专辑",
-    "album-description": "专辑描述",
-    "description": "适用于米哈游音乐工作室 HoYo-Mix 发布音乐的音乐播放器",
-    "jump-to-current-lyric": "跳转至当前歌词",
-    "songs": "歌曲",
-    "songs-in-total": "共 {0} 首",
-    "title": "音乐播放器"
-  },
+  "about.build-time": "构建时间： {0}",
+  "about.thanks-to-contributors": "感谢所有贡献者",
+  "about.copyright": "版权所有 © 2025 SharpDotNUT Studio. 保留所有权利",
+  "about.last-commit": "最后一次提交",
+  "about.last-commit-unknown": "最后一次提交获取失败",
+  "achievement.title": "成就",
+  "achievement.select-version": "选择版本",
+  "achievement.all": "所有",
+  "achievement.finish.finished": "已完成",
+  "achievement.finish.is-finished": "是否完成",
+  "achievement.finish.unfinished": "未完成",
+  "achievement.platforms-to-search": "搜索成就的平台",
+  "achievement.import-export": "导入/导出",
+  "achievement.numbers": "{0} 个成就组 - {1} 个成就",
+  "achievement.search-with": "在{0}上搜索",
+  "achievement.description": "适用于原神的成就管理/查询/记录工具",
+  "achievement.status.0": "无数据",
+  "achievement.status.1": "未完成",
+  "achievement.status.2": "已完成",
+  "achievement.status.3": "进度达成",
+  "app.wait-for-meta": "请等待元数据加载",
+  "app.new-version": "有新版本可用，是否更新？",
+  "app.update": "更新",
+  "app.sw-error": "Service Worker 注册失败",
+  "dictionary.search-text": "要搜索的文本",
+  "dictionary.title": "米哈游辞典",
+  "dictionary.filter": "筛选标签",
+  "dictionary.description": "一个用于查询 miHoYo 旗下 IP 内术语和专有名词的工具",
+  "dictionary.genshin-dict": "「原神」辞典",
+  "dictionary.result-count": "查询到 {0} 个词条",
+  "dictionary.search-lang": "要搜索的语言",
+  "docs.title": "文档",
+  "gacha.view.title": "卡池 · 浏览",
+  "gacha.simulator.title": "卡池 · 模拟器",
+  "gacha.data.single-proba": "单抽概率",
+  "gacha.data.cumulative-proba": "累计概率",
+  "gacha.data.count": "抽数",
+  "gacha.data.get-this": "这抽拿到的人",
+  "gacha.data.get-all": "已经拿到的人",
+  "gacha.data.title": "卡池 · 数据",
+  "gacha.title": "抽卡",
+  "global.copy-success": "复制成功",
+  "global.copy-fail": "复制失败：{0}",
+  "global.about": "关于",
+  "global.github-os-repo": "Github 开源仓库",
+  "global.loading": "加载中",
+  "global.game.HI": "崩坏三",
+  "global.game.GI": "原神",
+  "global.game.HSR": "崩坏：星穹铁道",
+  "global.game.ZZZ": "绝区零",
+  "global.expired": "已过期",
+  "global.commit": "提交",
+  "global.username.traveler": "旅行者",
+  "global.time.min-sec": "{0} 分 {1} 秒",
+  "global.time.sec": "{0} 秒",
+  "global.all": "所有",
+  "global.lang.ja": "日文",
+  "global.lang.en": "英文",
+  "global.lang.zh-Hans": "简体中文",
+  "global.action.delete": "删除",
+  "global.menu": "菜单",
+  "global.author": "作者",
+  "global.character": "角色",
+  "global.weapon": "武器",
+  "global.5-star": "5星",
+  "global.4-star": "4星",
+  "global.probability": "概率",
+  "global.not-installed": "未安装",
+  "global.search": "搜索",
+  "global.download": "下载",
+  "global.none-downloading": "没有正在下载",
+  "global.downloaded": "已下载",
+  "global.tip.not-optimized-narrow": "本页面并未适配窄屏幕设备。",
+  "home.welcome": "{0}，你来了呀。看你最近来去匆忙…<br/>要是能偶尔坐下来听戏饮茶,享受闲适的趣味,会更有益身心哦。",
+  "home.title": "主页",
+  "index.s0": "「云婵娟来花婵娟，风流尽在山水间。」",
+  "index.description": "一个开源的纯网页端米哈游游戏工具箱。",
+  "index.use": "立即使用",
+  "index.install": "安装为 PWA 应用",
+  "index.title": "首页",
+  "music-player.album": "专辑",
+  "music-player.album-description": "专辑描述",
+  "music-player.description": "适用于米哈游音乐工作室 HoYo-Mix 发布音乐的音乐播放器",
+  "music-player.jump-to-current-lyric": "跳转至当前歌词",
+  "music-player.songs": "歌曲",
+  "music-player.songs-in-total": "共 {0} 首",
+  "music-player.title": "音乐播放器",
   "name": "「试作 · 云翰」",
-  "question": {
-    "answer-right": "回答正确",
-    "answer-wrong": "回答错误",
-    "question-number": "第 {0} 题",
-    "submit-answer": "提交本题答案",
-    "next-question": "下一题",
-    "question-rank-is": "题库：",
-    "result": {
-      "tip": "一共 {0} 题， 您答对了 {1} 题。"
-    }
-  },
-  "quiz": {
-    "title": "答题",
-    "home": {
-      "download-list": "正在从 GitHub 下载题库列表，请稍候",
-      "download-list-success": "题库列表下载成功",
-      "download-list-fail": "题库列表下载失败",
-      "download-bank": "正在从 GitHub 下载题库，请稍候",
-      "download-bank-success": "题库下载成功",
-      "download-bank-fail": "题库下载失败",
-      "start": "开始答题",
-      "failed-to-load": "无法通过 jsDelivr 从 GitHub 获取题库，请检查您的网络或国际网络连接。"
-    },
-    "answer": {
-      "true": "对",
-      "false": "错"
-    },
-    "description": " "
-  },
-  "setting": {
-    "theme": {
-      "dark": "深色模式",
-      "light": "浅色模式",
-      "system": "跟随系统",
-      "select": "选择主题",
-      "title": "主题"
-    },
-    "language": {
-      "title": "语言",
-      "select": "选择语言",
-      "teyvat": "使用提瓦特字体"
-    },
-    "about": {
-      "title": "关于"
-    },
-    "title": "设置",
-    "general": "通用",
-    "rm": "资源管理器"
-  },
-  "song-player": {},
-  "sp-key": {
-    "commit-key": "提交兑换码",
-    "game": "游戏",
-    "server": "服务器",
-    "version": "版本",
-    "expired-time": "截止时间",
-    "time-to-expire": "还有 {0} 分钟过期",
-    "key": "兑换码",
-    "token-to-auth": "用于验证身份的 Token",
-    "become-a-contributor": {
-      "title": "成为贡献者",
-      "content": "您想成为本兑换码池的贡献者吗？请联系在关于页面联系作者，我们将给您一个 token，您可以使用这个 token 来提交兑换码。"
-    },
-    "title": "兑换码",
-    "description": "查询前瞻特别节目的兑换码"
-  },
-  "tqrt": {
-    "title": "文本速查速译",
-    "translate-lang": "要翻译的语言",
-    "translate-mode": "翻译模式",
-    "manage-text-res": "管理文本数据",
-    "using-time": "耗时 {0} 毫秒"
-  },
-  "translator": {
-    "title": "翻译器",
-    "description": "一个用于转换米哈游游戏内文字和英文的工具"
-  },
-  "update-log": {
-    "major-versions": "主版本号",
-    "major-version": "主要版本",
-    "minor-versions": "次版本号",
-    "minor-version": "次要版本",
-    "area": "功能",
-    "title": "更新日志",
-    "areas": {
-      "i18n": "国际化",
-      "others": "其他"
-    }
-  }
+  "question.answer-right": "回答正确",
+  "question.answer-wrong": "回答错误",
+  "question.question-number": "第 {0} 题",
+  "question.submit-answer": "提交本题答案",
+  "question.next-question": "下一题",
+  "question.question-rank-is": "题库：",
+  "question.result.tip": "一共 {0} 题， 您答对了 {1} 题。",
+  "quiz.title": "答题",
+  "quiz.home.download-list": "正在从 GitHub 下载题库列表，请稍候",
+  "quiz.home.download-list-success": "题库列表下载成功",
+  "quiz.home.download-list-fail": "题库列表下载失败",
+  "quiz.home.download-bank": "正在从 GitHub 下载题库，请稍候",
+  "quiz.home.download-bank-success": "题库下载成功",
+  "quiz.home.download-bank-fail": "题库下载失败",
+  "quiz.home.start": "开始答题",
+  "quiz.home.failed-to-load": "无法通过 jsDelivr 从 GitHub 获取题库，请检查您的网络或国际网络连接。",
+  "quiz.answer.true": "对",
+  "quiz.answer.false": "错",
+  "quiz.description": " ",
+  "setting.theme.dark": "深色模式",
+  "setting.theme.light": "浅色模式",
+  "setting.theme.system": "跟随系统",
+  "setting.theme.select": "选择主题",
+  "setting.theme.title": "主题",
+  "setting.language.title": "语言",
+  "setting.language.select": "选择语言",
+  "setting.language.teyvat": "使用提瓦特字体",
+  "setting.about.title": "关于",
+  "setting.title": "设置",
+  "setting.general": "通用",
+  "setting.rm": "资源管理器",
+  "sp-key.commit-key": "提交兑换码",
+  "sp-key.game": "游戏",
+  "sp-key.server": "服务器",
+  "sp-key.version": "版本",
+  "sp-key.expired-time": "截止时间",
+  "sp-key.time-to-expire": "还有 {0} 分钟过期",
+  "sp-key.key": "兑换码",
+  "sp-key.token-to-auth": "用于验证身份的 Token",
+  "sp-key.become-a-contributor.title": "成为贡献者",
+  "sp-key.become-a-contributor.content": "您想成为本兑换码池的贡献者吗？请联系在关于页面联系作者，我们将给您一个 token，您可以使用这个 token 来提交兑换码。",
+  "sp-key.title": "兑换码",
+  "sp-key.description": "查询前瞻特别节目的兑换码",
+  "tqrt.title": "文本速查速译",
+  "tqrt.translate-lang": "要翻译的语言",
+  "tqrt.translate-mode": "翻译模式",
+  "tqrt.manage-text-res": "管理文本数据",
+  "tqrt.using-time": "耗时 {0} 毫秒",
+  "translator.title": "翻译器",
+  "translator.description": "一个用于转换米哈游游戏内文字和英文的工具",
+  "update-log.major-versions": "主版本号",
+  "update-log.major-version": "主要版本",
+  "update-log.minor-versions": "次版本号",
+  "update-log.minor-version": "次要版本",
+  "update-log.area": "功能",
+  "update-log.title": "更新日志",
+  "update-log.areas.i18n": "国际化",
+  "update-log.areas.others": "其他"
 }

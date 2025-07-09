@@ -1,207 +1,138 @@
 {
-  "about": {
-    "build-time": "ビルド時間: {0}",
-    "thanks-to-contributors": "すべての貢献者に感謝します",
-    "copyright": "Copyright © 2025 SharpDotNUT Studio. All Rights Reserved.",
-    "last-commit": "最終コミット",
-    "last-commit-unknown": "最新のコミットの取得に失敗しました。"
-  },
-  "achievement": {
-    "title": "実績",
-    "select-version": "バージョン選択",
-    "all": "すべて",
-    "finish": {
-      "finished": "達成済み",
-      "is-finished": "達成状況",
-      "unfinished": "未達成"
-    },
-    "platforms-to-search": "実績検索プラットフォーム",
-    "import-export": "インポート/エクスポート",
-    "numbers": "{0} 実績グループ - {1} 実績",
-    "search-with": "{0}で検索",
-    "description": "原神の実績管理/検索/記録ツール",
-    "status": {
-      "0": "データなし",
-      "1": "完了していません",
-      "2": "完了しました",
-      "3": "進捗が達成されました"
-    }
-  },
-  "app": {
-    "wait-for-meta": "メタデータのロードをお待ちください。",
-    "new-version": "新しいバージョンが利用可能です。更新しますか？",
-    "update": "更新",
-    "sw-error": ""
-  },
-  "dictionary": {
-    "search-text": "検索テキスト",
-    "title": "HoYoVERSE 辞書",
-    "filter": "タグフィルター",
-    "description": "HoYoVERSEグループIP内の用語や固有名詞を検索するためのツールです",
-    "genshin-dict": "「原神」辞書",
-    "search-lang": "検索言語",
-    "result-count": "{0}件見つかりました"
-  },
-  "docs": {
-    "title": "書類"
-  },
-  "gacha": {
-    "view": {
-      "title": "ガチャプール：閲覧"
-    },
-    "simulator": {
-      "title": "ガチャプール：シミュレーター"
-    },
-    "data": {
-      "cumulative-proba": "累積確率",
-      "single-proba": "単発確率",
-      "count": "ガチャ回数",
-      "get-this": "今回獲得キャラ",
-      "get-all": "所持キャラ",
-      "title": "ガチャプール：データ"
-    },
-    "title": "ガチャ"
-  },
-  "global": {
-    "copy-success": "コピー成功",
-    "copy-fail": "コピー失敗: {0}",
-    "about": "について",
-    "github-os-repo": "GitHub オープンソースリポジトリ",
-    "loading": "読み込み中",
-    "game": {
-      "HI": "崩壊3rd",
-      "GI": "原神",
-      "HSR": "崩壊：スターレイル",
-      "ZZZ": "ゼンレスゾーンゼロ"
-    },
-    "expired": "期限切れ",
-    "commit": "送信",
-    "username": {
-      "traveler": "旅人"
-    },
-    "time": {
-      "min-sec": "{0} 分 {1} 秒",
-      "sec": "{0} 秒"
-    },
-    "all": "すべて",
-    "lang": {
-      "ja": "日本語",
-      "en": "英語",
-      "zh-Hans": "簡体字中国語"
-    },
-    "action": {
-      "delete": "消去"
-    },
-    "menu": "メニュー",
-    "author": "作者",
-    "character": "キャラクター",
-    "weapon": "武器",
-    "5-star": "星5",
-    "4-star": "星4",
-    "probability": "確率",
-    "search": "検索"
-  },
-  "home": {
-    "welcome": "いらしていたのですね。近頃とてもお忙しいようですが…<br/> たまには座って劇を見たり、お茶を飲んだりしてみてはいかがでしょう。心身ともに安らぎますよ。",
-    "title": "ホームページ"
-  },
-  "index": {
-    "s0": "（訳）美しき雲に愛しき花、風流は山水にありて。{'|'} 「云婵娟来花婵娟，风流尽在山水间。」",
-    "description": "HoYoVERSEゲーム向けのオープンソースWebツールキット",
-    "use": "今すぐ使う",
-    "install": "PWAアプリとしてインストール",
-    "title": "紹介ページ"
-  },
-  "music-player": {
-    "album": "アルバム",
-    "album-description": "アルバム説明",
-    "description": "HoYoVERSE音楽スタジオ「HoYo-Mix」の楽曲に対応した音楽プレイヤー",
-    "jump-to-current-lyric": "現在の歌詞にジャンプ",
-    "songs": "楽曲",
-    "songs-in-total": "全{0}曲",
-    "title": "ミュージックプレイヤー"
-  },
+  "about.build-time": "ビルド時間: {0}",
+  "about.copyright": "Copyright © 2025 SharpDotNUT Studio. All Rights Reserved.",
+  "about.last-commit": "最終コミット",
+  "about.last-commit-unknown": "最新のコミットの取得に失敗しました。",
+  "about.thanks-to-contributors": "すべての貢献者に感謝します",
+  "achievement.all": "すべて",
+  "achievement.description": "原神の実績管理/検索/記録ツール",
+  "achievement.finish.finished": "達成済み",
+  "achievement.finish.is-finished": "達成状況",
+  "achievement.finish.unfinished": "未達成",
+  "achievement.import-export": "インポート/エクスポート",
+  "achievement.numbers": "{0} 実績グループ - {1} 実績",
+  "achievement.platforms-to-search": "実績検索プラットフォーム",
+  "achievement.search-with": "{0}で検索",
+  "achievement.select-version": "バージョン選択",
+  "achievement.status.0": "データなし",
+  "achievement.status.1": "完了していません",
+  "achievement.status.2": "完了しました",
+  "achievement.status.3": "進捗が達成されました",
+  "achievement.title": "実績",
+  "app.new-version": "新しいバージョンが利用可能です。更新しますか？",
+  "app.sw-error": "",
+  "app.update": "更新",
+  "app.wait-for-meta": "メタデータのロードをお待ちください。",
+  "dictionary.description": "HoYoVERSEグループIP内の用語や固有名詞を検索するためのツールです",
+  "dictionary.filter": "タグフィルター",
+  "dictionary.genshin-dict": "「原神」辞書",
+  "dictionary.result-count": "{0}件見つかりました",
+  "dictionary.search-lang": "検索言語",
+  "dictionary.search-text": "検索テキスト",
+  "dictionary.title": "HoYoVERSE 辞書",
+  "docs.title": "書類",
+  "gacha.data.count": "ガチャ回数",
+  "gacha.data.cumulative-proba": "累積確率",
+  "gacha.data.get-all": "所持キャラ",
+  "gacha.data.get-this": "今回獲得キャラ",
+  "gacha.data.single-proba": "単発確率",
+  "gacha.data.title": "ガチャプール：データ",
+  "gacha.simulator.title": "ガチャプール：シミュレーター",
+  "gacha.title": "ガチャ",
+  "gacha.view.title": "ガチャプール：閲覧",
+  "global.4-star": "星4",
+  "global.5-star": "星5",
+  "global.about": "について",
+  "global.action.delete": "消去",
+  "global.all": "すべて",
+  "global.author": "作者",
+  "global.character": "キャラクター",
+  "global.commit": "送信",
+  "global.copy-fail": "コピー失敗: {0}",
+  "global.copy-success": "コピー成功",
+  "global.expired": "期限切れ",
+  "global.game.GI": "原神",
+  "global.game.HI": "崩壊3rd",
+  "global.game.HSR": "崩壊：スターレイル",
+  "global.game.ZZZ": "ゼンレスゾーンゼロ",
+  "global.github-os-repo": "GitHub オープンソースリポジトリ",
+  "global.lang.en": "英語",
+  "global.lang.ja": "日本語",
+  "global.lang.zh-Hans": "簡体字中国語",
+  "global.loading": "読み込み中",
+  "global.menu": "メニュー",
+  "global.probability": "確率",
+  "global.search": "検索",
+  "global.time.min-sec": "{0} 分 {1} 秒",
+  "global.time.sec": "{0} 秒",
+  "global.username.traveler": "旅人",
+  "global.weapon": "武器",
+  "home.title": "ホームページ",
+  "home.welcome": "いらしていたのですね。近頃とてもお忙しいようですが…<br/> たまには座って劇を見たり、お茶を飲んだりしてみてはいかがでしょう。心身ともに安らぎますよ。",
+  "index.description": "HoYoVERSEゲーム向けのオープンソースWebツールキット",
+  "index.install": "PWAアプリとしてインストール",
+  "index.s0": "（訳）美しき雲に愛しき花、風流は山水にありて。{'|'} 「云婵娟来花婵娟，风流尽在山水间。」",
+  "index.title": "紹介ページ",
+  "index.use": "今すぐ使う",
+  "music-player.album": "アルバム",
+  "music-player.album-description": "アルバム説明",
+  "music-player.description": "HoYoVERSE音楽スタジオ「HoYo-Mix」の楽曲に対応した音楽プレイヤー",
+  "music-player.jump-to-current-lyric": "現在の歌詞にジャンプ",
+  "music-player.songs": "楽曲",
+  "music-player.songs-in-total": "全{0}曲",
+  "music-player.title": "ミュージックプレイヤー",
   "name": "「試作•雲翰」",
-  "question": {
-    "answer-right": "正解",
-    "answer-wrong": "不正解",
-    "question-number": "第 {0} 問",
-    "submit-answer": "回答を送信",
-    "next-question": "次の問題",
-    "question-rank-is": "問題バンク:",
-    "result": {
-      "tip": "全{0}問中、{1}問正解しました。"
-    }
-  },
-  "quiz": {
-    "title": "クイズ",
-    "home": {
-      "download-list": "GitHubから問題リストをダウンロード中、お待ちください...",
-      "download-list-success": "問題リストのダウンロードが成功しました",
-      "download-list-fail": "問題リストのダウンロードに失敗しました",
-      "download-bank": "GitHubから問題集をダウンロード中、お待ちください...",
-      "download-bank-success": "問題集のダウンロードが成功しました",
-      "download-bank-fail": "問題集のダウンロードに失敗しました",
-      "start": "クイズを開始",
-      "failed-to-load": "jsDelivr 経由で GitHub から問題集を取得できません。ネットワークまたは国際回線接続をご確認ください。"
-    },
-    "answer": {
-      "true": "真",
-      "false": "偽"
-    },
-    "description": " "
-  },
-  "setting": {
-    "theme": {
-      "dark": "ダークモード",
-      "light": "ライトモード",
-      "system": "システム設定に従う",
-      "select": "テーマ選択",
-      "title": "テーマ"
-    },
-    "language": {
-      "title": "言語",
-      "select": "言語選択",
-      "teyvat": "ティワット字体を使用"
-    },
-    "about": {
-      "title": "について"
-    },
-    "title": "設定",
-    "general": "汎用",
-    "rm": "リソースマネージャー"
-  },
-  "song-player": {},
-  "sp-key": {
-    "commit-key": "コード登録",
-    "game": "ゲーム",
-    "server": "サーバー",
-    "version": "バージョン",
-    "expired-time": "有効期限",
-    "time-to-expire": "あと{0}分で期限切れ",
-    "key": "引き換えコード",
-    "token-to-auth": "認証トークン",
-    "become-a-contributor": {
-      "title": "協力者になる",
-      "content": "コードプールの協力者になりませんか？「について」ページから作者に連絡いただければ、コード登録用のトークンを発行します。"
-    },
-    "title": "引き換えコード",
-    "description": "予告番組の引き換えコードを検索"
-  },
-  "translator": {
-    "title": "翻訳ツール",
-    "description": "HoYoVERSEゲーム内のテキストと英語を変換するツール"
-  },
-  "update-log": {
-    "major-versions": "メジャーバージョン",
-    "minor-versions": "マイナーバージョン",
-    "major-version": "メジャーバージョン",
-    "minor-version": "マイナーバージョン",
-    "area": "機能",
-    "title": "ログを更新します",
-    "areas": {
-      "i18n": "国際化",
-      "others": "他の"
-    }
-  }
+  "question.answer-right": "正解",
+  "question.answer-wrong": "不正解",
+  "question.next-question": "次の問題",
+  "question.question-number": "第 {0} 問",
+  "question.question-rank-is": "問題バンク:",
+  "question.result.tip": "全{0}問中、{1}問正解しました。",
+  "question.submit-answer": "回答を送信",
+  "quiz.answer.false": "偽",
+  "quiz.answer.true": "真",
+  "quiz.description": " ",
+  "quiz.home.download-bank": "GitHubから問題集をダウンロード中、お待ちください...",
+  "quiz.home.download-bank-fail": "問題集のダウンロードに失敗しました",
+  "quiz.home.download-bank-success": "問題集のダウンロードが成功しました",
+  "quiz.home.download-list": "GitHubから問題リストをダウンロード中、お待ちください...",
+  "quiz.home.download-list-fail": "問題リストのダウンロードに失敗しました",
+  "quiz.home.download-list-success": "問題リストのダウンロードが成功しました",
+  "quiz.home.failed-to-load": "jsDelivr 経由で GitHub から問題集を取得できません。ネットワークまたは国際回線接続をご確認ください。",
+  "quiz.home.start": "クイズを開始",
+  "quiz.title": "クイズ",
+  "setting.about.title": "について",
+  "setting.general": "汎用",
+  "setting.language.select": "言語選択",
+  "setting.language.teyvat": "ティワット字体を使用",
+  "setting.language.title": "言語",
+  "setting.rm": "リソースマネージャー",
+  "setting.theme.dark": "ダークモード",
+  "setting.theme.light": "ライトモード",
+  "setting.theme.select": "テーマ選択",
+  "setting.theme.system": "システム設定に従う",
+  "setting.theme.title": "テーマ",
+  "setting.title": "設定",
+  "sp-key.become-a-contributor.content": "コードプールの協力者になりませんか？「について」ページから作者に連絡いただければ、コード登録用のトークンを発行します。",
+  "sp-key.become-a-contributor.title": "協力者になる",
+  "sp-key.commit-key": "コード登録",
+  "sp-key.description": "予告番組の引き換えコードを検索",
+  "sp-key.expired-time": "有効期限",
+  "sp-key.game": "ゲーム",
+  "sp-key.key": "引き換えコード",
+  "sp-key.server": "サーバー",
+  "sp-key.time-to-expire": "あと{0}分で期限切れ",
+  "sp-key.title": "引き換えコード",
+  "sp-key.token-to-auth": "認証トークン",
+  "sp-key.version": "バージョン",
+  "translator.description": "HoYoVERSEゲーム内のテキストと英語を変換するツール",
+  "translator.title": "翻訳ツール",
+  "update-log.area": "機能",
+  "update-log.areas.i18n": "国際化",
+  "update-log.areas.others": "他の",
+  "update-log.major-version": "メジャーバージョン",
+  "update-log.major-versions": "メジャーバージョン",
+  "update-log.minor-version": "マイナーバージョン",
+  "update-log.minor-versions": "マイナーバージョン",
+  "update-log.title": "ログを更新します"
 }

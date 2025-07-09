@@ -1,221 +1,148 @@
 {
-  "about": {
-    "build-time": "Build Time: {0}",
-    "thanks-to-contributors": "Thanks to all contributors",
-    "copyright": "Copyright © 2025 SharpDotNUT Studio. All rights reserved.",
-    "last-commit": "Last commit",
-    "last-commit-unknown": "Failed to fetch the latest commit."
-  },
-  "achievement": {
-    "title": "Achievements",
-    "select-version": "Select Version",
-    "all": "All",
-    "finish": {
-      "finished": "Completed",
-      "is-finished": "Completion Status",
-      "unfinished": "Not Completed"
-    },
-    "platforms-to-search": "Platforms to Search Achievements",
-    "import-export": "Import/Export",
-    "numbers": "{0} Achievement Groups - {1} Achievements",
-    "search-with": "Search on {0}",
-    "description": "An achievement management/query/record tool for Genshin Impact",
-    "status": {
-      "0": "No data",
-      "1": "Not completed",
-      "2": "Completed",
-      "3": "Progress achieved"
-    }
-  },
-  "app": {
-    "wait-for-meta": "Please wait for metadata to load.",
-    "update": "Update",
-    "new-version": "A new version is available. Would you like to update?",
-    "sw-error": "Service Worker registration failed"
-  },
-  "dictionary": {
-    "search-text": "Text to Search",
-    "title": "HoYoVERSE Dictionary",
-    "filter": "Filter Tags",
-    "description": "A tool for querying terms and proper nouns within HoYoVERSE's IPs",
-    "genshin-dict": "\"Genshin Impact\" Dictionary",
-    "search-lang": "Language to search",
-    "result-count": "{0} words found"
-  },
-  "docs": {
-    "title": "Document"
-  },
-  "gacha": {
-    "view": {
-      "title": "Gacha Pool: View"
-    },
-    "simulator": {
-      "title": "Gacha Pool: Simulator"
-    },
-    "data": {
-      "single-proba": "Single-pull probability",
-      "cumulative-proba": "Cumulative probability",
-      "count": "Gacha Count",
-      "get-this": "Character Obtained (This Pull)",
-      "get-all": "Character Obtained",
-      "title": "Gacha Pool: Data"
-    },
-    "title": "Cacha"
-  },
-  "global": {
-    "copy-success": "Copy successful",
-    "copy-fail": "Copy failed: {0}",
-    "about": "About",
-    "github-os-repo": "GitHub Open Source Repository",
-    "loading": "Loading",
-    "game": {
-      "HI": "Honkai Impact 3rd",
-      "GI": "Genshin Impact",
-      "HSR": "Honkai: Star Rail",
-      "ZZZ": "Zenless Zone Zero"
-    },
-    "expired": "Expired",
-    "commit": "Submit",
-    "username": {
-      "traveler": "Traveler"
-    },
-    "time": {
-      "min-sec": "{0} minutes {1} seconds",
-      "sec": "{0} seconds"
-    },
-    "all": "All",
-    "lang": {
-      "ja": "Japanese",
-      "en": "English",
-      "zh-Hans": "Simplified Chinese"
-    },
-    "action": {
-      "delete": "Delete"
-    },
-    "menu": "Menu",
-    "author": "Author",
-    "character": "Character",
-    "weapon": "Weapon",
-    "5-star": "5-Star",
-    "4-star": "\t4-Star",
-    "probability": "Probability",
-    "not-installed": "Uninstall",
-    "search": "Search",
-    "download": "Download",
-    "none-downloading": "None downloading",
-    "downloaded": "Downloaded",
-    "tip": {
-      "not-optimized-narrow": "This page is not optimized for narrow screen devices."
-    }
-  },
-  "home": {
-    "welcome": "Ah, you've arrived, {0}. I couldn't help but notice how busy you are these days...<br/>If you could manage to find the time to sit and enjoy an opera together or share a pot of tea... Taking a moment to slow down and enjoy the finer things in life is always beneficial to your body and soul.",
-    "title": "Home Page"
-  },
-  "index": {
-    "s0": "How gently do the clouds and flowers sway, as dancing winds meander through the vales. {'|'} 「云婵娟来花婵娟，风流尽在山水间。」",
-    "description": "An open-source web-based toolkit for HoYoVERSE games.",
-    "use": "Use Now",
-    "install": "Install as PWA App",
-    "title": "Introduction Page"
-  },
-  "music-player": {
-    "album": "Album",
-    "album-description": "Album Description",
-    "description": "A music player for tracks released by HoYo-Mix, the music studio of HoYoVERSE",
-    "jump-to-current-lyric": "Jump to Current Lyric",
-    "songs": "Songs",
-    "songs-in-total": "{0} songs in total",
-    "title": "Music Player"
-  },
+  "about.build-time": "Build Time: {0}",
+  "about.copyright": "Copyright © 2025 SharpDotNUT Studio. All rights reserved.",
+  "about.last-commit": "Last commit",
+  "about.last-commit-unknown": "Failed to fetch the latest commit.",
+  "about.thanks-to-contributors": "Thanks to all contributors",
+  "achievement.all": "All",
+  "achievement.description": "An achievement management/query/record tool for Genshin Impact",
+  "achievement.finish.finished": "Completed",
+  "achievement.finish.is-finished": "Completion Status",
+  "achievement.finish.unfinished": "Not Completed",
+  "achievement.import-export": "Import/Export",
+  "achievement.numbers": "{0} Achievement Groups - {1} Achievements",
+  "achievement.platforms-to-search": "Platforms to Search Achievements",
+  "achievement.search-with": "Search on {0}",
+  "achievement.select-version": "Select Version",
+  "achievement.status.0": "No data",
+  "achievement.status.1": "Not completed",
+  "achievement.status.2": "Completed",
+  "achievement.status.3": "Progress achieved",
+  "achievement.title": "Achievements",
+  "app.new-version": "A new version is available. Would you like to update?",
+  "app.sw-error": "Service Worker registration failed",
+  "app.update": "Update",
+  "app.wait-for-meta": "Please wait for metadata to load.",
+  "dictionary.description": "A tool for querying terms and proper nouns within HoYoVERSE's IPs",
+  "dictionary.filter": "Filter Tags",
+  "dictionary.genshin-dict": "\"Genshin Impact\" Dictionary",
+  "dictionary.result-count": "{0} words found",
+  "dictionary.search-lang": "Language to search",
+  "dictionary.search-text": "Text to Search",
+  "dictionary.title": "HoYoVERSE Dictionary",
+  "docs.title": "Document",
+  "gacha.data.count": "Gacha Count",
+  "gacha.data.cumulative-proba": "Cumulative probability",
+  "gacha.data.get-all": "Character Obtained",
+  "gacha.data.get-this": "Character Obtained (This Pull)",
+  "gacha.data.single-proba": "Single-pull probability",
+  "gacha.data.title": "Gacha Pool: Data",
+  "gacha.simulator.title": "Gacha Pool: Simulator",
+  "gacha.title": "Cacha",
+  "gacha.view.title": "Gacha Pool: View",
+  "global.4-star": "\t4-Star",
+  "global.5-star": "5-Star",
+  "global.about": "About",
+  "global.action.delete": "Delete",
+  "global.all": "All",
+  "global.author": "Author",
+  "global.character": "Character",
+  "global.commit": "Submit",
+  "global.copy-fail": "Copy failed: {0}",
+  "global.copy-success": "Copy successful",
+  "global.download": "Download",
+  "global.downloaded": "Downloaded",
+  "global.expired": "Expired",
+  "global.game.GI": "Genshin Impact",
+  "global.game.HI": "Honkai Impact 3rd",
+  "global.game.HSR": "Honkai: Star Rail",
+  "global.game.ZZZ": "Zenless Zone Zero",
+  "global.github-os-repo": "GitHub Open Source Repository",
+  "global.lang.en": "English",
+  "global.lang.ja": "Japanese",
+  "global.lang.zh-Hans": "Simplified Chinese",
+  "global.loading": "Loading",
+  "global.menu": "Menu",
+  "global.none-downloading": "None downloading",
+  "global.not-installed": "Uninstall",
+  "global.probability": "Probability",
+  "global.search": "Search",
+  "global.time.min-sec": "{0} minutes {1} seconds",
+  "global.time.sec": "{0} seconds",
+  "global.tip.not-optimized-narrow": "This page is not optimized for narrow screen devices.",
+  "global.username.traveler": "Traveler",
+  "global.weapon": "Weapon",
+  "home.title": "Home Page",
+  "home.welcome": "Ah, you've arrived, {0}. I couldn't help but notice how busy you are these days...<br/>If you could manage to find the time to sit and enjoy an opera together or share a pot of tea... Taking a moment to slow down and enjoy the finer things in life is always beneficial to your body and soul.",
+  "index.description": "An open-source web-based toolkit for HoYoVERSE games.",
+  "index.install": "Install as PWA App",
+  "index.s0": "How gently do the clouds and flowers sway, as dancing winds meander through the vales. {'|'} 「云婵娟来花婵娟，风流尽在山水间。」",
+  "index.title": "Introduction Page",
+  "index.use": "Use Now",
+  "music-player.album": "Album",
+  "music-player.album-description": "Album Description",
+  "music-player.description": "A music player for tracks released by HoYo-Mix, the music studio of HoYoVERSE",
+  "music-player.jump-to-current-lyric": "Jump to Current Lyric",
+  "music-player.songs": "Songs",
+  "music-player.songs-in-total": "{0} songs in total",
+  "music-player.title": "Music Player",
   "name": "「Prototype : Yun Han」",
-  "question": {
-    "answer-right": "Correct",
-    "answer-wrong": "Incorrect",
-    "question-number": "Question {0}",
-    "submit-answer": "Submit Answer",
-    "next-question": "Next Question",
-    "question-rank-is": "Question Bank:",
-    "result": {
-      "tip": "Total {0} questions, {1} answered correctly."
-    }
-  },
-  "quiz": {
-    "title": "Quiz",
-    "home": {
-      "download-list": "Downloading question bank list from GitHub, please wait...",
-      "download-list-success": "Question bank list downloaded successfully",
-      "download-list-fail": "Failed to download question bank list",
-      "download-bank": "Downloading question bank from GitHub, please wait...",
-      "download-bank-success": "Question bank downloaded successfully",
-      "download-bank-fail": "Failed to download question bank",
-      "start": "Start Quiz",
-      "failed-to-load": "Unable to fetch the question bank from GitHub via jsDelivr. Please check your network or international network connection."
-    },
-    "answer": {
-      "true": "TRUE",
-      "false": "FALSE"
-    },
-    "description": " "
-  },
-  "setting": {
-    "theme": {
-      "dark": "Dark Mode",
-      "light": "Light Mode",
-      "system": "Follow System",
-      "select": "Select Theme",
-      "title": "Theme"
-    },
-    "language": {
-      "title": "Language",
-      "select": "Select Language",
-      "teyvat": "Use Teyvat Font"
-    },
-    "about": {
-      "title": "About"
-    },
-    "title": "Settings",
-    "general": "General",
-    "rm": "Resources Manager"
-  },
-  "song-player": {},
-  "sp-key": {
-    "commit-key": "Submit Code",
-    "game": "Game",
-    "server": "Server",
-    "version": "Version",
-    "expired-time": "Expiration Time",
-    "time-to-expire": "Expiring in {0} minutes",
-    "key": "Redemption Code",
-    "token-to-auth": "Authentication Token",
-    "become-a-contributor": {
-      "title": "Become a Contributor",
-      "content": "Want to contribute to this code pool? Please contact the author via the About page. We'll provide you a token to submit redemption codes."
-    },
-    "title": "Redemption Codes",
-    "description": "Query redemption codes for SP/Special Programs"
-  },
-  "tqrt": {
-    "translate-lang": "Language to translate",
-    "translate-mode": "Translate mode",
-    "manage-text-res": "Manage text resource",
-    "using-time": "Used {0} ms to search",
-    "title": "Text Quick Refrence & Translate"
-  },
-  "translator": {
-    "title": "Translator",
-    "description": "A tool for converting in-game text and English in HoYoVERSE games"
-  },
-  "update-log": {
-    "major-versions": "Major Versions",
-    "minor-versions": "Minor Versions",
-    "major-version": "Major Version",
-    "minor-version": "Minor Version",
-    "area": "Feature",
-    "title": "Update log",
-    "areas": {
-      "i18n": "Internationalization",
-      "others": "Others"
-    }
-  }
+  "question.answer-right": "Correct",
+  "question.answer-wrong": "Incorrect",
+  "question.next-question": "Next Question",
+  "question.question-number": "Question {0}",
+  "question.question-rank-is": "Question Bank:",
+  "question.result.tip": "Total {0} questions, {1} answered correctly.",
+  "question.submit-answer": "Submit Answer",
+  "quiz.answer.false": "FALSE",
+  "quiz.answer.true": "TRUE",
+  "quiz.description": " ",
+  "quiz.home.download-bank": "Downloading question bank from GitHub, please wait...",
+  "quiz.home.download-bank-fail": "Failed to download question bank",
+  "quiz.home.download-bank-success": "Question bank downloaded successfully",
+  "quiz.home.download-list": "Downloading question bank list from GitHub, please wait...",
+  "quiz.home.download-list-fail": "Failed to download question bank list",
+  "quiz.home.download-list-success": "Question bank list downloaded successfully",
+  "quiz.home.failed-to-load": "Unable to fetch the question bank from GitHub via jsDelivr. Please check your network or international network connection.",
+  "quiz.home.start": "Start Quiz",
+  "quiz.title": "Quiz",
+  "setting.about.title": "About",
+  "setting.general": "General",
+  "setting.language.select": "Select Language",
+  "setting.language.teyvat": "Use Teyvat Font",
+  "setting.language.title": "Language",
+  "setting.rm": "Resources Manager",
+  "setting.theme.dark": "Dark Mode",
+  "setting.theme.light": "Light Mode",
+  "setting.theme.select": "Select Theme",
+  "setting.theme.system": "Follow System",
+  "setting.theme.title": "Theme",
+  "setting.title": "Settings",
+  "sp-key.become-a-contributor.content": "Want to contribute to this code pool? Please contact the author via the About page. We'll provide you a token to submit redemption codes.",
+  "sp-key.become-a-contributor.title": "Become a Contributor",
+  "sp-key.commit-key": "Submit Code",
+  "sp-key.description": "Query redemption codes for SP/Special Programs",
+  "sp-key.expired-time": "Expiration Time",
+  "sp-key.game": "Game",
+  "sp-key.key": "Redemption Code",
+  "sp-key.server": "Server",
+  "sp-key.time-to-expire": "Expiring in {0} minutes",
+  "sp-key.title": "Redemption Codes",
+  "sp-key.token-to-auth": "Authentication Token",
+  "sp-key.version": "Version",
+  "tqrt.manage-text-res": "Manage text resource",
+  "tqrt.title": "Text Quick Refrence & Translate",
+  "tqrt.translate-lang": "Language to translate",
+  "tqrt.translate-mode": "Translate mode",
+  "tqrt.using-time": "Used {0} ms to search",
+  "translator.description": "A tool for converting in-game text and English in HoYoVERSE games",
+  "translator.title": "Translator",
+  "update-log.area": "Feature",
+  "update-log.areas.i18n": "Internationalization",
+  "update-log.areas.others": "Others",
+  "update-log.major-version": "Major Version",
+  "update-log.major-versions": "Major Versions",
+  "update-log.minor-version": "Minor Version",
+  "update-log.minor-versions": "Minor Versions",
+  "update-log.title": "Update log"
 }

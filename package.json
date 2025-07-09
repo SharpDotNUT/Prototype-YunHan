@@ -8,7 +8,7 @@
     "preview": "vite preview",
     "format": "pnpm run format-locales && pnpm run format-code",
     "format-code": "prettier --write .",
-    "format-locales": "deno run --allow-read --allow-write .\\src\\locales\\reduce.runtime.ts",
+    "format-locales": "deno run --allow-read --allow-write .\\scripts\\format-locales.ts",
     "check": "vue-tsc --noEmit"
   },
   "dependencies": {

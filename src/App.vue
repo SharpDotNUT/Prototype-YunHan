@@ -12,6 +12,12 @@ watch(locale, (newLocale) => {
   document.title = t('name');
   document.documentElement.lang = newLocale;
   Locale.use(newLocale);
+  const data = status.translated.find((item) => item.lang === newLocale);
+  if (data && data.len < status.all) {
+    Snackbar.info({
+      content: t('app.translation-incomplete')
+    });
+  }
 });
 watch(loading, (newLoading) => {
   if (!newLoading) {
@@ -22,6 +28,7 @@ watch(loading, (newLoading) => {
 const LS = localStorage;
 
 import { useRegisterSW } from 'virtual:pwa-register/vue';
+import { status } from './locales/i18n';
 const { needRefresh, updateServiceWorker } = useRegisterSW({
   onRegistered() {
     console.log('Service Worker registered');

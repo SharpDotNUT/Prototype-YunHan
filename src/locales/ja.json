@@ -21,6 +21,7 @@
   "achievement.title": "実績",
   "app.new-version": "新しいバージョンが利用可能です。更新しますか？",
   "app.sw-error": "",
+  "app.translation-incomplete": "この言語の翻訳はまだ完了していません。詳細は「設定」をご覧ください。",
   "app.update": "更新",
   "app.wait-for-meta": "メタデータのロードをお待ちください。",
   "dictionary.description": "HoYoVERSEグループIP内の用語や固有名詞を検索するためのツールです",

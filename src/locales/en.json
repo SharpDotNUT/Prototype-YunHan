@@ -21,6 +21,7 @@
   "achievement.title": "Achievements",
   "app.new-version": "A new version is available. Would you like to update?",
   "app.sw-error": "Service Worker registration failed",
+  "app.translation-incomplete": "The translation of this language is not yet complete, please go to Settings for details.",
   "app.update": "Update",
   "app.wait-for-meta": "Please wait for metadata to load.",
   "dictionary.description": "A tool for querying terms and proper nouns within HoYoVERSE's IPs",

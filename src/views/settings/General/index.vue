@@ -4,6 +4,8 @@ import { useRouter } from 'vue-router';
 import { useMainStore } from '@/stores/main';
 const mainStore = useMainStore();
 import { useI18n } from 'vue-i18n';
+import { status } from '@/locales/i18n';
+import { round } from 'lodash-es';
 const { locale } = useI18n();
 
 const ui_isTeyvatFont = ref(mainStore.isUsingTeyvatFont);
@@ -56,9 +58,18 @@ watch(ui_isTeyvatFont, () => {
         v-model="locale"
         :placeholder="$t('setting.language.select')">
         <template #prepend-icon><var-icon name="translate" /></template>
-        <var-option label="English" value="en"></var-option>
-        <var-option label="中文（简体）" value="zh-Hans"></var-option>
-        <var-option label="日本語" value="ja"></var-option>
+        <var-option
+          v-for="lang in status.translated"
+          :label="lang.name"
+          :value="lang.lang">
+          <var-space justify="space-between" style="width: 100%">
+            <span>{{ lang.name }}</span>
+            <span>
+              {{ lang.len }} / {{ status.all }},
+              {{ round((lang.len / status.all) * 100, 1) }} %
+            </span>
+          </var-space>
+        </var-option>
       </var-select>
       <br />
       <p

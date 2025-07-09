@@ -1,41 +1,43 @@
-import { watch } from 'vue';
 import { createI18n } from 'vue-i18n';
-//@ts-ignore
 import EN from './en.json';
-//@ts-ignore
 import ZHS from './zh-Hans.json';
-//@ts-ignore
 import JA from './ja.json';
 
-//@ts-ignore
 import { Locale } from '@varlet/ui';
 Locale.add('zh-Hans', Locale.zhCN);
 Locale.add('en', Locale.enUS);
 Locale.add('ja', Locale.jaJP);
 
-let defaultLanguage = 'zh-Hans';
+export const status = {
+  all: Object.keys(ZHS).length,
+  translated: [
+    { lang: 'zh-Hans', name: '简体中文', len: Object.keys(ZHS).length },
+    { lang: 'ja', name: '日本語', len: Object.keys(JA).length },
+    { lang: 'en', name: 'English', len: Object.keys(EN).length }
+  ]
+};
 
-const i18n = createI18n<
-  [typeof EN, typeof ZHS, typeof JA],
-  'zh-Hans' | 'en' | 'ja'
->({
-  locale: 'zh-Hans', // 默认语言
-  fallbackLocale: 'zh-Hans', // 备用语言
-  messages: {
-    'zh-Hans': {
-      ...ZHS
-    },
-    en: {
-      ...EN
-    },
-    ja: {
-      ...JA
-    }
+const messages = {
+  'zh-Hans': {
+    ...ZHS
   },
+  zh: {
+    ...ZHS
+  },
+  en: {
+    ...EN
+  },
+  ja: {
+    ...JA
+  }
+};
+
+const i18n = createI18n({
+  locale: 'en',
+  fallbackLocale: 'en',
+  messages,
   warnHtmlMessage: false,
   legacy: false
 });
-
-document.title = i18n.global.t('name');
 
 export default i18n;

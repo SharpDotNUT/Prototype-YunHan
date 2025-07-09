@@ -8,7 +8,6 @@
   },
   "achievement": {
     "title": "実績",
-    "search": "実績検索",
     "select-version": "バージョン選択",
     "all": "すべて",
     "finish": {
@@ -99,7 +98,8 @@
     "weapon": "武器",
     "5-star": "星5",
     "4-star": "星4",
-    "probability": "確率"
+    "probability": "確率",
+    "search": "検索"
   },
   "home": {
     "welcome": "いらしていたのですね。近頃とてもお忙しいようですが…<br/> たまには座って劇を見たり、お茶を飲んだりしてみてはいかがでしょう。心身ともに安らぎますよ。",

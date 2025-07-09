@@ -1,5 +1,18 @@
 [
   {
+    version: '2.5.0',
+    date: '2025-07-09T14:00:00+0800',
+    zh: '「神的局限性」',
+    en: "The Gods' Limits",
+    items: [
+      {
+        area: 'tqrt',
+        zh: '新功能。',
+        en: 'New feature.'
+      }
+    ]
+  },
+  {
     version: '2.4.1',
     date: '2025-07-07T23:30:00+0800',
     items: [

@@ -114,6 +114,23 @@ export const routes: RouteRecordRaw[] = [
     ]
   },
   {
+    name: 'tqrt',
+    path: '/tqrt',
+    component: () => import('@/views/tqrt/index.vue'),
+    children: [
+      {
+        name: 'tqrt-query',
+        path: '',
+        component: () => import('@/views/tqrt/query/index.vue')
+      },
+      {
+        name: 'tqrt-res',
+        path: 'res',
+        component: () => import('@/views/tqrt/resource.vue')
+      }
+    ]
+  },
+  {
     name: 'sp-key',
     path: '/sp-key',
     component: () => import('@/views/sp-key/index.vue')

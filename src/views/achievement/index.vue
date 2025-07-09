@@ -144,7 +144,7 @@ function loadUIAF() {
         <var-input
           variant="outlined"
           v-model="f_search.text"
-          :placeholder="$t('achievement.search')"
+          :placeholder="$t('global.search')"
           clearable></var-input>
         <br />
         <div style="display: flex; width: 100%; gap: 1em">

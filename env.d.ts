@@ -1,7 +1,9 @@
 /// <reference types="vite/client" />
 /// <reference types="vite-plugin-pwa/client" />
 declare module 'vue-virtual-scroller';
-declare module '@jamescoyle/vue-icon';
+declare module '@jamescoyle/vue-icon' {
+  export default SvgIcon;
+}
 declare const __BUILD_TIME: string;
 declare const __LAST_COMMIT:
   | {

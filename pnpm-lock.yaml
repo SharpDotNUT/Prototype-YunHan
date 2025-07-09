@@ -44,6 +44,9 @@ importers:
       json5:
         specifier: ^2.2.3
         version: 2.2.3
+      ky:
+        specifier: ^1.8.1
+        version: 1.8.1
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
@@ -1789,6 +1792,10 @@ packages:
 
   kolorist@1.8.0:
     resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==}
+
+  ky@1.8.1:
+    resolution: {integrity: sha512-7Bp3TpsE+L+TARSnnDpk3xg8Idi8RwSLdj6CMbNWoOARIrGrbuLGusV0dYwbZOm4bB3jHNxSw8Wk/ByDqJEnDw==}
+    engines: {node: '>=18'}
 
   leven@3.1.0:
     resolution: {integrity: sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==}
@@ -4399,6 +4406,8 @@ snapshots:
   jsonpointer@5.0.1: {}
 
   kolorist@1.8.0: {}
+
+  ky@1.8.1: {}
 
   leven@3.1.0: {}
 

@@ -43,3 +43,7 @@
 *.teyvat {
   --font-family: Teyvat, Noto Sans, 'Noto Sans SC', sans-serif;
 }
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}

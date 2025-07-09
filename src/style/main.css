@@ -26,6 +26,12 @@ body {
   --option-padding: 6px 12px;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 html {
   height: -webkit-fill-available;
 }

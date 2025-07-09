@@ -1,3 +1,4 @@
+import { dbPromise } from '@/script/idb';
 import { openDB } from 'idb';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
@@ -33,21 +34,15 @@ export interface CacheResourceRecord {
   updatedAt: number;
 }
 
-const dbPromise = openDB('Prototype.YunHan', 1, {
-  upgrade(db) {
-    db.createObjectStore('Resources');
-  }
-});
-
-async function IDBGet(key: IDBValidKey) {
+export async function IDBGet(key: IDBValidKey) {
   return (await dbPromise).get('Resources', key);
 }
 
-async function IDBSet(key: IDBValidKey, val: any) {
+export async function IDBSet(key: IDBValidKey, val: any) {
   return (await dbPromise).put('Resources', val, key);
 }
 
-async function IDBDel(key: IDBValidKey) {
+export async function IDBDel(key: IDBValidKey) {
   return (await dbPromise).delete('Resources', key);
 }
 

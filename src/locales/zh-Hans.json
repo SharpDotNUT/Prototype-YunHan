@@ -8,7 +8,6 @@
   },
   "achievement": {
     "title": "成就",
-    "search": "搜索成就",
     "select-version": "选择版本",
     "all": "所有",
     "finish": {
@@ -99,7 +98,15 @@
     "weapon": "武器",
     "5-star": "5星",
     "4-star": "4星",
-    "probability": "概率"
+    "probability": "概率",
+    "not-installed": "未安装",
+    "search": "搜索",
+    "download": "下载",
+    "none-downloading": "没有正在下载",
+    "downloaded": "已下载",
+    "tip": {
+      "not-optimized-narrow": "本页面并未适配窄屏幕设备。"
+    }
   },
   "home": {
     "welcome": "{0}，你来了呀。看你最近来去匆忙…<br/>要是能偶尔坐下来听戏饮茶,享受闲适的趣味,会更有益身心哦。",
@@ -187,6 +194,13 @@
     },
     "title": "兑换码",
     "description": "查询前瞻特别节目的兑换码"
+  },
+  "tqrt": {
+    "title": "文本速查速译",
+    "translate-lang": "要翻译的语言",
+    "translate-mode": "翻译模式",
+    "manage-text-res": "管理文本数据",
+    "using-time": "耗时 {0} 毫秒"
   },
   "translator": {
     "title": "翻译器",

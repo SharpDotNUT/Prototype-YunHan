@@ -8,7 +8,6 @@
   },
   "achievement": {
     "title": "Achievements",
-    "search": "Search Achievements",
     "select-version": "Select Version",
     "all": "All",
     "finish": {
@@ -99,7 +98,15 @@
     "weapon": "Weapon",
     "5-star": "5-Star",
     "4-star": "\t4-Star",
-    "probability": "Probability"
+    "probability": "Probability",
+    "not-installed": "Uninstall",
+    "search": "Search",
+    "download": "Download",
+    "none-downloading": "None downloading",
+    "downloaded": "Downloaded",
+    "tip": {
+      "not-optimized-narrow": "This page is not optimized for narrow screen devices."
+    }
   },
   "home": {
     "welcome": "Ah, you've arrived, {0}. I couldn't help but notice how busy you are these days...<br/>If you could manage to find the time to sit and enjoy an opera together or share a pot of tea... Taking a moment to slow down and enjoy the finer things in life is always beneficial to your body and soul.",
@@ -187,6 +194,13 @@
     },
     "title": "Redemption Codes",
     "description": "Query redemption codes for SP/Special Programs"
+  },
+  "tqrt": {
+    "translate-lang": "Language to translate",
+    "translate-mode": "Translate mode",
+    "manage-text-res": "Manage text resource",
+    "using-time": "Used {0} ms to search",
+    "title": "Text Quick Refrence & Translate"
   },
   "translator": {
     "title": "Translator",

@@ -1,6 +1,6 @@
 {
   "name": "sharpdotnut/protptype-yunhan",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -24,6 +24,7 @@
     "hoyo-gacha": "^0.2.0",
     "idb": "^8.0.3",
     "json5": "^2.2.3",
+    "ky": "^1.8.1",
     "lodash-es": "^4.17.21",
     "markdown-it": "^14.1.0",
     "pinia": "^2.1.7",

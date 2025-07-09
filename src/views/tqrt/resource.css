@@ -1,0 +1,49 @@
+.container-tqrt-res {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+h3 {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#panel {
+  display: flex;
+  height: 100%;
+  overflow-y: hidden;
+
+  > div {
+    width: 50%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #panel {
+    flex-direction: column;
+    gap: 10px;
+
+    > div {
+      width: 100%;
+      height: 50%;
+    }
+  }
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(50%);
+}

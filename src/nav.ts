@@ -25,6 +25,10 @@ export const NavigationData = [
     path: '/dictionary'
   },
   {
+    name: 'tqrt',
+    path: '/tqrt'
+  },
+  {
     name: 'sp-key',
     path: '/sp-key'
   },

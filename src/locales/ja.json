@@ -128,12 +128,5 @@
   "sp-key.version": "バージョン",
   "translator.description": "HoYoVERSEゲーム内のテキストと英語を変換するツール",
   "translator.title": "翻訳ツール",
-  "update-log.area": "機能",
-  "update-log.areas.i18n": "国際化",
-  "update-log.areas.others": "他の",
-  "update-log.major-version": "メジャーバージョン",
-  "update-log.major-versions": "メジャーバージョン",
-  "update-log.minor-version": "マイナーバージョン",
-  "update-log.minor-versions": "マイナーバージョン",
   "update-log.title": "ログを更新します"
 }

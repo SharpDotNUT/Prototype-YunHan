@@ -138,12 +138,5 @@
   "tqrt.using-time": "耗时 {0} 毫秒",
   "translator.description": "一个用于转换米哈游游戏内文字和英文的工具",
   "translator.title": "翻译器",
-  "update-log.area": "功能",
-  "update-log.areas.i18n": "国际化",
-  "update-log.areas.others": "其他",
-  "update-log.major-version": "主要版本",
-  "update-log.major-versions": "主版本号",
-  "update-log.minor-version": "次要版本",
-  "update-log.minor-versions": "次版本号",
   "update-log.title": "更新日志"
 }

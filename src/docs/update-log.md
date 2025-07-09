@@ -1,161 +1,176 @@
+## 2.5.1 (2025-07-09)
+
+- **Locale / 本地化**:
+  - 扁平化 JSON 数据
+  - Flatten JSON data
+  - 在设置界面展示翻译完成度
+  - Show translation completion in settings
+  - 当切换到未完全翻译的语言时，触发提示
+  - Trigger prompt when switching to a language that is not fully translated
+- **Update Log / 更新日志**:
+  - 使用 Markdown 作为更新日志
+  - Use Markdown as update log
+
 ## 2.5.0 - The Gods' Limits / 「神的局限性」 (2025-07-09)
 
 - **TQRT**:
-  - New feature.
   - 新功能。
+  - New feature.
 
 ## 2.4.1 (2025-07-07)
 
 - **RM**:
-  - Resource pull from Cloudflare Pages / https://yunhan-meta.pages.dev
-  - 资源从 Cloudflare Pages / https://yunhan-meta.pages.dev 拉取
+  - 资源从 Cloudflare Pages `https://yunhan-meta.pages.dev` 拉取
+  - Resource pull from Cloudflare Pages `https://yunhan-meta.pages.dev`
 
 ## 2.4.0 For the Sun is Set to Die / 因为太阳将要毁伤 (2025-06-21)
 
 - **Gacha / 抽卡**:
-  - Added the "Data" section
   - 添加了「数据」板块
+  - Added the "Data" section
 - **App**:
-  - Support to check and get updates支持检查并获取更新
-  - Enhance TypeScript typing
+  - 支持检查并获取更新
+  - Support to check and get updates
   - 增强 TypeScript 类型化
-  - Delete redundant components
+  - Enhance TypeScript typing
   - 删除多余组件
-  - Make the "Update Dialog" can be displayed normally
+  - Delete redundant components
   - 使「更新提示」可以正常展示
+  - Make the "Update Dialog" can be displayed normally
 
 ## 2.3.2 (2025-06-07)
 
 - **Music Player / 音乐播放器**:
-  - Fixed the issue of abnormal display of album aliases
   - 修复了专辑别名显示不正常的问题
-  - Added shadow and hover effects to album cover images
+  - Fixed the issue of abnormal display of album aliases
   - 为专辑封面图添加阴影和悬浮特效
-  - Set album cover images as background images
+  - Added shadow and hover effects to album cover images
   - 设置专辑封面图模糊为背景图
-  - Optimized title display logic
+  - Set album cover images as background images
   - 优化了标题显示逻辑
-  - Use UNPKG instead of JSDeliver to ensure normal access in China
+  - Optimized title display logic
   - 使用 UNPKG 替换 JSDeliver 确保在中国的正常访问
+  - Use UNPKG instead of JSDeliver to ensure normal access in China
 - **RM**:
-  - Use new architecture
   - 采用全新架构
-  - Fixed the problem of content not being displayed when entering the page for the first time because the metadata was not loaded
+  - Use new architecture
   - 修复了首次进入页面时因为元数据未加载导致的无内容
+  - Fixed the problem of content not being displayed when entering the page for the first time because the metadata was not loaded
 
 ## 2.3.1 - Star Rail Live / 星穹铁道演唱会 (2025-05-03)
 
 - **Music Player / 音乐播放器**:
-  - Resource use JSDelivr to pull from github:kuriyota/hoyomix-netease-cloud-music
-  - 资源使用 JSDelivr 从 github:kuriyota/hoyomix-netease-cloud-music 拉取
+  - 资源使用 JSDelivr 从 `github:kuriyota/hoyomix-netease-cloud-music` 拉取
+  - Resource use JSDelivr to pull from `github:kuriyota/hoyomix-netease-cloud-music`
 - **Update Log / 更新日志**:
-  - Simplified interface, optimized font and spacing.
   - 简化界面，优化字体和间距。
+  - Simplified interface, optimized font and spacing.
 - **About / 关于页**:
-  - Fixed the problem that could cause the page to crash if the latest commit could not be obtained
   - 修复了无法获取最新提交会导致页面崩溃的问题
+  - Fixed the problem that could cause the page to crash if the latest commit could not be obtained
 - **RM**:
-  - Resource use JSDelivr to pull from github:Prototype-YunHan.QuizBank
-  - 资源使用 JSDelivr 从 github:Prototype-YunHan.QuizBank 拉取
+  - 资源使用 JSDelivr 从 `github:Prototype-YunHan.QuizBank` 拉取
+  - Resource use JSDelivr to pull from `github:Prototype-YunHan.QuizBank`
 - **quiz**:
-  - Change resource path / 更改资源路径
+  - 更改资源路径
+  - Change resource path
 
 ## 2.3.0 - Anaksagoras / 阿那克萨戈拉斯 (2025-05-01)
 
 - **quiz**:
-  - Released Alpha version, basically complete, can be used.
   - 发布 Alpha 版本，基本完善，可以使用。
+  - Released Alpha version, basically complete, can be used.
 - **App**:
-  - Use IndexDB to replace Web Cache API to store data
   - 使用 IndexDB 替换 Web Cache API 存储数据
+  - Use IndexDB to replace Web Cache API to store data
 - **achievement**:
-  - Support import achievements and browse completion progress
   - 支持导入成就和浏览完成进度
+  - Support import achievements and browse completion progress
 - **Music Player / 音乐播放器**:
-  - Change path to `/music-player`
   - 改变路径为 `/music-player`
-  - Use "Resource Manager"
+  - Change path to `/music-player`
   - 使用「资源管理器」
-  - Fix bug caused by DOM unmount when exiting
+  - Use "Resource Manager"
   - 修复退出时由于 DOM 卸载导致的 bug
+  - Fix bug caused by DOM unmount when exiting
 
 ## 2.2.0 - Castorice / 遐蝶 (2025-04-20)
 
 - **App**:
-  - Use "Resource Manager" to manage resources
   - 使用「资源管理器」来管理资源
-  - English font replaced back to Noto Sans
-  - 英文字体由 Outfit 替换会 Noto Sans
-  - TypeScript migration is basically complete
+  - Use "Resource Manager" to manage resources
+  - 英文字体由 `Outfit` 替换会 `Noto Sans`
+  - English font replaced back to `Noto Sans` from `Outfit`
   - TypeScript 迁移基本完成
+  - TypeScript migration is basically complete
 - **Setting/ 设置**:
-  - Optimize the setting interface, change to secondary page
   - 优化设置界面，改为二级页面
-  - Support resource management initially
+  - Optimize the setting interface, change to secondary page
   - 初步支持资源管理
+  - Support resource management initially
 
 ## 2.1.1 (2025-04-04)
 
 - **App**:
-  - Enhanced TypeScript support
   - 增强 TypeScript 支持
-  - Component library changed to full import
+  - Enhanced TypeScript support
   - 组件库改为全量引入
+  - Component library changed to full import
 - **Dictionary/ 辞典**:
-  - Changed to home and secondary page mechanism
   - 改为首页和二级页面机制
-  - Optimized interface
+  - Changed to home and secondary page mechanism
   - 优化界面
-  - Used virtual scrolling to improve performance
+  - Optimized interface
   - 使用虚拟滚动提高性能
-  - Search results will be updated in real time based on the input keyword
+  - Used virtual scrolling to improve performance
   - 搜索结果将根据输入的关键词实时更新
+  - Search results will be updated in real time based on the input keyword
 - **Translator/ 翻译器**:
-  - Imitated the interface of Google Translate
   - 模仿 Google Translate 的界面
-  - Optimized the interface and interaction
+  - Imitated the interface of Google Translate
   - 优化了界面和交互
-  - The soft keyboard will open in a new dialog box to avoid conflicts with the input box
+  - Optimized the interface and interaction
   - 软键盘将在一个新的对话框中打开，以避免与输入框的冲突
+  - The soft keyboard will open in a new dialog box to avoid conflicts with the input box
 - **Intro / 介绍页**:
-  - The "Use Now" button will now directly jump to the homepage
   - 「立即使用」按钮现在将直接跳转到主页
+  - The "Use Now" button will now directly jump to the homepage
 
 ## 2.1.0 (2025-03-31)
 
 - **Locale / 本地化**:
-  - Improved translation
   - 改进翻译
+  - Improved translation
 - **App**:
-  - Renamed to "Prototype · Yun Han"
   - 改名为「试作 · 云翰」
+  - Renamed to "Prototype · Yun Han"
 - **Update Log / 更新日志**:
-  - Updated README.md
   - 更新了 README.md
+  - Updated README.md
 
 ## 2.0.1 (2025-03-30)
 
 - **Update Log / 更新日志**:
-  - Added translation for area list
   - 补充了功能列表的翻译
-  - Optimized font display in Japanese
+  - Added translation for area list
   - 优化了在日文下的字体展示
-  - Changed path to `/update-log`
+  - Optimized font display in Japanese
   - 更改路径为 `/update-log`
+  - Changed path to `/update-log`
 
 ## 2.0.0 - Stage Lucida / 红毹婵娟 (2025-03-30)
 
 - **Update Log / 更新日志**:
-  - Added "Update Log" feature
   - 添加了「更新日志」功能
+  - Added "Update Log" feature
 - **docs**:
-  - Updated README.md
   - 更新了 README.md
+  - Updated README.md
 - **song-player**:
-  - Optimized font display
   - 优化字体展示
-  - Adapted to mobile devices
+  - Optimized font display
   - 适配手机端
+  - Adapted to mobile devices
 - **App**:
-  - Bump Vue@3.5, Vite@6
   - 升级 Vue@3.5，Vite@6
+  - Bump Vue@3.5, Vite@6

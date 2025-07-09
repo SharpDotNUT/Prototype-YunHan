@@ -33,8 +33,8 @@ const messages = {
 };
 
 const i18n = createI18n({
-  locale: 'en',
-  fallbackLocale: 'en',
+  locale: 'zh-Hans',
+  fallbackLocale: 'zh-Hans',
   messages,
   warnHtmlMessage: false,
   legacy: false

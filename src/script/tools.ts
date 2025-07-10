@@ -1,5 +1,6 @@
 import i18n from '@/locales/i18n';
 import { Snackbar } from '@varlet/ui';
+import { fileSave, supported } from 'browser-fs-access';
 
 const t = i18n.global.t;
 
@@ -34,3 +35,18 @@ export function stringEqualIgnoreCase(str1: string, str2: string) {
 export function stringIndexOfIgnoreCase(str: string, searchStr: string) {
   return str.toLowerCase().indexOf(searchStr.toLowerCase()) != -1;
 }
+
+export const saveFile = async (fileName: string, blob: Blob, type: string) => {
+  if (supported) {
+    await fileSave(blob, {
+      fileName,
+      mimeTypes: [type]
+    });
+  } else {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    a.click();
+  }
+};

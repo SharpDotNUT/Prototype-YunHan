@@ -8,11 +8,9 @@ const height = ref('auto');
 
 function resizeTextarea() {
   if (!textareaRef.value) return;
-  console.log('resizeTextarea');
   height.value = 'auto';
   nextTick(() => {
     height.value = textareaRef.value.scrollHeight + 'px';
-    console.log(textareaRef.value.style.height, textareaRef.value.scrollHeight);
   });
 }
 

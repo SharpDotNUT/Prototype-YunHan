@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import SvgIcon from '@jamescoyle/vue-icon';
 import CAutoTextarea from './CAutoTextarea.vue';
-import { mdiKeyboardClose } from '@mdi/js';
+import { mdiBackspace, mdiKeyboardClose, mdiKeyboardSpace } from '@mdi/js';
 
 const Keys = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const text = defineModel('text', {
@@ -43,11 +43,12 @@ const showKeyboard = defineModel<boolean>('showKeyboard');
             </div>
           </div>
           <div class="row raw">
-            <div class="key" v-ripple @click="text += ' '">SPACE</div>
-            <div class="key" v-ripple @click="text = text.slice(0, -1)">
-              BACKSPACE
+            <div class="key" v-ripple @click="text += ' '">
+              <svg-icon type="mdi" :path="mdiKeyboardSpace" />
             </div>
-            <div class="key" v-ripple @click="text += '\n'">ENTER</div>
+            <div class="key" v-ripple @click="text = text.slice(0, -1)">
+              <svg-icon type="mdi" :path="mdiBackspace" />
+            </div>
             <div class="key" v-ripple @click="showKeyboard = false">
               <svg-icon type="mdi" :path="mdiKeyboardClose" />
             </div>

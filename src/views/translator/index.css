@@ -17,7 +17,7 @@
     gap: 10px;
 
     #button {
-      flex-shrink: 0;
+      width: 100%;
     }
 
     span {
@@ -55,6 +55,15 @@
 }
 
 @media screen and (max-width: 800px) {
+  #bar #title {
+    flex-direction: column;
+
+    #icon {
+      transform: rotate(90deg);
+      transition: transform 0.5 ease-in-out;
+    }
+  }
+
   #main {
     flex-direction: column;
   }

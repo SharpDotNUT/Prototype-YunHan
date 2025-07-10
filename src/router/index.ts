@@ -110,6 +110,11 @@ export const routes: RouteRecordRaw[] = [
         name: 'dictionary-main',
         path: 'main',
         component: () => import('@/views/dictionary/main.vue')
+      },
+      {
+        name: 'dictionary-editor',
+        path: 'editor',
+        component: () => import('@/views/dictionary/editor/index.vue')
       }
     ]
   },

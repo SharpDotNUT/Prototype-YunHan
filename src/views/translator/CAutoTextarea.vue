@@ -1,25 +1,22 @@
 <script setup lang="ts">
 import { ref, onMounted, type Ref, nextTick } from 'vue';
 
-const props = defineProps({
-  modelValue: {
-    type: String,
-    default: ''
-  }
-});
-
-const emit = defineEmits(['update:modelValue']);
+const text = defineModel<string>();
 
 const textareaRef: Ref<any> = ref(null);
-const textareaHeight = ref(0);
+const height = ref('auto');
 
 function resizeTextarea() {
   if (!textareaRef.value) return;
-  textareaHeight.value = textareaRef.value.scrollHeight;
+  console.log('resizeTextarea');
+  height.value = 'auto';
+  nextTick(() => {
+    height.value = textareaRef.value.scrollHeight + 'px';
+    console.log(textareaRef.value.style.height, textareaRef.value.scrollHeight);
+  });
 }
 
-function handleInput(e: any) {
-  emit('update:modelValue', e.target?.value);
+function handleInput() {
   resizeTextarea();
 }
 
@@ -27,7 +24,6 @@ onMounted(() => {
   resizeTextarea();
 });
 
-// 暴露原生方法以便通过ref调用
 defineExpose({
   resizeTextarea,
   focus: () => textareaRef.value.focus(),
@@ -38,8 +34,11 @@ defineExpose({
   <textarea
     class="--textarea"
     ref="textareaRef"
-    :value="modelValue"
-    :style="{ height: textareaHeight + 'px', resize: 'none' }"
+    v-model="text"
+    :style="{
+      height: height,
+      resize: 'none'
+    }"
     @input="handleInput"
     v-bind="$attrs"></textarea>
 </template>

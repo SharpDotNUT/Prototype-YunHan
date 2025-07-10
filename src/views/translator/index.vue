@@ -4,7 +4,6 @@ import SvgIcon from '@jamescoyle/vue-icon';
 import D_FontData from '@/data/fonts/data.json';
 import CAutoTextarea from './CAutoTextarea.vue';
 import CKeyboardEditor from './CKeyboardEditor.vue';
-import Default from './default.txt?raw';
 import { useI18n } from 'vue-i18n';
 const { locale } = useI18n();
 
@@ -17,14 +16,14 @@ import {
 import { copyToClipboard } from '@/script/tools';
 
 const showKeyboard = ref(false);
-const text = ref(Default);
+const text = ref(
+  'How gently do the clouds and flowers sway, as dancing winds meander through the vales.'
+);
 const currentFont = ref(D_FontData[0].id);
 const mode = ref(1);
 const ref_textarea = ref(null);
 const currentFontName = computed(() => {
-  //@ts-ignore
   const font: any = D_FontData.find((x) => x.id === currentFont.value);
-  console.log(font);
   return font.name[locale.value];
 });
 watch(mode, () => {
@@ -89,7 +88,7 @@ function openDeepLToTranslate(text: string) {
         </var-select>
       </div>
     </var-card>
-    <div id="main">
+    <template id="main">
       <var-card>
         <CAutoTextarea
           ref="ref_textarea"
@@ -98,11 +97,14 @@ function openDeepLToTranslate(text: string) {
           :style="{
             fontFamily: mode ? 'inherit' : currentFont
           }" />
-        <div id="actions">
-          <var-button v-if="!mode" round @click="showKeyboard = true">
-            <svg-icon type="mdi" :path="mdiKeyboard" />
-          </var-button>
-        </div>
+        <template #extra id="actions">
+          <var-space align="center">
+            <span>{{ text.length }}&nbsp;</span>
+            <var-button v-if="!mode" round @click="showKeyboard = true">
+              <svg-icon type="mdi" :path="mdiKeyboard" />
+            </var-button>
+          </var-space>
+        </template>
       </var-card>
       <var-card>
         <pre
@@ -112,16 +114,18 @@ function openDeepLToTranslate(text: string) {
           }"
           >{{ text }}</pre
         >
-        <div id="actions">
-          <var-button v-if="!mode" round @click="openDeepLToTranslate(text)">
-            <svg-icon type="mdi" :path="mdiTranslate" />
-          </var-button>
-          <var-button v-if="!mode" round @click="copyToClipboard(text)">
-            <svg-icon type="mdi" :path="mdiContentCopy" />
-          </var-button>
-        </div>
+        <template #extra id="actions">
+          <var-space>
+            <var-button v-if="!mode" round @click="openDeepLToTranslate(text)">
+              <svg-icon type="mdi" :path="mdiTranslate" />
+            </var-button>
+            <var-button v-if="!mode" round @click="copyToClipboard(text)">
+              <svg-icon type="mdi" :path="mdiContentCopy" />
+            </var-button>
+          </var-space>
+        </template>
       </var-card>
-    </div>
+    </template>
     <CKeyboardEditor
       v-model:show-keyboard="showKeyboard"
       v-model:text="text"

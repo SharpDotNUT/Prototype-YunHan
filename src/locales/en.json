@@ -48,6 +48,7 @@
   "global.action.export-fail": "Export failed",
   "global.action.exported": "Exported",
   "global.action.exporting": "Exporting",
+  "global.action.load-fail": "Load failed",
   "global.all": "All",
   "global.author": "Author",
   "global.character": "Character",

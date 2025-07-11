@@ -97,7 +97,6 @@ const selectedSong = defineModel('selectedSong', { type: Number, default: 0 });
         <div
           class="cell"
           v-for="(item, index) in songMetaData[selectedAlbum].songs"
-          style="display: flex; align-items: center; gap: 10px"
           :class="{ selected: index === selectedSong }"
           @click="selectedSong = index"
           :key="item.id"

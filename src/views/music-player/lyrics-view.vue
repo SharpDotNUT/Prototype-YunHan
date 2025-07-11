@@ -28,7 +28,7 @@ const s_isFetchFailed = ref(false);
 async function fetchLyrics() {
   try {
     const res = await fetch(
-      `https://unpkg.com/@kuriyota/hoyomix-ncg/data/lyrics/${props.song_id}.json`
+      `https://unpkg.com/@kuriyota/hoyomix-ncm/data/lyrics/${props.song_id}.json`
     );
     lyrics.value = await res.json();
   } catch {
@@ -137,6 +137,7 @@ defineExpose({ play, scrollToCurrentLyric });
   <div
     class="lyrics-container"
     ref="lyricsContainer"
+    v-if="!s_isFetchFailed"
     @wheel="isUserScrolling = true"
     @touchmove="isUserScrolling = true">
     <div
@@ -166,6 +167,9 @@ defineExpose({ play, scrollToCurrentLyric });
       <p class="lyric-romaji" v-if="lyric.romaji">{{ lyric.romaji }}</p>
     </div>
     <div style="height: 50%"></div>
+  </div>
+  <div v-else class="lyrics-container center">
+    {{ $t('global.action.load-fail') }}
   </div>
 </template>
 

@@ -48,6 +48,7 @@
   "global.action.export-fail": "导出失败",
   "global.action.exported": "已导出",
   "global.action.exporting": "正在导出",
+  "global.action.load-fail": "加载失败",
   "global.all": "所有",
   "global.author": "作者",
   "global.character": "角色",

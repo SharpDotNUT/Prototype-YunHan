@@ -1,18 +1,10 @@
 <script setup>
-import {
-  ref,
-  watch,
-  watchEffect,
-  onUnmounted,
-  useTemplateRef,
-  onMounted
-} from 'vue';
+import { ref, watch, watchEffect, onUnmounted, useTemplateRef } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import SvgIcon from '@jamescoyle/vue-icon';
 import LyricsView from './lyrics-view.vue';
 import TitleView from './title-view.vue';
 import ControlPanel from './control-panel.vue';
-import { Snackbar, Dialog } from '@varlet/ui';
 import {
   mdiSkipNext,
   mdiSkipPrevious,
@@ -22,12 +14,11 @@ import {
   mdiTextBox,
   mdiImageArea
 } from '@mdi/js';
-import { useMainStore } from '@/stores/main';
 const ref_image = ref(null);
 
 let Data = [];
 const s_dataLoaded = ref(false);
-fetch('https://unpkg.com/@kuriyota/hoyomix-ncg/data/all.json')
+fetch('https://unpkg.com/@kuriyota/hoyomix-ncm/data/all.json')
   .then((res) => res.json())
   .then((data) => {
     if (data) {
@@ -240,6 +231,10 @@ onUnmounted(() => {
         </var-button>
       </div>
     </div>
+  </div>
+  <div id="container" v-else class="center">
+    <var-loading />
+    <p>{{ $t('global.loading') }}</p>
   </div>
 </template>
 

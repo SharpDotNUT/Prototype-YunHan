@@ -23,6 +23,7 @@
     "filesize": "^10.1.6",
     "github-markdown-css": "^5.5.1",
     "hoyo-gacha": "^0.2.0",
+    "hoyo-glyphs-with-meta": "^2025.710.1",
     "idb": "^8.0.3",
     "json5": "^2.2.3",
     "ky": "^1.8.1",

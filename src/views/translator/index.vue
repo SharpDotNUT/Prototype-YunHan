@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import { ref, watch, computed, nextTick, useTemplateRef } from 'vue';
 import SvgIcon from '@jamescoyle/vue-icon';
-import D_FontData from '@/data/fonts/data.json';
 import CAutoTextarea from './CAutoTextarea.vue';
 import CKeyboardEditor from './CKeyboardEditor.vue';
 import DomToImage from 'dom-to-image';
 import { useI18n } from 'vue-i18n';
-const { locale } = useI18n();
-
 import {
   mdiContentCopy,
   mdiExport,
@@ -17,6 +14,9 @@ import {
 } from '@mdi/js';
 import { copyToClipboard, saveFile } from '@/script/tools';
 import { Snackbar } from '@varlet/ui';
+const { locale } = useI18n();
+import D_FontData from 'hoyo-glyphs-with-meta/data';
+import 'hoyo-glyphs-with-meta/css';
 
 const { t } = useI18n();
 
@@ -29,10 +29,11 @@ const mode = ref(1);
 const ref_textarea = ref(null);
 const el_result = useTemplateRef('el_result');
 
-const currentFontName = computed(() => {
-  const font: any = D_FontData.find((x) => x.id === currentFont.value);
-  return font.name[locale.value];
-});
+const getFontName = (id?: string) => {
+  const font = D_FontData.find((x) => x.id === (id ? id : currentFont.value));
+  //@ts-ignore
+  return font.name[locale.value == 'zh-Hans' ? 'zh' : locale];
+};
 watch(mode, () => {
   showKeyboard.value = false;
   nextTick(() => {
@@ -78,24 +79,27 @@ const exportAsImg = async () => {
       <div id="bar">
         <div id="title">
           <var-chip type="primary" block>
-            {{ mode ? $t('global.lang.en') : currentFontName }}
+            {{ mode ? $t('global.lang.en') : getFontName() }}
           </var-chip>
           <var-button id="button" block @click="mode = 1 - mode">
             <svg-icon id="icon" type="mdi" :path="mdiSwapHorizontal" />
           </var-button>
           <var-chip type="primary" block>
-            {{ mode ? currentFontName : $t('global.lang.en') }}
+            {{ mode ? getFontName() : $t('global.lang.en') }}
           </var-chip>
         </div>
         <var-select style="width: 100%" v-model="currentFont">
           <var-option
             v-for="font in D_FontData as any[]"
             :key="font.id"
-            :label="font.name[locale]"
+            :label="getFontName(font.id)"
             :value="font.id">
             <div style="display: flex; flex-direction: column; padding: 10px 0">
               <p :class="`font-${font.id}`">{{ font.id }}</p>
-              <p>{{ font.name[locale] }}</p>
+              <p>{{ getFontName(font.id) }}</p>
+              <p v-if="font.description[locale == 'zh-Hans' ? 'zh' : locale]">
+                ({{ font.description[locale == 'zh-Hans' ? 'zh' : locale] }})
+              </p>
             </div>
           </var-option>
         </var-select>
@@ -150,7 +154,6 @@ const exportAsImg = async () => {
 </template>
 
 <style scoped>
-@import url('@/data/fonts/fonts.css');
 @import url('./index.css');
 
 textarea,

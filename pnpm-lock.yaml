@@ -41,6 +41,9 @@ importers:
       hoyo-gacha:
         specifier: ^0.2.0
         version: 0.2.0
+      hoyo-glyphs-with-meta:
+        specifier: ^2025.710.1
+        version: 2025.710.1
       idb:
         specifier: ^8.0.3
         version: 8.0.3
@@ -1586,6 +1589,9 @@ packages:
 
   hoyo-gacha@0.2.0:
     resolution: {integrity: sha512-5FVctD2qIlbBY7Mix4OjKg9zQoejXnW/ziTxIAKVFZN5zq95KVXkq6oW61qFUR4huDR6kTr0tfyeQ2KR31gptw==}
+
+  hoyo-glyphs-with-meta@2025.710.1:
+    resolution: {integrity: sha512-oz0mE3SUOE1C+tNevtrDco/uZ0oFNRXFGWtbsJhKTytIHv/sFLEJO3qUUYuOCcadG5326GhNLBwkog52S6jXsg==}
 
   html-tags@3.3.1:
     resolution: {integrity: sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ==}
@@ -4229,6 +4235,8 @@ snapshots:
   hookable@5.5.3: {}
 
   hoyo-gacha@0.2.0: {}
+
+  hoyo-glyphs-with-meta@2025.710.1: {}
 
   html-tags@3.3.1: {}
 

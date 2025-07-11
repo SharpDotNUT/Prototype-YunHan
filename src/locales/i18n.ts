@@ -32,7 +32,9 @@ const messages = {
   }
 };
 
-const i18n = createI18n({
+export const SupportedLanguages = ['zh-Hans', 'en', 'ja'];
+
+const i18n = createI18n<typeof ZHS, (typeof SupportedLanguages)[number]>({
   locale: 'zh-Hans',
   fallbackLocale: 'zh-Hans',
   messages,

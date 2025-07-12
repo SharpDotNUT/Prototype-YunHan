@@ -11,11 +11,6 @@
 
 @import url('https://fonts.font.im/css2?family=JetBrains+Mono:wght@100..900&display=swap');
 
-@font-face {
-  font-family: Teyvat;
-  src: url('@/data/fonts/files/TeyvatBlack-Regular.woff2');
-}
-
 * {
   font-weight: 500;
 }

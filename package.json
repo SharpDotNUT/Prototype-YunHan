@@ -1,6 +1,6 @@
 {
-  "name": "sharpdotnut/protptype-yunhan",
-  "version": "2.5.1",
+  "name": "@sharpdotnut/protptype-yunhan",
+  "version": "2.5.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
-    "@kuriyota/hoyomix-ncg": "^25.6.60",
     "@mdi/js": "^7.4.47",
     "@varlet/touch-emulator": "^3.2.13",
     "@varlet/ui": "^3.11.0",

@@ -1,4 +1,34 @@
-## 2.5.1 (2025-07-09)
+## 2.5.2 (2025-07-12) - 契约胜利之剑 / Excalibur
+
+- **Translator / 翻译器**:
+  - 修复文本框自动调整大小功能
+  - Fix textbox auto-resize
+  - 添加导出图片功能
+  - Add export image feature
+  - 从 NPM 包获取字体和元数据
+  - Get fonts and metadata from NPM
+- **Music player / 音乐播放器**:
+  - 增强错误处理
+  - Improve error handling
+- **Dictionary / 辞典**:
+  - 使用 Pinia 状态管理统筹逻辑
+  - Use Pinia states manager to manage logic
+  - 更改数据结构
+  - Change data structure
+  - 为中文添加注音
+  - Add pinyin for Chinese
+  - 改进 UI & UX：配色，布局
+  - Improve UI & UX: color, layout
+  - 移除搜索语言选择功能，选择默认搜索所有语言
+  - Remove language selection for search, select all languages by default
+- **App / 应用**:
+  - 移除 `wait-for-meta` 页面
+  - Remove `wait-for-meta` page
+- **RM**
+  - 更改逻辑，加强异步
+  - Change logic, improve asynchronous
+
+## 2.5.1 (2025-07-09) - Fate / Stay Night
 
 - **Locale / 本地化**:
   - 扁平化 JSON 数据
@@ -11,11 +41,15 @@
   - 使用 Markdown 作为更新日志
   - Use Markdown as update log
 
-## 2.5.0 - The Gods' Limits / 「神的局限性」 (2025-07-09)
+## 2.5.0 (2025-07-09) - The Gods' Limits / 「神的局限性」 (2025-07-09)
 
 - **TQRT**:
-  - 新功能。
+  - 新功能：
+    - 文本速查速译
+    - 词条资源管理器
   - New feature.
+    - Text Quick Reference & Translation
+    - Text Mapgit push --set-upstream origin main Resource Manager
 
 ## 2.4.1 (2025-07-07)
 

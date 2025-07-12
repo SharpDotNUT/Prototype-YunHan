@@ -1,5 +1,5 @@
 import { dbPromise } from '@/script/idb';
-import { openDB } from 'idb';
+import ky from 'ky';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -52,49 +52,56 @@ export const useRM = defineStore('RM', () => {
   let MetaURL: string;
   const CacheMetaKey = 'Yunhan-CacheMeta';
   const router = useRouter();
+  let fetchMetaPromise: Promise<void> | null = null; // Singleton promise
 
-  function check() {
-    if (StaticMetaData.value === null) {
-      router.push('app/wait-for-meta');
-    }
+  MetaURL = import.meta.env.VITE_RESOURCE_HOST;
+  if (localStorage.getItem(CacheMetaKey)) {
+    CacheMeta = new Map(JSON.parse(localStorage.getItem('Yunhan-CacheMeta')!));
   }
+
+  const fetchMeta = async () => {
+    if (fetchMetaPromise) return fetchMetaPromise;
+    fetchMetaPromise = ky
+      .get(MetaURL + '/meta.json')
+      .then((res) => res.json())
+      .then((data: any) => {
+        StaticMetaData.value = data;
+      })
+      .finally(() => {
+        fetchMetaPromise = null; // Reset when done
+      });
+    return fetchMetaPromise;
+  };
+  fetchMeta();
 
   const saveCacheMeta = async () => {
     const entries = Array.from(CacheMeta.entries());
     localStorage.setItem(CacheMetaKey, JSON.stringify(entries));
   };
 
-  MetaURL = import.meta.env.VITE_RESOURCE_HOST;
-  if (localStorage.getItem(CacheMetaKey)) {
-    CacheMeta = new Map(JSON.parse(localStorage.getItem('Yunhan-CacheMeta')!));
-  }
-  fetch(MetaURL + '/meta.json')
-    .then((res) => res.json())
-    .then((data) => {
-      StaticMetaData.value = data;
-    });
-
   // 获取资源
   async function get(id: string, variant?: string, force?: boolean) {
-    if (!StaticMetaData.value) throw new Error('StaticMetaData not loaded');
+    if (!StaticMetaData.value) {
+      await fetchMeta();
+    }
     const key = resourceKeyToString(id, variant);
     await prefetch(id, variant, force);
     const data = await IDBGet(key);
-    console.log(data);
     if (!data) {
       logger(`Resource ${key} not found`);
       CacheMeta.delete(key);
       saveCacheMeta();
-      // await prefetch(id, variant, true)
     }
     return await IDBGet(key);
   }
 
   // 预取资源
   async function prefetch(id: string, variant?: string, force?: boolean) {
-    if (!StaticMetaData.value) throw new Error('StaticMetaData not loaded');
+    if (!StaticMetaData.value) {
+      await fetchMeta();
+    }
     const key = resourceKeyToString(id, variant);
-    const resourceMeta = StaticMetaData.value.resources[id];
+    const resourceMeta = StaticMetaData.value!.resources[id];
     if (!resourceMeta) throw new Error(`Resource ${key} not found`);
     const cacheMeta = CacheMeta.get(key);
     let isExpired = false;
@@ -129,7 +136,7 @@ export const useRM = defineStore('RM', () => {
       }
 
       const data = await res.json();
-      const hash = StaticMetaData.value.resources[id]?.hash;
+      const hash = StaticMetaData.value!.resources[id]?.hash;
       await IDBSet(key, data);
       CacheMeta.set(key, {
         size,
@@ -142,7 +149,9 @@ export const useRM = defineStore('RM', () => {
   }
 
   async function remove(id: string, variant?: string) {
-    if (!StaticMetaData.value) throw new Error('StaticMetaData not loaded');
+    if (!StaticMetaData.value) {
+      await fetchMeta();
+    }
     const key = resourceKeyToString(id, variant);
     CacheMeta.delete(key);
     IDBDel(key);
@@ -151,7 +160,9 @@ export const useRM = defineStore('RM', () => {
   }
 
   async function removeByKey(key: string) {
-    if (!StaticMetaData.value) throw new Error('StaticMetaData not loaded');
+    if (!StaticMetaData.value) {
+      await fetchMeta();
+    }
     CacheMeta.delete(key);
     IDBDel(key);
     saveCacheMeta();
@@ -173,7 +184,6 @@ export const useRM = defineStore('RM', () => {
   }
 
   return {
-    check,
     get,
     getLocalMeta,
     prefetch,

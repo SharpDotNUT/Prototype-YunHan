@@ -1,123 +1,52 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 const { locale } = useI18n();
-import { isEqual } from 'lodash-es';
-import Tags from '@/data/dictionary/tags.json';
-import { filter, type t_word } from './main';
-import type { Ref } from 'vue';
-import { useMainStore } from '@/stores/main';
-import { useRM } from '@/stores/resource-manager';
+import { DynamicScroller, DynamicScrollerItem } from 'vue-virtual-scroller';
+import { useDict } from './store';
+import ZhText from './zh-text.vue';
 
-let Words: t_word[] = [];
-const mainStore = useMainStore();
-const RM = useRM();
-RM.get('dictionary/genshin').then(async (data) => {
-  if (data) {
-    Words = data;
-    Words_loaded.value = true;
-    search(null, true);
-  }
-});
+const store = useDict();
 
-const Words_loaded = ref(false);
-const lastSearchString: Ref<undefined | string> = ref(undefined);
-const searchString = ref('');
-const lastSearchTags: Ref<undefined | string[]> = ref(undefined);
-const searchTags = ref([]);
-const lastSearchFrom: Ref<undefined | string> = ref(undefined);
-const searchFrom = ref(locale.value);
-const pre_words: Ref<t_word[]> = ref([]);
-const words = computed(() => {
-  return pre_words.value;
-});
-const ref_words = ref({});
-
-const search = (e: Event | null, force = false) => {
-  const sameString = searchString.value == lastSearchString.value;
-  const sameTags = isEqual(searchTags.value, lastSearchTags.value);
-  const sameFrom = searchFrom.value == lastSearchFrom.value;
-  if (sameString && sameTags && sameFrom && !force) {
-    return;
-  }
-  lastSearchString.value = searchString.value;
-  lastSearchTags.value = searchTags.value;
-  lastSearchFrom.value = searchFrom.value;
-  pre_words.value = Words.filter((word) => {
-    return filter(word, searchString, searchTags, searchFrom);
-  });
-};
+const searchText = ref('');
+const searchTags = ref<string[]>([]);
 </script>
 
 <template>
   <div class="dictionary-main">
-    <div id="search">
-      <h2 class="only-in-pc">{{ $t('dictionary.genshin-dict') }}</h2>
-      <br />
-      <var-input
-        v-model="searchString"
-        :placeholder="$t('dictionary.search-text')"
-        @input="search(null)" />
-      <br />
-      <var-select
-        :placeholder="$t('dictionary.search-lang')"
-        chip
-        v-model="searchFrom"
-        @change="search">
-        <var-option value="all" :label="$t('global.all')" />
-        <var-option value="zh-Hans" :label="$t('global.lang.zh-Hans')" />
-        <var-option value="en" :label="$t('global.lang.en')" />
-        <var-option value="ja" :label="$t('global.lang.ja')" />
-      </var-select>
-      <br />
-      <var-select
-        :placeholder="$t('dictionary.filter')"
-        chip
-        multiple
-        v-model="searchTags"
-        @change="(search(null), console.log(searchTags))">
-        <var-option
-          v-for="(text, tag) in (Tags as Record<string, Record<string, any>>)?.[
-            locale
-          ]"
-          :value="tag"
-          :label="text" />
-      </var-select>
-    </div>
     <div id="result">
-      <p>{{ $t('dictionary.result-count', [words.length]) }}</p>
-      <var-loading v-if="!Words_loaded" :description="$t('global.loading')" />
-      <dynamic-scroller id="list" :items="words" :min-item-size="100">
-        <template #default="{ item: word, index, active }">
-          <dynamic-scroller-item
-            :item="word"
+      <div class="center" v-if="!store.wordsLoaded">
+        <var-loading :description="$t('global.loading')" />
+      </div>
+      <DynamicScroller
+        v-else
+        id="list"
+        :items="store.WordsFiltered"
+        :min-item-size="100">
+        <template #default="{ item, index, active }">
+          <DynamicScrollerItem
+            :item="item"
             :active="active"
             :size-dependencies="[
               locale,
-              word.zhCN,
-              word.en,
-              word.ja,
-              word.tags
+              item.text['zh-Hans'],
+              item.text.en,
+              item.text.ja
             ]"
             :data-index="index">
             <div style="padding: 10px 0">
-              <var-card
-                class="word"
-                :ref="
-                  //@ts-ignore
-                  (el) => (ref_words[word.id] = el)
-                ">
+              <var-cell border class="word">
                 <h5>{{ $t('global.lang.zh-Hans') }}</h5>
-                <p lang="zh-Hans">{{ word.zhCN }}</p>
+                <ZhText :word="item" />
                 <h5>{{ $t('global.lang.en') }}</h5>
-                <p lang="en">{{ word.en }}</p>
+                <p lang="en">{{ item.text.en }}</p>
                 <h5>{{ $t('global.lang.ja') }}</h5>
                 <p
                   style="display: flex; align-items: baseline; flex-wrap: wrap">
-                  <span lang="ja">{{ word.ja }}</span>
-                  <span lang="ja" class="kana" v-if="word.pronunciationJa">
+                  <span lang="ja">{{ item.text.ja }}</span>
+                  <span lang="ja" class="kana" v-if="item.pronunciationJa">
                     <span>&nbsp(</span>
-                    {{ word.pronunciationJa }}
+                    {{ item.pronunciationJa }}
                     <span>)</span>
                   </span>
                 </p>
@@ -126,22 +55,44 @@ const search = (e: Event | null, force = false) => {
                   <var-chip
                     type="info"
                     class="tag"
-                    v-for="tag in word.tags"
+                    v-for="tag in item.tags"
                     @click="
-                      //@ts-ignore
-                      ((searchTags = [tag]), search())
+                      searchTags = [tag as string];
+                      store.search(searchText, searchTags);
                     ">
-                    {{
-                      //@ts-ignore
-                      Tags?.[locale]?.[tag]
-                    }}
+                    {{ store.Tags?.[locale]?.[tag] }}
                   </var-chip>
                 </div>
-              </var-card>
+              </var-cell>
             </div>
-          </dynamic-scroller-item>
+          </DynamicScrollerItem>
         </template>
-      </dynamic-scroller>
+      </DynamicScroller>
+    </div>
+    <div direction="column" id="search" ref="panel">
+      <var-input
+        v-model="searchText"
+        clearable
+        @blur="store.search(searchText, searchTags)"
+        @keyup.enter="store.search(searchText, searchTags)"
+        :placeholder="$t('dictionary.search-text')" />
+      <var-select
+        :placeholder="$t('dictionary.filter')"
+        chip
+        multiple
+        v-model="searchTags"
+        @change="store.search(searchText, searchTags)">
+        <var-option
+          v-for="(text, tag) in store.Tags?.[locale]"
+          :value="tag"
+          :label="text" />
+      </var-select>
+      <var-button
+        block
+        type="primary"
+        @click="store.search(searchText, searchTags)">
+        {{ $t('global.search') }}
+      </var-button>
     </div>
   </div>
 </template>

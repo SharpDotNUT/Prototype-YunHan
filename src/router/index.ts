@@ -4,7 +4,6 @@ import {
   type RouteRecordRaw
 } from 'vue-router';
 import Home from '@/views/home.vue';
-import AppWaitForMeta from '@/views/app/wait-for-meta/index.vue';
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -139,11 +138,6 @@ export const routes: RouteRecordRaw[] = [
     name: 'sp-key',
     path: '/sp-key',
     component: () => import('@/views/sp-key/index.vue')
-  },
-  {
-    name: 'app/wait-for-meta',
-    path: '/app/wait-for-meta',
-    component: AppWaitForMeta
   }
 ];
 

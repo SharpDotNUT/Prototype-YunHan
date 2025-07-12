@@ -21,8 +21,8 @@ importers:
         specifier: ^3.2.13
         version: 3.8.5
       '@varlet/ui':
-        specifier: ^3.9.0
-        version: 3.9.0(vue@3.5.13(typescript@5.7.3))
+        specifier: ^3.11.0
+        version: 3.11.0(vue@3.5.13(typescript@5.7.3))
       '@vue/tsconfig':
         specifier: ^0.5.1
         version: 0.5.1
@@ -38,6 +38,9 @@ importers:
       filesize:
         specifier: ^10.1.6
         version: 10.1.6
+      flexsearch:
+        specifier: ^0.8.205
+        version: 0.8.205
       github-markdown-css:
         specifier: ^5.5.1
         version: 5.8.1
@@ -59,6 +62,9 @@ importers:
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
+      lunr:
+        specifier: ^2.3.9
+        version: 2.3.9
       markdown-it:
         specifier: ^14.1.0
         version: 14.1.0
@@ -99,6 +105,9 @@ importers:
         specifier: ^7.3.0
         version: 7.3.0
     devDependencies:
+      '@earltp/vue-virtual-scroller':
+        specifier: ^1.0.1
+        version: 1.0.1
       '@tsconfig/node22':
         specifier: ^22.0.1
         version: 22.0.1
@@ -668,6 +677,9 @@ packages:
     resolution: {integrity: sha512-t8kDRGrKXyp6+tjUh7hw2RLyclsW4TRoRvRHtSyAX9Bb5ldlFh+90YAYY6awRXrlB4G5G2izNeGySpATlFzmOg==}
     engines: {node: '>=6.9.0'}
 
+  '@earltp/vue-virtual-scroller@1.0.1':
+    resolution: {integrity: sha512-7UsmP2JALnkfWlheuWRDywuBUTLJcVPE86X5ogA3djUmYFybE6qximgQ7OgyJnrKLteWR7+1Cp0GUXHhdDKaDQ==}
+
   '@esbuild/aix-ppc64@0.25.1':
     resolution: {integrity: sha512-kfYGy8IdzTGy+z0vFGvExZtxkFlA4zAxgKEahG9KE1ScBjpQnFsNOX8KTU5ojNru5ed5CVoJYXFtoxaq5nFbjQ==}
     engines: {node: '>=18'}
@@ -1056,22 +1068,22 @@ packages:
   '@types/trusted-types@2.0.7':
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
 
-  '@varlet/icons@3.9.0':
-    resolution: {integrity: sha512-GrnHnH5GxFovn74d0ZGLUjmT8C4M9GnnSBvdwugRSXn0bUk88k5VQq1J+w5SRRK+1CDLvOob+kF+wdUvWHx3vA==}
+  '@varlet/icons@3.11.0':
+    resolution: {integrity: sha512-VKKnwRTshKyDtrjHhDlRd7guq4pSsWA3HoqH7W9e4GNDgikIoo5WjU8NEgmr+lLzZVYU+bn1JWQ9NIbmwqrWHQ==}
 
-  '@varlet/shared@3.9.0':
-    resolution: {integrity: sha512-OVxTYrJ0RRczTc5kpxJfd+/BoIENmrKohiUPN15D+6PKooO8aqrPzzXh4LM9JJEVtkR/r6X2h0YOUO/23jdNHg==}
+  '@varlet/shared@3.11.0':
+    resolution: {integrity: sha512-dDl4Trsqo9JH29DhK2KTJQK4aa8hdDU/EkpHQPyGMDDqQ73nOamiXXG/uuQWjfVWD97Yg11cwck6ViPdA8Lkow==}
 
   '@varlet/touch-emulator@3.8.5':
     resolution: {integrity: sha512-aVTSVAeLSTwZAWgewbh/Fwfdp1WISFORRzV328k/pM2RNTNonAQQA2nB2ki7ODVrpKZdKn4UA68lUzotI3hveg==}
 
-  '@varlet/ui@3.9.0':
-    resolution: {integrity: sha512-nVw7V00iJuOzXy7K3wl9Y3NAVKO3Kj+NiP+Ik3mOLjRocmFVW6WmCo1vwD2cGv+0bvWftWRPaktbikWxYIx6GA==}
+  '@varlet/ui@3.11.0':
+    resolution: {integrity: sha512-50c+MEHcJi7wxqryRRFoqrae2d/GyOLPpQunqNsjrRvJzSQ7ccA4gfXuFxSJ4nhbm50+mlHf/7gXnSNXgcehYg==}
     peerDependencies:
       vue: ^3.2.0
 
-  '@varlet/use@3.9.0':
-    resolution: {integrity: sha512-GnsqGQqzPKGHJ9lnAWFlMb+8DCQkaMmgP0rF8yi4JsqKpjX6/TvQp/oKVUH4ja8ElSE1YgsmueWmITK30Tt+bg==}
+  '@varlet/use@3.11.0':
+    resolution: {integrity: sha512-6woDFS6sH9MK+77CvFFGYuyAcceLra4p4cJzJzp7NnrAhCDKYeJx409VJmHSNN7SNd5QHlbLx+Ptw1/SgnoXKw==}
     peerDependencies:
       vue: ^3.2.0
 
@@ -1479,6 +1491,9 @@ packages:
     resolution: {integrity: sha512-sJslQKU2uM33qH5nqewAwVB2QgR6w1aMNsYUp3aN5rMRyXEwJGmZvaWzeJFNTOXWlHQyBFCWrdj3fV/fsTOX8w==}
     engines: {node: '>= 10.4.0'}
 
+  flexsearch@0.8.205:
+    resolution: {integrity: sha512-REFjMqy86DKkCTJ4gIE42c9MVm9t1vUWfEub/8taixYuhvyu4jd4XmFALk5VuKW4GH4VLav8A4BJboTsslHF1w==}
+
   for-each@0.3.4:
     resolution: {integrity: sha512-kKaIINnFpzW6ffJNDjjyjrk21BkDx38c0xa/klsT8VzLCaMEefv4ZTacrcVR4DmgTeBra++jMDAfS/tS799YDw==}
     engines: {node: '>= 0.4'}
@@ -1836,6 +1851,9 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
+
+  lunr@2.3.9:
+    resolution: {integrity: sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==}
 
   magic-string@0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
@@ -3304,6 +3322,8 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
+  '@earltp/vue-virtual-scroller@1.0.1': {}
+
   '@esbuild/aix-ppc64@0.25.1':
     optional: true
 
@@ -3572,27 +3592,27 @@ snapshots:
 
   '@types/trusted-types@2.0.7': {}
 
-  '@varlet/icons@3.9.0': {}
+  '@varlet/icons@3.11.0': {}
 
-  '@varlet/shared@3.9.0':
+  '@varlet/shared@3.11.0':
     dependencies:
       rattail: 1.0.17
 
   '@varlet/touch-emulator@3.8.5': {}
 
-  '@varlet/ui@3.9.0(vue@3.5.13(typescript@5.7.3))':
+  '@varlet/ui@3.11.0(vue@3.5.13(typescript@5.7.3))':
     dependencies:
       '@popperjs/core': 2.11.8
-      '@varlet/icons': 3.9.0
-      '@varlet/shared': 3.9.0
-      '@varlet/use': 3.9.0(vue@3.5.13(typescript@5.7.3))
+      '@varlet/icons': 3.11.0
+      '@varlet/shared': 3.11.0
+      '@varlet/use': 3.11.0(vue@3.5.13(typescript@5.7.3))
       dayjs: 1.11.13
       decimal.js: 10.5.0
       vue: 3.5.13(typescript@5.7.3)
 
-  '@varlet/use@3.9.0(vue@3.5.13(typescript@5.7.3))':
+  '@varlet/use@3.11.0(vue@3.5.13(typescript@5.7.3))':
     dependencies:
-      '@varlet/shared': 3.9.0
+      '@varlet/shared': 3.11.0
       vue: 3.5.13(typescript@5.7.3)
 
   '@vitejs/plugin-basic-ssl@1.2.0(vite@6.2.3(@types/node@22.13.17)(terser@5.38.0))':
@@ -4130,6 +4150,8 @@ snapshots:
 
   filesize@10.1.6: {}
 
+  flexsearch@0.8.205: {}
+
   for-each@0.3.4:
     dependencies:
       is-callable: 1.2.7
@@ -4456,6 +4478,8 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
+
+  lunr@2.3.9: {}
 
   magic-string@0.25.9:
     dependencies:

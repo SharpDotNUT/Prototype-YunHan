@@ -1,14 +1,8 @@
 import type { Ref } from 'vue';
-
-export interface t_word {
-  zhCN: string;
-  en: string;
-  ja: string;
-  tags: string[];
-}
+import type { Word } from './types';
 
 export function filter(
-  word: t_word,
+  word: Word,
   searchString: Ref<string>,
   searchTags: Ref<string[]>,
   searchFrom: Ref<string>
@@ -23,27 +17,28 @@ export function filter(
 }
 
 function checkTextMatch(
-  word: t_word,
+  word: Word,
   searchTerm: string,
   searchField: string
 ): boolean {
   if (!searchTerm) return true;
   const term = searchTerm.toLowerCase();
-  switch (searchField) {
-    case 'zh-Hans':
-      return word.zhCN?.toLowerCase().includes(term) ?? false;
-    case 'en':
-      return word.en?.toLowerCase().includes(term) ?? false;
-    case 'ja':
-      return word.ja?.toLowerCase().includes(term) ?? false;
-    default:
-      return (
-        (word.zhCN?.toLowerCase().includes(term) ||
-          word.en?.toLowerCase().includes(term) ||
-          word.ja?.toLowerCase().includes(term)) ??
-        false
-      );
-  }
+  // switch (searchField) {
+  //   case 'zh-Hans':
+  //     return word.zhCN?.toLowerCase().includes(term) ?? false;
+  //   case 'en':
+  //     return word.en?.toLowerCase().includes(term) ?? false;
+  //   case 'ja':
+  //     return word.ja?.toLowerCase().includes(term) ?? false;
+  //   default:
+  //     return (
+  //       (word.zhCN?.toLowerCase().includes(term) ||
+  //         word.en?.toLowerCase().includes(term) ||
+  //         word.ja?.toLowerCase().includes(term)) ??
+  //       false
+  //     );
+  // }
+  return true;
 }
 
 function checkTagsMatch(wordTags: string[], searchTags: string[]): boolean {

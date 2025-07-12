@@ -31,7 +31,6 @@ const files: Ref<
 const ui_showArchive = ref(false);
 
 const RM = useRM();
-RM.check();
 RM.get('achievement/meta').then(async (data) => {
   AchievementData.value = data;
   DataLoaded();

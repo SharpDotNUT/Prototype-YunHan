@@ -21,6 +21,10 @@
   td:nth-child(3) {
     white-space: nowrap;
   }
+  td:nth-child(3) {
+    justify-self: end;
+    flex-direction: row;
+  }
 
   h5 {
     font-size: 1em;

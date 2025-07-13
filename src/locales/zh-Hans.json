@@ -24,6 +24,7 @@
   "app.translation-incomplete": "本语言的翻译尚未完成，请转到设置查看详情。",
   "app.update": "更新",
   "app.wait-for-meta": "请等待元数据加载",
+  "dictionary.cannot-find-voice": "找不到语音",
   "dictionary.description": "一个用于查询 miHoYo 旗下 IP 内术语和专有名词的工具",
   "dictionary.filter": "筛选标签",
   "dictionary.genshin-dict": "「原神」辞典",

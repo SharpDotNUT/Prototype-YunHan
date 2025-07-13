@@ -33,6 +33,7 @@ const messages = {
 };
 
 export const SupportedLanguages = ['zh-Hans', 'en', 'ja'];
+export type TSupportedLanguages = 'zh-Hans' | 'en' | 'ja';
 
 const i18n = createI18n<typeof ZHS, (typeof SupportedLanguages)[number]>({
   locale: 'zh-Hans',

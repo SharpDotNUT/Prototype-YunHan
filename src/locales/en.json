@@ -24,6 +24,7 @@
   "app.translation-incomplete": "The translation of this language is not yet complete, please go to Settings for details.",
   "app.update": "Update",
   "app.wait-for-meta": "Please wait for metadata to load.",
+  "dictionary.cannot-find-voice": "Cannot find voice",
   "dictionary.description": "A tool for querying terms and proper nouns within HoYoVERSE's IPs",
   "dictionary.filter": "Filter Tags",
   "dictionary.genshin-dict": "\"Genshin Impact\" Dictionary",

@@ -3,10 +3,13 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import type { Word } from './types';
 import { difference } from 'lodash-es';
+import { Snackbar } from '@varlet/ui';
+import { useI18n } from 'vue-i18n';
 
 const RM = useRM();
 export const languages = ['zh', 'en', 'ja'];
 export const useDict = defineStore('dictionary', () => {
+  const { t } = useI18n();
   const Words = ref<Word[]>([]);
   const WordsFiltered = ref<Word[]>([]);
   const Tags = ref<Record<string, Record<string, string>>>({});
@@ -18,7 +21,6 @@ export const useDict = defineStore('dictionary', () => {
     ja: undefined
   });
   const loadVoices = () => {
-    console.log(speechSynthesis.getVoices());
     AvailableVoices.value = speechSynthesis.getVoices();
     Voices.value = {
       zh: AvailableVoices.value.find((v) => v.lang.startsWith('zh'))?.name,
@@ -68,7 +70,10 @@ export const useDict = defineStore('dictionary', () => {
   const read = (text: string, lang: (typeof languages)[number]) => {
     speechSynthesis.cancel();
     utterance.text = text;
-    if (!Voices.value[lang]) return;
+    if (!Voices.value[lang]) {
+      Snackbar.error(t('dictionary.cannot-find-voice'));
+      return;
+    }
     utterance.voice = AvailableVoices.value.find(
       (voice) => voice.name === Voices.value[lang]
     ) as SpeechSynthesisVoice;

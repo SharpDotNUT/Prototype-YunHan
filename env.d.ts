@@ -19,3 +19,7 @@ declare const __LAST_COMMIT:
       };
     }
   | undefined;
+declare module 'typewriter-effect/dist/core' {
+  const Typewriter: typeof import('typewriter-effect').TypewriterClass;
+  export default Typewriter;
+}

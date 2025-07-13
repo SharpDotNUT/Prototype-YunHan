@@ -5,7 +5,7 @@
   background-color: color-mix(in srgb, var(--color-body) 20%, transparent);
   padding: 0px max(calc(50vw - 400px), 20px);
 
-  >div {
+  > div {
     position: absolute;
     transition:
       left 0.5s ease-in-out,
@@ -48,9 +48,11 @@
       }
 
       .cell:hover {
-        background-color: color-mix(in srgb,
-            var(--color-text) 10%,
-            transparent);
+        background-color: color-mix(
+          in srgb,
+          var(--color-text) 10%,
+          transparent
+        );
       }
 
       .sub-text {

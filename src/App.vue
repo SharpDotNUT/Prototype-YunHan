@@ -8,6 +8,7 @@ import { matchLanguages } from '@kuriyota/locale-matcher';
 
 const { locale, t } = useI18n();
 const loading = ref(false);
+const mainStore = useMainStore();
 
 const updateLocale = (lang: string) => {
   if (SupportedLanguages.includes(lang)) {
@@ -48,10 +49,9 @@ watch(loading, (newLoading) => {
   }
 });
 
-const LS = localStorage;
-
 import { useRegisterSW } from 'virtual:pwa-register/vue';
 import { status, SupportedLanguages } from './locales/i18n';
+import { useMainStore } from './stores/main';
 const { needRefresh, updateServiceWorker } = useRegisterSW({
   onRegistered() {
     console.log('Service Worker registered');
@@ -62,7 +62,7 @@ const { needRefresh, updateServiceWorker } = useRegisterSW({
   }
 });
 
-const needUpdate = ref(false);
+const needUpdate = ref(true);
 console.log({ needRefresh, updateServiceWorker });
 if (needRefresh.value) {
   needUpdate.value = true;
@@ -71,24 +71,27 @@ if (needRefresh.value) {
 
 <template>
   <div id="app">
-    <div id="app-bar">
-      <AppBar />
+    <div v-if="needUpdate">
+      <var-alert closeable @close="needUpdate = false">
+        <var-space justify="space-between">
+          <p>
+            {{ $t('app.new-version') }}
+          </p>
+          <var-button size="small" text @click="updateServiceWorker()">
+            {{ $t('app.update') }}
+          </var-button>
+        </var-space>
+      </var-alert>
     </div>
-    <var-loading :loading="loading" type="wave">
+    <div id="app-container">
+      <div id="app-bar">
+        <AppBar />
+      </div>
       <div id="content" class="elevation-12">
         <RouterView />
       </div>
-      <template #description>
-        {{ $t('global.loading') }}
-      </template>
-    </var-loading>
+    </div>
   </div>
-  <var-dialog v-model:show="needUpdate" @confirm="updateServiceWorker(true)">
-    <template #title>
-      {{ $t('app.update') }}
-    </template>
-    {{ $t('app.new-version') }}
-  </var-dialog>
 </template>
 
 <style>

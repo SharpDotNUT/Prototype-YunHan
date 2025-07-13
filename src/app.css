@@ -1,22 +1,23 @@
 #app {
+  display: flex;
+  flex-direction: column;
   height: 100dvh;
+  overflow: hidden;
+}
+
+#app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: hidden;
 }
 
 #content {
-  box-shadow: 0 0 10px var(--color-body);
-  height: calc(100dvh - var(--app-bar-height));
-  overflow: auto;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
   margin: 0 auto;
   transition: opacity 0.25s ease-in-out;
-}
-
-#router-loading {
-  position: fixed;
-  top: var(--app-bar-height);
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(255, 255, 255, 0.8);
 }
 
 html[data-theme='dark'] #router-loading {

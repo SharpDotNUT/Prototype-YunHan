@@ -46,6 +46,7 @@
   "global.4-star": "4星",
   "global.5-star": "5星",
   "global.about": "关于",
+  "global.action.close": "关闭",
   "global.action.delete": "删除",
   "global.action.export-fail": "导出失败",
   "global.action.exported": "已导出",

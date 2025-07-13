@@ -20,6 +20,19 @@
   transition: opacity 0.25s ease-in-out;
 }
 
-html[data-theme='dark'] #router-loading {
-  background-color: rgba(0, 0, 0, 0.8);
+#ul {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  overflow-y: hidden;
+  h2 {
+    text-align: center;
+  }
+  #log {
+    height: 100%;
+    overflow-y: auto;
+  }
+  > * {
+    padding: 10px 20px;
+  }
 }

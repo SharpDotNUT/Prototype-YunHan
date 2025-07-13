@@ -1,3 +1,29 @@
+## 2.5.3 (2025-07-14) - 圣杯战争 / The Holy Grail War
+
+- **Locale / 本地化**:
+  - 增强本地化功能逻辑，引入 `locale-matcher`
+  - Improve localization logic, introduce `locale-matcher`
+- **Intro / 介绍页**
+  - 添加打字机动画
+  - Add typing animation
+- **Dictionary / 辞典**:
+  - 重构 UI & UX
+  - Refactor UI & UX
+  - 支持复制功能
+  - Add copy function
+  - 使用 Web Speech API 支持 TTS 功能，并支持选择语音
+  - Use Web Speech API to support TTS function, and support selecting voice
+  - 添加了对 `note` 词条的展示
+  - Add display of `note` entries
+- **RM / 资源管理器**
+  - 功能上支持下载进度
+  - Support download progress function
+- **App / 应用**
+  - 改变了更新提示的展示方式，现在展示在页面最上方
+  - Changed the way update prompts are displayed, now displayed at the top of the page
+  - 在首次浏览新版本时，展示「更新日志」
+  - Show "Update Log" when browsing a new version for the first time
+
 ## 2.5.2 (2025-07-12) - 契约胜利之剑 / Excalibur
 
 - **Translator / 翻译器**:

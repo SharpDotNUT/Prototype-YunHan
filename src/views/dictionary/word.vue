@@ -5,7 +5,7 @@ import type { Word } from './types';
 import ZhText from './zh-text.vue';
 import { copyToClipboard } from '@/script/tools';
 import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiContentCopy } from '@mdi/js';
+import { mdiContentCopy, mdiVolumeHigh } from '@mdi/js';
 
 const { locale } = useI18n();
 const store = useDict();
@@ -21,7 +21,7 @@ defineEmits(['searchTag']);
           <td>
             <h5>{{ $t('global.lang.zh-Hans') }}</h5>
           </td>
-          <td class="text">
+          <td>
             <ZhText :word="word" />
           </td>
           <td>
@@ -30,6 +30,12 @@ defineEmits(['searchTag']);
               type="primary"
               @click="copyToClipboard(word.text['zh-Hans'])">
               <SvgIcon type="mdi" :path="mdiContentCopy" />
+            </var-button>
+            <var-button
+              size="small"
+              type="primary"
+              @click="store.read(word.text['zh-Hans'], 'zh')">
+              <SvgIcon type="mdi" :path="mdiVolumeHigh" />
             </var-button>
           </td>
         </tr>
@@ -46,6 +52,12 @@ defineEmits(['searchTag']);
               type="primary"
               @click="copyToClipboard(word.text.en)">
               <SvgIcon type="mdi" :path="mdiContentCopy" />
+            </var-button>
+            <var-button
+              size="small"
+              type="primary"
+              @click="store.read(word.text.en, 'en')">
+              <SvgIcon type="mdi" :path="mdiVolumeHigh" />
             </var-button>
           </td>
         </tr>
@@ -66,19 +78,31 @@ defineEmits(['searchTag']);
               @click="copyToClipboard(word.text.ja)">
               <SvgIcon type="mdi" :path="mdiContentCopy" />
             </var-button>
+            <template v-if="!word.pronunciationJa">
+              <var-button
+                size="small"
+                type="primary"
+                @click="store.read(word.text.ja, 'ja')">
+                <SvgIcon type="mdi" :path="mdiVolumeHigh" />
+              </var-button>
+            </template>
             <template v-if="word.pronunciationJa">
-              <br />
               <var-button
                 size="small"
                 type="primary"
                 @click="copyToClipboard(word.pronunciationJa)">
                 <SvgIcon type="mdi" :path="mdiContentCopy" />
               </var-button>
+              <var-button
+                size="small"
+                type="primary"
+                @click="store.read(word.pronunciationJa, 'ja')">
+                <SvgIcon type="mdi" :path="mdiVolumeHigh" />
+              </var-button>
             </template>
           </td>
         </tr>
       </table>
-      <br />
       <div>
         <var-chip
           type="info"

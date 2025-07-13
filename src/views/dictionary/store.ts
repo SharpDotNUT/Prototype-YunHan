@@ -5,11 +5,29 @@ import type { Word } from './types';
 import { difference } from 'lodash-es';
 
 const RM = useRM();
+export const languages = ['zh', 'en', 'ja'];
 export const useDict = defineStore('dictionary', () => {
   const Words = ref<Word[]>([]);
   const WordsFiltered = ref<Word[]>([]);
   const Tags = ref<Record<string, Record<string, string>>>({});
   const wordsLoaded = ref(false);
+  const AvailableVoices = ref<SpeechSynthesisVoice[]>([]);
+  const Voices = ref<Record<(typeof languages)[number], string | undefined>>({
+    zh: undefined,
+    en: undefined,
+    ja: undefined
+  });
+  const loadVoices = () => {
+    console.log(speechSynthesis.getVoices());
+    AvailableVoices.value = speechSynthesis.getVoices();
+    Voices.value = {
+      zh: AvailableVoices.value.find((v) => v.lang.startsWith('zh'))?.name,
+      en: AvailableVoices.value.find((v) => v.lang.startsWith('en'))?.name,
+      ja: AvailableVoices.value.find((v) => v.lang.startsWith('ja'))?.name
+    };
+  };
+  loadVoices();
+  speechSynthesis.addEventListener('voiceschanged', loadVoices);
 
   const fetchData = async () => {
     Promise.all([
@@ -46,5 +64,27 @@ export const useDict = defineStore('dictionary', () => {
     WordsFiltered.value = result;
   };
 
-  return { Words, WordsFiltered, Tags, wordsLoaded, fetchData, search };
+  const utterance = new SpeechSynthesisUtterance();
+  const read = (text: string, lang: (typeof languages)[number]) => {
+    speechSynthesis.cancel();
+    utterance.text = text;
+    if (!Voices.value[lang]) return;
+    utterance.voice = AvailableVoices.value.find(
+      (voice) => voice.name === Voices.value[lang]
+    ) as SpeechSynthesisVoice;
+
+    speechSynthesis.speak(utterance);
+  };
+
+  return {
+    Words,
+    WordsFiltered,
+    Tags,
+    wordsLoaded,
+    AvailableVoices,
+    Voices,
+    fetchData,
+    search,
+    read
+  };
 });

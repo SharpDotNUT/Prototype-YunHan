@@ -5,11 +5,15 @@ const { locale } = useI18n();
 import { DynamicScroller, DynamicScrollerItem } from 'vue-virtual-scroller';
 import { useDict } from './store';
 import CWord from './word.vue';
+import CSetting from './setting.vue';
+import SvgIcon from '@jamescoyle/vue-icon';
+import { mdiCog } from '@mdi/js';
 
 const store = useDict();
 
 const searchText = ref('');
 const searchTags = ref<string[]>([]);
+const ui_showSettings = ref(false);
 const search = () => {
   store.search(searchText.value, searchTags.value);
 };
@@ -68,6 +72,15 @@ const search = () => {
       <var-button block type="primary" @click="search()">
         {{ $t('global.search') }}
       </var-button>
+      <var-space justify="end">
+        <var-button
+          round
+          type="primary"
+          @click="ui_showSettings = !ui_showSettings">
+          <SvgIcon type="mdi" :path="mdiCog" />
+        </var-button>
+      </var-space>
+      <CSetting v-model="ui_showSettings" />
     </div>
   </div>
 </template>

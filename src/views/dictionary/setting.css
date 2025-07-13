@@ -1,0 +1,10 @@
+.dict-setting-container {
+  width: max(100vw, 300px);
+}
+
+#container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

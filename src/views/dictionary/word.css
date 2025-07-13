@@ -1,16 +1,25 @@
 .word-container {
   table {
     width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 8px;
+  }
+
+  tr {
+    display: contents;
   }
 
   td {
-    padding: 2px;
-    width: 0;
-    text-wrap: nowrap;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 2px;
   }
 
-  td.text {
-    width: 100%;
+  td:nth-child(1),
+  td:nth-child(3) {
+    white-space: nowrap;
   }
 
   h5 {
@@ -27,6 +36,6 @@
 
   .tag {
     cursor: pointer;
-    margin: 0px 1px;
+    margin: 1px;
   }
 }

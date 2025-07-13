@@ -1,0 +1,32 @@
+.word-container {
+  table {
+    width: 100%;
+  }
+
+  td {
+    padding: 2px;
+    width: 0;
+    text-wrap: nowrap;
+  }
+
+  td.text {
+    width: 100%;
+  }
+
+  h5 {
+    font-size: 1em;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  .kana {
+    font-size: 0.8em;
+  }
+
+  .tag {
+    cursor: pointer;
+    margin: 0px 1px;
+  }
+}

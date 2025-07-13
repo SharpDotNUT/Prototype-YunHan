@@ -4,9 +4,10 @@ import type { Word } from './types';
 
 const { word } = defineProps<{ word: Word }>();
 
-let text = ref('');
+const text = ref('');
 
 const update = () => {
+  text.value = '';
   if (Object.keys(word.pinyinZHS).length == 0) {
     text.value += word.text['zh-Hans'];
   } else {

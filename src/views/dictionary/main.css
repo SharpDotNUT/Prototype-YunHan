@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px;
+  padding: 20px max(calc(50vw - 300px), 20px);
   height: 100%;
   width: 100%;
   overflow-y: hidden;
@@ -24,25 +24,5 @@
 
   #list {
     height: 100%;
-  }
-
-  .word {
-    h5 {
-      font-size: 1em;
-      line-height: 1.5em;
-    }
-
-    p {
-      font-size: 1.2em;
-    }
-
-    .kana {
-      font-size: 0.8em;
-    }
-
-    .tag {
-      cursor: pointer;
-      margin: 0px 1px;
-    }
   }
 }

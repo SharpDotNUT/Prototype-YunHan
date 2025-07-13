@@ -4,12 +4,15 @@ import { useI18n } from 'vue-i18n';
 const { locale } = useI18n();
 import { DynamicScroller, DynamicScrollerItem } from 'vue-virtual-scroller';
 import { useDict } from './store';
-import ZhText from './zh-text.vue';
+import CWord from './word.vue';
 
 const store = useDict();
 
 const searchText = ref('');
 const searchTags = ref<string[]>([]);
+const search = () => {
+  store.search(searchText.value, searchTags.value);
+};
 </script>
 
 <template>
@@ -34,37 +37,12 @@ const searchTags = ref<string[]>([]);
               item.text.ja
             ]"
             :data-index="index">
-            <div style="padding: 10px 0">
-              <var-cell border class="word">
-                <h5>{{ $t('global.lang.zh-Hans') }}</h5>
-                <ZhText :word="item" />
-                <h5>{{ $t('global.lang.en') }}</h5>
-                <p lang="en">{{ item.text.en }}</p>
-                <h5>{{ $t('global.lang.ja') }}</h5>
-                <p
-                  style="display: flex; align-items: baseline; flex-wrap: wrap">
-                  <span lang="ja">{{ item.text.ja }}</span>
-                  <span lang="ja" class="kana" v-if="item.pronunciationJa">
-                    <span>&nbsp(</span>
-                    {{ item.pronunciationJa }}
-                    <span>)</span>
-                  </span>
-                </p>
-                <br />
-                <div>
-                  <var-chip
-                    type="info"
-                    class="tag"
-                    v-for="tag in item.tags"
-                    @click="
-                      searchTags = [tag as string];
-                      store.search(searchText, searchTags);
-                    ">
-                    {{ store.Tags?.[locale]?.[tag] }}
-                  </var-chip>
-                </div>
-              </var-cell>
-            </div>
+            <CWord
+              :word="item"
+              @search-tag="
+                searchTags = [$event];
+                search();
+              " />
           </DynamicScrollerItem>
         </template>
       </DynamicScroller>
@@ -73,24 +51,21 @@ const searchTags = ref<string[]>([]);
       <var-input
         v-model="searchText"
         clearable
-        @blur="store.search(searchText, searchTags)"
-        @keyup.enter="store.search(searchText, searchTags)"
+        @blur="search()"
+        @keyup.enter="search()"
         :placeholder="$t('dictionary.search-text')" />
       <var-select
         :placeholder="$t('dictionary.filter')"
         chip
         multiple
         v-model="searchTags"
-        @change="store.search(searchText, searchTags)">
+        @change="search()">
         <var-option
           v-for="(text, tag) in store.Tags?.[locale]"
           :value="tag"
           :label="text" />
       </var-select>
-      <var-button
-        block
-        type="primary"
-        @click="store.search(searchText, searchTags)">
+      <var-button block type="primary" @click="search()">
         {{ $t('global.search') }}
       </var-button>
     </div>

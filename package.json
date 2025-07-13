@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
+    "@kuriyota/locale-matcher": "^0.1.0",
     "@mdi/js": "^7.4.47",
     "@varlet/touch-emulator": "^3.2.13",
     "@varlet/ui": "^3.11.0",

@@ -11,6 +11,9 @@ importers:
       '@jamescoyle/vue-icon':
         specifier: ^0.1.2
         version: 0.1.2
+      '@kuriyota/locale-matcher':
+        specifier: ^0.1.0
+        version: 0.1.0
       '@mdi/js':
         specifier: ^7.4.47
         version: 7.4.47
@@ -862,6 +865,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@kuriyota/locale-matcher@0.1.0':
+    resolution: {integrity: sha512-MQ0TwB0javg6LVl88VojlibPGUx7IEZ2XmsYA5Lvcyu+9qMoO/1sP1NT6Vp3HRJpD9RdxBx1VGJFk+vnH6AimQ==}
 
   '@mdi/js@7.4.47':
     resolution: {integrity: sha512-KPnNOtm5i2pMabqZxpUz7iQf+mfrYZyKCZ8QNz85czgEt7cuHcGorWfdzUMWYA0SD+a6Hn4FmJ+YhzzzjkTZrQ==}
@@ -3424,6 +3430,8 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
+
+  '@kuriyota/locale-matcher@0.1.0': {}
 
   '@mdi/js@7.4.47': {}
 

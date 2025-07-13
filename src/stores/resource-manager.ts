@@ -79,13 +79,19 @@ export const useRM = defineStore('RM', () => {
     localStorage.setItem(CacheMetaKey, JSON.stringify(entries));
   };
 
+  type TOnload = (received: number, total: number) => any;
   // 获取资源
-  async function get(id: string, variant?: string, force?: boolean) {
+  async function get(
+    id: string,
+    variant?: string,
+    force?: boolean,
+    onload?: TOnload
+  ) {
     if (!StaticMetaData.value) {
       await fetchMeta();
     }
     const key = resourceKeyToString(id, variant);
-    await prefetch(id, variant, force);
+    await prefetch(id, variant, force, onload);
     const data = await IDBGet(key);
     if (!data) {
       logger(`Resource ${key} not found`);
@@ -96,7 +102,12 @@ export const useRM = defineStore('RM', () => {
   }
 
   // 预取资源
-  async function prefetch(id: string, variant?: string, force?: boolean) {
+  async function prefetch(
+    id: string,
+    variant?: string,
+    force?: boolean,
+    onload?: TOnload
+  ) {
     if (!StaticMetaData.value) {
       await fetchMeta();
     }
@@ -124,7 +135,13 @@ export const useRM = defineStore('RM', () => {
       } else {
         url = `${MetaURL}/res/${resourceMeta.id}.${resourceMeta.ext}`;
       }
-      const res = await fetch(url);
+      const res = await ky.get<any>(url, {
+        onDownloadProgress: onload
+          ? (progress) => {
+              onload(progress.transferredBytes, progress.totalBytes);
+            }
+          : undefined
+      });
       const resClone = res.clone();
 
       const reader = resClone.body!.getReader();

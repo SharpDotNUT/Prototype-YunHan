@@ -71,16 +71,19 @@ watch(ui_isTeyvatFont, () => {
           </var-space>
         </var-option>
       </var-select>
+    </div>
+    <var-divider />
+    <div>
+      <h2>{{ $t('setting.language.game-font') }}</h2>
       <br />
-      <p
-        style="
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        ">
-        <span>{{ $t('setting.language.teyvat') }}</span>
-        <var-switch v-model="ui_isTeyvatFont" :variant="true" />
-      </p>
+      <var-select
+        variant="outlined"
+        v-model="mainStore.gameFont"
+        :placeholder="$t('setting.game-font.select')">
+        <var-option :label="$t('global.game.GI')" value="GI"></var-option>
+        <var-option :label="$t('global.game.HSR')" value="HSR"></var-option>
+        <var-option :label="$t('global.game.ZZZ')" value="ZZZ"></var-option>
+      </var-select>
     </div>
   </div>
 </template>

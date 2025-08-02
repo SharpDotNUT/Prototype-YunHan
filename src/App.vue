@@ -27,6 +27,7 @@ const updateLocale = (lang: string) => {
 };
 updateLocale(localStorage.getItem('YunHan:lang') ?? navigator.language);
 
+const langTips = ref(false);
 watch(
   locale,
   (newLocale) => {
@@ -36,9 +37,7 @@ watch(
     localStorage.setItem('YunHan:lang', newLocale);
     const data = status.translated.find((item) => item.lang === newLocale);
     if (data && data.len < status.all) {
-      Snackbar.info({
-        content: t('app.translation-incomplete')
-      });
+      langTips.value = true;
     }
   },
   {
@@ -81,6 +80,21 @@ const setVersion = () => {
 
 <template>
   <div id="app">
+    <div v-if="langTips">
+      <var-alert closeable @close="langTips = false">
+        <var-space justify="space-between">
+          <p>
+            {{ $t('app.translation-incomplete') }}
+          </p>
+          <var-button
+            size="small"
+            text
+            @click="$router.push('/settings/general')">
+            {{ $t('setting.title') }}
+          </var-button>
+        </var-space>
+      </var-alert>
+    </div>
     <div v-if="needUpdate">
       <var-alert closeable @close="needUpdate = false">
         <var-space justify="space-between">

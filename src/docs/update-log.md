@@ -1,3 +1,12 @@
+## 2.5.4 (2025-08-02) - 英雄未死之前 / Before Their Deaths
+
+- **App / 应用**:
+  - 停止使用 `Noto San Family`，支持切换米哈游 (miHoYo) 游戏的字体（原/铁/绝）。
+  - Stop using `Noto San Family`, support switching fonts for HoYoVERSE games (Genshin, Star Rail, ZZZ).
+  - 改「未完全翻译语言提示」为顶部横幅。
+  - Change "Not fully translated language prompt" to top banner.
+    > 期待晚上(UTC+8)的前瞻
+
 ## 2.5.3 (2025-07-14) - 圣杯战争 / The Holy Grail War
 
 - **Locale / 本地化**:

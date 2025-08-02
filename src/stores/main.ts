@@ -1,13 +1,31 @@
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { defineStore } from 'pinia';
 import { Themes, StyleProvider } from '@varlet/ui';
 
 import PackageJSON from '../../package.json';
 
+const GameFont = ['GI', 'HSR', 'ZZZ'];
+type GameFont = 'GI' | 'HSR' | 'ZZZ';
+
 export const useMainStore = defineStore('main', () => {
   const version = ref(PackageJSON.version);
   const host_name = import.meta.env.VITE_API_HOST as string;
   const theme = ref('');
+  const gameFont = ref<GameFont>('GI');
+  {
+    const game = localStorage.getItem('game');
+    if (game && GameFont.includes(game)) {
+      gameFont.value = game as GameFont;
+    }
+  }
+  watch(
+    gameFont,
+    (game) => {
+      document.documentElement.dataset.game = game;
+      localStorage.setItem('game', game);
+    },
+    { immediate: true }
+  );
   const isUsingTeyvatFont = ref(false);
   const windowSize = ref({
     width: window.innerWidth,
@@ -57,6 +75,7 @@ export const useMainStore = defineStore('main', () => {
     version,
     host_name,
     theme,
+    gameFont,
     setTheme,
     isUsingTeyvatFont,
     beforeInstallPromptEvent,

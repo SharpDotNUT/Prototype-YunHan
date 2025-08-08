@@ -8,6 +8,7 @@
 
 #bar {
   display: flex;
+  align-items: center;
   padding: 10px;
   gap: 10px;
 }
@@ -27,18 +28,17 @@
   padding: 10px;
   transition: transform 0.5s ease-in-out;
   z-index: 10;
-  background-color: var(--color-body);
+  background-color: var(--card-background);
   border-right: 1px solid var(--color-primary);
   flex-shrink: 0;
 
-  > a {
+  > * {
     padding: 10px;
-    border-radius: 10px;
+    border-left: 2px solid transparent;
   }
 
-  > a:hover {
-    background-color: var(--color-primary);
-    color: var(--color-body);
+  > a.active {
+    border-left: 2px solid var(--color-primary);
   }
 }
 

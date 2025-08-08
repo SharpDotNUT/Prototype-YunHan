@@ -11,12 +11,15 @@ const showMenu = ref(true);
 const isMobile = computed(() => {
   return mainStore.windowSize.width <= 600;
 });
+
+const settings = ref(['general', 'rm']);
+const tab = ref('general');
 </script>
 
 <template>
   <div class="__container_settings">
-    <div id="bar">
-      <var-button round text v-if="isMobile" @click="showMenu = !showMenu">
+    <div id="bar" v-if="isMobile">
+      <var-button round text @click="showMenu = !showMenu">
         <svg-icon type="mdi" :path="mdiMenu" />
       </var-button>
       <h2>{{ $t('setting.title') }}</h2>
@@ -29,11 +32,15 @@ const isMobile = computed(() => {
           transform:
             isMobile && !showMenu ? 'translateX(-100%)' : 'translateX(0)'
         }">
-        <router-link v-ripple to="general">
-          {{ $t('setting.general') }}
-        </router-link>
-        <router-link v-ripple to="rm">
-          {{ $t('setting.rm') }}
+        <h2 v-if="!isMobile">{{ $t('setting.title') }}</h2>
+        <router-link
+          v-for="set in settings"
+          v-ripple
+          :to="set"
+          :class="{
+            active: $route.path === `/settings/${set}`
+          }">
+          {{ $t('setting.' + set) }}
         </router-link>
       </div>
       <div id="view">

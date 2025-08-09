@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { useMainStore } from '@/stores/main';
 import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiApps, mdiTranslate } from '@mdi/js';
+import { mdiMenu, mdiTranslate } from '@mdi/js';
 import RouterJump from '@/components/router-jump.vue';
 import Markdown from './markdown.vue';
 import { status } from '@/locales/i18n';
@@ -11,6 +11,7 @@ const title = ref('');
 const display_account = ref(false);
 const mainStore = useMainStore();
 const host_name = mainStore.host_name;
+const ui_showMenu = ref(false);
 
 const notice_show = ref(false);
 const notice_content = ref('');
@@ -55,14 +56,10 @@ const emits = defineEmits(['changeIsFullWidth']);
             </div>
           </template>
         </var-menu>
-        <var-menu placement="bottom-end">
-          <var-button round text>
-            <svg-icon type="mdi" :path="mdiApps"></svg-icon>
-          </var-button>
-          <template #menu>
-            <RouterJump />
-          </template>
-        </var-menu>
+        <var-button round text @click="ui_showMenu = true">
+          <svg-icon type="mdi" :path="mdiMenu"></svg-icon>
+        </var-button>
+        <RouterJump ref="menu" v-model="ui_showMenu" />
       </template>
       <template #left></template>
     </var-app-bar>

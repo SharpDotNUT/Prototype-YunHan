@@ -29,7 +29,7 @@ watch(ui_isTeyvatFont, () => {
 </script>
 
 <template>
-  <div>
+  <div class="container">
     <div>
       <h2>{{ $t('setting.theme.title') }}</h2>
       <br />
@@ -48,7 +48,6 @@ watch(ui_isTeyvatFont, () => {
         <template #append-icon></template>
       </var-select>
     </div>
-    <var-divider />
     <div>
       <h2>{{ $t('setting.language.title') }}</h2>
       <br />
@@ -72,7 +71,7 @@ watch(ui_isTeyvatFont, () => {
         </var-option>
       </var-select>
       <br />
-      <div style="display: flex; gap: 5px">
+      <div style="display: flex; gap: 5px; flex-wrap: wrap">
         <span>{{ $t('setting.translation-progress-online') }}</span>
         <img
           alt="en translation"
@@ -82,17 +81,17 @@ watch(ui_isTeyvatFont, () => {
           src="https://img.shields.io/badge/dynamic/json?color=blue&label=ja&style=flat&logo=crowdin&query=%24.progress.1.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" />
         <img
           alt="zh-TW translation"
-          src="https://img.shields.io/badge/dynamic/json?color=blue&label=zh-TW&style=flat&logo=crowdin&query=%24.progress.2.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" />
+          src="https://img.shields.io/badge/dynamic/json?color=blue&label=zh-Hant&style=flat&logo=crowdin&query=%24.progress.2.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" />
+        <span>|</span>
+        <span>
+          <var-link
+            target="_blank"
+            href="https://zh.crowdin.com/project/protype-yunhan/">
+            {{ $t('setting.contribute-translation') }}
+          </var-link>
+        </span>
       </div>
-      <p>
-        <var-link
-          type="primary"
-          href="https://zh.crowdin.com/project/protype-yunhan/">
-          {{ $t('setting.contribute-translation') }}
-        </var-link>
-      </p>
     </div>
-    <var-divider />
     <div>
       <h2>{{ $t('setting.language.game-font') }}</h2>
       <br />
@@ -107,3 +106,7 @@ watch(ui_isTeyvatFont, () => {
     </div>
   </div>
 </template>
+
+<style lang="css" scoped>
+@import url('./index.css');
+</style>

@@ -45,6 +45,12 @@ All in providing a pure web page toolbox, while supporting mobile phones.
 - [ ] 卡池浏览 Gacha Pool Browser
 - [ ] 抽卡模拟 Gacha Simulator
 
+<img alt="en translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=en&style=flat&logo=crowdin&query=%24.progress.0.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" />
+<img alt="ja translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=ja&style=flat&logo=crowdin&query=%24.progress.1.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" />
+<img alt="zh-TW translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=zh-TW&style=flat&logo=crowdin&query=%24.progress.2.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" />
+
+<a href="https://zh.crowdin.com/project/protype-yunhan/" rel="nofollow"><img style="width:140;height:40px" src="https://badges.crowdin.net/badge/light/crowdin-on-dark.png" srcset="https://badges.crowdin.net/badge/light/crowdin-on-dark.png 1x,https://badges.crowdin.net/badge/light/crowdin-on-dark@2x.png 2x" alt="Crowdin | Agile localization for tech companies" /></a>
+
 ## 致谢 Thanks
 
 感谢 [Cloudflare](https://www.cloudflare.com/) 提供的免费 CDN 服务，以及 Pages 等服务，他们是本项目免费运行的基础。

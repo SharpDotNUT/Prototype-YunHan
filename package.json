@@ -8,6 +8,9 @@
     "preview": "vite preview",
     "format": "pnpm run format-code",
     "format-code": "prettier --write .",
+    "locale-upload-source": "crowdin upload sources",
+    "locale-upload-translations": "crowdin upload translations",
+    "locale-download": "crowdin download",
     "check": "vue-tsc --noEmit"
   },
   "dependencies": {

@@ -1,11 +1,11 @@
-HoYoVERSE Dictionaryは、HoYoVERSEグループIP内の用語や固有名詞を検索するためのツールです。
+HoYoVERSE Dictionary is a tool for querying terms and proper nouns within HoYoVERSE's IPs.
 
-現在サポート中：
+Currently supports:
 
-### 「原神」辞書
+### "Genshin Impact" Dictionary
 
-現在のバージョンのデータは全て[Genshin Dictionary](https://genshin-dictionary.com/)から取得しています。([GitHub](https://github.com/xicri/genshin-dictionary))
+The current version's data is entirely sourced from [Genshin Dictionary](https://genshin-dictionary.com/).([GitHub](https://github.com/xicri/genshin-dictionary)).([GitHub](https://github.com/xicri/genshin-dictionary))([GitHub](https://github.com/xicri/genshin-dictionary))
 
-### 「崩壊：スターレイル」辞書
+### "Honkai: Star Rail" Dictionary
 
-目前正在筹划当中。
+Currently, in the planning stage.

@@ -8,4 +8,4 @@ HoYoVERSE Dictionaryは、HoYoVERSEグループIP内の用語や固有名詞を�
 
 ### 「崩壊：スターレイル」辞書
 
-目前正在筹划当中。
+現在、計画中である。

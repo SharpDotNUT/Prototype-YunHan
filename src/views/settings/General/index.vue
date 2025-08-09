@@ -71,6 +71,26 @@ watch(ui_isTeyvatFont, () => {
           </var-space>
         </var-option>
       </var-select>
+      <br />
+      <div style="display: flex; gap: 5px">
+        <span>{{ $t('setting.translation-progress-online') }}</span>
+        <img
+          alt="en translation"
+          src="https://img.shields.io/badge/dynamic/json?color=blue&label=en&style=flat&logo=crowdin&query=%24.progress.0.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" />
+        <img
+          alt="ja translation"
+          src="https://img.shields.io/badge/dynamic/json?color=blue&label=ja&style=flat&logo=crowdin&query=%24.progress.1.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" />
+        <img
+          alt="zh-TW translation"
+          src="https://img.shields.io/badge/dynamic/json?color=blue&label=zh-TW&style=flat&logo=crowdin&query=%24.progress.2.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" />
+      </div>
+      <p>
+        <var-link
+          type="primary"
+          href="https://zh.crowdin.com/project/protype-yunhan/">
+          {{ $t('setting.contribute-translation') }}
+        </var-link>
+      </p>
     </div>
     <var-divider />
     <div>

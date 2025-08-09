@@ -6,6 +6,7 @@ body {
     color 0.25s;
   color: var(--color-text);
   background-color: var(--color-body);
+  --link-font-size: 1em;
 }
 
 :root {

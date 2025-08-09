@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import CMarkdown from '@/components/markdown.vue';
-import ZhHansIntro from '@/locales/docs/dictionary/index.zh-Hans.md?raw';
-import ZhHantIntro from '@/locales/docs/dictionary/index.zh-Hant.md?raw';
-import EnIntro from '@/locales/docs/dictionary/index.en.md?raw';
-import JaIntro from '@/locales/docs/dictionary/index.ja.md?raw';
+
+import ZhHansIntro from '@/locales/text/zh-Hans/dictionary.md?raw';
+import ZhHantIntro from '@/locales/text/zh-Hant/dictionary.md?raw';
+import EnIntro from '@/locales/text/en/dictionary.md?raw';
+import JaIntro from '@/locales/text/ja/dictionary.md?raw';
+
 import { useI18n } from 'vue-i18n';
 const { locale } = useI18n();
 

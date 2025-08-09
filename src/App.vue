@@ -16,7 +16,6 @@ const updateLocale = (lang: string) => {
   if (SupportedLanguages.includes(lang)) {
     if (locale.value !== lang) {
       locale.value = lang;
-      console.log('[App] update locale to ', lang);
     }
   } else {
     const langs = matchLanguages(lang, SupportedLanguages);
@@ -31,6 +30,7 @@ const langTips = ref(false);
 watch(
   locale,
   (newLocale) => {
+    langTips.value = false;
     document.title = t('name');
     document.documentElement.lang = newLocale;
     Locale.use(newLocale);

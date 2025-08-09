@@ -1,7 +1,7 @@
 import { createI18n } from 'vue-i18n';
 import EN from './text/en/main.json';
-import ZHS from './text/zhHans/main.json';
-import ZHT from './text/zhHant/main.json';
+import ZHS from './text/zh-Hans/main.json';
+import ZHT from './text/zh-Hant/main.json';
 import JA from './text/ja/main.json';
 
 import { Locale } from '@varlet/ui';

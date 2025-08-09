@@ -24,7 +24,7 @@ const renderedMarkdown = computed(() => {
 const style = ref({
   backgroundColor: 'transparent',
   maxHeight: props.height,
-  overflowY: 'auto'
+  OverflowY: 'auto'
 });
 
 import GithubMarkdownCSSLight from 'github-markdown-css/github-markdown-light.css?url';
@@ -53,3 +53,12 @@ watch(() => mainStore.theme, updateCss);
     <slot name="footer"></slot>
   </div>
 </template>
+
+<style lang="css" scoped>
+:deep(.markdown-body) {
+  font-family: inherit;
+}
+:deep(.markdown-body) * {
+  font-weight: inherit;
+}
+</style>

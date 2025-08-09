@@ -5,6 +5,7 @@ declare module '@jamescoyle/vue-icon' {
   export default SvgIcon;
 }
 declare const __BUILD_TIME: string;
+declare const __BUILD_CLIENT: 'cloudflare' | 'unknown';
 declare const __LAST_COMMIT:
   | {
       sha: string;

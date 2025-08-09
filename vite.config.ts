@@ -25,9 +25,9 @@ export default defineConfig({
         enabled: false
       },
       manifest: {
-        name: 'Prototype',
-        short_name: 'Prototype',
-        id: 'sharpdotnut-prototype',
+        name: 'Prototype - YunHan 云翰',
+        short_name: '云翰·YunHan',
+        id: 'com.sharpdotnut.yunhan',
         background_color: '#000000',
         theme_color: '#d1bdff',
         icons: [
@@ -53,6 +53,7 @@ export default defineConfig({
   },
   define: {
     __BUILD_TIME: new Date().getTime(),
+    __BUILD_CLIENT: process.env?.CF_PAGES == '1' ? '"Cloudflare"' : '"Unknown"',
     __LAST_COMMIT: commit
   },
   optimizeDeps: {

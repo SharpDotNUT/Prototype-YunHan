@@ -22,9 +22,9 @@ How gently do the clouds and flowers sway, as dancing winds meander through the 
 
 ---
 
-「试作」是一个前端开源，后端部分开源的米哈游游戏工具箱。
+「试作·云翰」是一个前端开源，后端部分开源的米哈游游戏工具箱。
 
-"Prototype" is an front-end open source, back-end partly open source HoYo game toolbox.
+"Prototype-YunHan" is an front-end open source, back-end partly open source HoYo game toolbox.
 
 皆在提供一个纯网页端，支持手机界面的米游戏工具箱。
 
@@ -41,6 +41,7 @@ All in providing a pure web page toolbox, while supporting mobile phones.
 - [x] 前瞻兑换码查询 Special Program Redemption Code Query
 - [x] 问答 Quiz
 - [x] 抽卡分析数据 Gacha Analysis Data
+- [x] 文本速查速译 Text Quick Reference & Translate
 - [ ] 卡池浏览 Gacha Pool Browser
 - [ ] 抽卡模拟 Gacha Simulator
 

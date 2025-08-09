@@ -5,6 +5,7 @@ import Meta from '@/meta';
 const show = defineModel('show', { type: Boolean, default: true });
 
 const BuildTime = __BUILD_TIME;
+const BuildEnv = __BUILD_CLIENT;
 const LAST_COMMIT = __LAST_COMMIT;
 </script>
 
@@ -91,6 +92,9 @@ const LAST_COMMIT = __LAST_COMMIT;
       </div>
       <p style="margin-top: 1em">
         {{ $t('about.build-time', [new Date(BuildTime).toLocaleString()]) }}
+      </p>
+      <p style="margin-top: 1em">
+        {{ $t('about.build-env', [BuildEnv]) }}
       </p>
       <p>{{ $t('about.copyright') }}</p>
     </var-card>

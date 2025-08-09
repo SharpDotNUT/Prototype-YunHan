@@ -5,6 +5,7 @@ import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiApps, mdiTranslate } from '@mdi/js';
 import RouterJump from '@/components/router-jump.vue';
 import Markdown from './markdown.vue';
+import { status } from '@/locales/i18n';
 
 const title = ref('');
 const display_account = ref(false);
@@ -44,14 +45,12 @@ const emits = defineEmits(['changeIsFullWidth']);
           </var-button>
           <template #menu>
             <div style="text-align: right">
-              <var-cell lang="zh-Hans" border @click="$i18n.locale = 'zh-Hans'">
-                简体中文
-              </var-cell>
-              <var-cell lang="en" border @click="$i18n.locale = 'en'">
-                English
-              </var-cell>
-              <var-cell lang="ja" border @click="$i18n.locale = 'ja'">
-                日本語
+              <var-cell
+                v-for="lang in status.translated"
+                :lang="lang.lang"
+                border
+                @click="$i18n.locale = lang.lang">
+                {{ lang.name }}
               </var-cell>
             </div>
           </template>

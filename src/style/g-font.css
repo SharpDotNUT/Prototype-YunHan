@@ -1,9 +1,11 @@
 @import url('https://hoyo-fonts.kuriyota.com/fonts/GI-zh-cn/result.css');
 @import url('https://hoyo-fonts.kuriyota.com/fonts/GI-ja-jp/result.css');
 @import url('https://hoyo-fonts.kuriyota.com/fonts/HSR-zh-cn/result.css');
+@import url('https://hoyo-fonts.kuriyota.com/fonts/HSR-zh-tw/result.css');
 @import url('https://hoyo-fonts.kuriyota.com/fonts/HSR-ja-jp/result.css');
 @import url('https://hoyo-fonts.kuriyota.com/fonts/ZZZ-en-us/result.css');
 @import url('https://hoyo-fonts.kuriyota.com/fonts/ZZZ-zh-cn/result.css');
+@import url('https://hoyo-fonts.kuriyota.com/fonts/ZZZ-zh-tw/result.css');
 @import url('https://hoyo-fonts.kuriyota.com/fonts/ZZZ-ja-jp/result.css');
 
 @import url('https://fonts.font.im/css2?family=JetBrains+Mono:wght@100..900&display=swap');
@@ -25,7 +27,8 @@ html[lang='en'] {
   --font-family: 'GI-zh-cn', sans-serif;
 }
 
-html[lang='zh-Hans'] {
+html[lang='zh-Hans'],
+html[lang='zh-Hant'] {
   --font-family: 'GI-zh-cn', sans-serif;
 }
 
@@ -39,6 +42,9 @@ html[data-game='HSR'][lang='en'] {
 html[data-game='HSR'][lang='zh-Hans'] {
   --font-family: 'HSR-zh-cn', sans-serif;
 }
+html[data-game='HSR'][lang='zh-Hant'] {
+  --font-family: 'HSR-zh-tw', sans-serif;
+}
 html[data-game='HSR'][lang='ja'] {
   --font-family: 'HSR-ja-jp', 'HSR-zh-cn', sans-serif;
 }
@@ -48,6 +54,9 @@ html[data-game='ZZZ'][lang='en'] {
 }
 html[data-game='ZZZ'][lang='zh-Hans'] {
   --font-family: 'ZZZ-zh-cn', sans-serif;
+}
+html[data-game='ZZZ'][lang='zh-Hant'] {
+  --font-family: 'ZZZ-zh-tw', sans-serif;
 }
 html[data-game='ZZZ'][lang='ja'] {
   --font-family: 'ZZZ-ja-jp', 'ZZZ-zh-cn', sans-serif;

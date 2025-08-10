@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { RouterView } from 'vue-router';
+import { RouterView, useRoute, useRouter } from 'vue-router';
 import AppBar from '@/components/app-bar.vue';
 import CMarkdown from '@/components/markdown.vue';
 import Log from '@/docs/update-log.md?raw';
@@ -28,10 +28,30 @@ const updateLocale = (lang: string) => {
 };
 updateLocale(localStorage.getItem('YunHan:lang') ?? navigator.language);
 
+import { useMainStore } from './stores/main';
+const Store = useMainStore();
+const router = useRouter();
+const route = useRoute();
+
+const updateIP = () => {
+  if (!route.path.startsWith('/yae')) {
+    Store.title = t('name');
+    document.title = t('name');
+    Store.logoURL = '/img/UI_ChapterIcon_Yunjin.png';
+  } else {
+    Store.title = t('yae.name');
+    document.title = t('yae.name');
+    Store.logoURL = '/img/YAE.svg';
+  }
+};
+router.afterEach((to) => {
+  updateIP();
+});
+
 watch(
   locale,
   (newLocale) => {
-    document.title = t('name');
+    updateIP();
     document.documentElement.lang = newLocale;
     Locale.use(newLocale);
     localStorage.setItem('YunHan:lang', newLocale);
@@ -55,7 +75,6 @@ watch(loading, (newLoading) => {
 
 import { useRegisterSW } from 'virtual:pwa-register/vue';
 import { status, SupportedLanguages } from './locales/i18n';
-import { useMainStore } from './stores/main';
 const needUpdate = ref(false);
 const ui_showUpdateTip = ref(false);
 const newVersionInfo = ref<

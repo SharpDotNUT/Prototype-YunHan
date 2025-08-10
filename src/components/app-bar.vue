@@ -37,8 +37,8 @@ const emits = defineEmits(['changeIsFullWidth']);
   </var-dialog>
   <div style="height: var(--app-bar-height)">
     <var-app-bar>
-      <img src="/img/UI_ChapterIcon_Yunjin.png" style="height: 36px" />
-      <span>{{ $t('name') }}</span>
+      <img :src="mainStore.logoURL" style="height: 36px; margin-right: 10px" />
+      <span>{{ mainStore.title }}</span>
       <template #right>
         <var-menu placement="bottom-end">
           <var-button round text>

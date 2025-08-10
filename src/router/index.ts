@@ -4,6 +4,7 @@ import {
   type RouteRecordRaw
 } from 'vue-router';
 import Home from '@/views/home.vue';
+import { YaeRoutes } from './yae';
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -126,7 +127,8 @@ export const routes: RouteRecordRaw[] = [
     name: 'sp-key',
     path: '/sp-key',
     component: () => import('@/views/sp-key/index.vue')
-  }
+  },
+  YaeRoutes
 ];
 
 const router = createRouter({

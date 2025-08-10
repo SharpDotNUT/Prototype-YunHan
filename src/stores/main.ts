@@ -8,6 +8,8 @@ const GameFont = ['GI', 'HSR', 'ZZZ'];
 type GameFont = 'GI' | 'HSR' | 'ZZZ';
 
 export const useMainStore = defineStore('main', () => {
+  const title = ref('');
+  const logoURL = ref('');
   const version = ref(PackageJSON.version);
   const host_name = import.meta.env.VITE_API_HOST as string;
   const theme = ref('');
@@ -72,6 +74,8 @@ export const useMainStore = defineStore('main', () => {
     };
   });
   return {
+    title,
+    logoURL,
     version,
     host_name,
     theme,

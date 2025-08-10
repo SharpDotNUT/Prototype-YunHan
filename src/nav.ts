@@ -49,5 +49,10 @@ export const NavigationData = [
     name: 'gacha.simulator',
     path: '/gacha/simulator',
     beta: true
+  },
+  {
+    name: 'yae',
+    path: '/yaedou',
+    beta: true
   }
 ];

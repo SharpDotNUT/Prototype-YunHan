@@ -29,6 +29,9 @@ importers:
       browser-fs-access:
         specifier: ^0.38.0
         version: 0.38.0
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.13
       dom-to-image:
         specifier: ^2.6.0
         version: 2.6.0

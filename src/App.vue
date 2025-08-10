@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { RouterView, useRoute, useRouter } from 'vue-router';
+import { RouterView } from 'vue-router';
 import AppBar from '@/components/app-bar.vue';
 import CMarkdown from '@/components/markdown.vue';
 import Log from '@/docs/update-log.md?raw';
+import NewVersionTip from './components/UpdateTip/UpdateTip.vue';
 import { useI18n } from 'vue-i18n';
 import { Dialog, Locale, Snackbar } from '@varlet/ui';
 import { matchLanguages } from '@kuriyota/locale-matcher';
+import ky from 'ky';
 
 const { locale, t } = useI18n();
 const loading = ref(false);
@@ -55,6 +57,17 @@ import { useRegisterSW } from 'virtual:pwa-register/vue';
 import { status, SupportedLanguages } from './locales/i18n';
 import { useMainStore } from './stores/main';
 const needUpdate = ref(false);
+const ui_showUpdateTip = ref(false);
+const newVersionInfo = ref<
+  | {
+      version: string;
+      buildTime: string;
+    }
+  | undefined
+>(undefined);
+ky.get('/meta.json').then(async (res) => {
+  newVersionInfo.value = await res.json();
+});
 const { needRefresh, updateServiceWorker } = useRegisterSW({
   onNeedRefresh() {
     console.log('New content available');
@@ -62,6 +75,12 @@ const { needRefresh, updateServiceWorker } = useRegisterSW({
   },
   onRegistered(r) {
     console.log('Service Worker registered', r);
+    setTimeout(
+      () => {
+        r?.update();
+      },
+      60 * 60 * 1000
+    );
   },
   onRegisterError(error: Error) {
     console.log('Service Worker register error:' + error.toString());
@@ -69,8 +88,7 @@ const { needRefresh, updateServiceWorker } = useRegisterSW({
   }
 });
 
-console.log({ needRefresh, updateServiceWorker }, '你哈');
-
+console.log({ needRefresh, updateServiceWorker });
 const ui_showUpdate = ref(
   !localStorage.getItem('YunHan:UV') ||
     mainStore.version !== localStorage.getItem('YunHan:UV')
@@ -82,13 +100,18 @@ const setVersion = () => {
 
 <template>
   <div id="app">
+    <NewVersionTip
+      :data="newVersionInfo"
+      v-model="ui_showUpdateTip"
+      @confirm="updateServiceWorker()"
+      @cancel="needUpdate = false" />
     <div>
       <var-alert v-if="needUpdate" closeable @close="needUpdate = false">
         <var-space justify="space-between">
           <p>
             {{ $t('app.new-version') }}
           </p>
-          <var-button size="small" text @click="updateServiceWorker()">
+          <var-button size="small" text @click="ui_showUpdateTip = true">
             {{ $t('app.update') }}
           </var-button>
         </var-space>

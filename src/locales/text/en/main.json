@@ -72,6 +72,7 @@
   "global.lang.zh-Hans": "Simplified Chinese",
   "global.loading": "Loading",
   "global.menu": "Menu",
+  "global.meta.version-tag": "Version tag: ",
   "global.none-downloading": "None downloading",
   "global.not-installed": "Uninstall",
   "global.online": "Online",

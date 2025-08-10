@@ -3,6 +3,17 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueDevTools from 'vite-plugin-vue-devtools';
 import { VitePWA } from 'vite-plugin-pwa';
+import { createExtraFilesPlugin } from './vite-plugin';
+
+import PackageJSON from './package.json';
+
+const MetaFile = {
+  path: '/meta.json',
+  content: JSON.stringify({
+    version: PackageJSON.version,
+    buildTime: new Date().getTime()
+  })
+};
 
 let commit: any | undefined = undefined;
 try {
@@ -19,6 +30,7 @@ export default defineConfig({
   plugins: [
     vue(),
     vueDevTools(),
+    createExtraFilesPlugin([MetaFile]),
     VitePWA({
       registerType: 'prompt',
       devOptions: {

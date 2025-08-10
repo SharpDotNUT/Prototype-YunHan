@@ -1,5 +1,5 @@
 {
-  "about.build-time": "构建时间： {0}",
+  "about.build-time": "构建时间：{0}",
   "about.copyright": "版权所有 © 2025 SharpDotNUT Studio. 保留所有权利",
   "about.last-commit": "最后一次提交",
   "about.last-commit-unknown": "最后一次提交获取失败",
@@ -72,6 +72,7 @@
   "global.lang.zh-Hans": "简体中文",
   "global.loading": "加载中",
   "global.menu": "菜单",
+  "global.meta.version-tag": "版本号：{0}",
   "global.none-downloading": "没有正在下载",
   "global.not-installed": "未安装",
   "global.online": "在线",

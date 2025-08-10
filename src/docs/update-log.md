@@ -1,3 +1,26 @@
+## 2.6.0 (2025-08-10) - 海瑟音 / Hysilens
+
+- **Settings / 设置**:
+  - 重构 UI
+  - Refactor UI
+- **Locale / 本地化**:
+  - 添加「繁体中文」
+  - Add "Traditional Chinese"
+  - 接入 Crowdin
+  - Integrate Crowdin
+- **App / 应用**:
+  - 重构标题栏/主菜单的 UI，添加 GSAP 动画
+  - Refactor title bar/main menu UI, add GSAP animation
+  - 「更新提示」功能终于可以正常使用，并增加了详情信息提示
+  - "Update Tip" feature can finally be used, and details information is provided
+- **TQRT**
+  - 优化 UI
+  - Improve UI
+  - 改进「文本资源管理器」
+  - Improve "Text Resource Manager"
+  - 添加了「使用说明」
+  - Add "Instructions of Using"
+
 ## 2.5.4 (2025-08-02) - 英雄未死之前 / Before Their Deaths
 
 - **App / 应用**:
@@ -104,8 +127,8 @@
   - Enhance TypeScript typing
   - 删除多余组件
   - Delete redundant components
-  - 使「更新提示」可以正常展示
-  - Make the "Update Dialog" can be displayed normally
+  - ~~使「更新提示」可以正常展示~~
+  - ~~Make the "Update Dialog" can be displayed normally~~
 
 ## 2.3.2 (2025-06-07)
 

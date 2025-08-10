@@ -26,18 +26,19 @@ const updateLocale = (lang: string) => {
 };
 updateLocale(localStorage.getItem('YunHan:lang') ?? navigator.language);
 
-const langTips = ref(false);
 watch(
   locale,
   (newLocale) => {
-    langTips.value = false;
     document.title = t('name');
     document.documentElement.lang = newLocale;
     Locale.use(newLocale);
     localStorage.setItem('YunHan:lang', newLocale);
     const data = status.translated.find((item) => item.lang === newLocale);
     if (data && data.len < status.all) {
-      langTips.value = true;
+      Snackbar.warning({
+        content: t('app.translation-incomplete'),
+        position: 'bottom'
+      });
     }
   },
   {
@@ -53,9 +54,14 @@ watch(loading, (newLoading) => {
 import { useRegisterSW } from 'virtual:pwa-register/vue';
 import { status, SupportedLanguages } from './locales/i18n';
 import { useMainStore } from './stores/main';
+const needUpdate = ref(true);
 const { needRefresh, updateServiceWorker } = useRegisterSW({
-  onRegistered() {
-    console.log('Service Worker registered');
+  onNeedRefresh() {
+    console.log('New content available');
+    needUpdate.value = true;
+  },
+  onRegistered(r) {
+    console.log('Service Worker registered', r);
   },
   onRegisterError(error: Error) {
     console.log('Service Worker register error:' + error.toString());
@@ -63,11 +69,7 @@ const { needRefresh, updateServiceWorker } = useRegisterSW({
   }
 });
 
-const needUpdate = ref(false);
-console.log({ needRefresh, updateServiceWorker });
-if (needRefresh.value) {
-  needUpdate.value = true;
-}
+console.log({ needRefresh, updateServiceWorker }, '你哈');
 
 const ui_showUpdate = ref(
   !localStorage.getItem('YunHan:UV') ||
@@ -80,23 +82,8 @@ const setVersion = () => {
 
 <template>
   <div id="app">
-    <div v-if="langTips">
-      <var-alert closeable @close="langTips = false">
-        <var-space justify="space-between">
-          <p>
-            {{ $t('app.translation-incomplete') }}
-          </p>
-          <var-button
-            size="small"
-            text
-            @click="$router.push('/settings/general')">
-            {{ $t('setting.title') }}
-          </var-button>
-        </var-space>
-      </var-alert>
-    </div>
-    <div v-if="needUpdate">
-      <var-alert closeable @close="needUpdate = false">
+    <div>
+      <var-alert v-if="needUpdate" closeable @close="needUpdate = false">
         <var-space justify="space-between">
           <p>
             {{ $t('app.new-version') }}

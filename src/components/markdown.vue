@@ -44,8 +44,8 @@ watch(() => mainStore.theme, updateCss);
 </script>
 
 <template>
-  <link :href="CssHref" rel="stylesheet" />
   <div>
+    <link :href="CssHref" rel="stylesheet" />
     <div
       class="markdown-body g-font"
       :style="style"

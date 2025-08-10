@@ -78,3 +78,33 @@
   left: 20px;
   z-index: 1;
 }
+
+#ins {
+  position: fixed;
+  z-index: 1;
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: calc(100dvh - 40px);
+    width: min(400px, calc(100vw - 40px));
+    padding: 20px;
+    border-radius: 20px;
+    overflow-y: auto;
+    background-color: var(--card-background);
+    > * {
+      flex-shrink: 0;
+    }
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: scale(0);
+}

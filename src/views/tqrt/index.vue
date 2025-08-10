@@ -7,7 +7,22 @@ import { round } from 'lodash-es';
 import { useMainStore } from '@/stores/main';
 import { useI18n } from 'vue-i18n';
 import { Dialog } from '@varlet/ui';
+import SvgIcon from '@jamescoyle/vue-icon';
 import Resource from './resource.vue';
+import Markdown from '@/components/markdown.vue';
+import ZhHansIntro from '@/locales/text/zh-Hans/tqrt.md?raw';
+import ZhHantIntro from '@/locales/text/zh-Hant/tqrt.md?raw';
+import EnIntro from '@/locales/text/en/tqrt.md?raw';
+import JaIntro from '@/locales/text/ja/tqrt.md?raw';
+import { Transition } from 'vue';
+import { mdiClose } from '@mdi/js';
+const { locale } = useI18n();
+const Intro: any = {
+  'zh-Hans': ZhHansIntro,
+  'zh-Hant': ZhHantIntro,
+  en: EnIntro,
+  ja: JaIntro
+};
 
 const Store = useTQRTStore();
 const is_translate = ref(false);
@@ -22,7 +37,7 @@ const querying = ref(false);
 const currentPage = ref(1);
 const pageSize = ref(10);
 const ui_showRes = ref(false);
-
+const ui_showInstruction = ref(false);
 const MainStore = useMainStore();
 const { t } = useI18n();
 
@@ -127,15 +142,15 @@ watch([currentPage, pageSize], () => {
             </span>
           </var-option>
         </var-select>
-
         <var-checkbox v-model="is_translate">
           {{ $t('tqrt.translate-mode') }}
         </var-checkbox>
-
         <var-button block type="primary" @click="ui_showRes = true">
           {{ $t('tqrt.manage-text-res') }}
         </var-button>
-
+        <var-button block type="primary" @click="ui_showInstruction = true">
+          {{ $t('global.tip.read-instructions') }}
+        </var-button>
         <var-button
           block
           type="primary"
@@ -180,6 +195,16 @@ watch([currentPage, pageSize], () => {
       </div>
     </div>
     <Resource v-model="ui_showRes" id="res"></Resource>
+    <Transition name="fade">
+      <div id="ins" class="center full-screen" v-if="ui_showInstruction">
+        <div>
+          <Markdown :content="Intro?.[locale]"></Markdown>
+          <var-button block type="primary" @click="ui_showInstruction = false">
+            <SvgIcon type="mdi" :path="mdiClose" />
+          </var-button>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
 

@@ -10,8 +10,19 @@
 
 @import url('https://fonts.font.im/css2?family=JetBrains+Mono:wght@100..900&display=swap');
 
-html {
+html,
+input {
   font-family: var(--font-family);
+}
+
+html[data-game='GI'] {
+  --font-family: var(--font-gi-family);
+}
+html[data-game='HSR'] {
+  --font-family: var(--font-hsr-family);
+}
+html[data-game='ZZZ'] {
+  --font-family: var(--font-zzz-family);
 }
 
 h1,
@@ -24,42 +35,24 @@ h6 {
 }
 
 html[lang='en'] {
-  --font-family: 'GI-zh-cn', sans-serif;
+  --font-gi-family: 'GI-zh-cn', sans-serif;
+  --font-hsr-family: 'HSR-zh-cn', sans-serif;
+  --font-zzz-family: 'ZZZ-en-us', 'ZZZ-zh-cn', sans-serif;
 }
-
-html[lang='zh-Hans'],
+html[lang='zh-Hans'] {
+  --font-gi-family: 'GI-zh-cn', sans-serif;
+  --font-hsr-family: 'HSR-zh-cn', sans-serif;
+  --font-zzz-family: 'ZZZ-zh-cn', sans-serif;
+}
 html[lang='zh-Hant'] {
-  --font-family: 'GI-zh-cn', sans-serif;
+  --font-gi-family: 'GI-zh-cn', sans-serif;
+  --font-hsr-family: 'HSR-zh-tw', sans-serif;
+  --font-zzz-family: 'ZZZ-zh-tw', sans-serif;
 }
-
 html[lang='ja'] {
-  --font-family: 'GI-ja-jp', 'GI-zh-cn', sans-serif;
-}
-
-html[data-game='HSR'][lang='en'] {
-  --font-family: 'HSR-zh-cn', sans-serif;
-}
-html[data-game='HSR'][lang='zh-Hans'] {
-  --font-family: 'HSR-zh-cn', sans-serif;
-}
-html[data-game='HSR'][lang='zh-Hant'] {
-  --font-family: 'HSR-zh-tw', sans-serif;
-}
-html[data-game='HSR'][lang='ja'] {
-  --font-family: 'HSR-ja-jp', 'HSR-zh-cn', sans-serif;
-}
-
-html[data-game='ZZZ'][lang='en'] {
-  --font-family: 'ZZZ-en-us', 'ZZZ-zh-cn', sans-serif;
-}
-html[data-game='ZZZ'][lang='zh-Hans'] {
-  --font-family: 'ZZZ-zh-cn', sans-serif;
-}
-html[data-game='ZZZ'][lang='zh-Hant'] {
-  --font-family: 'ZZZ-zh-tw', sans-serif;
-}
-html[data-game='ZZZ'][lang='ja'] {
-  --font-family: 'ZZZ-ja-jp', 'ZZZ-zh-cn', sans-serif;
+  --font-gi-family: 'GI-ja-jp', 'GI-zh-cn', sans-serif;
+  --font-hsr-family: 'HSR-ja-jp', 'HSR-zh-cn', sans-serif;
+  --font-zzz-family: 'ZZZ-ja-jp', 'ZZZ-zh-cn', sans-serif;
 }
 
 .mono {

@@ -54,7 +54,7 @@ watch(loading, (newLoading) => {
 import { useRegisterSW } from 'virtual:pwa-register/vue';
 import { status, SupportedLanguages } from './locales/i18n';
 import { useMainStore } from './stores/main';
-const needUpdate = ref(true);
+const needUpdate = ref(false);
 const { needRefresh, updateServiceWorker } = useRegisterSW({
   onNeedRefresh() {
     console.log('New content available');

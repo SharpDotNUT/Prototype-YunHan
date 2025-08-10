@@ -1,7 +1,9 @@
 .__container {
+  position: relative;
+  height: 100%;
+  padding: 20px;
   display: flex;
   gap: 20px;
-  height: 100%;
 }
 
 #panel {
@@ -66,4 +68,13 @@
   > div {
     width: 50%;
   }
+}
+
+#res {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1;
 }

@@ -1,6 +1,6 @@
 {
   "name": "@sharpdotnut/protptype-yunhan",
-  "version": "2.6.0",
+  "version": "2.6.0 - build.2",
   "type": "module",
   "scripts": {
     "dev": "vite",

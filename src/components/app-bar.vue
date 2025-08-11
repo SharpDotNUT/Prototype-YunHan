@@ -4,37 +4,16 @@ import { useMainStore } from '@/stores/main';
 import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiMenu, mdiTranslate } from '@mdi/js';
 import RouterJump from '@/components/router-jump.vue';
-import Markdown from './markdown.vue';
 import { status } from '@/locales/i18n';
 
-const title = ref('');
 const display_account = ref(false);
 const mainStore = useMainStore();
-const host_name = mainStore.host_name;
 const ui_showMenu = ref(false);
-
-const notice_show = ref(false);
-const notice_content = ref('');
-fetch(`${host_name}/notice`)
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-    if (data.show == 'true') {
-      notice_show.value = true;
-      notice_content.value = data.text;
-    }
-  })
-  .catch((err) => {});
 
 const emits = defineEmits(['changeIsFullWidth']);
 </script>
 
 <template>
-  <var-dialog v-model:show="notice_show" style="max-height: 80vh">
-    <div style="height: 50vh; overflow-y: auto">
-      <Markdown :content="notice_content"></Markdown>
-    </div>
-  </var-dialog>
   <div style="height: var(--app-bar-height)">
     <var-app-bar>
       <img :src="mainStore.logoURL" style="height: 36px; margin-right: 10px" />

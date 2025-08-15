@@ -153,5 +153,7 @@
   "tqrt.using-time": "耗時 {0} 毫秒",
   "translator.description": "一個用於轉換米哈遊遊戲內文字和英文的工具",
   "translator.title": "翻譯器",
+  "update-log.area": "區域",
+  "update-log.areas.i18n": "本地化",
   "update-log.title": "更新日誌"
 }

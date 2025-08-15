@@ -1,6 +1,6 @@
 {
   "name": "@sharpdotnut/protptype-yunhan",
-  "version": "2.6.0 - build.2",
+  "version": "2.6.0 - build.3",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -53,6 +53,7 @@
   "description": "An open-source web-based toolkit for HoYoVERSE games.",
   "devDependencies": {
     "@earltp/vue-virtual-scroller": "^1.0.1",
+    "@modyfi/vite-plugin-yaml": "^1.1.1",
     "@tsconfig/node22": "^22.0.1",
     "@types/dom-to-image": "^2.6.7",
     "@types/lodash-es": "^4.17.12",

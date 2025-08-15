@@ -2,8 +2,7 @@
 import { ref, watch } from 'vue';
 import { RouterView, useRoute, useRouter } from 'vue-router';
 import AppBar from '@/components/app-bar.vue';
-import CMarkdown from '@/components/markdown.vue';
-import Log from '@/docs/update-log.md?raw';
+import UpdateLog from '@/views/update_log/index.vue';
 import NewVersionTip from './components/UpdateTip/UpdateTip.vue';
 import { useI18n } from 'vue-i18n';
 import { Dialog, Locale, Snackbar } from '@varlet/ui';
@@ -109,8 +108,9 @@ const { needRefresh, updateServiceWorker } = useRegisterSW({
 
 console.log({ needRefresh, updateServiceWorker });
 const ui_showUpdate = ref(
-  !localStorage.getItem('YunHan:UV') ||
-    mainStore.version !== localStorage.getItem('YunHan:UV')
+  true
+  // !localStorage.getItem('YunHan:UV') ||
+  //   mainStore.version !== localStorage.getItem('YunHan:UV')
 );
 const setVersion = () => {
   localStorage.setItem('YunHan:UV', mainStore.version);
@@ -148,9 +148,7 @@ const setVersion = () => {
   <var-popup position="bottom" v-model:show="ui_showUpdate">
     <div id="ul">
       <h2>{{ $t('update-log.title') }} | {{ mainStore.version }}</h2>
-      <div id="log">
-        <CMarkdown :content="Log" />
-      </div>
+      <UpdateLog id="log" />
       <div>
         <var-button
           block

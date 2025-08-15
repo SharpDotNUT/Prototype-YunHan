@@ -1,5 +1,6 @@
 /// <reference types="vite/client" />
 /// <reference types="vite-plugin-pwa/client" />
+/// <reference types="@modyfi/vite-plugin-yaml/modules" />
 declare module 'vue-virtual-scroller';
 declare module '@jamescoyle/vue-icon' {
   export default SvgIcon;

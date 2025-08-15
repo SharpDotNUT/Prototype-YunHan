@@ -108,7 +108,6 @@
   "question.submit-answer": "提交本题答案",
   "quiz.answer.false": "错",
   "quiz.answer.true": "对",
-  "quiz.description": " ",
   "quiz.home.download-bank": "正在从 GitHub 下载题库，请稍候...",
   "quiz.home.download-bank-fail": "题库下载失败",
   "quiz.home.download-bank-success": "题库下载成功",
@@ -154,5 +153,7 @@
   "tqrt.using-time": "耗时 {0} 毫秒",
   "translator.description": "一个用于转换米哈游游戏内文字和英文的工具",
   "translator.title": "翻译器",
+  "update-log.area": "功能",
+  "update-log.areas.i18n": "本地化",
   "update-log.title": "更新日志"
 }

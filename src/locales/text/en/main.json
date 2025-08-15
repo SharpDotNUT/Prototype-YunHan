@@ -153,5 +153,7 @@
   "tqrt.using-time": "Used {0} ms to search",
   "translator.description": "A tool for converting in-game text and English in HoYoVERSE games",
   "translator.title": "Translator",
+  "update-log.area": "Area",
+  "update-log.areas.i18n": "Internationalization",
   "update-log.title": "Update log"
 }

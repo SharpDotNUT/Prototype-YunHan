@@ -76,3 +76,7 @@ a:active {
 ::-webkit-scrollbar-thumb {
   background: var(--color-primary);
 }
+
+.var-chip {
+  font-family: inherit !important;
+}

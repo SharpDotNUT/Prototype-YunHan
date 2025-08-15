@@ -25,6 +25,7 @@
   flex-direction: column;
   height: 70vh;
   overflow-y: hidden;
+  padding: 0 max(20px, calc(50dvw - 400px));
   h2 {
     text-align: center;
   }

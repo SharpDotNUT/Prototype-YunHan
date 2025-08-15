@@ -1,3 +1,32 @@
 .update-log-container {
   padding: 20px max(calc(50vw - 400px), 20px);
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: auto;
+
+  > div {
+    flex-shrink: 0;
+  }
+}
+
+.version-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.change-content {
+  font-size: 1.2em;
+  line-height: 1.2em;
+
+  p {
+    margin: 10px 0;
+  }
 }

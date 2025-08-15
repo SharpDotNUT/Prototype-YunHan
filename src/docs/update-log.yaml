@@ -1,0 +1,303 @@
+'2.6.0':
+  date: 2025-08-10
+  name-zh: '海瑟音'
+  name-en: 'Hysilens'
+  changes:
+    setting:
+      - '重构 UI'
+      - 'Refactor UI'
+    i18n:
+      - '添加「繁体中文」'
+      - 'Add "Traditional Chinese"'
+      - '接入 Crowdin'
+      - 'Integrate Crowdin'
+    app:
+      - '重构标题栏/主菜单的 UI，添加 GSAP 动画'
+      - 'Refactor title bar/main menu UI, add GSAP animation'
+      - '「更新提示」功能终于可以正常使用，并增加了详情信息提示'
+      - '"Update Tip" feature can finally be used, and details information is provided'
+    tqrt:
+      - '优化 UI'
+      - 'Improve UI'
+      - '改进「文本资源管理器」'
+      - 'Improve "Text Resource Manager"'
+      - '添加了「使用说明」'
+      - 'Add "Instructions of Using"'
+
+'2.5.4':
+  date: 2025-08-02
+  name-zh: '英雄未死之前'
+  name-en: 'Before Their Deaths'
+  changes:
+    app:
+      - '停止使用 `Noto San Family`，支持切换米哈游 (miHoYo) 游戏的字体（原/铁/绝）。'
+      - 'Stop using `Noto San Family`, support switching fonts for HoYoVERSE games (Genshin, Star Rail, ZZZ).'
+      - '改「未完全翻译语言提示」为顶部横幅。'
+      - 'Change "Not fully translated language prompt" to top banner.'
+
+'2.5.3':
+  date: 2025-07-14
+  name-zh: '圣杯战争'
+  name-en: 'The Holy Grail War'
+  changes:
+    i18n:
+      - '增强本地化功能逻辑，引入 `locale-matcher`'
+      - 'Improve localization logic, introduce `locale-matcher`'
+    home:
+      - '添加打字机动画'
+      - 'Add typing animation'
+    dictionary:
+      - '重构 UI & UX'
+      - 'Refactor UI & UX'
+      - '支持复制功能'
+      - 'Add copy function'
+      - '使用 Web Speech API 支持 TTS 功能，并支持选择语音'
+      - 'Use Web Speech API to support TTS function, and support selecting voice'
+      - '添加了对 `note` 词条的展示'
+      - 'Add display of `note` entries'
+    rm:
+      - '功能上支持下载进度'
+      - 'Support download progress function'
+    app:
+      - '改变了更新提示的展示方式，现在展示在页面最上方'
+      - 'Changed the way update prompts are displayed, now displayed at the top of the page'
+      - '在首次浏览新版本时，展示「更新日志」'
+      - 'Show "update-log" when browsing a new version for the first time'
+
+'2.5.2':
+  date: 2025-07-12
+  name-zh: '契约胜利之剑'
+  name-en: 'Excalibur'
+  changes:
+    translator:
+      - '修复文本框自动调整大小功能'
+      - 'Fix textbox auto-resize'
+      - '添加导出图片功能'
+      - 'Add export image feature'
+      - '从 NPM 包获取字体和元数据'
+      - 'Get fonts and metadata from NPM'
+    music-player:
+      - '增强错误处理'
+      - 'Improve error handling'
+    dictionary:
+      - '使用 Pinia 状态管理统筹逻辑'
+      - 'Use Pinia states manager to manage logic'
+      - '更改数据结构'
+      - 'Change data structure'
+      - '为中文添加注音'
+      - 'Add pinyin for Chinese'
+      - '改进 UI & UX：配色，布局'
+      - 'Improve UI & UX: color, layout'
+      - '移除搜索语言选择功能，选择默认搜索所有语言'
+      - 'Remove language selection for search, select all languages by default'
+    app:
+      - '移除 `wait-for-meta` 页面'
+      - 'Remove `wait-for-meta` page'
+    rm:
+      - '更改逻辑，加强异步'
+      - 'Change logic, improve asynchronous'
+
+'2.5.1':
+  date: 2025-07-09
+  name-zh: 'Fate / Stay Night'
+  name-en: 'Fate / Stay Night'
+  changes:
+    i18n:
+      - '扁平化 JSON 数据'
+      - 'Flatten JSON data'
+      - '在设置界面展示翻译完成度'
+      - 'Show translation completion in setting'
+      - '当切换到未完全翻译的语言时，触发提示'
+      - 'Trigger prompt when switching to a language that is not fully translated'
+    update-log:
+      - '使用 Markdown 作为更新日志'
+      - 'Use Markdown as update log'
+
+'2.5.0':
+  date: 2025-07-09
+  name-zh: '「神的局限性」'
+  name-en: "The Gods' Limits"
+  changes:
+    tqrt:
+      - '文本速查速译'
+      - 'Text Quick Reference & Translation'
+      - '词条资源管理器'
+      - 'Text Mapgit push --set-upstream origin main Resource Manager'
+
+'2.4.1':
+  date: 2025-07-07
+  changes:
+    rm:
+      - '资源从 Cloudflare Pages `https://yunhan-meta.pages.dev` 拉取'
+      - 'Resource pull from Cloudflare Pages `https://yunhan-meta.pages.dev`'
+
+'2.4.0':
+  date: 2025-06-21
+  name-zh: '因为太阳将要毁伤'
+  name-en: 'For the Sun is Set to Die'
+  changes:
+    gacha:
+      - '添加了「数据」板块'
+      - 'Added the "Data" section'
+    app:
+      - '支持检查并获取更新'
+      - 'Support to check and get updates'
+      - '增强 TypeScript 类型化'
+      - 'Enhance TypeScript typing'
+      - '删除多余组件'
+      - 'Delete redundant components'
+      - '~~使「更新提示」可以正常展示~~'
+      - '~~Make the "Update Dialog" can be displayed normally~~'
+
+'2.3.2':
+  date: 2025-06-07
+  changes:
+    music-player:
+      - '修复了专辑别名显示不正常的问题'
+      - 'Fixed the issue of abnormal display of album aliases'
+      - '为专辑封面图添加阴影和悬浮特效'
+      - 'Added shadow and hover effects to album cover images'
+      - '设置专辑封面图模糊为背景图'
+      - 'Set album cover images as background images'
+      - '优化了标题显示逻辑'
+      - 'Optimized title display logic'
+      - '使用 UNPKG 替换 JSDeliver 确保在中国的正常访问'
+      - 'Use UNPKG instead of JSDeliver to ensure normal access in China'
+    rm:
+      - '采用全新架构'
+      - 'Use new architecture'
+      - '修复了首次进入页面时因为元数据未加载导致的无内容'
+      - 'Fixed the problem of content not being displayed when entering the page for the first time because the metadata was not loaded'
+
+'2.3.1':
+  date: 2025-05-03
+  name-zh: '星穹铁道演唱会'
+  name-en: 'Star Rail Live'
+  changes:
+    music-player:
+      - '资源使用 JSDelivr 从 `github:kuriyota/hoyomix-netease-cloud-music` 拉取'
+      - 'Resource use JSDelivr to pull from `github:kuriyota/hoyomix-netease-cloud-music`'
+    update-log:
+      - '简化界面，优化字体和间距。'
+      - 'Simplified interface, optimized font and spacing.'
+    about:
+      - '修复了无法获取最新提交会导致页面崩溃的问题'
+      - 'Fixed the problem that could cause the page to crash if the latest commit could not be obtained'
+    rm:
+      - '资源使用 JSDelivr 从 `github:Prototype-YunHan.QuizBank` 拉取'
+      - 'Resource use JSDelivr to pull from `github:Prototype-YunHan.QuizBank`'
+    quiz:
+      - '更改资源路径'
+      - 'Change resource path'
+
+'2.3.0':
+  date: 2025-05-01
+  name-zh: '阿那克萨戈拉斯'
+  name-en: 'Anaksagoras'
+  changes:
+    quiz:
+      - '发布 Alpha 版本，基本完善，可以使用。'
+      - 'Released Alpha version, basically complete, can be used.'
+    app:
+      - '使用 IndexDB 替换 Web Cache API 存储数据'
+      - 'Use IndexDB to replace Web Cache API to store data'
+    achievement:
+      - '支持导入成就和浏览完成进度'
+      - 'Support import achievements and browse completion progress'
+    music-player:
+      - '改变路径为 `/music-player`'
+      - 'Change path to `/music-player`'
+      - '使用「资源管理器」'
+      - 'Use "Resource Manager"'
+      - '修复退出时由于 DOM 卸载导致的 bug'
+      - 'Fix bug caused by DOM unmount when exiting'
+
+'2.2.0':
+  date: 2025-04-20
+  name-zh: '遐蝶'
+  name-en: 'Castorice'
+  changes:
+    app:
+      - '使用「资源管理器」来管理资源'
+      - 'Use "Resource Manager" to manage resources'
+      - '英文字体由 `Outfit` 替换会 `Noto Sans`'
+      - 'English font replaced back to `Noto Sans` from `Outfit`'
+      - 'TypeScript 迁移基本完成'
+      - 'TypeScript migration is basically complete'
+    setting:
+      - '优化设置界面，改为二级页面'
+      - 'Optimize the setting interface, change to secondary page'
+      - '初步支持资源管理'
+      - 'Support resource management initially'
+
+'2.1.1':
+  date: 2025-04-04
+  changes:
+    app:
+      - '增强 TypeScript 支持'
+      - 'Enhanced TypeScript support'
+      - '组件库改为全量引入'
+      - 'Component library changed to full import'
+    dictionary:
+      - '改为首页和二级页面机制'
+      - 'Changed to home and secondary page mechanism'
+      - '优化界面'
+      - 'Optimized interface'
+      - '使用虚拟滚动提高性能'
+      - 'Used virtual scrolling to improve performance'
+      - '搜索结果将根据输入的关键词实时更新'
+      - 'Search results will be updated in real time based on the input keyword'
+    translator:
+      - '模仿 Google Translate 的界面'
+      - 'Imitated the interface of Google Translate'
+      - '优化了界面和交互'
+      - 'Optimized the interface and interaction'
+      - '软键盘将在一个新的对话框中打开，以避免与输入框的冲突'
+      - 'The soft keyboard will open in a new dialog box to avoid conflicts with the input box'
+    intro:
+      - '「立即使用」按钮现在将直接跳转到主页'
+      - 'The "Use Now" button will now directly jump to the homepage'
+
+'2.1.0':
+  date: 2025-03-31
+  changes:
+    i18n:
+      - '改进翻译'
+      - 'Improved translation'
+    app:
+      - '改名为「试作 · 云翰」'
+      - 'Renamed to "Prototype · Yun Han"'
+    update-log:
+      - '更新了 README.md'
+      - 'Updated README.md'
+
+'2.0.1':
+  date: 2025-03-30
+  changes:
+    update-log:
+      - '补充了功能列表的翻译'
+      - 'Added translation for area list'
+      - '优化了在日文下的字体展示'
+      - 'Optimized font display in Japanese'
+      - '更改路径为 `/update-log`'
+      - 'Changed path to `/update-log`'
+
+'2.0.0':
+  date: 2025-03-30
+  name-zh: '红毹婵娟'
+  name-en: 'Stage Lucida'
+  changes:
+    update-log:
+      - '添加了「更新日志」功能'
+      - 'Added "update-log" feature'
+    docs:
+      - '更新了 README.md'
+      - 'Updated README.md'
+    music-player:
+      - '优化字体展示'
+      - 'Optimized font display'
+      - '适配手机端'
+      - 'Adapted to mobile devices'
+    app:
+      - '升级 Vue@3.5，Vite@6'
+      - 'Bump Vue@3.5, Vite@6'

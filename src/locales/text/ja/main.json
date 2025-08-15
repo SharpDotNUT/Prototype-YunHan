@@ -153,5 +153,7 @@
   "tqrt.using-time": "{0} ミリ秒を使用",
   "translator.description": "HoYoVERSEゲーム内のテキストと英語を変換するツール",
   "translator.title": "翻訳ツール",
+  "update-log.area": "エリア",
+  "update-log.areas.i18n": "現地化",
   "update-log.title": "ログを更新します"
 }

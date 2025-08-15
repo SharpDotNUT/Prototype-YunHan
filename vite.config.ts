@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import vueDevTools from 'vite-plugin-vue-devtools';
 import { VitePWA } from 'vite-plugin-pwa';
 import { createExtraFilesPlugin } from './vite-plugin';
+import ViteYaml from '@modyfi/vite-plugin-yaml';
 
 import PackageJSON from './package.json';
 
@@ -31,6 +32,7 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     createExtraFilesPlugin([MetaFile]),
+    ViteYaml(),
     VitePWA({
       registerType: 'prompt',
       devOptions: {

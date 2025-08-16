@@ -33,8 +33,8 @@ export const useDict = defineStore('dictionary', () => {
 
   const fetchData = async () => {
     Promise.all([
-      await RM.get('dictionary/genshin'),
-      await RM.get('dictionary/genshin-tags')
+      await RM.get('dictionary/genshin.min.json'),
+      await RM.get('dictionary/genshin-tags.json')
     ]).then(([WORDS, TAGS]) => {
       Words.value = WORDS;
       Tags.value = TAGS;

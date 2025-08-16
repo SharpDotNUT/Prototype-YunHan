@@ -2,36 +2,24 @@ import { dbPromise } from '@/script/idb';
 import ky from 'ky';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
 
-function resourceKeyToString(id: string, variant?: string) {
-  if (variant) {
-    return `${id}_${variant}`;
-  } else {
-    return id;
-  }
-}
 function logger(...args: any[]) {
   console.info('[RM]', ...args);
 }
 
-interface StaticResourceMetaRecord {
-  id: string;
-  ext: string;
-  variants?: string[];
+interface I_StaticResourceMetaRecord {
   hash: string;
-  updatedAt: number;
+  size: number;
 }
-
-export interface StaticResourceMeta {
+export interface I_StaticResourceMeta {
   updatedAt: number;
-  resources: Record<string, StaticResourceMetaRecord>;
+  version: string;
+  res: Record<string, I_StaticResourceMetaRecord>;
 }
-
-export interface CacheResourceRecord {
+export interface I_CacheResourceRecord {
   size: number;
   hash: string;
-  updatedAt: number;
+  version: string;
 }
 
 export async function IDBGet(key: IDBValidKey) {
@@ -47,12 +35,11 @@ export async function IDBDel(key: IDBValidKey) {
 }
 
 export const useRM = defineStore('RM', () => {
-  let StaticMetaData = ref<StaticResourceMeta | null>(null);
-  let CacheMeta = new Map<string, CacheResourceRecord>();
+  let StaticMetaData = ref<I_StaticResourceMeta | null>(null);
+  let CacheMeta = new Map<string, I_CacheResourceRecord>();
   let MetaURL: string;
   const CacheMetaKey = 'Yunhan-CacheMeta';
-  const router = useRouter();
-  let fetchMetaPromise: Promise<void> | null = null; // Singleton promise
+  let fetchMetaPromise: Promise<void> | null = null;
 
   MetaURL = import.meta.env.VITE_RESOURCE_HOST;
   if (localStorage.getItem(CacheMetaKey)) {
@@ -81,60 +68,43 @@ export const useRM = defineStore('RM', () => {
 
   type TOnload = (received: number, total: number) => any;
   // 获取资源
-  async function get(
-    id: string,
-    variant?: string,
-    force?: boolean,
-    onload?: TOnload
-  ) {
+  async function get(path: string, force?: boolean, onload?: TOnload) {
     if (!StaticMetaData.value) {
       await fetchMeta();
     }
-    const key = resourceKeyToString(id, variant);
-    await prefetch(id, variant, force, onload);
-    const data = await IDBGet(key);
+    await prefetch(path, force, onload);
+    const data = await IDBGet(path);
     if (!data) {
-      logger(`Resource ${key} not found`);
-      CacheMeta.delete(key);
+      logger(`Resource ${path} not found`);
+      CacheMeta.delete(path);
       saveCacheMeta();
     }
-    return await IDBGet(key);
+    return await IDBGet(path);
   }
 
   // 预取资源
-  async function prefetch(
-    id: string,
-    variant?: string,
-    force?: boolean,
-    onload?: TOnload
-  ) {
+  async function prefetch(path: string, force?: boolean, onload?: TOnload) {
     if (!StaticMetaData.value) {
       await fetchMeta();
     }
-    const key = resourceKeyToString(id, variant);
-    const resourceMeta = StaticMetaData.value!.resources[id];
-    if (!resourceMeta) throw new Error(`Resource ${key} not found`);
-    const cacheMeta = CacheMeta.get(key);
+    const resourceMeta = StaticMetaData.value!.res[path];
+    if (!resourceMeta) throw new Error(`Resource ${path} not found`);
+    const cacheMeta = CacheMeta.get(path);
     let isExpired = false;
     if (cacheMeta) {
       isExpired = cacheMeta.hash != resourceMeta.hash;
       if (isExpired && cacheMeta.hash && cacheMeta.hash) {
-        logger(`Resource ${key} expired, fetching...`);
+        logger(`Resource ${path} expired, fetching...`);
       }
     } else {
-      logger(`Resource ${key} not found in cache, fetching...`);
+      logger(`Resource ${path} not found in cache, fetching...`);
     }
     if (cacheMeta && !isExpired && (force == undefined || !force)) {
       logger(CacheMeta, !isExpired, force);
-      logger(`Resource  ${key}'s cache is valid, skipping fetch`);
+      logger(`Resource  ${path}'s cache is valid, skipping fetch`);
       return cacheMeta;
     } else {
-      let url = '';
-      if (variant) {
-        url = `${MetaURL}/res/${resourceMeta.id}/${variant}.${resourceMeta.ext}`;
-      } else {
-        url = `${MetaURL}/res/${resourceMeta.id}.${resourceMeta.ext}`;
-      }
+      const url = `${MetaURL}/${path}`;
       const res = await ky.get<any>(url, {
         onDownloadProgress: onload
           ? (progress) => {
@@ -153,27 +123,26 @@ export const useRM = defineStore('RM', () => {
       }
 
       const data = await res.json();
-      const hash = StaticMetaData.value!.resources[id]?.hash;
-      await IDBSet(key, data);
-      CacheMeta.set(key, {
+      const hash = StaticMetaData.value!.res[path]?.hash;
+      await IDBSet(path, data);
+      CacheMeta.set(path, {
         size,
         hash,
-        updatedAt: data.updatedAt
+        version: StaticMetaData.value!.version
       });
       await saveCacheMeta();
-      return CacheMeta.get(key);
+      return CacheMeta.get(path);
     }
   }
 
-  async function remove(id: string, variant?: string) {
+  async function remove(path: string) {
     if (!StaticMetaData.value) {
       await fetchMeta();
     }
-    const key = resourceKeyToString(id, variant);
-    CacheMeta.delete(key);
-    IDBDel(key);
+    CacheMeta.delete(path);
+    IDBDel(path);
     saveCacheMeta();
-    logger(`Removed resource ${key}`);
+    logger(`Removed resource ${path}`);
   }
 
   async function removeByKey(key: string) {

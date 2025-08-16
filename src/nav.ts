@@ -18,7 +18,8 @@ export const NavigationData = [
   },
   {
     name: 'achievement',
-    path: '/achievement'
+    path: '/achievement',
+    beta: true
   },
   {
     name: 'dictionary',

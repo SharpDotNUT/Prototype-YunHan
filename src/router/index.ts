@@ -128,6 +128,11 @@ export const routes: RouteRecordRaw[] = [
     path: '/sp-key',
     component: () => import('@/views/sp-key/index.vue')
   },
+  {
+    name: 'init',
+    path: '/init',
+    component: () => import('@/views/init/index.vue')
+  },
   YaeRoutes
 ];
 

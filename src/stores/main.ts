@@ -13,6 +13,7 @@ export const useMainStore = defineStore('main', () => {
   const version = ref(PackageJSON.version);
   const host_name = import.meta.env.VITE_API_HOST as string;
   const theme = ref('');
+  const initTasks = ref([] as string[]);
   const gameFont = ref<GameFont>('GI');
   {
     const game = localStorage.getItem('game');
@@ -35,9 +36,7 @@ export const useMainStore = defineStore('main', () => {
   });
   let beforeInstallPromptEvent = ref(null);
   window.addEventListener('beforeinstallprompt', function (e: any) {
-    // 阻止默认事件
     e.preventDefault();
-    // 保存事件对象
     beforeInstallPromptEvent.value = e;
   });
   function setTheme(themeName: string) {
@@ -80,6 +79,7 @@ export const useMainStore = defineStore('main', () => {
     host_name,
     theme,
     gameFont,
+    initTasks,
     setTheme,
     isUsingTeyvatFont,
     beforeInstallPromptEvent,

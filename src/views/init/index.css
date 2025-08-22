@@ -1,0 +1,32 @@
+.container {
+  padding: 20px max(20px, calc(50vw - 300px));
+  height: 100%;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#content {
+  overflow-y: auto;
+  flex-grow: 1;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+
+.fade-enter-from {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.fade-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+}

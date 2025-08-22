@@ -1,7 +1,7 @@
 import { dbPromise } from '@/script/idb';
 import ky from 'ky';
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 function logger(...args: any[]) {
   console.info('[RM]', ...args);
@@ -34,14 +34,68 @@ export async function IDBDel(key: IDBValidKey) {
   return (await dbPromise).delete('Resources', key);
 }
 
+type T_NetStatus = 'UNKNOWN' | 'CANNOT_USE' | number;
+
 export const useRM = defineStore('RM', () => {
   let StaticMetaData = ref<I_StaticResourceMeta | null>(null);
   let CacheMeta = new Map<string, I_CacheResourceRecord>();
-  let MetaURL: string;
+  const MetaURL = ref<string>();
+
   const CacheMetaKey = 'Yunhan-CacheMeta';
   let fetchMetaPromise: Promise<void> | null = null;
 
-  MetaURL = import.meta.env.VITE_RESOURCE_HOST;
+  const MetaURLOptions = ref([
+    {
+      base: 'https://yunhan-meta.sharpdotnut.com',
+      provider: 'CloudFlare',
+      status: 'UNKNOWN' as T_NetStatus
+    },
+    {
+      base: 'https://cdn.jsdelivr.net/gh/SharpDotNUT/Prototype-YunHan.Meta@main/data',
+      provider: 'GitHub & JSDelivr',
+      status: 'UNKNOWN' as T_NetStatus
+    }
+  ]);
+
+  const testNetStatusSync = async (url: string) => {
+    const start = performance.now();
+    const metaURLOption = MetaURLOptions.value.find(
+      (option) => option.base === url
+    )!;
+    await ky
+      .get(url + '/meta.json', {
+        timeout: 10000,
+        cache: 'no-store'
+      })
+      .then(() => {
+        console.log('success');
+        const end = performance.now();
+        const delay = end - start;
+        metaURLOption.status = delay;
+        return;
+      })
+      .catch(() => {
+        metaURLOption.status = 'CANNOT_USE';
+      });
+  };
+  MetaURLOptions.value.forEach(async (option) => {
+    await testNetStatusSync(option.base);
+  });
+
+  MetaURL.value = import.meta.env.DEV
+    ? import.meta.env.VITE_RESOURCE_HOST
+    : MetaURLOptions.value[0];
+  if (localStorage.getItem('YunHan:MetaURL')) {
+    MetaURL.value = localStorage.getItem('YunHan:MetaURL')!;
+  }
+  watch(
+    () => MetaURL.value,
+    (newMetaURL) => {
+      if (!newMetaURL) return;
+      localStorage.setItem('YunHan:MetaURL', newMetaURL);
+    }
+  );
+
   if (localStorage.getItem(CacheMetaKey)) {
     CacheMeta = new Map(JSON.parse(localStorage.getItem('Yunhan-CacheMeta')!));
   }
@@ -49,7 +103,7 @@ export const useRM = defineStore('RM', () => {
   const fetchMeta = async () => {
     if (fetchMetaPromise) return fetchMetaPromise;
     fetchMetaPromise = ky
-      .get(MetaURL + '/meta.json')
+      .get(MetaURL.value + '/meta.json')
       .then((res) => res.json())
       .then((data: any) => {
         StaticMetaData.value = data;
@@ -104,7 +158,7 @@ export const useRM = defineStore('RM', () => {
       logger(`Resource  ${path}'s cache is valid, skipping fetch`);
       return cacheMeta;
     } else {
-      const url = `${MetaURL}/${path}`;
+      const url = `${MetaURL.value}/${path}`;
       const res = await ky.get<any>(url, {
         onDownloadProgress: onload
           ? (progress) => {
@@ -170,11 +224,14 @@ export const useRM = defineStore('RM', () => {
   }
 
   return {
+    MetaURL,
+    MetaURLOptions,
     get,
     getLocalMeta,
     prefetch,
     remove,
     removeByKey,
+    testNetStatusSync,
     StaticMetaData
   };
 });

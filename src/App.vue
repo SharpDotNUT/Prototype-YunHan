@@ -108,9 +108,8 @@ const { needRefresh, updateServiceWorker } = useRegisterSW({
 
 console.log({ needRefresh, updateServiceWorker });
 const ui_showUpdate = ref(
-  true
-  // !localStorage.getItem('YunHan:UV') ||
-  //   mainStore.version !== localStorage.getItem('YunHan:UV')
+  !localStorage.getItem('YunHan:UV') ||
+    mainStore.version !== localStorage.getItem('YunHan:UV')
 );
 const setVersion = () => {
   localStorage.setItem('YunHan:UV', mainStore.version);

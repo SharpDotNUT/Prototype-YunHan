@@ -118,7 +118,7 @@ const setVersion = () => {
 if (!localStorage.getItem('YunHan:MetaURL')) {
   mainStore.initTasks.push('res_url');
 }
-if (mainStore.initTasks.length >= 0) {
+if (mainStore.initTasks.length > 0) {
   router.push({
     path: '/init',
     query: {

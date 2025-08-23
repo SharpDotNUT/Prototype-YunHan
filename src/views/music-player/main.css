@@ -1,0 +1,14 @@
+.container-main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  > * {
+    flex: 1;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}

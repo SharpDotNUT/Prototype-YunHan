@@ -1,99 +1,32 @@
-#container {
-  position: absolute;
+.container-mp {
+  position: relative;
   height: 100%;
   width: 100%;
   flex-grow: 1;
+
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow-y: hidden;
+}
 
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+#main {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  > * {
+    flex: 1;
   }
+}
 
-  #background {
-    z-index: -2;
-    background-size: cover;
-    background-position: center;
-    filter: blur(5vmax);
-  }
+#controller {
+  padding: 20px;
+  border-top: 1px solid var(--color-surface-container-highest);
 
-  #background-mask {
-    z-index: -1;
-    background-color: color-mix(
-      in srgb,
-      var(--color-body) 50%,
-      transparent 100%
-    );
-  }
-
-  #controller {
-    padding: 20px;
-    border-top: 1px solid var(--color-surface-container-highest);
-
-    #controls {
-      display: flex;
-      justify-content: center;
-      align-items: start;
-      align-items: center;
-      gap: 10px;
-    }
-  }
-
-  #main {
-    position: relative;
-    overflow-y: auto;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-
-    #view {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      overflow-x: hidden;
-
-      > * {
-        transition: all 0.5s ease-in-out;
-      }
-
-      #pic {
-        flex: 2;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-
-        img {
-          width: 70%;
-          border-radius: 10%;
-          box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
-          transition: all 1s ease-in-out;
-        }
-
-        img:hover {
-          transform: scale(1.02);
-        }
-      }
-
-      #lyrics {
-        flex: 3;
-        height: 100%;
-        width: 100%;
-        overflow-y: scroll;
-        overflow-x: hidden;
-      }
-    }
-
-    #view,
-    #control-panel {
-      position: absolute;
-    }
+  #controls {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    align-items: center;
+    gap: 10px;
   }
 }

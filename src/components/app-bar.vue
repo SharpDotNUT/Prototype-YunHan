@@ -6,7 +6,6 @@ import { mdiMenu, mdiTranslate } from '@mdi/js';
 import RouterJump from '@/components/router-jump.vue';
 import { status } from '@/locales/i18n';
 
-const display_account = ref(false);
 const mainStore = useMainStore();
 const ui_showMenu = ref(false);
 
@@ -43,9 +42,6 @@ const emits = defineEmits(['changeIsFullWidth']);
       <template #left></template>
     </var-app-bar>
   </div>
-  <Account
-    :show="display_account"
-    @update:display_account="display_account = false" />
 </template>
 
 <style>

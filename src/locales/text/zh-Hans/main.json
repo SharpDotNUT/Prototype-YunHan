@@ -19,6 +19,7 @@
   "achievement.status.2": "已完成",
   "achievement.status.3": "进度达成",
   "achievement.title": "成就",
+  "app.init.select-res-url": "请选择一个资源服务器 URL",
   "app.new-version": "有新版本可用，是否更新？",
   "app.sw-error": "Service Worker 注册失败",
   "app.translation-incomplete": "本语言的翻译尚未完成，请转到设置查看详情。",

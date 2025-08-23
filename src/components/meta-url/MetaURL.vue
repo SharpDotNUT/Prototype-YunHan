@@ -10,7 +10,7 @@ emit('done');
 
 <template>
   <div>
-    <h3>请选择一个资源服务器 URL</h3>
+    <h3>{{ $t('app.init.select-res-url') }}</h3>
     <br />
     <var-radio-group v-model="RM.MetaURL">
       <div v-for="URLOption in RM.MetaURLOptions" class="radio-item">

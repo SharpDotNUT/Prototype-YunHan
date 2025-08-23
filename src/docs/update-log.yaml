@@ -1,3 +1,23 @@
+'2.6.1':
+  date: 2025-08-23
+  name-zh: '不要温和地走入那良夜'
+  name-en: 'Do Not Go Gentle Into That'
+  changes:
+    app:
+      - '修复部分语言更新提示弹窗的版本号不能正常显示的问题。'
+      - 'Fix the issue that the version number of the update prompt cannot be displayed normally.'
+    update-log:
+      - '崭新的更新记录样式和页面'
+      - 'New update log style and page'
+    rm:
+      - '采用了全新的元数据架构'
+      - 'Adopted a new metadata architecture'
+      - '允许用户选择资源服务器，并会在第一次访问时要求选择'
+      - 'Allow users to choose resource servers and will require selection on the first access'
+    achievement:
+      - '成就功能暂时停用'
+      - 'Achievement function temporarily disabled'
+
 '2.6.0':
   date: 2025-08-10
   name-zh: '海瑟音'

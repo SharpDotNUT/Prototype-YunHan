@@ -1,0 +1,39 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.item {
+  padding: 5px;
+  margin-right: 2px;
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+img {
+  height: 30px;
+  border-radius: 5px;
+}
+
+.selected {
+  --color: color-mix(in srgb, var(--color-primary) 20%, var(--color-body) 100%);
+  background-color: var(--color);
+  border-left: 5px solid var(--color-primary);
+}
+
+.title {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sub-title {
+  color: grey;
+}
+
+.sub-text {
+  font-size: small;
+  color: grey;
+}

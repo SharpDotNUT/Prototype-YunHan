@@ -11,22 +11,47 @@
 
 #main {
   display: flex;
-  flex-direction: column;
   overflow-y: hidden;
   > * {
     flex: 1;
   }
 }
 
+#bar {
+  display: flex;
+  img {
+    height: 120px;
+    width: 120px;
+  }
+}
+
 #controller {
+  flex: 1;
+  height: 120px;
   padding: 20px;
   border-top: 1px solid var(--color-surface-container-highest);
+}
 
-  #controls {
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    align-items: center;
-    gap: 10px;
-  }
+#controls {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+#actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: nowrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+#progress {
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }

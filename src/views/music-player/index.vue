@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useMusicStore } from './store';
+import { formatTime, useMusicStore } from './store';
 import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiPause, mdiPlay, mdiSkipNext, mdiSkipPrevious } from '@mdi/js';
 import { ref } from 'vue';
 import Main from './main.vue';
+import { round } from 'lodash-es';
 
 const isMobileWidth = computed(() => window.innerWidth <= 800);
 
@@ -14,24 +15,39 @@ const store = useMusicStore();
 <template>
   <div class="container-mp">
     <Main id="main"></Main>
-    <div id="controller">
-      <div id="controls">
-        <var-button>
-          <SvgIcon type="mdi" :path="mdiSkipPrevious" />
-        </var-button>
-        <var-button size="large" @click="store.pause = !store.pause">
-          <SvgIcon v-if="store.pause" type="mdi" :path="mdiPlay" />
-          <SvgIcon v-else type="mdi" :path="mdiPause" />
-        </var-button>
-        <var-button>
-          <SvgIcon type="mdi" :path="mdiSkipNext" />
-        </var-button>
-      </div>
-      <div id="progress">
-        <var-slider
-          v-model="store.progress.current"
-          :max="store.progress.duration"
-          @change="store.setProgress($event as number)" />
+    <div id="bar">
+      <img :src="store.getCover(store.current?.albumId, true)" />
+      <div id="controller">
+        <div id="controls">
+          <p style="flex-grow: 1">
+            {{ store.current?.name }}
+          </p>
+          <div id="actions">
+            <var-button round>
+              <SvgIcon type="mdi" :path="mdiSkipPrevious" />
+            </var-button>
+            <var-button round size="large" @click="store.pause = !store.pause">
+              <SvgIcon
+                v-if="store.pause"
+                type="mdi"
+                :path="mdiPlay"
+                size="32" />
+              <SvgIcon v-else type="mdi" :path="mdiPause" size="32" />
+            </var-button>
+            <var-button round>
+              <SvgIcon type="mdi" :path="mdiSkipNext" />
+            </var-button>
+          </div>
+        </div>
+        <div id="progress">
+          <span>{{ formatTime(store.progress.current) }}</span>
+          <var-slider
+            style="flex: 1"
+            v-model="store.progress.current"
+            :max="store.progress.duration"
+            @change="store.setProgress($event as number)" />
+          <span>{{ formatTime(store.progress.duration) }}</span>
+        </div>
       </div>
     </div>
   </div>

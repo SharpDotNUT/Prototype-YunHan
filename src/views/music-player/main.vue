@@ -2,12 +2,13 @@
 import { computed } from 'vue';
 import { useMusicStore } from './store';
 import { ref } from 'vue';
-
-import './main.css';
+import ListAlbum from './list-album.vue';
+import ListSongs from './list-songs.vue';
 
 const store = useMusicStore();
 
-const ui_currentAlbum = ref(0);
+const ui_currentAlbum = ref(195683561);
+store.fetchAlbum(195683561);
 const ui_albums = computed(() =>
   store.D_Song.filter((a) => a.albumId === ui_currentAlbum.value)
 );
@@ -15,34 +16,17 @@ const ui_albums = computed(() =>
 
 <template>
   <div class="container-main">
-    {{ ui_currentAlbum }}
-    <div class="list">
-      <div
-        v-for="album in store.D_Album"
-        @click="
-          ui_currentAlbum = album.id;
-          store.fetchAlbum(album.id);
-        "
-        :key="album.id">
-        <img
-          :src="'https://p1.music.126.net/' + album.cover + '?param=100y100'"
-          height="20"
-          lazy />
-        {{ album.name }}
-      </div>
+    <div>
+      <h3>{{ $t('music-player.album') }}</h3>
+      <ListAlbum v-model="ui_currentAlbum" />
     </div>
-    <div class="list">
-      <var-loading v-if="ui_albums.length == 0" />
-      <div
-        v-else
-        v-for="song in ui_albums"
-        :key="song.id"
-        @click="
-          store.setSong(song);
-          store.pause = false;
-        ">
-        {{ song.name }}
-      </div>
+    <div>
+      <h3>{{ $t('music-player.songs') }}</h3>
+      <ListSongs :list="ui_albums" />
     </div>
   </div>
 </template>
+
+<style lang="css" scoped>
+@import url('./main.css');
+</style>

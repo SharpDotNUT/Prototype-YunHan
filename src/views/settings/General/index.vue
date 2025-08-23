@@ -6,7 +6,7 @@ const mainStore = useMainStore();
 import { useI18n } from 'vue-i18n';
 import { status } from '@/locales/i18n';
 import { round } from 'lodash-es';
-import { useRM } from '@/stores/resource-manager';
+import MetaURL from '@/components/meta-url/MetaURL.vue';
 const { locale } = useI18n();
 
 const ui_isTeyvatFont = ref(mainStore.isUsingTeyvatFont);
@@ -15,8 +15,6 @@ const router = useRouter();
 watch(theme, () => {
   mainStore.setTheme(theme.value);
 });
-
-const RM = useRM();
 
 watch(ui_isTeyvatFont, () => {
   if (ui_isTeyvatFont.value) {
@@ -110,30 +108,7 @@ watch(ui_isTeyvatFont, () => {
     <div>
       <h2>{{ $t('setting.res.url') }}</h2>
       <br />
-      <var-radio-group v-model="RM.MetaURL">
-        <div v-for="URLOption in RM.MetaURLOptions" class="radio-item">
-          <var-radio :checked-value="URLOption.base"></var-radio>
-          <div>
-            <pre>{{ URLOption.base }}</pre>
-            <p>by {{ URLOption.provider }}</p>
-            <p>
-              {{ $t('global.status') }}:
-              <span v-if="URLOption.status === 'CANNOT_USE'">
-                {{ $t('global.offline') }}
-              </span>
-              <span v-else-if="URLOption.status === 'UNKNOWN'">
-                {{ $t('global.unknown') }}
-              </span>
-              <span v-else>{{ round(URLOption.status, 2) }} ms</span>
-            </p>
-            <var-button
-              size="small"
-              @click="RM.testNetStatusSync(URLOption.base)">
-              {{ $t('global.test') }}
-            </var-button>
-          </div>
-        </div>
-      </var-radio-group>
+      <MetaURL />
     </div>
   </div>
 </template>

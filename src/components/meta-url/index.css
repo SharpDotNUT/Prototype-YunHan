@@ -1,0 +1,9 @@
+.radio-item {
+  display: flex;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+pre {
+  white-space: pre-wrap;
+}

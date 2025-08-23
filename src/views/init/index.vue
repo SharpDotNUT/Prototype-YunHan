@@ -10,10 +10,11 @@ import {
   watch,
   type Component
 } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute();
-const backTo = route.query.from;
+const router = useRouter();
+const backTo = route.query.from?.toString() ?? '/';
 
 const step = ref(0);
 const loaded = ref(-1);
@@ -21,14 +22,11 @@ const comps = shallowRef<Component[]>([]);
 const allowNext = ref(false);
 
 const store = useMainStore();
-for (let i = 0; i < 10; i++) {
-  store.initTasks.push('test');
-}
 
 const tasks = [
   {
-    name: 'test',
-    comp: () => import('../about/index.vue')
+    name: 'res_url',
+    comp: () => import('@/components/meta-url/MetaURL.vue')
   }
 ];
 
@@ -43,10 +41,19 @@ const loadComp = async () => {
 };
 loadComp();
 
-watch(step, (newStep) => {
-  loadComp();
-  allowNext.value = false;
-});
+watch(
+  step,
+  () => {
+    if (step.value >= store.initTasks.length) {
+      router.push(backTo);
+    }
+    loadComp();
+    allowNext.value = false;
+  },
+  {
+    immediate: true
+  }
+);
 
 const elements = useTemplateRef('content');
 let animation: gsap.core.Tween | null = null;
@@ -69,13 +76,13 @@ const animate = () => {
 
 <template>
   <div class="container">
-    <h1>{{ $t('global.init') }} {{ step }}/{{ store.initTasks.length }}</h1>
+    <h1>{{ $t('global.init') }} {{ step + 1 }}/{{ store.initTasks.length }}</h1>
     <div id="content">
-      <Transition name="fade">
-        <div v-if="comps[step]" ref="content">
+      <Transitions name="fade">
+        <div v-if="step < store.initTasks.length && comps[step]" ref="content">
           <component :is="comps[loaded]" @done="allowNext = true"></component>
         </div>
-      </Transition>
+      </Transitions>
     </div>
     <var-button block type="primary" @click="step++" :disabled="!allowNext">
       {{ $t('global.next-step') }}

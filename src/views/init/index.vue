@@ -27,19 +27,24 @@ const tasks = [
   {
     name: 'res_url',
     comp: () => import('@/components/meta-url/MetaURL.vue')
+  },
+  {
+    name: 'font',
+    comp: () => import('@/components/meta-url/MetaURL.vue')
   }
 ];
 
-const loadComp = async () => {
+const loadComp = async (name: string) => {
   await sleep(500);
-  const comp = await tasks[step.value].comp();
-  comps.value = [...comps.value, comp.default];
+  const comp = tasks.find((task) => task.name == name)!;
+  console.log('load', comp);
+  comps.value = [...comps.value, (await comp.comp()).default];
   loaded.value++;
   nextTick(() => {
     animate();
   });
 };
-loadComp();
+loadComp(store.initTasks[0]);
 
 watch(
   step,
@@ -47,7 +52,7 @@ watch(
     if (step.value >= store.initTasks.length) {
       router.push(backTo);
     }
-    loadComp();
+    loadComp(store.initTasks[step.value]);
     allowNext.value = false;
   },
   {
@@ -78,11 +83,11 @@ const animate = () => {
   <div class="container">
     <h1>{{ $t('global.init') }} {{ step + 1 }}/{{ store.initTasks.length }}</h1>
     <div id="content">
-      <Transitions name="fade">
+      <TransitionGroup name="fade">
         <div v-if="step < store.initTasks.length && comps[step]" ref="content">
           <component :is="comps[loaded]" @done="allowNext = true"></component>
         </div>
-      </Transitions>
+      </TransitionGroup>
     </div>
     <var-button block type="primary" @click="step++" :disabled="!allowNext">
       {{ $t('global.next-step') }}

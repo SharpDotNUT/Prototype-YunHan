@@ -7,6 +7,7 @@ import { useI18n } from 'vue-i18n';
 import { status } from '@/locales/i18n';
 import { round } from 'lodash-es';
 import MetaURL from '@/components/meta-url/MetaURL.vue';
+import FontSelector from '@/components/font-select/FontSelector.vue';
 const { locale } = useI18n();
 
 const ui_isTeyvatFont = ref(mainStore.isUsingTeyvatFont);
@@ -96,14 +97,7 @@ watch(ui_isTeyvatFont, () => {
     <div>
       <h2>{{ $t('setting.language.game-font') }}</h2>
       <br />
-      <var-select
-        variant="outlined"
-        v-model="mainStore.gameFont"
-        :placeholder="$t('setting.game-font.select')">
-        <var-option :label="$t('global.game.GI')" value="GI"></var-option>
-        <var-option :label="$t('global.game.HSR')" value="HSR"></var-option>
-        <var-option :label="$t('global.game.ZZZ')" value="ZZZ"></var-option>
-      </var-select>
+      <FontSelector />
     </div>
     <div>
       <h2>{{ $t('setting.res.url') }}</h2>

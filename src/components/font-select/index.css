@@ -1,0 +1,9 @@
+.item {
+  display: flex;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.text {
+  white-space: pre-wrap;
+}

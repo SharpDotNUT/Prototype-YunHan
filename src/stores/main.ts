@@ -3,11 +3,13 @@ import { defineStore } from 'pinia';
 import { Themes, StyleProvider } from '@varlet/ui';
 
 import PackageJSON from '../../package.json';
+import { useRouter } from 'vue-router';
 
 const GameFont = ['GI', 'HSR', 'ZZZ'];
 type GameFont = 'GI' | 'HSR' | 'ZZZ';
 
 export const useMainStore = defineStore('main', () => {
+  const router = useRouter();
   const title = ref('');
   const logoURL = ref('');
   const version = ref(PackageJSON.version);
@@ -16,16 +18,20 @@ export const useMainStore = defineStore('main', () => {
   const initTasks = ref([] as string[]);
   const gameFont = ref<GameFont>('GI');
   {
-    const game = localStorage.getItem('game');
+    const game = localStorage.getItem('YunHan:Font');
     if (game && GameFont.includes(game)) {
       gameFont.value = game as GameFont;
     }
+    // else {
+    //   initTasks.value.push('font');
+    //   router.push('/font');
+    // }
   }
   watch(
     gameFont,
     (game) => {
       document.documentElement.dataset.game = game;
-      localStorage.setItem('game', game);
+      localStorage.setItem('YunHan:Font', game);
     },
     { immediate: true }
   );

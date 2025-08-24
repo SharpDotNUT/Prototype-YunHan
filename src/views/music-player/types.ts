@@ -23,3 +23,10 @@ export interface T_AlbumDetail extends T_Album {
   description: string;
   songs: T_Song[];
 }
+
+export interface T_LyricLine {
+  time: number;
+  lyric: string;
+  translation: string;
+  romaji: string;
+}

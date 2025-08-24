@@ -20,10 +20,23 @@ const store = useMusicStore();
       <div id="controller">
         <div id="controls">
           <p style="flex-grow: 1">
-            {{ store.current?.name }}
+            <span id="title">
+              {{ store.current?.name }}
+            </span>
+            <br />
+            <span id="lyric-container">
+              <Transition name="lyric">
+                <span
+                  :key="store.lyric?.[store.currentLyricIndex]?.lyric"
+                  class="lyric">
+                  {{ store.lyric?.[store.currentLyricIndex]?.lyric }}
+                </span>
+              </Transition>
+              <br />
+            </span>
           </p>
           <div id="actions">
-            <var-button round>
+            <var-button round v-if="false">
               <SvgIcon type="mdi" :path="mdiSkipPrevious" />
             </var-button>
             <var-button round size="large" @click="store.pause = !store.pause">
@@ -34,7 +47,7 @@ const store = useMusicStore();
                 size="32" />
               <SvgIcon v-else type="mdi" :path="mdiPause" size="32" />
             </var-button>
-            <var-button round>
+            <var-button round v-if="false">
               <SvgIcon type="mdi" :path="mdiSkipNext" />
             </var-button>
           </div>

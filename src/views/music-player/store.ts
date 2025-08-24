@@ -1,7 +1,12 @@
 import ky from 'ky';
 import { defineStore } from 'pinia';
-import { ref, shallowRef, watch } from 'vue';
-import type { T_Album, T_AlbumDetail, T_Song } from './types';
+import { computed, ref, shallowRef, watch } from 'vue';
+import {
+  type T_LyricLine,
+  type T_Album,
+  type T_AlbumDetail,
+  type T_Song
+} from './types';
 
 export const formatTime = (time: number) => {
   const minutes = Math.floor(time / 60);
@@ -39,6 +44,19 @@ export const useMusicStore = defineStore('music', () => {
     if (!song) return;
     audio.value.src = `https://music.163.com/song/media/outer/url?id=${song.id}.mp3`;
     audio.value.load();
+    ky(
+      `https://unpkg.com/@kuriyota/hoyomix-ncm@latest/data/lyrics/${song.id}.json`
+    ).then(async (res) => {
+      lyric.value = await res.json();
+    });
+  });
+
+  const lyric = ref<T_LyricLine[]>([]);
+  const currentLyricIndex = computed(() => {
+    const nextIndex = lyric.value.findIndex(
+      (line) => line.time >= progress.value.current * 1000
+    );
+    return nextIndex > 0 ? nextIndex - 1 : 0;
   });
 
   const pause = ref(true);
@@ -89,6 +107,8 @@ export const useMusicStore = defineStore('music', () => {
   return {
     current,
     setProgress,
+    lyric,
+    currentLyricIndex,
     pause,
     progress,
     fetchAlbum,

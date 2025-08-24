@@ -25,6 +25,33 @@
   }
 }
 
+#title {
+  font-size: large;
+}
+
+#lyric-container {
+  display: block;
+  overflow: hidden;
+}
+
+.lyric {
+  position: absolute;
+  color: gray;
+}
+
+.lyric-enter-active,
+.lyric-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+.lyric-enter-from {
+  transform: translateY(100%);
+  opacity: 0;
+}
+.lyric-leave-to {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
 #controller {
   flex: 1;
   height: 120px;

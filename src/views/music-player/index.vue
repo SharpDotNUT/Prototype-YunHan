@@ -2,21 +2,31 @@
 import { computed } from 'vue';
 import { formatTime, useMusicStore } from './store';
 import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiPause, mdiPlay, mdiSkipNext, mdiSkipPrevious } from '@mdi/js';
-import { ref } from 'vue';
+import {
+  mdiPause,
+  mdiPlay,
+  mdiSkipNext,
+  mdiSkipPrevious,
+  mdiText
+} from '@mdi/js';
 import Main from './main.vue';
-import { round } from 'lodash-es';
+import Lyric from './lyric.vue';
+import { ref } from 'vue';
 
 const isMobileWidth = computed(() => window.innerWidth <= 800);
-
 const store = useMusicStore();
+
+const ui_showLyric = ref(false);
 </script>
 
 <template>
   <div class="container-mp">
-    <Main id="main"></Main>
+    <Main v-if="!ui_showLyric" id="main" />
+    <Lyric v-if="ui_showLyric" id="main" />
     <div id="bar">
-      <img :src="store.getCover(store.current?.albumId, true)" />
+      <img
+        :src="store.getCover(store.current?.albumId, true)"
+        @click="ui_showLyric = !ui_showLyric" />
       <div id="controller">
         <div id="controls">
           <p style="flex-grow: 1">
@@ -49,6 +59,9 @@ const store = useMusicStore();
             </var-button>
             <var-button round v-if="false">
               <SvgIcon type="mdi" :path="mdiSkipNext" />
+            </var-button>
+            <var-button round @click="ui_showLyric = !ui_showLyric">
+              <SvgIcon type="mdi" :path="mdiText" />
             </var-button>
           </div>
         </div>

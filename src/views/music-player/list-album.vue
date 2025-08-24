@@ -1,24 +1,47 @@
 <script setup lang="ts">
 import { round } from 'lodash-es';
 import { useMusicStore } from './store';
+import { onMounted, useTemplateRef, watch } from 'vue';
 
 const store = useMusicStore();
-const model = defineModel<number>();
 
 const emits = defineEmits<{ select: [number] }>();
+const items = useTemplateRef('item');
+
+const scrollToAlbum = () => {
+  if (!items.value) return;
+  const index = store.D_Album.findIndex(
+    (album) => album.id === store.currentAlbumID
+  );
+  items.value[index].scrollIntoView({
+    behavior: 'smooth',
+    block: 'center',
+    inline: 'center'
+  });
+};
+
+watch(
+  () => store.currentAlbumID,
+  () => scrollToAlbum(),
+  {
+    immediate: true
+  }
+);
+onMounted(scrollToAlbum);
 </script>
 
 <template>
   <div class="list">
     <div
       class="item"
+      ref="item"
       v-for="item in store.D_Album"
       :class="{
-        selected: model === item.id
+        selected: store.currentAlbumID === item.id
       }"
       @click="
         store.fetchAlbum(item.id);
-        model = item.id;
+        store.currentAlbumID = item.id;
       "
       :key="item.id">
       <img

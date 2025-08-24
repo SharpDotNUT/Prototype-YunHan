@@ -10,8 +10,8 @@
 }
 
 #main {
+  height: 100%;
   display: flex;
-  overflow-y: hidden;
   > * {
     flex: 1;
   }

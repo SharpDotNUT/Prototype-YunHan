@@ -40,6 +40,7 @@ export const useMusicStore = defineStore('music', () => {
   });
 
   const current = ref<T_Song>();
+  const currentAlbumID = ref<number>();
   watch(current, (song) => {
     if (!song) return;
     audio.value.src = `https://music.163.com/song/media/outer/url?id=${song.id}.mp3`;
@@ -97,10 +98,15 @@ export const useMusicStore = defineStore('music', () => {
     D_Song.value.push(...data);
     albumLoaded.add(id);
   };
+  fetchAlbum(195683561).then(() => {
+    currentAlbumID.value = 195683561;
+    current.value = D_Song.value.find((song) => song.id === 2155423467);
+  });
 
   const getCover = (id: number | undefined, high: boolean = false) => {
     if (!id) return '';
-    const album = D_Album.value.find((a) => a.id === id)!;
+    const album = D_Album.value.find((a) => a.id === id);
+    if (!album) return '';
     return `https://p1.music.126.net/${album.cover}${high ? '' : '?param=100y100'}`;
   };
 
@@ -112,6 +118,7 @@ export const useMusicStore = defineStore('music', () => {
     pause,
     progress,
     fetchAlbum,
+    currentAlbumID,
     D_Album,
     D_Song,
     getCover

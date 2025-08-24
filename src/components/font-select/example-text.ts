@@ -23,7 +23,8 @@ export const ExampleTextHSR = {
   en: [
     'A handcrafted silver ring — if you hold it to your ear, you can hear the sound of melting snow.\n' +
       'In Aidonia, the departed seal ice and snow into a ring before their final journey, \n' +
-      'offering it to the living as a token to walk the rest of the path in their stead',
+      'offering it to the living as a token to walk the rest of the path in their stead\n' +
+      '"When the ice melts and the snowfades, the flowers will bloom, and youwill find me."',
     'HSR-zh-tw'
   ],
   ja: [

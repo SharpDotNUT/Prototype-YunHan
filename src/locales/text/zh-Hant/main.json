@@ -82,6 +82,7 @@
   "global.online": "在線",
   "global.probability": "概率",
   "global.search": "搜索",
+  "global.select": "選擇{0}",
   "global.status": "狀態",
   "global.test": "測試",
   "global.time.min-sec": "{0} 分 {1} 秒",

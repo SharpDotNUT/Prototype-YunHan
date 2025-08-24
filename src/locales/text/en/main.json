@@ -82,6 +82,7 @@
   "global.online": "Online",
   "global.probability": "Probability",
   "global.search": "Search",
+  "global.select": "Select {0}",
   "global.status": "Status",
   "global.test": "Test",
   "global.time.min-sec": "{0} minutes {1} seconds",

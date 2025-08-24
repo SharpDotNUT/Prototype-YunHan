@@ -78,13 +78,18 @@ export const useRM = defineStore('RM', () => {
         metaURLOption.status = 'CANNOT_USE';
       });
   };
+  if (import.meta.env.DEV) {
+    MetaURLOptions.value.push({
+      base: import.meta.env.VITE_RESOURCE_HOST,
+      provider: 'Local Server',
+      status: 'UNKNOWN'
+    });
+  }
   MetaURLOptions.value.forEach(async (option) => {
     await testNetStatusSync(option.base);
   });
 
-  MetaURL.value = import.meta.env.DEV
-    ? import.meta.env.VITE_RESOURCE_HOST
-    : MetaURLOptions.value[0];
+  MetaURL.value = MetaURLOptions.value[0].base;
   if (localStorage.getItem('YunHan:MetaURL')) {
     MetaURL.value = localStorage.getItem('YunHan:MetaURL')!;
   }

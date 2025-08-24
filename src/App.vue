@@ -122,12 +122,12 @@ if (!localStorage.getItem('YunHan:Font')) {
   mainStore.initTasks.push('font');
 }
 if (mainStore.initTasks.length > 0) {
-  router.push({
-    path: '/init',
-    query: {
-      from: route.fullPath
-    }
-  });
+  // router.push({
+  //   path: '/init',
+  //   query: {
+  //     from: route.fullPath
+  //   }
+  // });
 }
 </script>
 

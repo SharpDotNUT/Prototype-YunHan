@@ -1,3 +1,18 @@
+'2.7.0':
+  date: 2025-08-24
+  name-zh: '冥蝶遐思'
+  name-en: "Nether Butterfly's Pondering"
+  changes:
+    music-player:
+      - '全新重构的音乐播放器，完全重写（功能尚不完善，尚未适配移动端）'
+      - 'Refactor the music player, completely rewritten (function not yet completed, not adapted for mobile phones)'
+    setting:
+      - '全新的字体选择器，支持语预览'
+      - 'New font selector, support preview'
+    rm:
+      - '禁用了尚不完善的选择资源服务器初始化功能'
+      - 'Disabled the unfinished selection resource server initialization function'
+
 '2.6.1':
   date: 2025-08-23
   name-zh: '不要温和地走入那良夜'

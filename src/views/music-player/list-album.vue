@@ -39,10 +39,7 @@ onMounted(scrollToAlbum);
       :class="{
         selected: store.currentAlbumID === item.id
       }"
-      @click="
-        store.fetchAlbum(item.id);
-        store.currentAlbumID = item.id;
-      "
+      @click="store.currentAlbumID = item.id"
       :key="item.id">
       <img
         :src="'https://p1.music.126.net/' + item.cover + '?param=100y100'"

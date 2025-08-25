@@ -73,35 +73,21 @@ export const useMusicStore = defineStore('music', () => {
     audio.value.currentTime = progress;
   };
 
-  const fetchAlbumMeta = async () => {
-    const res = await ky(
-      'https://unpkg.com/@kuriyota/hoyomix-ncm@latest/data/albums.json',
-      { cache: 'no-store' }
+  const fetchMeta = async () => {
+    const res_album = await ky(
+      'https://unpkg.com/@kuriyota/hoyomix-ncm@latest/data/albums.json'
     );
-    const data = (await res.json()) as T_Album[];
-    D_Album.value = data;
-  };
-  fetchAlbumMeta();
-
-  const albumLoaded = new Set<number>();
-  const fetchAlbum = async (id: number) => {
-    if (albumLoaded.has(id)) return;
-    const res = await ky(
-      `https://unpkg.com/@kuriyota/hoyomix-ncm@latest/data/albums/${id}.json`
+    const data_album = (await res_album.json()) as T_Album[];
+    D_Album.value = data_album;
+    const res_song = await ky(
+      'https://unpkg.com/@kuriyota/hoyomix-ncm@latest/data/songs.json'
     );
-    const data = ((await res.json()) as T_AlbumDetail).songs.map((song) => {
-      return {
-        ...song,
-        albumId: id
-      };
-    });
-    D_Song.value.push(...data);
-    albumLoaded.add(id);
-  };
-  fetchAlbum(195683561).then(() => {
+    const data_song = (await res_song.json()) as T_Song[];
+    D_Song.value = data_song;
     currentAlbumID.value = 195683561;
     current.value = D_Song.value.find((song) => song.id === 2155423467);
-  });
+  };
+  fetchMeta();
 
   const getCover = (id: number | undefined, high: boolean = false) => {
     if (!id) return '';
@@ -117,7 +103,6 @@ export const useMusicStore = defineStore('music', () => {
     currentLyricIndex,
     pause,
     progress,
-    fetchAlbum,
     currentAlbumID,
     D_Album,
     D_Song,

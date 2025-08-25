@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { formatTime, useMusicStore } from './store';
 import SvgIcon from '@jamescoyle/vue-icon';
 import {
+  mdiMagnify,
   mdiPause,
   mdiPlay,
   mdiSkipNext,
@@ -11,19 +11,21 @@ import {
 } from '@mdi/js';
 import Main from './main.vue';
 import Lyric from './lyric.vue';
+import Search from './search.vue';
 import { ref } from 'vue';
 
-const isMobileWidth = computed(() => window.innerWidth <= 800);
 const store = useMusicStore();
 
 const ui_showLyric = ref(false);
+const ui_showSearch = ref(false);
 </script>
 
 <template>
   <div class="container-mp">
     <Main v-if="!ui_showLyric" id="main" />
     <Lyric v-if="ui_showLyric" id="main" />
-    <div id="bar">
+    <Search v-model="ui_showSearch" style="z-index: 20" />
+    <div id="bar" style="z-index: 0">
       <img
         :src="store.getCover(store.current?.albumId, true)"
         @click="ui_showLyric = !ui_showLyric" />
@@ -45,7 +47,7 @@ const ui_showLyric = ref(false);
               <br />
             </span>
           </p>
-          <div id="actions">
+          <div id="actions" style="z-index: 10">
             <var-button round v-if="false">
               <SvgIcon type="mdi" :path="mdiSkipPrevious" />
             </var-button>
@@ -62,6 +64,9 @@ const ui_showLyric = ref(false);
             </var-button>
             <var-button round @click="ui_showLyric = !ui_showLyric">
               <SvgIcon type="mdi" :path="mdiText" />
+            </var-button>
+            <var-button round @click="ui_showSearch = !ui_showSearch">
+              <SvgIcon type="mdi" :path="mdiMagnify" />
             </var-button>
           </div>
         </div>

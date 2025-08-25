@@ -1,5 +1,6 @@
 {
-  "name": "@sharpdotnut/protptype-yunhan",
+  "name": "@sharpdotnut/prototype-yunhan",
+  "description": "An open-source web-based toolkit for HoYoVERSE games.",
   "version": "2.7.0",
   "type": "module",
   "scripts": {
@@ -15,7 +16,6 @@
     "@mdi/js": "^7.4.47",
     "@varlet/touch-emulator": "^3.8.5",
     "@varlet/ui": "^3.11.0",
-    "@vue/tsconfig": "^0.5.1",
     "browser-fs-access": "^0.38.0",
     "dayjs": "^1.11.13",
     "dom-to-image": "^2.6.0",
@@ -34,19 +34,14 @@
     "markdown-it": "^14.1.0",
     "pinia": "^2.3.1",
     "save-dev": "0.0.1-security",
-    "typescript": "^5.7.3",
     "typewriter-effect": "^2.22.0",
-    "vite-plugin-json5": "^1.1.9",
-    "vite-plugin-vue-devtools": "^7.7.1",
     "vue": "^3.5.13",
     "vue-echarts": "^7.0.3",
     "vue-i18n": "^11.1.2",
     "vue-router": "^4.5.0",
-    "vue-tsc": "^2.2.8",
     "vue-virtual-scroller": "2.0.0-beta.8",
     "workbox-window": "^7.3.0"
   },
-  "description": "An open-source web-based toolkit for HoYoVERSE games.",
   "devDependencies": {
     "@earltp/vue-virtual-scroller": "^1.0.1",
     "@modyfi/vite-plugin-yaml": "^1.1.1",
@@ -59,7 +54,17 @@
     "@vitejs/plugin-vue": "^5.2.1",
     "prettier": "3.5.3",
     "rollup-plugin-visualizer": "^5.14.0",
-    "vite": "^6.2.3",
-    "vite-plugin-pwa": "^0.21.2"
+    "@vue/tsconfig": "^0.5.1",
+    "vite": "npm:rolldown-vite@latest",
+    "vite-plugin-json5": "^1.1.9",
+    "vite-plugin-vue-devtools": "^7.7.1",
+    "vite-plugin-pwa": "^0.21.2",
+    "vue-tsc": "^2.2.8",
+    "typescript": "^5.7.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "npm:rolldown-vite@latest"
+    }
   }
 }

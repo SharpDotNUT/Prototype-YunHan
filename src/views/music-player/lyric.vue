@@ -51,6 +51,9 @@ onMounted(scrollToLyric);
       :class="{
         now: index === store.currentLyricIndex
       }">
+      <p class="time">
+        {{ lyricLine.time / 1000 }}
+      </p>
       <p class="lyric">{{ lyricLine.lyric }}</p>
       <p v-if="lyricLine.translation" class="translation">
         {{ lyricLine.translation }}

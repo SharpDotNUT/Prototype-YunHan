@@ -75,7 +75,7 @@ watch(loading, (newLoading) => {
 import { useRegisterSW } from 'virtual:pwa-register/vue';
 import { status, SupportedLanguages } from './locales/i18n';
 const needUpdate = ref(false);
-const ui_showUpdateTip = ref(true);
+const ui_showUpdateTip = ref(false);
 const newVersionInfo = ref<
   | {
       version: string;

@@ -16,12 +16,24 @@
 }
 
 .lyric-body {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2vh 20px;
   text-align: center;
   cursor: pointer;
+}
+
+.time {
+  position: absolute;
+  left: 0;
+  font-size: smaller;
+  display: none;
+}
+
+.lyric-body:hover .time {
+  display: block;
 }
 
 .now {

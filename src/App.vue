@@ -75,7 +75,7 @@ watch(loading, (newLoading) => {
 import { useRegisterSW } from 'virtual:pwa-register/vue';
 import { status, SupportedLanguages } from './locales/i18n';
 const needUpdate = ref(false);
-const ui_showUpdateTip = ref(false);
+const ui_showUpdateTip = ref(true);
 const newVersionInfo = ref<
   | {
       version: string;
@@ -90,6 +90,7 @@ const { needRefresh, updateServiceWorker } = useRegisterSW({
   onNeedRefresh() {
     console.log('New content available');
     needUpdate.value = true;
+    ui_showUpdateTip.value = true;
   },
   onRegistered(r) {
     console.log('Service Worker registered', r);
@@ -107,6 +108,12 @@ const { needRefresh, updateServiceWorker } = useRegisterSW({
 });
 
 console.log({ needRefresh, updateServiceWorker });
+watch(needRefresh, (need) => {
+  if (need) {
+    needUpdate.value = true;
+    ui_showUpdateTip.value = true;
+  }
+});
 const ui_showUpdate = ref(
   !localStorage.getItem('YunHan:UV') ||
     mainStore.version !== localStorage.getItem('YunHan:UV')
@@ -138,18 +145,6 @@ if (mainStore.initTasks.length > 0) {
       v-model="ui_showUpdateTip"
       @confirm="updateServiceWorker()"
       @cancel="needUpdate = false" />
-    <div>
-      <var-alert v-if="needUpdate" closeable @close="needUpdate = false">
-        <var-space justify="space-between">
-          <p>
-            {{ $t('app.new-version') }}
-          </p>
-          <var-button size="small" text @click="ui_showUpdateTip = true">
-            {{ $t('app.update') }}
-          </var-button>
-        </var-space>
-      </var-alert>
-    </div>
     <div id="app-container">
       <div id="app-bar">
         <AppBar />

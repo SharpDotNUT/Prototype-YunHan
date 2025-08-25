@@ -1,6 +1,14 @@
 <script setup lang="ts">
 const show = defineModel<boolean>();
-const props = defineProps<{ data: any }>();
+const props = defineProps<{
+  data:
+    | {
+        version: string;
+        buildTime: string;
+      }
+    | undefined;
+}>();
+const isDevChannel = props.data ? props.data.version.includes('-') : false;
 const emit = defineEmits<{
   confirm: void;
   cancel: void;
@@ -19,11 +27,15 @@ const emit = defineEmits<{
     <p>
       {{ $t('app.new-version') }}
     </p>
-    <p>{{ $t('global.meta.version-tag', [props.data.version]) }}</p>
+    <p>{{ $t('global.meta.version-tag', [props.data?.version]) }}</p>
+    <p>
+      {{ $t('app.update-cannel') }}:
+      {{ isDevChannel ? $t('app.dev-channel') : $t('app.stable-channel') }}
+    </p>
     <p>
       {{
         $t('about.build-time', [
-          new Date(props.data.buildTime).toLocaleString()
+          new Date(props.data?.buildTime ?? 0).toLocaleString()
         ])
       }}
     </p>

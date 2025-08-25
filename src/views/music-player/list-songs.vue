@@ -18,7 +18,10 @@ const props = defineProps<{ list: T_Song[] }>();
       :class="{
         selected: store.current?.id === item.id
       }"
-      @click="store.current = item"
+      @click="
+        store.current = item;
+        store.currentAlbumID = item.albumId;
+      "
       :key="item.id">
       <img :src="store.getCover(item.albumId)" height="20" lazy />
       <div>

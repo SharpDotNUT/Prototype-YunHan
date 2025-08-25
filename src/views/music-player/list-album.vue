@@ -8,13 +8,13 @@ const store = useMusicStore();
 const emits = defineEmits<{ select: [number] }>();
 const items = useTemplateRef('item');
 
-const scrollToAlbum = () => {
+const scrollToAlbum = (smooth: boolean = true) => {
   if (!items.value) return;
   const index = store.D_Album.findIndex(
     (album) => album.id === store.currentAlbumID
   );
   items.value[index].scrollIntoView({
-    behavior: 'smooth',
+    behavior: smooth ? 'smooth' : 'auto',
     block: 'center',
     inline: 'center'
   });
@@ -22,12 +22,9 @@ const scrollToAlbum = () => {
 
 watch(
   () => store.currentAlbumID,
-  () => scrollToAlbum(),
-  {
-    immediate: true
-  }
+  () => scrollToAlbum()
 );
-onMounted(scrollToAlbum);
+onMounted(() => scrollToAlbum(false));
 </script>
 
 <template>

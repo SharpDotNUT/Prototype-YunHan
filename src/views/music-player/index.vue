@@ -5,6 +5,7 @@ import {
   mdiMagnify,
   mdiPause,
   mdiPlay,
+  mdiShare,
   mdiSkipNext,
   mdiSkipPrevious,
   mdiText
@@ -13,11 +14,17 @@ import Main from './main.vue';
 import Lyric from './lyric.vue';
 import Search from './search.vue';
 import { ref } from 'vue';
+import { copyToClipboard } from '@/script/tools';
 
 const store = useMusicStore();
 
 const ui_showLyric = ref(false);
 const ui_showSearch = ref(false);
+
+const share = () => {
+  copyToClipboard(window.location.href);
+};
+
 </script>
 
 <template>
@@ -67,6 +74,9 @@ const ui_showSearch = ref(false);
             </var-button>
             <var-button round @click="ui_showSearch = !ui_showSearch">
               <SvgIcon type="mdi" :path="mdiMagnify" />
+            </var-button>
+            <var-button round @click="share">
+              <SvgIcon type="mdi" :path="mdiShare" />
             </var-button>
           </div>
         </div>

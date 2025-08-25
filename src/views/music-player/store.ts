@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 import { computed, ref, shallowRef, watch } from 'vue';
 import { type T_LyricLine, type T_Album, type T_Song } from './types';
 import { copyToClipboard } from '@/script/tools';
+import { useRoute, useRouter } from 'vue-router';
 
 export const formatTime = (time: number) => {
   const minutes = Math.floor(time / 60);
@@ -11,6 +12,9 @@ export const formatTime = (time: number) => {
 };
 
 export const useMusicStore = defineStore('music', () => {
+  const route = useRoute();
+  const router = useRouter();
+
   const audio = shallowRef(new Audio());
   const D_Album = ref<T_Album[]>([]);
   const D_Song = ref<T_Song[]>([]);
@@ -46,6 +50,11 @@ export const useMusicStore = defineStore('music', () => {
     ).then(async (res) => {
       lyric.value = await res.json();
     });
+    router.replace({
+      query: {
+        song: song.id
+      }
+    });
   });
 
   const lyric = ref<T_LyricLine[]>([]);
@@ -80,6 +89,16 @@ export const useMusicStore = defineStore('music', () => {
     );
     const data_song = (await res_song.json()) as T_Song[];
     D_Song.value = data_song;
+    if (route.query.song) {
+      const song = D_Song.value.find(
+        (s) => s.id === Number(route.query.song as string)
+      );
+      if (song) {
+        current.value = song;
+        currentAlbumID.value = song.albumId;
+        return;
+      }
+    }
     currentAlbumID.value = 195683561;
     current.value = D_Song.value.find((song) => song.id === 2155423467);
   };

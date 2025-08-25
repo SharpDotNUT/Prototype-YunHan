@@ -32,8 +32,16 @@ onMounted(scrollToLyric);
   <div
     class="container-lyric"
     ref="containerLyric"
+    style="z-index: 5"
     @wheel="isUserScrolling = true"
     @touchmove="isUserScrolling = true">
+    <var-button
+      size="mini"
+      @click="store.copyCurrentLyric"
+      class="copy-lyric"
+      style="z-index: 10">
+      {{ $t('music-player.copy-lyric') }}
+    </var-button>
     <div style="height: 50%"></div>
     <div
       class="lyric-body"

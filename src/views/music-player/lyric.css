@@ -1,4 +1,5 @@
 .container-lyric {
+  position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -6,6 +7,12 @@
   > div {
     flex-shrink: 0;
   }
+}
+
+.copy-lyric {
+  position: fixed;
+  left: 10px;
+  bottom: 130px;
 }
 
 .lyric-body {

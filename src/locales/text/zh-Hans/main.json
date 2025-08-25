@@ -101,6 +101,7 @@
   "index.use": "立即使用",
   "music-player.album": "专辑",
   "music-player.album-description": "专辑描述",
+  "music-player.copy-lyric": "复制歌词",
   "music-player.description": "适用于米哈游音乐工作室 HoYo-Mix 发布音乐的音乐播放器",
   "music-player.jump-to-current-lyric": "跳转至当前歌词",
   "music-player.songs": "歌曲",

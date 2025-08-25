@@ -1,12 +1,8 @@
 import ky from 'ky';
 import { defineStore } from 'pinia';
 import { computed, ref, shallowRef, watch } from 'vue';
-import {
-  type T_LyricLine,
-  type T_Album,
-  type T_AlbumDetail,
-  type T_Song
-} from './types';
+import { type T_LyricLine, type T_Album, type T_Song } from './types';
+import { copyToClipboard } from '@/script/tools';
 
 export const formatTime = (time: number) => {
   const minutes = Math.floor(time / 60);
@@ -96,6 +92,17 @@ export const useMusicStore = defineStore('music', () => {
     return `https://p1.music.126.net/${album.cover}${high ? '' : '?param=100y100'}`;
   };
 
+  const copyCurrentLyric = () => {
+    let str = '';
+    lyric.value
+      .map(
+        (line) =>
+          (str += `${line.lyric}\n${line.translation ? line.translation + '\n' : ''}\n`)
+      )
+      .join('\n');
+    copyToClipboard(str);
+  };
+
   return {
     current,
     setProgress,
@@ -106,6 +113,7 @@ export const useMusicStore = defineStore('music', () => {
     currentAlbumID,
     D_Album,
     D_Song,
-    getCover
+    getCover,
+    copyCurrentLyric
   };
 });

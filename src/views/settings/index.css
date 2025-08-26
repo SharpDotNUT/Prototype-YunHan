@@ -4,12 +4,13 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 #bar {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
   gap: 10px;
 }
 
@@ -17,34 +18,36 @@
   display: flex;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
-#tabs {
+#tabs-bar {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 200px;
   max-width: 100%;
-  padding: 10px;
-  transition: transform 0.5s ease-in-out;
-  background-color: var(--card-background);
+  padding: 20px 10px;
   border-right: 1px solid var(--color-primary);
+  text-align: center;
   flex-shrink: 0;
-
+  gap: 20px;
   z-index: 1;
-  > * {
-    padding: 10px;
-    border-left: 2px solid transparent;
-  }
+}
 
-  > a.active {
-    border-left: 2px solid var(--color-primary);
-  }
+#tabs {
+  height: fit-content;
+  max-height: 100%;
+}
+
+.tab-item {
+  display: block;
+  padding: 10px 0;
 }
 
 #view {
   height: 100%;
   width: 100%;
-  overflow-y: auto;
+  overflow: auto;
   padding: 20px max(20px, calc(50vw - 400px));
 }

@@ -50,6 +50,7 @@ watch(ui_isTeyvatFont, () => {
         <template #append-icon></template>
       </var-select>
     </div>
+    <var-divider />
     <div>
       <h2>{{ $t('setting.language.title') }}</h2>
       <br />
@@ -72,7 +73,7 @@ watch(ui_isTeyvatFont, () => {
           </var-space>
         </var-option>
       </var-select>
-      <br />
+      <var-divider />
       <div style="display: flex; gap: 5px; flex-wrap: wrap">
         <span>{{ $t('setting.translation-progress-online') }}</span>
         <img
@@ -94,6 +95,7 @@ watch(ui_isTeyvatFont, () => {
         </span>
       </div>
     </div>
+    <var-divider />
     <div>
       <h2>{{ $t('setting.language.game-font') }}</h2>
       <br />

@@ -12,6 +12,10 @@
   overflow-y: hidden;
 }
 
+#app-bar {
+  z-index: 10000;
+}
+
 #content {
   height: 100%;
   width: 100%;

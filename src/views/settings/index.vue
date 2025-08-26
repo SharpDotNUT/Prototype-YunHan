@@ -1,47 +1,60 @@
 <script setup lang="ts">
 import { useMainStore } from '@/stores/main';
+import { watchEffect } from 'vue';
 import { computed, ref } from 'vue';
-import { RouterView, RouterLink } from 'vue-router';
-import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiMenu } from '@mdi/js';
+import { RouterView, useRouter } from 'vue-router';
 
 const mainStore = useMainStore();
-const showMenu = ref(true);
-
+const router = useRouter();
 const isMobile = computed(() => {
   return mainStore.windowSize.width <= 600;
 });
 
 const settings = ref(['general', 'rm']);
 const tab = ref('general');
+watchEffect(() => {
+  router.push(`/settings/${tab.value}`);
+});
 </script>
 
 <template>
   <div class="__container_settings">
     <div id="bar" v-if="isMobile">
-      <var-button round text @click="showMenu = !showMenu">
-        <svg-icon type="mdi" :path="mdiMenu" />
-      </var-button>
-      <h2>{{ $t('setting.title') }}</h2>
+      <h2>
+        {{ $t('setting.title') }}
+        <span id="subtitle">
+          &nbsp;/&nbsp;
+          <var-menu placement="bottom">
+            <span style="text-decoration: underline">
+              {{ $t('setting.' + tab) }}
+            </span>
+            <template #menu>
+              <var-cell
+                v-for="set in settings"
+                @click="tab = set"
+                :key="set"
+                :class="{ active: tab === set }">
+                {{ $t('setting.' + set) }}
+              </var-cell>
+            </template>
+          </var-menu>
+        </span>
+      </h2>
     </div>
     <div id="content">
-      <div
-        id="tabs"
-        :style="{
-          position: isMobile ? 'absolute' : 'static',
-          transform:
-            isMobile && !showMenu ? 'translateX(-100%)' : 'translateX(0)'
-        }">
-        <h2 v-if="!isMobile">{{ $t('setting.title') }}</h2>
-        <router-link
-          v-for="set in settings"
-          v-ripple
-          :to="set"
-          :class="{
-            active: $route.path === `/settings/${set}`
-          }">
-          {{ $t('setting.' + set) }}
-        </router-link>
+      <div id="tabs-bar" v-if="!isMobile">
+        <h2>{{ $t('setting.title') }}</h2>
+        <var-tabs id="tabs" v-model:active="tab" layout-direction="vertical">
+          <var-tab
+            v-for="set in settings"
+            :key="set"
+            :name="set"
+            :class="{ active: tab === set }">
+            <div class="tab-item">
+              {{ $t('setting.' + set) }}
+            </div>
+          </var-tab>
+        </var-tabs>
       </div>
       <div id="view">
         <RouterView />

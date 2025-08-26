@@ -15,8 +15,13 @@ import Lyric from './lyric.vue';
 import Search from './search.vue';
 import { ref } from 'vue';
 import { copyToClipboard } from '@/script/tools';
+import { useMainStore } from '@/stores/main';
+import { computed } from 'vue';
 
+const mainStore = useMainStore();
 const store = useMusicStore();
+
+const isMobile = computed(() => mainStore.windowSize.width <= 600);
 
 const ui_showLyric = ref(false);
 const ui_showSearch = ref(false);
@@ -24,7 +29,6 @@ const ui_showSearch = ref(false);
 const share = () => {
   copyToClipboard(window.location.href);
 };
-
 </script>
 
 <template>
@@ -34,27 +38,36 @@ const share = () => {
     <Search v-model="ui_showSearch" style="z-index: 20" />
     <div id="bar" style="z-index: 0">
       <img
+        v-if="!isMobile"
         :src="store.getCover(store.current?.albumId, true)"
         @click="ui_showLyric = !ui_showLyric" />
       <div id="controller">
         <div id="controls">
-          <p style="flex-grow: 1">
-            <span id="title">
+          <div id="info">
+            <p id="title">
               {{ store.current?.name }}
-            </span>
-            <br />
-            <span id="lyric-container">
+            </p>
+            <p id="lyric-container">
               <Transition name="lyric">
-                <span
+                <p
                   :key="store.lyric?.[store.currentLyricIndex]?.lyric"
                   class="lyric">
                   {{ store.lyric?.[store.currentLyricIndex]?.lyric }}
-                </span>
+                </p>
               </Transition>
               <br />
-            </span>
-          </p>
+            </p>
+          </div>
           <div id="actions" style="z-index: 10">
+            <var-button round @click="ui_showLyric = !ui_showLyric">
+              <SvgIcon type="mdi" :path="mdiText" />
+            </var-button>
+            <var-button round @click="ui_showSearch = !ui_showSearch">
+              <SvgIcon type="mdi" :path="mdiMagnify" />
+            </var-button>
+            <var-button round @click="share">
+              <SvgIcon type="mdi" :path="mdiShare" />
+            </var-button>
             <var-button round v-if="false">
               <SvgIcon type="mdi" :path="mdiSkipPrevious" />
             </var-button>
@@ -68,15 +81,6 @@ const share = () => {
             </var-button>
             <var-button round v-if="false">
               <SvgIcon type="mdi" :path="mdiSkipNext" />
-            </var-button>
-            <var-button round @click="ui_showLyric = !ui_showLyric">
-              <SvgIcon type="mdi" :path="mdiText" />
-            </var-button>
-            <var-button round @click="ui_showSearch = !ui_showSearch">
-              <SvgIcon type="mdi" :path="mdiMagnify" />
-            </var-button>
-            <var-button round @click="share">
-              <SvgIcon type="mdi" :path="mdiShare" />
             </var-button>
           </div>
         </div>

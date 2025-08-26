@@ -1,8 +1,12 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
 import { ExampleTextGI, ExampleTextHSR, ExampleTextZZZ } from './example-text';
 import { useMainStore } from '@/stores/main';
+import type { T_SupportedLanguage } from '@/locales/i18n';
 
 const mainStore = useMainStore();
+const i18n = useI18n();
+const locale = i18n.locale as unknown as T_SupportedLanguage;
 
 const emit = defineEmits(['done']);
 emit('done');
@@ -19,16 +23,13 @@ emit('done');
           <h3>
             {{ $t('global.game.GI') }}
           </h3>
-          <div class="text">
-            <p
-              v-for="(text, lang) in ExampleTextGI"
-              :lang="lang"
-              :style="{
-                fontFamily: text[1]
-              }">
-              {{ text[0] }}
-            </p>
-          </div>
+          <p
+            class="text"
+            :style="{
+              fontFamily: ExampleTextGI[locale][1]
+            }">
+            {{ ExampleTextGI?.[locale][0] }}
+          </p>
         </div>
       </div>
       <div class="item" style="font-family: var(--font-hsr-family)">
@@ -37,16 +38,13 @@ emit('done');
           <h3>
             {{ $t('global.game.HSR') }}
           </h3>
-          <div class="text">
-            <p
-              v-for="(text, lang) in ExampleTextHSR"
-              :lang="lang"
-              :style="{
-                fontFamily: text[1]
-              }">
-              {{ text[0] }}
-            </p>
-          </div>
+          <p
+            class="text"
+            :style="{
+              fontFamily: ExampleTextHSR[locale][1]
+            }">
+            {{ ExampleTextHSR?.[locale][0] }}
+          </p>
         </div>
       </div>
       <div class="item" style="font-family: var(--font-zzz-family)">
@@ -55,16 +53,13 @@ emit('done');
           <h3>
             {{ $t('global.game.ZZZ') }}
           </h3>
-          <div class="text">
-            <p
-              v-for="(text, lang) in ExampleTextZZZ"
-              :lang="lang"
-              :style="{
-                fontFamily: text[1]
-              }">
-              {{ text[0] }}
-            </p>
-          </div>
+          <p
+            class="text"
+            :style="{
+              fontFamily: ExampleTextZZZ[locale][1]
+            }">
+            {{ ExampleTextZZZ?.[locale][0] }}
+          </p>
         </div>
       </div>
     </var-radio-group>

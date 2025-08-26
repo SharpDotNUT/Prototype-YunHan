@@ -9,14 +9,13 @@ const GameFont = ['GI', 'HSR', 'ZZZ'];
 type GameFont = 'GI' | 'HSR' | 'ZZZ';
 
 export const useMainStore = defineStore('main', () => {
-  const router = useRouter();
   const title = ref('');
   const logoURL = ref('');
   const version = ref(PackageJSON.version);
   const host_name = import.meta.env.VITE_API_HOST as string;
   const theme = ref('');
   const initTasks = ref([] as string[]);
-  const gameFont = ref<GameFont>('GI');
+  const gameFont = ref<GameFont>('HSR');
   {
     const game = localStorage.getItem('YunHan:Font');
     if (game && GameFont.includes(game)) {

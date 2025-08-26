@@ -3,6 +3,10 @@ export const ExampleTextGI = {
     '「云婵娟来花婵娟，风流尽在山水间。江月半轮佳人面，娥眉青酒动心田。」',
     'GI_zh-CN'
   ],
+  'zh-Hant': [
+    '「雲嬋娟來花嬋娟，風流盡在山水間。江月半輪佳人面，娥眉青酒動心田。」',
+    'GI_zh-CN'
+  ],
   en: [
     '"How gently do the clouds and flowers sway, as dancing winds meander through the vales. ' +
       'The half-moon is as a lovely face, and a glass raised to it moves the heart."',
@@ -20,12 +24,18 @@ export const ExampleTextHSR = {
       '「冰消雪释时，花会盛开，你会找到我。」',
     'HSR_zh-CN'
   ],
+  'zh-Hant': [
+    '手工雕琢的銀戒，附耳能夠聽到雪融的聲音。\n' +
+      '在哀地裏亞，逝者臨行前將冰雪封入戒指，獻給生者，代爲同行餘下生路。\n' +
+      '「冰消雪釋時，花會盛開，你會找到我。」',
+    'HSR_zh-TW'
+  ],
   en: [
     'A handcrafted silver ring — if you hold it to your ear, you can hear the sound of melting snow.\n' +
       'In Aidonia, the departed seal ice and snow into a ring before their final journey, \n' +
       'offering it to the living as a token to walk the rest of the path in their stead\n' +
       '"When the ice melts and the snowfades, the flowers will bloom, and youwill find me."',
-    'HSR_zh-tw'
+    'HSR_zh-CN'
   ],
   ja: [
     '手作りの銀の指輪。耳を当てると雪解けの音が聞こえるようだ。\n' +
@@ -39,6 +49,11 @@ export const ExampleTextZZZ = {
     '阵营：对空洞特别行动部第六课；身高：170（包括耳朵）\n' +
       '经历的战斗数量越多，越是能让外人察觉到一个事实：若是有刀剑的神灵存在，那他们一定颇为偏爱星见雅。',
     'ZZZ_zh-CN'
+  ],
+  'zh-Hant': [
+    '陣營：對空洞特別行動部第六課；身高：170（包括耳朵）\n' +
+      '經歷的戰鬥數量越多，越是能讓外人察覺到一個事實：若是有刀劍的神靈存在，那他們一定頗爲偏愛星見雅。',
+    'ZZZ_zh-TW'
   ],
   en: [
     'Faction: Hollow Special Operations Section 6; Height: 170 (Ears Included)\n' +

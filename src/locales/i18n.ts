@@ -14,6 +14,10 @@ Locale.add('zh-Hant', Locale.zhTW);
 Locale.add('en', Locale.enUS);
 Locale.add('ja', Locale.jaJP);
 
+// 在源头定义支持的语言列表和类型
+export const SupportedLanguages = ['zh-Hans', 'zh-Hant', 'en', 'ja'];
+export type T_SupportedLanguage = 'zh-Hans' | 'zh-Hant' | 'en' | 'ja';
+
 export const status = {
   all: Object.keys(ZHS).length,
   translated: [
@@ -43,10 +47,7 @@ const messages = {
   }
 };
 
-export const SupportedLanguages = ['zh-Hans', 'zh-Hant', 'en', 'ja'];
-export type TSupportedLanguages = 'zh-Hans' | 'zh-Hant' | 'en' | 'ja';
-
-const i18n = createI18n<typeof ZHS, (typeof SupportedLanguages)[number]>({
+const i18n = createI18n<typeof ZHS, T_SupportedLanguage>({
   locale: 'zh-Hans',
   fallbackLocale: 'zh-Hans',
   messages,

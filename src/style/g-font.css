@@ -1,12 +1,4 @@
-@import url('https://hoyo-fonts.kuriyota.com/fonts/GI-zh-cn/result.css');
-@import url('https://hoyo-fonts.kuriyota.com/fonts/GI-ja-jp/result.css');
-@import url('https://hoyo-fonts.kuriyota.com/fonts/HSR-zh-cn/result.css');
-@import url('https://hoyo-fonts.kuriyota.com/fonts/HSR-zh-tw/result.css');
-@import url('https://hoyo-fonts.kuriyota.com/fonts/HSR-ja-jp/result.css');
-@import url('https://hoyo-fonts.kuriyota.com/fonts/ZZZ-en-us/result.css');
-@import url('https://hoyo-fonts.kuriyota.com/fonts/ZZZ-zh-cn/result.css');
-@import url('https://hoyo-fonts.kuriyota.com/fonts/ZZZ-zh-tw/result.css');
-@import url('https://hoyo-fonts.kuriyota.com/fonts/ZZZ-ja-jp/result.css');
+@import url('https://hoyo-font.kuriyota.com/index.css');
 
 @import url('https://fonts.font.im/css2?family=JetBrains+Mono:wght@100..900&display=swap');
 
@@ -35,24 +27,24 @@ h6 {
 }
 
 html[lang='en'] {
-  --font-gi-family: 'GI-zh-cn', sans-serif;
-  --font-hsr-family: 'HSR-zh-cn', sans-serif;
-  --font-zzz-family: 'ZZZ-en-us', 'ZZZ-zh-cn', sans-serif;
+  --font-gi-family: 'GI_zh-CN', sans-serif;
+  --font-hsr-family: 'HSR_zh-CN', sans-serif;
+  --font-zzz-family: 'ZZZ_en-US', 'ZZZ_zh-CN', sans-serif;
 }
 html[lang='zh-Hans'] {
-  --font-gi-family: 'GI-zh-cn', sans-serif;
-  --font-hsr-family: 'HSR-zh-cn', sans-serif;
-  --font-zzz-family: 'ZZZ-zh-cn', sans-serif;
+  --font-gi-family: 'GI_zh-CN', sans-serif;
+  --font-hsr-family: 'HSR_zh-CN', sans-serif;
+  --font-zzz-family: 'ZZZ_zh-CN', sans-serif;
 }
 html[lang='zh-Hant'] {
-  --font-gi-family: 'GI-zh-cn', sans-serif;
-  --font-hsr-family: 'HSR-zh-tw', sans-serif;
-  --font-zzz-family: 'ZZZ-zh-tw', sans-serif;
+  --font-gi-family: 'GI_zh-CN', sans-serif;
+  --font-hsr-family: 'HSR_zh-TW', sans-serif;
+  --font-zzz-family: 'ZZZ_zh-TW', sans-serif;
 }
 html[lang='ja'] {
-  --font-gi-family: 'GI-ja-jp', 'GI-zh-cn', sans-serif;
-  --font-hsr-family: 'HSR-ja-jp', 'HSR-zh-cn', sans-serif;
-  --font-zzz-family: 'ZZZ-ja-jp', 'ZZZ-zh-cn', sans-serif;
+  --font-gi-family: 'GI_ja-JP', 'GI_zh-CN', sans-serif;
+  --font-hsr-family: 'HSR_ja-JP', 'HSR_zh-CN', sans-serif;
+  --font-zzz-family: 'ZZZ_ja-JP', 'ZZZ_zh-CN', sans-serif;
 }
 
 .mono {

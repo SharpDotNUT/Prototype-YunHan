@@ -2,7 +2,7 @@
 import { ref, watch } from 'vue';
 import { RouterView, useRoute, useRouter } from 'vue-router';
 import AppBar from '@/components/app-bar.vue';
-import UpdateLog from '@/views/update_log/index.vue';
+import UpdateLog from '@/views/settings/update_log/index.vue';
 import NewVersionTip from './components/UpdateTip/UpdateTip.vue';
 import { useI18n } from 'vue-i18n';
 import { Dialog, Locale, Snackbar } from '@varlet/ui';
@@ -156,7 +156,7 @@ if (mainStore.initTasks.length > 0) {
   </div>
   <var-popup position="bottom" v-model:show="ui_showUpdate">
     <div id="ul">
-      <h2>{{ $t('update-log.title') }} | {{ mainStore.version }}</h2>
+      <h2>{{ $t('setting.update-log.title') }} | {{ mainStore.version }}</h2>
       <UpdateLog id="log" />
       <div>
         <var-button

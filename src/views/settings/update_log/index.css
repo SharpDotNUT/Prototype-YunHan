@@ -1,5 +1,4 @@
 .update-log-container {
-  padding: 20px max(calc(50vw - 400px), 20px);
   display: flex;
   flex-direction: column;
 }

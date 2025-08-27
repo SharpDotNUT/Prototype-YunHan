@@ -34,18 +34,16 @@ export const routes: RouteRecordRaw[] = [
       {
         path: 'rm',
         component: () => import('@/views/settings/RM/index.vue')
+      },
+      {
+        path: 'about',
+        component: () => import('@/views/settings/about/index.vue')
+      },
+      {
+        path: 'update-log',
+        component: () => import('@/views/settings/update_log/index.vue')
       }
     ]
-  },
-  {
-    path: '/update-log',
-    name: 'update-log',
-    component: () => import('@/views/update_log/index.vue')
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: () => import('@/views/about/index.vue')
   },
   {
     name: 'translator',

@@ -129,7 +129,7 @@
   "quiz.home.failed-to-load": "jsDelivr 経由で GitHub から問題集を取得できません。ネットワークまたは国際回線接続をご確認ください。",
   "quiz.home.start": "クイズを開始",
   "quiz.title": "クイズ",
-  "setting.about.title": "について",
+  "setting.about": "について",
   "setting.contribute-translation": "翻訳への貢献へ",
   "setting.game-font.select": "ゲームのフォントを選択",
   "setting.general": "汎用",
@@ -146,6 +146,7 @@
   "setting.theme.title": "テーマ",
   "setting.title": "設定",
   "setting.translation-progress-online": "オンライン翻訳の：",
+  "setting.update-log": "ログを更新します",
   "sp-key.become-a-contributor.content": "コードプールの協力者になりませんか？「について」ページから作者に連絡いただければ、コード登録用のトークンを発行します。",
   "sp-key.become-a-contributor.title": "協力者になる",
   "sp-key.commit-key": "コード登録",
@@ -167,6 +168,5 @@
   "translator.description": "HoYoVERSEゲーム内のテキストと英語を変換するツール",
   "translator.title": "翻訳ツール",
   "update-log.area": "機能",
-  "update-log.areas.i18n": "現地化",
-  "update-log.title": "ログを更新します"
+  "update-log.areas.i18n": "現地化"
 }

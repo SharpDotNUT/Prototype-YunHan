@@ -2,16 +2,24 @@
 import { useMainStore } from '@/stores/main';
 import { watchEffect } from 'vue';
 import { computed, ref } from 'vue';
-import { RouterView, useRouter } from 'vue-router';
+import { RouterView, useRoute, useRouter } from 'vue-router';
 
 const mainStore = useMainStore();
+const route = useRoute();
 const router = useRouter();
 const isMobile = computed(() => {
   return mainStore.windowSize.width <= 600;
 });
 
-const settings = ref(['general', 'rm']);
+const settings = ref(['general', 'rm', 'update-log', 'about']);
 const tab = ref('general');
+router.afterEach(() => {
+  const reg = /settings\/(\w+)/;
+  const match = route.path.match(reg);
+  if (match && settings.value.includes(match[1])) {
+    tab.value = match[1];
+  }
+});
 watchEffect(() => {
   router.push(`/settings/${tab.value}`);
 });
@@ -24,7 +32,7 @@ watchEffect(() => {
         {{ $t('setting.title') }}
         <span id="subtitle">
           &nbsp;/&nbsp;
-          <var-menu placement="bottom">
+          <var-menu style="cursor: pointer" placement="bottom">
             <span style="text-decoration: underline">
               {{ $t('setting.' + tab) }}
             </span>

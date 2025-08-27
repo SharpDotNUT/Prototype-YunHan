@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin: 20px max(5vw, calc((100vw - 600px) / 2));
 }
 
 #card {

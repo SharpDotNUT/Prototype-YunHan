@@ -74,7 +74,9 @@ watch(
       app: t('name'),
       i18n: t('update-log.areas.i18n'),
       rm: t('setting.rm'),
-      others: t('update-log.areas.others')
+      about: t('setting.about'),
+      intro: t('index.title'),
+      'update-log': t('setting.update-log')
     };
   },
   { immediate: true }

@@ -129,7 +129,7 @@
   "quiz.home.failed-to-load": "无法通过 jsDelivr 从 GitHub 获取题库，请检查您的网络或国际网络连接。",
   "quiz.home.start": "开始答题",
   "quiz.title": "答题",
-  "setting.about.title": "关于",
+  "setting.about": "关于",
   "setting.contribute-translation": "前往贡献翻译",
   "setting.game-font.select": "选择游戏字体",
   "setting.general": "通用",
@@ -146,6 +146,7 @@
   "setting.theme.title": "主题",
   "setting.title": "设置",
   "setting.translation-progress-online": "在线翻译进度：",
+  "setting.update-log": "更新日志",
   "sp-key.become-a-contributor.content": "您想成为本兑换码池的贡献者吗？请联系在关于页面联系作者，我们将给您一个 token，您可以使用这个 token 来提交兑换码。",
   "sp-key.become-a-contributor.title": "成为贡献者",
   "sp-key.commit-key": "提交兑换码",
@@ -167,6 +168,5 @@
   "translator.description": "一个用于转换米哈游游戏内文字和英文的工具",
   "translator.title": "翻译器",
   "update-log.area": "功能",
-  "update-log.areas.i18n": "本地化",
-  "update-log.title": "更新日志"
+  "update-log.areas.i18n": "本地化"
 }

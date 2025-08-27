@@ -129,7 +129,7 @@
   "quiz.home.failed-to-load": "Unable to fetch the question bank from GitHub via jsDelivr. Please check your network or international network connection.",
   "quiz.home.start": "Start Quiz",
   "quiz.title": "Quiz",
-  "setting.about.title": "About",
+  "setting.about": "About",
   "setting.contribute-translation": "Go to contribute translation",
   "setting.game-font.select": "Select game font",
   "setting.general": "General",
@@ -146,6 +146,7 @@
   "setting.theme.title": "Theme",
   "setting.title": "Settings",
   "setting.translation-progress-online": "Online translation progress: ",
+  "setting.update-log": "Update log",
   "sp-key.become-a-contributor.content": "Want to contribute to this code pool? Please contact the author via the About page. We'll provide you a token to submit redemption codes.",
   "sp-key.become-a-contributor.title": "Become a Contributor",
   "sp-key.commit-key": "Submit Code",
@@ -167,6 +168,5 @@
   "translator.description": "A tool for converting in-game text and English in HoYoVERSE games",
   "translator.title": "Translator",
   "update-log.area": "Feature",
-  "update-log.areas.i18n": "Localization",
-  "update-log.title": "Update log"
+  "update-log.areas.i18n": "Localization"
 }

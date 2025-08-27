@@ -129,7 +129,7 @@
   "quiz.home.failed-to-load": "無法通過 jsDelivr 從 GitHub 獲取題庫，請檢查您的網絡或國際網絡連接。",
   "quiz.home.start": "開始答題",
   "quiz.title": "答題",
-  "setting.about.title": "關於",
+  "setting.about": "關於",
   "setting.contribute-translation": "前往貢獻翻譯",
   "setting.game-font.select": "選擇遊戲字體",
   "setting.general": "通用",
@@ -146,6 +146,7 @@
   "setting.theme.title": "主題",
   "setting.title": "設置",
   "setting.translation-progress-online": "在線翻譯進度：",
+  "setting.update-log": "更新日誌",
   "sp-key.become-a-contributor.content": "您想成爲本兌換碼池的貢獻者嗎？請聯繫在關於頁面聯繫作者，我們將給您一個 token，您可以使用這個 token 來提交兌換碼。",
   "sp-key.become-a-contributor.title": "成爲貢獻者",
   "sp-key.commit-key": "提交兌換碼",
@@ -167,6 +168,5 @@
   "translator.description": "一個用於轉換米哈遊遊戲內文字和英文的工具",
   "translator.title": "翻譯器",
   "update-log.area": "功能",
-  "update-log.areas.i18n": "本地化",
-  "update-log.title": "更新日誌"
+  "update-log.areas.i18n": "本地化"
 }

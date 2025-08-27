@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PackageJSON from '../../../package.json';
+import PackageJSON from '../../../../package.json';
 import Meta from '@/meta';
 
 const show = defineModel('show', { type: Boolean, default: true });

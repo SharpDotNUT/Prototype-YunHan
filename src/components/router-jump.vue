@@ -61,15 +61,15 @@ function openGithub() {
         </RouterLink>
       </var-paper>
       <var-paper elevation="3" class="app var-button">
-        <RouterLink class="app-name" to="/about">
+        <RouterLink class="app-name" to="/settings/about">
           <SvgIcon class="icon" type="mdi" :path="mdiInformation" />
           <span>{{ $t('global.about') }}</span>
         </RouterLink>
       </var-paper>
       <var-paper elevation="3" class="app var-button">
-        <RouterLink class="app-name" to="/update-log">
+        <RouterLink class="app-name" to="/settings/update-log">
           <SvgIcon class="icon" type="mdi" :path="mdiUpdate" />
-          <span>{{ $t('update-log.title') }}</span>
+          <span>{{ $t('setting.update-log') }}</span>
         </RouterLink>
       </var-paper>
       <var-divider />

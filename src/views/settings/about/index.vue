@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import PackageJSON from '../../../../package.json';
+import Markdown from '@/components/markdown.vue';
 import Meta from '@/meta';
+import _README from '../../../../README.md?raw';
+
+const README = _README.replaceAll('/public/', '/');
 
 const show = defineModel('show', { type: Boolean, default: true });
 
@@ -17,8 +21,10 @@ const LAST_COMMIT = __LAST_COMMIT;
           src="/img/UI_NameCardPic_Yunjin_P.png"
           style="width: 100%; opacity: 0.75" />
         <div id="main_text">
-          <p style="font-size: 5vh">{{ $t('name') }}</p>
-          <var-badge :value="'v ' + PackageJSON.version"></var-badge>
+          <p style="font-size: 4vmin">{{ $t('name') }}</p>
+          <var-badge
+            style="font-size: 1.2vmin"
+            :value="'v ' + PackageJSON.version"></var-badge>
         </div>
       </div>
     </div>
@@ -26,25 +32,39 @@ const LAST_COMMIT = __LAST_COMMIT;
       <p>
         {{ $t('index.description') }}
       </p>
-      <p lang="zh-Hans">
-        「
-        <ruby>
-          云先生
-          <rt>云堇</rt>
-        </ruby>
-        可爱捏」
+      <p>
+        <a
+          :href="`https://github.com/${Meta.repo}`"
+          target="_blank"
+          style="display: flex; gap: 5px">
+          <img :src="`https://img.shields.io/github/stars/${Meta.repo}`" />
+          <img
+            :src="`https://img.shields.io/github/license/${Meta.repo}?tab=Apache-2.0-1-ov-file`" />
+        </a>
       </p>
-      <br />
-      <a
-        :href="`https://github.com/${Meta.repo}`"
-        target="_blank"
-        style="display: flex; gap: 5px">
-        <img :src="`https://img.shields.io/github/stars/${Meta.repo}`" />
-        <img :src="`https://img.shields.io/github/license/${Meta.repo}`" />
-      </a>
+      <var-divider />
+      <p>
+        <span lang="zh-Hans">
+          「
+          <ruby>
+            云先生
+            <rt>云堇</rt>
+          </ruby>
+          可爱捏」
+        </span>
+        <span lang="ja">
+          「
+          <ruby>
+            雲先生
+            <rt>雲堇ちゃん</rt>
+          </ruby>
+          は可愛いですね」
+        </span>
+        <span lang="en">"Yun Jin is cute!"</span>
+      </p>
     </var-card>
     <var-card id="contributors">
-      <p>
+      <p style="display: inline-flex; justify-items: center">
         <span>Programmed By&nbsp</span>
         <var-link href="https://github.com/SharpDotNUT" target="_blank">
           <img style="height: 1em" src="\img\Logo_FB.proj.svg" />
@@ -93,10 +113,18 @@ const LAST_COMMIT = __LAST_COMMIT;
       <p style="margin-top: 1em">
         {{ $t('about.build-time', [new Date(BuildTime).toLocaleString()]) }}
       </p>
-      <p style="margin-top: 1em">
+      <p v-if="false" style="margin-top: 1em">
         {{ $t('about.build-env', [BuildEnv]) }}
       </p>
+      <var-divider />
       <p>{{ $t('about.copyright') }}</p>
+    </var-card>
+    <div style="display: flex; align-items: center; gap: 1em">
+      <p>README.md</p>
+      <var-divider />
+    </div>
+    <var-card>
+      <Markdown :content="README" />
     </var-card>
   </div>
 </template>

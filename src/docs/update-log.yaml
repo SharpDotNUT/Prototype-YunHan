@@ -1,3 +1,39 @@
+'2.7.1':
+  date: 2025-08-27
+  name-zh: '雪浪与苍林之舞' # https://www.miyoushe.com/ys/article/67900927
+  name-en: 'A Dance of Snowy Tides and Hoarfrost Groves' # https://x.com/GenshinImpact/status/1960552862997459168
+  changes:
+    app:
+      - '使用 Rolldown 作为 Vite 构建器'
+      - 'Use `rolldown-vite` as the builder'
+      - '「更新提示」现在会展示即将更新使用的频道'
+      - '"Update Tip" will now display the channel being used for updating now'
+      - '更新的游戏字体链接和元数据'
+      - 'Updated game font links and metadata'
+    music-player:
+      - '添加了搜索功能，目前只支持搜索歌曲'
+      - 'Added search function, currently only supports searching songs'
+      - '初始化时会直接加载所有歌曲的元数据以提升速度和支持搜索'
+      - 'Loading all song metadata to improve speed and support search'
+      - '增加了复制歌词的功能'
+      - 'Added the feature to copy lyrics'
+      - '更好的专辑自动滚动逻辑'
+      - 'Better album auto-scroll logic'
+      - '支持分享歌曲'
+      - 'Added the feature to share songs'
+      - '当鼠标悬停在歌词上时，会展示当前歌词的时间'
+      - 'Show current lyric time when hovering over lyrics'
+    setting:
+      - '游戏字体选择器现在只会展示当前使用的语言的预览'
+      - 'Game font preview selector will only show the preview of the current language'
+      - '修改布局，优化移动端体验和整体样式'
+      - 'Improve layout, optimize mobile experience and overall style'
+      - '将「关于」和「更新日志」界面整合进设置'
+      - 'Move "About" and "Update Log" interface into settings'
+    about:
+      - '改进界面细节，添加了对 `README.md` 的展示'
+      - 'Improve interface details, add display of `README.md`'
+
 '2.7.0':
   date: 2025-08-24
   name-zh: '冥蝶遐思'

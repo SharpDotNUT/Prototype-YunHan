@@ -1,7 +1,7 @@
 {
   "name": "@sharpdotnut/prototype-yunhan",
   "description": "An open-source web-based toolkit for HoYoVERSE games.",
-  "version": "2.7.0 - commit.10",
+  "version": "2.7.1",
   "type": "module",
   "scripts": {
     "dev": "vite",

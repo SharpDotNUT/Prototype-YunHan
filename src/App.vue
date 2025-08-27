@@ -156,7 +156,7 @@ if (mainStore.initTasks.length > 0) {
   </div>
   <var-popup position="bottom" v-model:show="ui_showUpdate">
     <div id="ul">
-      <h2>{{ $t('setting.update-log.title') }} | {{ mainStore.version }}</h2>
+      <h2>{{ $t('setting.update-log') }} | {{ mainStore.version }}</h2>
       <UpdateLog id="log" />
       <div>
         <var-button

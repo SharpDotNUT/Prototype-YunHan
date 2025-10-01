@@ -1,0 +1,49 @@
+name: Build and Prerelease
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install and Build
+        run: |
+          pnpm install
+          pnpm run build
+        env:
+          GITHUB_CI: true
+
+      - name: Create ZIP Archive
+        run: |
+          cd dist
+          zip -r ../Prototype-Yunhan_Build_${{ github.ref_name }}.zip .
+
+      - name: Create Prerelease
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: |
+            Automated pre-release for ${{ github.ref_name }}.
+          prerelease: true
+          files: |
+            Prototype-Yunhan_Build_${{ github.ref_name }}.zip

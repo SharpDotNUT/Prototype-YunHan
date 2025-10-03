@@ -23,14 +23,14 @@ const ui_commit = ref(false);
 const data: Ref<t_Data> = ref([]);
 
 const API = useAPIStore();
-API.fetchAPI('/sp-key')
+API.fetchAPI('/sp-keys/all')
   .then((res) => res.json())
   .then((res) => {
     data.value = reduceData(res);
   });
 
 function commit() {
-  API.fetchAPI('/sp-key', undefined, 'POST', {
+  API.fetchAPI('/sp-keys/add', undefined, 'POST', {
     token: form.value.token,
     key: form.value.key,
     game: form.value.game,

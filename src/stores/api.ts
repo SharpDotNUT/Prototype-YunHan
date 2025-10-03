@@ -1,7 +1,6 @@
-import { defineStore } from 'pinia';
+import { acceptHMRUpdate, defineStore } from 'pinia';
 
 export const useAPIStore = defineStore('api', () => {
-  //@ts-ignore
   const APIHost = import.meta.env.VITE_API_HOST as string;
   const fetchAPI = async (
     url: string,
@@ -26,3 +25,7 @@ export const useAPIStore = defineStore('api', () => {
     fetchAPI
   };
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useAPIStore, import.meta.hot));
+}

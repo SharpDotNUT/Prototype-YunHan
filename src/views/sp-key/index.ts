@@ -30,5 +30,8 @@ export function reduceData(data: t_Data) {
       (new Date(item['available-time']).getTime() - new Date().getTime()) /
       (1000 * 60);
   });
+  data.sort((a, b) => {
+    return b['available-time'] - a['available-time'];
+  });
   return data;
 }

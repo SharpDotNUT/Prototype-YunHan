@@ -48,5 +48,5 @@ html[lang='ja'] {
 }
 
 .mono {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'JetBrains Mono', inherit, monospace;
 }

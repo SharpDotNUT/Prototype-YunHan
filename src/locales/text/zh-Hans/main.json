@@ -154,6 +154,7 @@
   "sp-key.expired-time": "截止时间",
   "sp-key.game": "游戏",
   "sp-key.key": "兑换码",
+  "sp-key.refresh": "刷新",
   "sp-key.server": "服务器",
   "sp-key.time-to-expire": "还有 {0} 分钟过期",
   "sp-key.title": "兑换码",

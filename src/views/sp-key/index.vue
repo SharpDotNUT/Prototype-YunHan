@@ -23,11 +23,13 @@ const ui_commit = ref(false);
 const data: Ref<t_Data> = ref([]);
 
 const API = useAPIStore();
-API.fetchAPI('/sp-keys/all')
-  .then((res) => res.json())
-  .then((res) => {
-    data.value = reduceData(res);
-  });
+const get = () =>
+  API.fetchAPI('/sp-keys/all')
+    .then((res) => res.json())
+    .then((res) => {
+      data.value = reduceData(res);
+    });
+get();
 
 function commit() {
   API.fetchAPI('/sp-keys/add', undefined, 'POST', {
@@ -47,15 +49,21 @@ function commit() {
 
 <template>
   <div class="__container">
-    <var-button block type="primary" @click="ui_commit = true">
-      {{ $t('sp-key.commit-key') }}
-    </var-button>
+    <div id="actions">
+      <var-button block type="primary" @click="ui_commit = true">
+        {{ $t('sp-key.commit-key') }}
+      </var-button>
+      <br />
+      <var-button block @click="get">
+        {{ $t('sp-key.refresh') }}
+      </var-button>
+    </div>
     <br />
     <div id="keys">
       <var-card v-for="item in data" class="card">
-        <div v-for="key in item.key.split(',')" class="key">
+        <div v-for="key in item.key.split(',')" class="key mono">
           <span>{{ key }}</span>
-          <var-button @click="copyToClipboard(key)">
+          <var-button round @click="copyToClipboard(key)">
             <SvgIcon type="mdi" :path="mdiContentCopy" />
           </var-button>
         </div>
@@ -73,15 +81,18 @@ function commit() {
             <span>{{ item.version }}</span>
           </span>
           <span>
-            <span>{{ $t('sp-key.expired-time') }} :</span>
-            <span>{{ item['available-time-string'] }}</span>
-            <span>|</span>
-            <span v-if="item.expired" style="background-color: red">
+            <span>
+              {{ $t('sp-key.expired-time') }} :&nbsp;{{
+                item['available-time-string']
+              }}
+            </span>
+            <span>&nbsp;</span>
+            <var-chip size="small" type="danger" v-if="item.expired">
               {{ $t('global.expired') }}
-            </span>
-            <span v-else style="background-color: green">
+            </var-chip>
+            <var-chip size="small" type="success" v-else>
               {{ $t('sp-key.time-to-expire', [item['time-to-expire']]) }}
-            </span>
+            </var-chip>
           </span>
         </div>
       </var-card>

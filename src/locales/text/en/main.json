@@ -154,6 +154,7 @@
   "sp-key.expired-time": "Expiration Time",
   "sp-key.game": "Game",
   "sp-key.key": "Redemption Code",
+  "sp-key.refresh": "Refresh",
   "sp-key.server": "Server",
   "sp-key.time-to-expire": "Expiring in {0} minutes",
   "sp-key.title": "Redemption Codes",

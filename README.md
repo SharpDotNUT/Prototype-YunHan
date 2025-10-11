@@ -17,7 +17,7 @@
 
 「云婵娟来花婵娟，风流尽在山水间。」
 
-How gently do the clouds and flowers sway, as dancing winds meander through the vales.
+"(Translated) How gently do the clouds and flowers sway, as dancing winds meander through the vales."
 
 </center>
 </div>
@@ -32,13 +32,16 @@ How gently do the clouds and flowers sway, as dancing winds meander through the 
 
 All in providing a pure web page toolbox, while supporting mobile phones.
 
-[官网](https://yunhan.sharpdotnut.com/)
+- [官网](https://yunhan.sharpdotnut.com/)
+
+- [Roadmap](https://github.com/SharpDotNUT/Prototype-YunHan/wiki/Roadmap)
+- [开发路线图(中文)](https://github.com/SharpDotNUT/Prototype-YunHan/wiki/%E5%BC%80%E5%8F%91%E8%B7%AF%E7%BA%BF%E5%9B%BE%EF%BC%88%E4%B8%AD%E6%96%87%EF%BC%89)
 
 ## 支持的功能 Supported features
 
 - [x] 游戏内文字发翻译器 Translator for in-game language
 - [x] HoYo-MiX 音乐播放器 HoYo-MiX music player
-- [x] 基础成就管理 Achievement management
+- [ ] 基础成就管理 Achievement management
 - [x] 原神辞典 Genshin Impact Dictionary
 - [x] 前瞻兑换码查询 Special Program Redemption Code Query
 - [x] 问答 Quiz
@@ -47,13 +50,13 @@ All in providing a pure web page toolbox, while supporting mobile phones.
 - [ ] 卡池浏览 Gacha Pool Browser
 - [ ] 抽卡模拟 Gacha Simulator
 
-<img alt="en translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=en&style=flat&logo=crowdin&query=%24.progress.0.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" />
-<img alt="ja translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=ja&style=flat&logo=crowdin&query=%24.progress.1.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" />
-<img alt="zh-TW translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=zh-TW&style=flat&logo=crowdin&query=%24.progress.2.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" />
+<img alt="en translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=en&style=flat&logo=crowdin&query=%24.progress.0.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" /> <img alt="ja translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=ja&style=flat&logo=crowdin&query=%24.progress.1.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" /> <img alt="zh-TW translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=zh-TW&style=flat&logo=crowdin&query=%24.progress.2.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" />
 
 <a href="https://zh.crowdin.com/project/protype-yunhan/" rel="nofollow"><img style="width:140;height:40px" src="https://badges.crowdin.net/badge/light/crowdin-on-dark.png" srcset="https://badges.crowdin.net/badge/light/crowdin-on-dark.png 1x,https://badges.crowdin.net/badge/light/crowdin-on-dark@2x.png 2x" alt="Crowdin | Agile localization for tech companies" /></a>
 
 ## 致谢 Thanks
+
+<img width="128" height="128" alt="Yun Jin · Wink" src="https://github.com/user-attachments/assets/95c58c46-1adb-41c1-a868-ffe21360a964" />
 
 感谢 [Cloudflare](https://www.cloudflare.com/) 提供的免费 CDN 服务，以及 Pages 等服务，他们是本项目免费运行的基础。
 

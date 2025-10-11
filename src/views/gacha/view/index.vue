@@ -4,6 +4,7 @@ import PlayBGM from '../play-bgm.vue';
 </script>
 
 <template>
-  <PlayBGM />
-  <BannersView />
+  <div style="padding: 20px">
+    <BannersView />
+  </div>
 </template>

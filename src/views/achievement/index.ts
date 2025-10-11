@@ -1,5 +1,5 @@
 import {
-  LanguageDataDefault,
+  LanguageTextMapDefault,
   SupportedLanguages,
   type T_SupportedLanguage
 } from '@/locales/i18n';
@@ -54,7 +54,7 @@ export const useAchievementStore = defineStore('achievement', () => {
   const RM = useRM();
 
   const data = ref<AchievementData | null>(null);
-  const textMap = ref<Record<T_SupportedLanguage, any>>(LanguageDataDefault);
+  const textMap = ref(structuredClone(LanguageTextMapDefault));
   const text = computed(
     () => textMap.value[locale.value as T_SupportedLanguage]
   );

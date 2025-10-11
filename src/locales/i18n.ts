@@ -57,9 +57,9 @@ const i18n = createI18n<typeof ZHS, T_SupportedLanguage>({
 
 export default i18n;
 
-export const LanguageDataDefault = {
-  'zh-Hans': undefined,
-  'zh-Hant': undefined,
-  en: undefined,
-  ja: undefined
-};
+export const LanguageTextMapDefault = {
+  'zh-Hans': {},
+  'zh-Hant': {},
+  en: {},
+  ja: {}
+} as Record<T_SupportedLanguage, Record<string, string>>;

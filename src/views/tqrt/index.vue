@@ -3,7 +3,7 @@ import { computed, ref, watch } from 'vue';
 import { renderMessage } from './render';
 import { useTQRTStore } from './store';
 import { getLanguage } from './util';
-import { round } from 'lodash-es';
+import { round } from 'es-toolkit';
 import { useMainStore } from '@/stores/main';
 import { useI18n } from 'vue-i18n';
 import { Dialog } from '@varlet/ui';

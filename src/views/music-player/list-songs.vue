@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { round } from 'lodash-es';
+import { round } from 'es-toolkit';
 import { useMusicStore } from './store';
 import type { T_Song } from './types';
 

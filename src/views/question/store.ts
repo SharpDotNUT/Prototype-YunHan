@@ -1,4 +1,4 @@
-import { eq, isEqual } from 'lodash-es';
+import { eq, isEqual } from 'es-toolkit';
 import type { t_QuestionsBank } from './types';
 import { defineStore } from 'pinia';
 import { computed, watch } from 'vue';

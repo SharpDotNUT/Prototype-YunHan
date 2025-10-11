@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, provide, ref, watch } from 'vue';
-import { round } from 'lodash-es';
+import { round } from 'es-toolkit';
 import { getTable, type GachaType, type Games } from 'hoyo-gacha';
 import { use } from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';

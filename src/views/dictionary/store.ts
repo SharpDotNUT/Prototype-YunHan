@@ -2,7 +2,7 @@ import { useRM } from '@/stores/resource-manager';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import type { Word } from './types';
-import { difference } from 'lodash-es';
+import { difference } from 'es-toolkit';
 import { Snackbar } from '@varlet/ui';
 import { useI18n } from 'vue-i18n';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRM } from '@/stores/resource-manager';
-import { round } from 'lodash-es';
+import { round } from 'es-toolkit';
 
 const RM = useRM();
 

@@ -5,7 +5,7 @@ import { useMainStore } from '@/stores/main';
 const mainStore = useMainStore();
 import { useI18n } from 'vue-i18n';
 import { status } from '@/locales/i18n';
-import { round } from 'lodash-es';
+import { round } from 'es-toolkit';
 import MetaURL from '@/components/meta-url/MetaURL.vue';
 import FontSelector from '@/components/font-select/FontSelector.vue';
 const { locale } = useI18n();

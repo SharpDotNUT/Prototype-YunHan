@@ -15,7 +15,7 @@ Locale.add('en', Locale.enUS);
 Locale.add('ja', Locale.jaJP);
 
 // 在源头定义支持的语言列表和类型
-export const SupportedLanguages = ['zh-Hans', 'zh-Hant', 'en', 'ja'];
+export const SupportedLanguages = ['zh-Hans', 'zh-Hant', 'en', 'ja'] as const;
 export type T_SupportedLanguage = 'zh-Hans' | 'zh-Hant' | 'en' | 'ja';
 
 export const status = {
@@ -56,3 +56,10 @@ const i18n = createI18n<typeof ZHS, T_SupportedLanguage>({
 });
 
 export default i18n;
+
+export const LanguageDataDefault = {
+  'zh-Hans': undefined,
+  'zh-Hant': undefined,
+  en: undefined,
+  ja: undefined
+};

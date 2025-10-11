@@ -46,13 +46,18 @@ export const useRM = defineStore('RM', () => {
 
   const MetaURLOptions = ref([
     {
-      base: 'https://yunhan-meta.sharpdotnut.com',
+      base: 'https://prototype-yunhan-meta.sharpdotnut.com',
       provider: 'CloudFlare',
       status: 'UNKNOWN' as T_NetStatus
     },
     {
       base: 'https://cdn.jsdelivr.net/gh/SharpDotNUT/Prototype-YunHan.Meta@main/data',
       provider: 'GitHub & JSDelivr',
+      status: 'UNKNOWN' as T_NetStatus
+    },
+    {
+      base: 'https://unpkg.com/@sharpdotnut/prototype-yunhan-meta/data',
+      provider: 'UNPKG & NPM',
       status: 'UNKNOWN' as T_NetStatus
     }
   ]);

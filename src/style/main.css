@@ -27,6 +27,11 @@ body {
   --option-padding: 6px 12px;
 }
 
+body::selection {
+  background-color: var(--color-primary);
+  color: var(--color-body);
+}
+
 .full-screen {
   position: fixed;
   top: 0;

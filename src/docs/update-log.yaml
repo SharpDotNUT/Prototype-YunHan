@@ -1,3 +1,32 @@
+'2.7.2':
+  date: 2025-10-12
+  name-zh: '千星奇域'
+  name-en: 'Miliastra Wonderland'
+  changes:
+    app:
+      - '接入 GitHub Actions 自动构建发行'
+      - 'Added support for GitHub Actions to build releases'
+      - '在 GitHub Wiki 进行了开发路线图规划'
+      - 'Added development roadmap planning on GitHub Wiki'
+      - '使用更现代的 `es-toolkit` 工具库替换了 `lodash`'
+      - 'Use more modern `es-toolkit` toolkit lib than `lodash`'
+      - '添加了独特的文字选中效果'
+      - 'Added unique text selection effect'
+    sp-key:
+      - '更新新的 API URL'
+      - 'Updated new API URL'
+      - '改进界面，加入排序功能'
+      - 'Improved interface, added sorting function'
+    achievement:
+      - '适应新的数据结构，并实现了基础浏览功能'
+      - 'Support for new data structure and basic browsing function'
+    gacha:
+      - '重新实现了基础的卡池浏览功能'
+      - 'Implemented basic browsing function'
+    rm:
+      - '加入了新的 UNPKG 资源服务器源'
+      - 'Added new UNPKG resource server source'
+
 '2.7.1':
   date: 2025-08-27
   name-zh: '雪浪与苍林之舞' # https://www.miyoushe.com/ys/article/67900927

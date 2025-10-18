@@ -28,14 +28,15 @@ jobs:
       - name: Install and Build
         run: |
           pnpm install
+          cd packages/yunhan
           pnpm run build
         env:
           GITHUB_CI: true
 
       - name: Create ZIP Archive
         run: |
-          cd dist
-          zip -r ../Prototype-Yunhan_Build_${{ github.ref_name }}.zip .
+          cd packages/yunhan/dist
+          zip -r ../../../Prototype-Yunhan_Build_${{ github.ref_name }}.zip .
 
       - name: Create Prerelease
         uses: softprops/action-gh-release@v1

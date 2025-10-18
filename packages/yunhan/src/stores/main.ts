@@ -2,7 +2,7 @@ import { ref, watch } from 'vue';
 import { defineStore } from 'pinia';
 import { Themes, StyleProvider } from '@varlet/ui';
 
-import PackageJSON from '../../package.json';
+import PackageJSON from '../../../../package.json';
 import { useRouter } from 'vue-router';
 
 const GameFont = ['GI', 'HSR', 'ZZZ'];

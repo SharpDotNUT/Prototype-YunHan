@@ -2,7 +2,7 @@
 import PackageJSON from '../../../../package.json';
 import Markdown from '@/components/markdown.vue';
 import Meta from '@/meta';
-import _README from '../../../../README.md?raw';
+import _README from '../../../../../../README.md?raw';
 
 const README = _README.replaceAll('/public/', '/');
 

@@ -6,6 +6,7 @@ import {
 import { useRM } from '@/stores/resource-manager';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { computed } from 'vue';
+import { watch } from 'vue';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -59,6 +60,49 @@ export const useAchievementStore = defineStore('achievement', () => {
     () => textMap.value[locale.value as T_SupportedLanguage]
   );
 
+  const search = ref({
+    text: ''
+  });
+  const currentGoal = ref('all');
+  const flitter = () => {
+    if (!data.value) return [];
+    let groups = [] as AchievementGroup[];
+    if (currentGoal.value == 'all') {
+      groups = Object.values(data.value.achievementGroups);
+    } else {
+      data.value.achievementGoals[currentGoal.value].achievementGroups.forEach(
+        (groupId) => {
+          groups.push(data.value!.achievementGroups[groupId]);
+        }
+      );
+    }
+    groups = groups.filter((group) => {
+      if (search.value.text) {
+        let _ = false;
+        group.achievements.forEach((id) => {
+          if (
+            text.value[data.value!.achievements[id].nameHash].includes(
+              search.value.text
+            ) ||
+            text.value[data.value!.achievements[id].descriptionHash].includes(
+              search.value.text
+            )
+          ) {
+            _ = true;
+          }
+        });
+        return _;
+      }
+      return true;
+    });
+    currentGroups.value = groups;
+  };
+  const currentGroups = ref<AchievementGroup[]>([]);
+  watch([currentGoal, data.value], flitter, {
+    deep: 1,
+    immediate: true
+  });
+
   const fetchData = async () => {
     data.value = await RM.get('achievement/meta.min.json');
     SupportedLanguages.forEach(async (lang) => {
@@ -68,7 +112,7 @@ export const useAchievementStore = defineStore('achievement', () => {
   };
   fetchData();
 
-  return { data, text, fetchData };
+  return { data, text, search, currentGoal, currentGroups, flitter, fetchData };
 });
 
 if (import.meta.hot) {

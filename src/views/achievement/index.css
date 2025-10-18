@@ -7,6 +7,9 @@
 }
 
 #bar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 300px;
   padding: 20px;
 }
@@ -46,7 +49,9 @@
 }
 
 .selected {
-  border-left: 5px solid var(--color-text);
+  border-radius: 10px;
+  background-color: var(--color-text);
+  color: var(--color-body);
 }
 
 .text {
@@ -61,7 +66,7 @@
   }
 
   #bar {
-    height: 100px;
+    height: fit-content;
     width: 100%;
   }
   #goal-list {
@@ -69,9 +74,5 @@
     > * {
       width: fit-content;
     }
-  }
-  .selected {
-    border-left: none;
-    border-bottom: 5px solid var(--color-text);
   }
 }

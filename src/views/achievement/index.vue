@@ -6,31 +6,19 @@ import { useMainStore } from '@/stores/main';
 
 const mainStore = useMainStore();
 const store = useAchievementStore();
-const currentGoal = ref('all');
 const mobile = computed(() => {
   return mainStore.windowSize.width <= 768;
 });
 const current = ref(1);
 const size = ref(50);
-watch(currentGoal, () => {
-  current.value = 1;
-});
-const currentGroups = computed(() => {
-  if (!store.data) return [];
-  let groups = [] as AchievementGroup[];
-  if (currentGoal.value == 'all') {
-    groups = Object.values(store.data.achievementGroups);
-  } else {
-    store.data.achievementGoals[currentGoal.value].achievementGroups.forEach(
-      (groupId) => {
-        groups.push(store.data!.achievementGroups[groupId]);
-      }
-    );
+watch(
+  () => store.currentGoal,
+  () => {
+    current.value = 1;
   }
-  return groups;
-});
+);
 const showingGroups = computed(() =>
-  currentGroups.value.slice(
+  store.currentGroups.slice(
     (current.value - 1) * size.value,
     current.value * size.value
   )
@@ -40,13 +28,17 @@ const showingGroups = computed(() =>
 <template>
   <div v-if="store.data != null" class="__container">
     <var-paper id="bar">
+      <var-input
+        v-model="store.search.text"
+        @input="store.flitter"
+        :placeholder="$t('global.search')" />
       <div id="goal-list">
         <var-cell
           border
           :value="-1"
           ripple
-          @click="currentGoal = 'all'"
-          :class="{ selected: currentGoal == 'all' }">
+          @click="store.currentGoal = 'all'"
+          :class="{ selected: store.currentGoal == 'all' }">
           <p style="font-size: 120%">{{ $t('achievement.all') }}</p>
           <p v-if="!mobile">
             {{
@@ -62,8 +54,8 @@ const showingGroups = computed(() =>
           v-for="(goal, id) in store.data.achievementGoals"
           :value="id"
           ripple
-          @click="currentGoal = id"
-          :class="{ selected: currentGoal == id }">
+          @click="store.currentGoal = id"
+          :class="{ selected: store.currentGoal == id }">
           <p style="font-size: 120%">{{ store.text?.[goal.nameHash] }}</p>
           <p v-if="!mobile">
             {{
@@ -79,7 +71,7 @@ const showingGroups = computed(() =>
     <div id="list">
       <var-pagination
         :simple="mobile"
-        :total="currentGroups.length"
+        :total="store.currentGroups.length"
         v-model:current="current"
         v-model:size="size" />
       <div id="list-content">

@@ -35,6 +35,9 @@ importers:
       '@mdi/js':
         specifier: ^7.4.47
         version: 7.4.47
+      '@prototype-yunhan/meta':
+        specifier: workspace:*
+        version: link:../meta
       '@varlet/touch-emulator':
         specifier: ^3.8.5
         version: 3.12.0

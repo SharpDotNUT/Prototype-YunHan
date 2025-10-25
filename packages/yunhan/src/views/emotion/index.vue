@@ -1,0 +1,92 @@
+<script setup lang="ts">
+import {
+  LanguageTextMapDefault,
+  SupportedLanguages,
+  type T_SupportedLanguage
+} from '@/locales/i18n';
+import { saveFile } from '@/script/tools';
+import { useRM } from '@/stores/resource-manager';
+import { Locale } from '@varlet/ui';
+import { computed } from 'vue';
+import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+export type Emoji = {
+  contentTextMapHash: number;
+  icon: string;
+  id: number;
+  order: number;
+  setID: number;
+};
+
+export type EmojiSet = {
+  icon: string;
+  id: number;
+  nameTextMapHash: number;
+  order: number;
+};
+
+export type EmojiData = {
+  data: Emoji[];
+  set: EmojiSet[];
+};
+
+const RM = useRM();
+
+const { locale } = useI18n();
+const data = ref<EmojiData>();
+const textMap = ref(structuredClone(LanguageTextMapDefault));
+const text = computed(() => textMap.value[locale.value as T_SupportedLanguage]);
+const id = ref(0);
+RM.get('emotion/meta.json').then((res: EmojiData) => {
+  data.value = res;
+  id.value = data.value.set[0].id;
+});
+const getUrl = (icon: string) => {
+  return (
+    'https://yunhan-data.sharpdotnut.com/Static/Genshin-UI/EmotionIcon/' +
+    icon +
+    '.png'
+  );
+};
+const download = async (emoji: Emoji) => {
+  const blob = await fetch(getUrl(emoji.icon)).then((res) => res.blob());
+  saveFile(`${text.value[emoji.contentTextMapHash]}.png`, blob, 'image/png');
+};
+
+SupportedLanguages.forEach(async (lang) => {
+  textMap.value[lang] = await RM.get(`emotion/text_${lang}.json`);
+});
+</script>
+
+<template>
+  <div class="container-emotion">
+    <div v-if="data" id="content">
+      <var-tabs id="tabs" v-model:active="id" layout-direction="vertical">
+        <var-tab v-for="set in data.set" :key="set.id" :name="set.id">
+          <img :src="getUrl(set.icon)" />
+          <span>
+            {{ text?.[set.nameTextMapHash] }}
+          </span>
+        </var-tab>
+      </var-tabs>
+      <div id="list" style="display: flex; flex-wrap: wrap">
+        <var-card v-for="item in data.data.filter((item) => item.setID == id)">
+          <div class="item">
+            <img :src="getUrl(item.icon)" />
+            <span>
+              {{ text?.[item.contentTextMapHash] }}
+            </span>
+            <var-button v-if="false" size="small" @click="download(item)">
+              {{ $t('global.download') }}
+            </var-button>
+          </div>
+        </var-card>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style lang="css" scoped>
+@import url('./index.css');
+</style>

@@ -131,6 +131,11 @@ export const routes: RouteRecordRaw[] = [
     path: '/init',
     component: () => import('@/views/init/index.vue')
   },
+  {
+    name: 'emotion',
+    path: '/emotion',
+    component: () => import('@/views/emotion/index.vue')
+  },
   YaeRoutes
 ];
 

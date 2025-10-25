@@ -3,5 +3,8 @@
   "description": "An open-source web-based toolkit for HoYoVERSE games.",
   "version": "2.7.2",
   "scripts": {},
-  "packageManager": "pnpm@10.15.0"
+  "packageManager": "pnpm@10.15.0",
+  "dependencies": {
+    "@types/node": "^22.18.11"
+  }
 }

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json.schemastore.org/prettierrc",
+  "bracketSameLine": true,
+  "htmlWhitespaceSensitivity": "ignore",
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "none"
+}

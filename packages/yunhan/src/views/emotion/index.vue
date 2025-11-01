@@ -69,7 +69,7 @@ SupportedLanguages.forEach(async (lang) => {
     <div v-if="data" id="content">
       <var-tabs id="tabs" v-model:active="id" layout-direction="vertical">
         <var-tab v-for="set in data.set" :key="set.id" :name="set.id">
-          <div style="display: flex; gap: 5px">
+          <div style="display: flex; gap: 5px; align-items: center">
             <img :src="getUrl(set.icon)" />
             <span>
               {{ text?.[set.nameTextMapHash] }}

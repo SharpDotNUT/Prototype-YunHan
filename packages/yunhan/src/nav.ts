@@ -30,6 +30,10 @@ export const NavigationData = [
     path: '/tqrt'
   },
   {
+    name: 'emotion',
+    path: '/emotion'
+  },
+  {
     name: 'sp-key',
     path: '/sp-key'
   },

@@ -7,11 +7,13 @@ import NewVersionTip from './components/UpdateTip/UpdateTip.vue';
 import { useI18n } from 'vue-i18n';
 import { Dialog, Locale, Snackbar } from '@varlet/ui';
 import { matchLanguages } from '@kuriyota/locale-matcher';
+import RouterJump from '@/components/router-jump.vue';
 import ky from 'ky';
 
 const { locale, t } = useI18n();
 const loading = ref(false);
 const mainStore = useMainStore();
+const ui_showMenu = ref(true);
 
 const updateLocale = (lang: string) => {
   if (SupportedLanguages.includes(lang)) {
@@ -147,9 +149,19 @@ if (mainStore.initTasks.length > 0) {
       @cancel="needUpdate = false" />
     <div id="app-container">
       <div id="app-bar">
-        <AppBar />
+        <AppBar @open-bar="ui_showMenu = !ui_showMenu" />
       </div>
       <div id="content" class="elevation-12">
+        <RouterJump
+          :style="{
+            position: Store.windowSize.width >= 800 ? undefined : 'absolute',
+            transform:
+              Store.windowSize.width >= 800 || !ui_showMenu
+                ? undefined
+                : 'translateX(-100%)'
+          }"
+          v-if="$route.name != 'index'"
+          v-model="ui_showMenu" />
         <RouterView />
       </div>
     </div>

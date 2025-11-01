@@ -1,32 +1,28 @@
 .overlay {
-  position: fixed;
   background-color: #0007;
   z-index: 99;
 }
 
 .container {
-  padding: 10px;
-  border-radius: 20px;
-  width: min(300px, 90vw);
+  width: min(240px, 90vw);
   overflow-y: hidden;
-  position: fixed;
-  right: 20px;
-  top: 20px;
-  bottom: 20px;
   background-color: var(--card-background);
 
+  height: 100%;
   transition: transform 0.2s ease-in-out;
   z-index: 100;
 }
+
 
 #content {
   display: flex;
   flex-direction: column;
   height: 100%;
   gap: 10px;
-  padding: 10px;
+  padding: 20px;
   overflow-y: scroll;
-  > * {
+
+  >* {
     flex-shrink: 0;
   }
 }
@@ -45,6 +41,7 @@
     display: flex;
     align-items: center;
     color: var(--color-primary);
+
     .icon {
       width: 30px;
       height: 30px;

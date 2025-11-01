@@ -1,51 +1,24 @@
 <script setup lang="ts">
 import SvgIcon from '@jamescoyle/vue-icon';
-import { gsap } from 'gsap';
-import { nextTick, useTemplateRef, watch } from 'vue';
+import { useTemplateRef } from 'vue';
 import { mdiCog, mdiGithub, mdiInformation, mdiUpdate } from '@mdi/js';
 import { useMainStore } from '@/stores/main';
 import { NavigationData as RouteData } from '@/nav';
 
 const mainStore = useMainStore();
 import Meta from '@/meta';
-const routes = useTemplateRef('routes');
-const show = defineModel<boolean>();
-let animation: gsap.core.Tween | null = null;
-const animate = () => {
-  if (!routes.value) return;
-  if (animation) {
-    animation.kill();
-  }
-  const doms = routes.value.children;
-  gsap.set(doms, { clearProps: 'all' });
-  animation = gsap.from(doms, {
-    y: 20,
-    opacity: 0,
-    duration: 1,
-    stagger: 1 / doms.length,
-    ease: 'power2.out'
-  });
-};
-watch(show, animate);
-
 function openGithub() {
   window.open(`https://github.com/${Meta.repo}`, '_blank');
 }
 </script>
 
 <template>
-  <Transition name="fade">
-    <div v-if="show" class="overlay full-screen" @click="show = false"></div>
-  </Transition>
-  <div
-    :style="{
-      transform: show ? 'translateX(0)' : 'translateX(calc(100% + 40px))'
-    }"
-    class="container">
+  <div class="container">
     <div id="content" ref="routes">
       <h3>
         {{ $t('name') }}
-        <var-badge :value="'v ' + mainStore.version"></var-badge>
+        <br />
+        <var-badge :value="'v' + mainStore.version"></var-badge>
       </h3>
       <var-divider />
       <var-paper elevation="3" class="app var-button" @click="openGithub">

@@ -3,13 +3,11 @@ import { ref } from 'vue';
 import { useMainStore } from '@/stores/main';
 import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiMenu, mdiTranslate } from '@mdi/js';
-import RouterJump from '@/components/router-jump.vue';
 import { status } from '@/locales/i18n';
 
 const mainStore = useMainStore();
-const ui_showMenu = ref(false);
 
-const emits = defineEmits(['changeIsFullWidth']);
+const emits = defineEmits(['openBar']);
 </script>
 
 <template>
@@ -17,6 +15,12 @@ const emits = defineEmits(['changeIsFullWidth']);
     <var-app-bar>
       <img :src="mainStore.logoURL" style="height: 36px; margin-right: 10px" />
       <span>{{ mainStore.title }}</span>
+      <template #left v-if="mainStore.windowSize.width < 800">
+        <var-button round text @click="$emit('openBar')">
+          <svg-icon type="mdi" :path="mdiMenu"></svg-icon>
+        </var-button>
+        <span>&nbsp;|&nbsp;</span>
+      </template>
       <template #right>
         <var-menu placement="bottom-end">
           <var-button round text>
@@ -34,12 +38,7 @@ const emits = defineEmits(['changeIsFullWidth']);
             </div>
           </template>
         </var-menu>
-        <var-button round text @click="ui_showMenu = true">
-          <svg-icon type="mdi" :path="mdiMenu"></svg-icon>
-        </var-button>
-        <RouterJump ref="menu" v-model="ui_showMenu" />
       </template>
-      <template #left></template>
     </var-app-bar>
   </div>
 </template>

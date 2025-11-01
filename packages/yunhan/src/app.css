@@ -17,11 +17,18 @@
 }
 
 #content {
+  position: relative;
   height: 100%;
   width: 100%;
+  display: flex;
   overflow-y: auto;
   margin: 0 auto;
   transition: opacity 0.25s ease-in-out;
+  overflow: hidden;
+}
+
+#bar {
+  height: 100%;
 }
 
 #ul {
@@ -30,14 +37,17 @@
   height: 70vh;
   overflow-y: hidden;
   padding: 0 max(20px, calc(50dvw - 400px));
+
   h2 {
     text-align: center;
   }
+
   #log {
     height: 100%;
     overflow-y: auto;
   }
-  > * {
+
+  >* {
     padding: 10px 20px;
   }
 }

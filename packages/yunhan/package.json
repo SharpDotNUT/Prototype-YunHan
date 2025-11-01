@@ -13,6 +13,7 @@
     "@jamescoyle/vue-icon": "^0.1.2",
     "@kuriyota/locale-matcher": "^0.1.0",
     "@mdi/js": "^7.4.47",
+    "@prototype-yunhan/meta": "workspace:*",
     "@varlet/touch-emulator": "^3.8.5",
     "@varlet/ui": "^3.11.0",
     "browser-fs-access": "^0.38.0",
@@ -39,8 +40,7 @@
     "vue-i18n": "^11.1.2",
     "vue-router": "^4.5.0",
     "vue-virtual-scroller": "2.0.0-beta.8",
-    "workbox-window": "^7.3.0",
-    "@prototype-yunhan/meta": "workspace:*"
+    "workbox-window": "^7.3.0"
   },
   "devDependencies": {
     "@earltp/vue-virtual-scroller": "^1.0.1",
@@ -56,7 +56,7 @@
     "prettier": "3.5.3",
     "rollup-plugin-visualizer": "^5.14.0",
     "typescript": "^5.7.3",
-    "vite": "npm:rolldown-vite@latest",
+    "vite": "^7.1.12",
     "vite-plugin-json5": "^1.1.9",
     "vite-plugin-pwa": "^0.21.2",
     "vite-plugin-vue-devtools": "^7.7.1",

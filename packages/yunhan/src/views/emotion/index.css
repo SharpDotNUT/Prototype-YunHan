@@ -8,6 +8,7 @@
 #content {
   display: flex;
   flex-direction: row;
+  gap: 10px;
   height: 100%;
   width: 100%;
   overflow-y: hidden;
@@ -15,8 +16,7 @@
 
 #tabs {
   height: 100%;
-  min-width: 200px;
-  flex-grow: 1;
+  min-width: fit-content;
 
   img {
     height: 48px;
@@ -24,7 +24,6 @@
 }
 
 #list {
-  flex-grow: 2;
   height: 100%;
   gap: 10px;
   overflow-y: auto;
@@ -46,5 +45,11 @@
 
   img {
     height: 128px;
+  }
+}
+
+@media (max-width: 800px) {
+  .hidden {
+    display: none;
   }
 }

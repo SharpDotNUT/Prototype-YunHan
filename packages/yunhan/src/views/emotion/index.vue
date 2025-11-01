@@ -69,9 +69,10 @@ SupportedLanguages.forEach(async (lang) => {
     <div v-if="data" id="content">
       <var-tabs id="tabs" v-model:active="id" layout-direction="vertical">
         <var-tab v-for="set in data.set" :key="set.id" :name="set.id">
-          <div style="display: flex; gap: 5px; align-items: center">
+          <div
+            style="margin: 2px; display: flex; gap: 5px; align-items: center">
             <img :src="getUrl(set.icon)" />
-            <span>
+            <span class="hidden">
               {{ text?.[set.nameTextMapHash] }}
             </span>
           </div>
@@ -80,7 +81,7 @@ SupportedLanguages.forEach(async (lang) => {
       <div id="list">
         <var-card v-for="item in data.data.filter((item) => item.setID == id)">
           <div class="item">
-            <img :src="getUrl(item.icon)" />
+            <img :key="id" :src="getUrl(item.icon)" height="128" width="128" />
             <span>
               {{ text?.[item.contentTextMapHash] }}
             </span>

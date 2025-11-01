@@ -1,6 +1,6 @@
 {
   "name": "@prototype-yunhan/yunhan",
-  "version": "2.8.0 - build.2025.10.26.0.40.00",
+  "version": "2.8.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

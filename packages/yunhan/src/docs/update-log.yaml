@@ -1,3 +1,24 @@
+'2.8.0':
+  date: 2025-11-1
+  name-zh: '回望湮灭的月光'
+  name-en: 'An Elegy for Faded Moonlight'
+  changes:
+    emotion:
+      - '支持原神表情包的浏览和下载'
+      - 'Added support for browsing and downloading emotions from Genshin'
+    achievement:
+      - '支持搜索成就'
+      - 'Supported to search achievements'
+    app:
+      - '修改了 `README.md` 并加入了多语言'
+      - 'Modify README.md and add multi-language support'
+      - '把菜单栏移动到左侧并在桌面模式下常驻'
+      - 'Move menu bar to the left and always stay resident in desktop mode'
+    DEV:
+      - '采用 Monorepo 架构'
+      - 'Using Monorepo'
+      - '并入 `@prototype-yunhan/meta` 包'
+      - 'Integrated into `@prototype-yunhan/meta` package'
 '2.7.2':
   date: 2025-10-12
   name-zh: '千星奇域'

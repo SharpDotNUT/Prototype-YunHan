@@ -6,6 +6,8 @@ import {
 } from '@/locales/i18n';
 import { saveFile } from '@/script/tools';
 import { useRM } from '@/stores/resource-manager';
+import SvgIcon from '@jamescoyle/vue-icon';
+import { mdiDownload, mdiOpenInNew } from '@mdi/js';
 import { Locale } from '@varlet/ui';
 import { computed } from 'vue';
 import { ref } from 'vue';
@@ -49,6 +51,9 @@ const getUrl = (icon: string) => {
     '.png'
   );
 };
+const open = (emoji: Emoji) => {
+  window.open(getUrl(emoji.icon), '_blank');
+};
 const download = async (emoji: Emoji) => {
   const blob = await fetch(getUrl(emoji.icon)).then((res) => res.blob());
   saveFile(`${text.value[emoji.contentTextMapHash]}.png`, blob, 'image/png');
@@ -64,22 +69,29 @@ SupportedLanguages.forEach(async (lang) => {
     <div v-if="data" id="content">
       <var-tabs id="tabs" v-model:active="id" layout-direction="vertical">
         <var-tab v-for="set in data.set" :key="set.id" :name="set.id">
-          <img :src="getUrl(set.icon)" />
-          <span>
-            {{ text?.[set.nameTextMapHash] }}
-          </span>
+          <div style="display: flex; gap: 5px">
+            <img :src="getUrl(set.icon)" />
+            <span>
+              {{ text?.[set.nameTextMapHash] }}
+            </span>
+          </div>
         </var-tab>
       </var-tabs>
-      <div id="list" style="display: flex; flex-wrap: wrap">
+      <div id="list">
         <var-card v-for="item in data.data.filter((item) => item.setID == id)">
           <div class="item">
             <img :src="getUrl(item.icon)" />
             <span>
               {{ text?.[item.contentTextMapHash] }}
             </span>
-            <var-button v-if="false" size="small" @click="download(item)">
-              {{ $t('global.download') }}
-            </var-button>
+            <span style="display: flex; gap: 5px">
+              <var-button round size="small" @click="download(item)">
+                <SvgIcon type="mdi" :path="mdiDownload" />
+              </var-button>
+              <var-button round size="small" @click="open(item)">
+                <SvgIcon type="mdi" :path="mdiOpenInNew" />
+              </var-button>
+            </span>
           </div>
         </var-card>
       </div>

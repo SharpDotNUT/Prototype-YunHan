@@ -19,13 +19,18 @@
   flex-grow: 1;
 
   img {
-    height: 64px;
+    height: 48px;
   }
 }
 
 #list {
   flex-grow: 2;
+  height: 100%;
   gap: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-self: start;
   overflow-y: auto;
 
   >div {

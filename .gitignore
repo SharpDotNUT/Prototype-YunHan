@@ -32,3 +32,7 @@ coverage
 /dev-dist
 .env.development
 vite.config.ts.timestamp*
+
+/packages/meta/source
+/packages/meta/data
+packages/meta/script/Dictionary/genshin.temp.json

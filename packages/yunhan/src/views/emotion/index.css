@@ -32,7 +32,7 @@
   align-self: start;
   overflow-y: auto;
 
-  >div {
+  > div {
     width: fit-content;
   }
 }

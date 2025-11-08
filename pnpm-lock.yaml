@@ -11,6 +11,10 @@ importers:
       '@types/node':
         specifier: ^22.18.11
         version: 22.18.11
+    devDependencies:
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
 
   packages/meta:
     dependencies:
@@ -150,9 +154,6 @@ importers:
       '@vue/tsconfig':
         specifier: ^0.5.1
         version: 0.5.1
-      prettier:
-        specifier: 3.5.3
-        version: 3.5.3
       rollup-plugin-visualizer:
         specifier: ^5.14.0
         version: 5.14.0(rollup@2.79.2)

@@ -1,12 +1,16 @@
 {
-  "name": "@prototype-yunhan",
+  "name": "prototype-yunhan",
   "description": "An open-source web-based toolkit for HoYoVERSE games.",
   "version": "2.8.0",
   "scripts": {
-    "build": "pnpm --filter \"@prototype-yunhan/yunhan\" run build"
+    "build": "pnpm --filter front run build",
+    "format": "prettier --write ."
   },
   "packageManager": "pnpm@10.20.0",
   "dependencies": {
     "@types/node": "^22.18.11"
+  },
+  "devDependencies": {
+    "prettier": "3.5.3"
   }
 }

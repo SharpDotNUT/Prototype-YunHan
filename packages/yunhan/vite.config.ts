@@ -2,7 +2,7 @@ import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueDevTools from 'vite-plugin-vue-devtools';
-import { VitePWA } from 'vite-plugin-pwa';
+// import { VitePWA } from 'vite-plugin-pwa';
 import { createExtraFilesPlugin } from './vite-plugin';
 import ViteYaml from '@modyfi/vite-plugin-yaml';
 
@@ -32,27 +32,27 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     createExtraFilesPlugin([MetaFile]),
-    ViteYaml(),
-    VitePWA({
-      registerType: 'prompt',
-      devOptions: {
-        enabled: false
-      },
-      manifest: {
-        name: 'Prototype - YunHan 云翰',
-        short_name: '云翰·YunHan',
-        id: 'com.sharpdotnut.yunhan',
-        background_color: '#000000',
-        theme_color: '#d1bdff',
-        icons: [
-          {
-            src: '/img/UI_ChapterIcon_Yunjin.png',
-            sizes: '256x256',
-            type: 'image/png'
-          }
-        ]
-      }
-    })
+    ViteYaml()
+    // VitePWA({
+    //   registerType: 'prompt',
+    //   devOptions: {
+    //     enabled: false
+    //   },
+    //   manifest: {
+    //     name: 'Prototype - YunHan 云翰',
+    //     short_name: '云翰·YunHan',
+    //     id: 'com.sharpdotnut.yunhan',
+    //     background_color: '#000000',
+    //     theme_color: '#d1bdff',
+    //     icons: [
+    //       {
+    //         src: '/img/UI_ChapterIcon_Yunjin.png',
+    //         sizes: '256x256',
+    //         type: 'image/png'
+    //       }
+    //     ]
+    //   }
+    // })
   ],
   resolve: {
     alias: {

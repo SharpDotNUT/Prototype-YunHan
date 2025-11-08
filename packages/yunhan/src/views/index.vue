@@ -51,7 +51,9 @@ function openGithub() {
             </var-button>
           </router-link>
           <var-button @click="openGithub">GitHub</var-button>
-          <var-button @click="mainStore.beforeInstallPromptEvent.prompt()">
+          <var-button
+            disabled
+            @click="(mainStore.beforeInstallPromptEvent as any)?.prompt()">
             {{ $t('index.install') }}
           </var-button>
         </div>

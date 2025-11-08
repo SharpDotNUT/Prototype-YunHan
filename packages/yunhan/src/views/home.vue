@@ -1,14 +1,32 @@
 <script setup lang="ts">
-//@ts-ignore
-import { ref, watch } from 'vue';
-import { useI18n } from 'vue-i18n';
 import { NavigationData } from '@/nav';
+import ky from 'ky';
+import { ref, watch } from 'vue';
+
+interface Wallpaper {
+  start_date: string;
+  end_date: string;
+  url: string;
+  copyright: string;
+  copyright_link: string;
+}
+
+const GenshinBG =
+  'https://yunhan-data.sharpdotnut.com/Static/Genshin-UI/UI_Download_Bg.png';
+const wallpaper = ref<Wallpaper>();
+const enableWallpaper = ref<boolean>(false);
+enableWallpaper.value = localStorage.getItem('enableWallpaper') === 'true';
+watch(enableWallpaper, (val) => {
+  localStorage.setItem('enableWallpaper', val.toString());
+});
+ky.get('https://bing.biturl.top/').then(async (wal) => {
+  wallpaper.value = await wal.json();
+});
 </script>
 
 <template>
   <div class="home-container">
-    <img
-      src="https://yunhan-data.sharpdotnut.com/Static/Genshin-UI/UI_Download_Bg.png" />
+    <img :src="enableWallpaper && wallpaper ? wallpaper?.url : GenshinBG" />
     <main>
       <p v-html="$t('home.welcome', [$t('global.username.traveler')])"></p>
       <nav>
@@ -25,6 +43,15 @@ import { NavigationData } from '@/nav';
           </var-card>
         </router-link>
       </nav>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        ">
+        <p>启用 Bing Wallpaper</p>
+        <var-switch v-model="enableWallpaper" />
+      </div>
     </main>
   </div>
 </template>

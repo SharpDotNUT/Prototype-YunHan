@@ -49,7 +49,7 @@ ky.get('https://bing.biturl.top/').then(async (wal) => {
           justify-content: space-between;
           align-items: center;
         ">
-        <p>启用 Bing Wallpaper</p>
+        <p>{{ $t('home.enable-bw') }}</p>
         <var-switch v-model="enableWallpaper" />
       </div>
     </main>

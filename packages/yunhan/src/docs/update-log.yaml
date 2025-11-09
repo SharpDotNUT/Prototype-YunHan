@@ -1,3 +1,36 @@
+'2.8.1':
+  date: 2025-11-9
+  name-zh: '往昔的涟漪'
+  name-en: 'Ripples of Past Reverie'
+  changes:
+    emotion:
+      - '支持搜索表情包'
+      - 'Support to search emotions'
+      - '更美观和响应式的布局'
+      - 'More responsive and beautiful layout'
+      - '加入加载提示'
+      - 'Added loading tips'
+    home:
+      - '添加了背景图片并支持使用 Bing 每日图片'
+      - 'Added background image and support Bing Wallpaper'
+      - '完整的布局和浅色模式问题修复'
+      - 'Fixed the problem of layout and light mode'
+    app:
+      - '移除了 PWA 支持'
+      - 'Removed PWA support'
+      - '合并 README 为一个文件'
+      - 'Merged README into one file'
+    setting:
+      - '调整布局'
+      - 'Adjust layout'
+    locale:
+      - 'add text `home.enable-bw` `emotion.description` `index.title`'
+      - ''
+    DEV:
+      - 'refactor prettier script'
+      - 'update & remove useless dependencies'
+      - 'check & remove all service worker'
+      - ''
 '2.8.0':
   date: 2025-11-1
   name-zh: '回望湮灭的月光'

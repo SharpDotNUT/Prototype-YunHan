@@ -34,3 +34,13 @@ Select.setPropsDefaults({
 TimePicker.setPropsDefaults({
   format: '24hr'
 });
+
+if (navigator.serviceWorker) {
+  const regs = await navigator.serviceWorker.getRegistrations();
+  regs.forEach((sw) => {
+    sw.unregister();
+  });
+  if (regs.length) {
+    window.location.reload();
+  }
+}

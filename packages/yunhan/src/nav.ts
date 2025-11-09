@@ -5,8 +5,7 @@ export const NavigationData = [
   },
   {
     name: 'home',
-    path: '/home',
-    beta: true
+    path: '/home'
   },
   {
     name: 'translator',

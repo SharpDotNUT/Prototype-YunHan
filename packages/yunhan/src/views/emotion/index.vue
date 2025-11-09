@@ -78,24 +78,31 @@ SupportedLanguages.forEach(async (lang) => {
           </div>
         </var-tab>
       </var-tabs>
-      <div id="list">
-        <var-card v-for="item in data.data.filter((item) => item.setID == id)">
-          <div class="item">
-            <img :key="id" :src="getUrl(item.icon)" height="128" width="128" />
-            <span>
-              {{ text?.[item.contentTextMapHash] }}
-            </span>
-            <span style="display: flex; gap: 5px">
-              <var-button round size="small" @click="download(item)">
-                <SvgIcon type="mdi" :path="mdiDownload" />
-              </var-button>
-              <var-button round size="small" @click="open(item)">
-                <SvgIcon type="mdi" :path="mdiOpenInNew" />
-              </var-button>
-            </span>
-          </div>
-        </var-card>
-      </div>
+      <main>
+        <div id="list">
+          <var-card
+            v-for="item in data.data.filter((item) => item.setID == id)">
+            <div class="item">
+              <img
+                :key="id"
+                :src="getUrl(item.icon)"
+                height="128"
+                width="128" />
+              <span>
+                {{ text?.[item.contentTextMapHash] }}
+              </span>
+              <span style="display: flex; gap: 5px">
+                <var-button round size="small" @click="download(item)">
+                  <SvgIcon type="mdi" :path="mdiDownload" />
+                </var-button>
+                <var-button round size="small" @click="open(item)">
+                  <SvgIcon type="mdi" :path="mdiOpenInNew" />
+                </var-button>
+              </span>
+            </div>
+          </var-card>
+        </div>
+      </main>
     </div>
   </div>
 </template>

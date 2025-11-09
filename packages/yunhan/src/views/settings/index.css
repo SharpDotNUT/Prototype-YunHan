@@ -48,6 +48,13 @@
 #view {
   height: 100%;
   width: 100%;
-  overflow: auto;
-  padding: 20px max(20px, calc(50vw - 400px));
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+
+  >* {
+    max-width: 800px;
+    height: fit-content;
+  }
 }

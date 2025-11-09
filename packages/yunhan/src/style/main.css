@@ -85,3 +85,11 @@ a:active {
 .var-chip {
   font-family: inherit !important;
 }
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}

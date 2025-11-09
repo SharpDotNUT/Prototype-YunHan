@@ -66,7 +66,8 @@ SupportedLanguages.forEach(async (lang) => {
 
 <template>
   <div class="container-emotion">
-    <div v-if="data" id="content">
+    <!-- <var-input :placeholder="$t('global.search')" /> -->
+    <div v-if="data" class="flex" id="content">
       <var-tabs id="tabs" v-model:active="id" layout-direction="vertical">
         <var-tab v-for="set in data.set" :key="set.id" :name="set.id">
           <div
@@ -103,6 +104,9 @@ SupportedLanguages.forEach(async (lang) => {
           </var-card>
         </div>
       </main>
+    </div>
+    <div v-else id="content" class="flex" style="justify-content: center">
+      <var-loading />
     </div>
   </div>
 </template>

@@ -7,7 +7,7 @@ import {
 import { saveFile } from '@/script/tools';
 import { useRM } from '@/stores/resource-manager';
 import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiDownload, mdiOpenInNew } from '@mdi/js';
+import { mdiDownload, mdiImageFilterCenterFocus, mdiOpenInNew } from '@mdi/js';
 import { Locale } from '@varlet/ui';
 import { computed } from 'vue';
 import { ref } from 'vue';
@@ -111,6 +111,16 @@ SupportedLanguages.forEach(async (lang) => {
                 </var-button>
                 <var-button round size="small" @click="open(item)">
                   <SvgIcon type="mdi" :path="mdiOpenInNew" />
+                </var-button>
+                <var-button
+                  v-if="search"
+                  round
+                  size="small"
+                  @click="
+                    search = '';
+                    id = item.setID;
+                  ">
+                  <SvgIcon type="mdi" :path="mdiImageFilterCenterFocus" />
                 </var-button>
               </span>
             </div>

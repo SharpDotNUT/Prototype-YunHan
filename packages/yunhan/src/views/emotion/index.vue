@@ -37,12 +37,22 @@ const RM = useRM();
 
 const { locale } = useI18n();
 const data = ref<EmojiData>();
+const search = ref('');
 const textMap = ref(structuredClone(LanguageTextMapDefault));
 const text = computed(() => textMap.value[locale.value as T_SupportedLanguage]);
 const id = ref(0);
 RM.get('emotion/meta.json').then((res: EmojiData) => {
   data.value = res;
   id.value = data.value.set[0].id;
+});
+const result = computed(() => {
+  if (!search.value)
+    return data.value?.data.filter((item) => item.setID == id.value);
+  return data.value?.data.filter((item) =>
+    text.value[item.contentTextMapHash]
+      .toLowerCase()
+      .includes(search.value.toLowerCase())
+  );
 });
 const getUrl = (icon: string) => {
   return (
@@ -65,10 +75,14 @@ SupportedLanguages.forEach(async (lang) => {
 </script>
 
 <template>
-  <div class="container-emotion">
-    <!-- <var-input :placeholder="$t('global.search')" /> -->
+  <div class="container-emotion flex flex-col">
+    <var-input :placeholder="$t('global.search')" v-model="search" />
     <div v-if="data" class="flex" id="content">
-      <var-tabs id="tabs" v-model:active="id" layout-direction="vertical">
+      <var-tabs
+        v-if="!search"
+        id="tabs"
+        v-model:active="id"
+        layout-direction="vertical">
         <var-tab v-for="set in data.set" :key="set.id" :name="set.id">
           <div
             style="margin: 2px; display: flex; gap: 5px; align-items: center">
@@ -81,8 +95,7 @@ SupportedLanguages.forEach(async (lang) => {
       </var-tabs>
       <main>
         <div id="list">
-          <var-card
-            v-for="item in data.data.filter((item) => item.setID == id)">
+          <var-card v-for="item in result">
             <div class="item">
               <img
                 :key="id"

@@ -7,8 +7,12 @@ import {
 import { saveFile } from '@/script/tools';
 import { useRM } from '@/stores/resource-manager';
 import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiDownload, mdiImageFilterCenterFocus, mdiOpenInNew } from '@mdi/js';
-import { Locale } from '@varlet/ui';
+import {
+  mdiDownload,
+  mdiImageFilterCenterFocus,
+  mdiOpenInNew,
+  mdiShareVariant
+} from '@mdi/js';
 import { computed } from 'vue';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -35,7 +39,7 @@ export type EmojiData = {
 
 const RM = useRM();
 
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 const data = ref<EmojiData>();
 const search = ref('');
 const textMap = ref(structuredClone(LanguageTextMapDefault));
@@ -45,6 +49,22 @@ RM.get('emotion/meta.json').then((res: EmojiData) => {
   data.value = res;
   id.value = data.value.set[0].id;
 });
+const canShare = !!navigator.share;
+const share = async (emoji: Emoji) => {
+  const name = text.value[emoji.contentTextMapHash];
+  const url = new URL(location.href);
+  const blob = await fetch(getUrl(emoji.icon)).then((res) => res.blob());
+  const file = new File([blob], `${name}.png`, {
+    type: blob.type
+  });
+  url.searchParams.set('id', emoji.id.toString());
+  navigator.share({
+    title: `${name}`,
+    text: `${t('name')}:${t('global.game.GI')}/${name}`,
+    url: url.href,
+    files: [file]
+  });
+};
 const result = computed(() => {
   if (!search.value)
     return data.value?.data.filter((item) => item.setID == id.value);
@@ -111,6 +131,13 @@ SupportedLanguages.forEach(async (lang) => {
                 </var-button>
                 <var-button round size="small" @click="open(item)">
                   <SvgIcon type="mdi" :path="mdiOpenInNew" />
+                </var-button>
+                <var-button
+                  round
+                  size="small"
+                  v-if="canShare"
+                  @click="share(item)">
+                  <SvgIcon type="mdi" :path="mdiShareVariant" />
                 </var-button>
                 <var-button
                   v-if="search"

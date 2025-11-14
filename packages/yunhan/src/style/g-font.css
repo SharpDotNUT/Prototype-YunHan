@@ -1,20 +1,28 @@
-@import url('https://hoyo-font.kuriyota.com/index.css');
-
 @import url('https://fonts.font.im/css2?family=JetBrains+Mono:wght@100..900&display=swap');
+@import url('https://fonts.font.im/css2?family=Noto+Sans:wght@100..900&display=swap');
+@import url('https://fonts.font.im/css2?family=Noto+Sans+SC:wght@100..900&display=swap');
+@import url('https://fonts.font.im/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
+@import url('https://fonts.font.im/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
 
 html,
 input {
   font-family: var(--font-family);
 }
 
-html[data-game='GI'] {
-  --font-family: var(--font-gi-family);
+html {
+  --font-family: 'Noto Sans SC', 'Noto Sans', sans-serif;
 }
-html[data-game='HSR'] {
-  --font-family: var(--font-hsr-family);
+
+html[lang='zh-Hant'] {
+  --font-family: 'Noto Sans TC', 'Noto Sans', sans-serif;
 }
-html[data-game='ZZZ'] {
-  --font-family: var(--font-zzz-family);
+
+html[lang='ja'] {
+  --font-family: 'Noto Sans JP', 'Noto Sans', sans-serif;
+}
+
+body {
+  font-weight: 500;
 }
 
 h1,
@@ -23,30 +31,5 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 500;
-}
-
-html[lang='en'] {
-  --font-gi-family: 'GI_zh-CN', sans-serif;
-  --font-hsr-family: 'HSR_zh-CN', sans-serif;
-  --font-zzz-family: 'ZZZ_en-US', 'ZZZ_zh-CN', sans-serif;
-}
-html[lang='zh-Hans'] {
-  --font-gi-family: 'GI_zh-CN', sans-serif;
-  --font-hsr-family: 'HSR_zh-CN', sans-serif;
-  --font-zzz-family: 'ZZZ_zh-CN', sans-serif;
-}
-html[lang='zh-Hant'] {
-  --font-gi-family: 'GI_zh-CN', sans-serif;
-  --font-hsr-family: 'HSR_zh-TW', sans-serif;
-  --font-zzz-family: 'ZZZ_zh-TW', sans-serif;
-}
-html[lang='ja'] {
-  --font-gi-family: 'GI_ja-JP', 'GI_zh-CN', sans-serif;
-  --font-hsr-family: 'HSR_ja-JP', 'HSR_zh-CN', sans-serif;
-  --font-zzz-family: 'ZZZ_ja-JP', 'ZZZ_zh-CN', sans-serif;
-}
-
-.mono {
-  font-family: 'JetBrains Mono', inherit, monospace;
+  font-weight: 700;
 }

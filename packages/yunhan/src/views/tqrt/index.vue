@@ -84,14 +84,7 @@ watch([currentPage, pageSize], () => {
 </script>
 
 <template>
-  <div
-    class="__container"
-    :style="{
-      '--font-family':
-        queryGame == 'Genshin'
-          ? 'var(--font-gi-family)'
-          : 'var(--font-hsr-family)'
-    }">
+  <div class="__container">
     <div id="panel">
       <div id="bar">
         <var-select v-model="queryGame" :placeholder="$t('sp-key.game')">

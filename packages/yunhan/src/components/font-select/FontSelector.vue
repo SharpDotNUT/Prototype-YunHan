@@ -13,7 +13,10 @@ emit('done');
 </script>
 
 <template>
-  <div style="padding: 0 10px">
+  <var-alert type="warning">
+    此功能已禁用 / This feature is disabled / この機能は無効です
+  </var-alert>
+  <div v-if="false" style="padding: 0 10px">
     <h3>{{ $t('global.select', [$t('setting.language.game-font')]) }}</h3>
     <br />
     <var-radio-group v-model="mainStore.gameFont">

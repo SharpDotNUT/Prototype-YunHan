@@ -103,7 +103,8 @@ onMounted(() => {
             <var-link
               type="primary"
               :href="wallpaper.copyright_link"
-              target="_blank">
+              target="_blank"
+              style="text-wrap: wrap">
               {{ wallpaper.copyright }}
             </var-link>
           </p>

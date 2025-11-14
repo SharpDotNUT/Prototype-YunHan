@@ -46,6 +46,7 @@
 }
 
 #view {
+  position: relative;
   height: 100%;
   width: 100%;
   padding: 20px;
@@ -54,6 +55,7 @@
   overflow-y: auto;
 
   >* {
+    width: 100%;
     max-width: 800px;
     height: fit-content;
   }

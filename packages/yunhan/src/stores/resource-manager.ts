@@ -12,7 +12,6 @@ interface I_StaticResourceMetaRecord {
   size: number;
 }
 export interface I_StaticResourceMeta {
-  updatedAt: number;
   version: string;
   res: Record<string, I_StaticResourceMetaRecord>;
 }

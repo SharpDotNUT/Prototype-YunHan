@@ -3,24 +3,21 @@ import type { Ref } from 'vue';
 import { useMainStore } from '@/stores/main';
 import { filesize } from 'filesize';
 import { ref } from 'vue';
-import { useRM, type CacheResourceRecord } from '@/stores/resource-manager';
+import { useRM, type I_CacheResourceRecord } from '@/stores/resource-manager';
 const mainStore = useMainStore();
 
 const StorageUsage: Ref<null | {
-  total: number;
-  used: number;
+  total: number | undefined;
+  used: number | undefined;
   cacheUsed: number;
-  resources: Record<string, CacheResourceRecord>;
+  resources: {
+    [k: string]: I_CacheResourceRecord;
+  };
 }> = ref(null);
 const RM = useRM();
 function loadStorageUsage() {
   RM.getLocalMeta().then((res) => {
-    StorageUsage.value = res as {
-      total: number;
-      used: number;
-      cacheUsed: number;
-      resources: Record<string, CacheResourceRecord>;
-    };
+    StorageUsage.value = res;
   });
 }
 loadStorageUsage();
@@ -30,10 +27,17 @@ loadStorageUsage();
   <div class="--rm" v-if="StorageUsage">
     <h2>{{ $t('setting.rm') }}</h2>
     <div>
-      <var-progress :value="(StorageUsage.cacheUsed / 102400000) * 100" />
-      <p>
-        {{ filesize(StorageUsage.cacheUsed) }} /
-        {{ filesize(102400000) }}
+      <var-progress
+        :value="(StorageUsage.cacheUsed / (StorageUsage.total ?? 0)) * 100" />
+      <p style="display: flex; justify-content: space-between; margin-top: 5px">
+        <span>{{ filesize(StorageUsage.cacheUsed) }}</span>
+        <span>
+          {{
+            StorageUsage.total
+              ? filesize(StorageUsage.total)
+              : $t('global.unknown')
+          }}
+        </span>
       </p>
     </div>
     <var-table id="table">
@@ -44,13 +48,12 @@ loadStorageUsage();
               {{ key }}
             </td>
             <td>{{ filesize(value.size) }}</td>
-            <td>{{ new Date(value.updatedAt).toLocaleString() }}</td>
             <td>
               <var-button
                 size="small"
                 type="warning"
                 @click="
-                  RM.removeByKey(key).then(() => {
+                  RM.removeByKey(key as string).then(() => {
                     loadStorageUsage();
                   })
                 ">

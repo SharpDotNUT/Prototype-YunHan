@@ -25,20 +25,6 @@ const GenshinBG =
 const wallpaper = ref<Wallpaper>();
 const enableWallpaper = ref<boolean>(false);
 enableWallpaper.value = localStorage.getItem('enableWallpaper') === 'true';
-watch(
-  () => wallpaper.value,
-  (val) => {
-    if (!val) return;
-    const date = dayjs().format('YYYYMMDD');
-    console.log(date);
-    if (date > val.end_date) {
-      getBWMeta(true);
-    }
-  },
-  {
-    deep: true
-  }
-);
 watch(enableWallpaper, (val) => {
   localStorage.setItem('enableWallpaper', val.toString());
 });
@@ -56,7 +42,7 @@ const getBWMeta = (force: boolean = false) => {
   });
 };
 onMounted(() => {
-  getBWMeta();
+  getBWMeta(true);
 });
 </script>
 

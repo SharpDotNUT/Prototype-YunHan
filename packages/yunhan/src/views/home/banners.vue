@@ -4,11 +4,24 @@ import { useHomeStore } from './home';
 import SvgIcon from '@jamescoyle/vue-icon';
 import { ref } from 'vue';
 import { AllGames } from '@/data/games';
+import { Dialog } from '@varlet/ui';
 
 const store = useHomeStore();
 store.fetchData();
 
 const showAnnounce = ref(false);
+
+const TempTip = () => {
+  Dialog({
+    message:
+      '目前只支持查看国服网页公告；' +
+      'Only support Chinese Mainland Server Web Announcements；' +
+      '中国本土サーバーのウェブ告知のみをサポートします；',
+    onConfirm: () => {
+      showAnnounce.value = true;
+    }
+  });
+};
 </script>
 
 <template>
@@ -23,7 +36,7 @@ const showAnnounce = ref(false);
           <var-option :label="$t('global.server.china')" value="china" />
           <var-option :label="$t('global.server.global')" value="global" />
         </var-select>
-        <var-button round @click="showAnnounce = true">
+        <var-button round @click="TempTip">
           <svg-icon type="mdi" :path="mdiBullhorn" />
         </var-button>
         <var-button round @click="store.fetchData()">
@@ -53,9 +66,7 @@ const showAnnounce = ref(false);
         </var-swipe>
       </var-loading>
       <var-popup v-model:show="showAnnounce">
-        <iframe
-          id="browser"
-          src="https://sdk.mihoyo.com/hk4e/announcement/index.html?auth_appid=announcement&authkey_ver=1&bundle_id=hk4e_cn&channel_id=1&game=hk4e&game_biz=hk4e_cn&lang={lang}&level=60&platform=pc&region=cn_gf01&sdk_presentation_style=fullscreen&sdk_screen_transparent=true&sign_type=2&uid=1#/" />
+        <iframe id="browser" :src="store.AnnounceURL" />
       </var-popup>
     </main>
     <div id="posts">

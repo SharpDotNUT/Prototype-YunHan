@@ -2,7 +2,7 @@
 <center>
 
 <img
-  src="/public/img/UI_ChapterIcon_Yunjin.png"
+  src="/packages/yunhan/public/img/UI_ChapterIcon_Yunjin.png"
   style="width: 15%;background-color: #777;border-radius: 20%"></img>
 
 # 「试作·云翰」
@@ -41,7 +41,8 @@ All in providing a pure web page toolbox, while supporting mobile phones.
 
 - [x] 游戏内文字发翻译器 Translator for in-game language
 - [x] HoYo-MiX 音乐播放器 HoYo-MiX music player
-- [ ] 基础成就管理 Achievement management
+- [x] 原神表情包浏览 Genshin Impact emotion browse
+- [x] 基础成就管理 Achievement management
 - [x] 原神辞典 Genshin Impact Dictionary
 - [x] 前瞻兑换码查询 Special Program Redemption Code Query
 - [x] 问答 Quiz
@@ -49,8 +50,6 @@ All in providing a pure web page toolbox, while supporting mobile phones.
 - [x] 文本速查速译 Text Quick Reference & Translate
 - [ ] 卡池浏览 Gacha Pool Browser
 - [ ] 抽卡模拟 Gacha Simulator
-
-<img alt="en translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=en&style=flat&logo=crowdin&query=%24.progress.0.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" /> <img alt="ja translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=ja&style=flat&logo=crowdin&query=%24.progress.1.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" /> <img alt="zh-TW translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=zh-TW&style=flat&logo=crowdin&query=%24.progress.2.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" />
 
 <a href="https://zh.crowdin.com/project/protype-yunhan/" rel="nofollow"><img style="width:140;height:40px" src="https://badges.crowdin.net/badge/light/crowdin-on-dark.png" srcset="https://badges.crowdin.net/badge/light/crowdin-on-dark.png 1x,https://badges.crowdin.net/badge/light/crowdin-on-dark@2x.png 2x" alt="Crowdin | Agile localization for tech companies" /></a>
 
@@ -70,6 +69,8 @@ Thanks [Cloudflare](https://www.cloudflare.com/) for providing free CDN services
 > This project defines data from GitHub API during the build process, so it is recommended to build in an environment with normal network connection.
 
 ```bash
+# pnpm 和 bun 是必要的
+# pnpm & bun are required
 
 # 克隆仓库 Clone the repository
 git clone https://github.com/SharpDotNUT/Prototype-YunHan.git
@@ -77,10 +78,20 @@ git clone https://github.com/SharpDotNUT/Prototype-YunHan.git
 # 安装依赖 Install dependencies
 pnpm install
 
-# 启动项目 Start the project
-pnpm run dev
+# 启动前端项目 Start the project
+pnpm run -F yunhan dev
 
 # 打包项目 Build the project
-pnpm run build
+pnpm run -F yunhan build
 
+# 构建后端 Build the backend -> packages\server\dist\server.js
+pnpm run -F server build
+
+# 启动后端项目 Start the backend project : listen to port 52100
+# .env
+# DB_FILE = [path-string]
+bun [path-to-server.js]
+
+# 构建元数据
+bun packages/meta/index.ts
 ```

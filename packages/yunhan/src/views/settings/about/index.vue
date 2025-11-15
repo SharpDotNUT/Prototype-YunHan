@@ -4,7 +4,7 @@ import Markdown from '@/components/markdown.vue';
 import Meta from '@/meta';
 import _README from '../../../../../../README.md?raw';
 
-const README = _README.replaceAll('/public/', '/');
+const README = _README.replaceAll('/packages/yunhan/public/', '/');
 
 const show = defineModel('show', { type: Boolean, default: true });
 

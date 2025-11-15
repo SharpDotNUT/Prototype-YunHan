@@ -58,5 +58,9 @@ export const NavigationData = [
     name: 'yae',
     path: '/yaedou',
     beta: true
+  },
+  {
+    name: 'setting',
+    path: '/settings'
   }
 ];

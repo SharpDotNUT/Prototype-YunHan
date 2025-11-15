@@ -80,7 +80,7 @@ onMounted(() => {
         <nav>
           <router-link
             v-for="item in NavigationData.filter(
-              (e) => !['index', 'home'].includes(e.name)
+              (e) => !['index', 'home', 'setting'].includes(e.name)
             )"
             :to="item.path">
             <var-card class="card" ripple>
@@ -95,6 +95,7 @@ onMounted(() => {
             </var-card>
           </router-link>
         </nav>
+        <br />
         <div id="extra">
           <var-card ripple class="card" @click="openGithub">
             <a class="app-name">
@@ -121,6 +122,7 @@ onMounted(() => {
             </RouterLink>
           </var-card>
         </div>
+        <br />
         <var-card>
           <div
             style="

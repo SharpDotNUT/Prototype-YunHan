@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import { mdiCog, mdiGithub, mdiInformation, mdiUpdate } from '@mdi/js';
 import meta from '@/meta';
 import SvgIcon from '@jamescoyle/vue-icon';
+import Banners from './banners.vue';
 
 interface Wallpaper {
   start_date: string;
@@ -77,24 +78,9 @@ onMounted(() => {
               v-html="$t('home.welcome', [$t('global.username.traveler')])"></p>
           </div>
         </var-card>
-        <nav>
-          <router-link
-            v-for="item in NavigationData.filter(
-              (e) => !['index', 'home', 'setting'].includes(e.name)
-            )"
-            :to="item.path">
-            <var-card class="card" ripple>
-              <h3>{{ $t(item.name + '.title') }}</h3>
-              <p>
-                {{ $t(item.name + '.description') }}
-                <br />
-                <var-chip v-if="item.beta" size="small" type="warning">
-                  Beta
-                </var-chip>
-              </p>
-            </var-card>
-          </router-link>
-        </nav>
+        <var-card>
+          <Banners />
+        </var-card>
         <br />
         <div id="extra">
           <var-card ripple class="card" @click="openGithub">
@@ -149,5 +135,5 @@ onMounted(() => {
 </template>
 
 <style lang="css" scoped>
-@import url('./home.css');
+@import url('./index.css');
 </style>

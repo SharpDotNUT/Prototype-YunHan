@@ -1,0 +1,19 @@
+.-home-banner {
+  gap: 10px;
+
+  > * {
+    width: 50%;
+  }
+}
+
+#browser {
+  height: 90dvh;
+  width: 90dvw;
+  background: transparent;
+}
+
+#posts {
+  a {
+    text-wrap: auto;
+  }
+}

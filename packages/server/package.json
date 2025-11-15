@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.ts",
   "scripts": {
-    "dev": "bun --watch ./src/main.ts",
+    "dev": "bun --hot ./src/main.ts",
     "start": "bun ./src/main.ts",
     "build": "bun build --target=bun --outfile=./dist/server.js ./src/main.ts"
   },

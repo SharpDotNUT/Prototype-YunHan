@@ -8,7 +8,8 @@
   },
   "packageManager": "pnpm@10.20.0",
   "dependencies": {
-    "@types/node": "^22.18.11"
+    "@types/node": "^22.18.11",
+    "lru-cache": "^11.2.2"
   },
   "devDependencies": {
     "prettier": "3.5.3"

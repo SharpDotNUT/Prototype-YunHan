@@ -1,6 +1,7 @@
 import { Elysia } from 'elysia';
 import { RKeys } from './router/key.ts';
 import { cors } from '@elysiajs/cors';
+import { RHoyoData } from './router/hoyo_data.ts';
 
 const app = new Elysia();
 
@@ -12,6 +13,7 @@ app.use(
   })
 );
 app.use(RKeys);
+app.use(RHoyoData);
 
 app.listen(52101);
 

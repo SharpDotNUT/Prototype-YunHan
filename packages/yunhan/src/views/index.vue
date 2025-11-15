@@ -1,21 +1,6 @@
 <script setup lang="ts">
 import Meta from '@/meta';
-import Typewriter from 'typewriter-effect/dist/core';
 import { useMainStore } from '@/stores/main';
-import { onMounted, useTemplateRef } from 'vue';
-
-const ref_text = useTemplateRef('text');
-onMounted(() => {
-  const typewriter = new Typewriter(ref_text.value as HTMLElement, {
-    loop: true,
-    delay: 150
-  });
-  typewriter
-    .typeString('「云婵娟来花婵娟，风流尽在山水间。」')
-    .pauseFor(5000)
-    .start();
-});
-
 const mainStore = useMainStore();
 function openGithub() {
   window.open(`https://github.com/${Meta.repo}`, '_blank');
@@ -30,9 +15,9 @@ function openGithub() {
         <img src="/img/UI_ChapterIcon_Yunjin.png" style="height: 10vh" />
         <h1 id="title-name">{{ $t('name') }}</h1>
         <p id="title-description">
-          <span ref="text"></span>
+          <span ref="text">「云婵娟来花婵娟，风流尽在山水间。」</span>
           <br />
-          <template v-if="$i18n.locale !== 'zh-Hans'">
+          <template v-if="!$i18n.locale.startsWith('zh')">
             {{ $t('index.s0') }}
           </template>
         </p>

@@ -1,0 +1,19 @@
+{
+  "name": "@prototype-yunhan/server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.ts",
+  "scripts": {
+    "dev": "bun --watch ./src/main.ts",
+    "start": "bun ./src/main.ts",
+    "build": "bun build --target=bun --outfile=./dist/server.js ./src/main.ts"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^1.4.0",
+    "elysia": "1.4.9",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "bun-types": "^1.2.21"
+  }
+}

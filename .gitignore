@@ -35,4 +35,5 @@ vite.config.ts.timestamp*
 
 /packages/meta/source
 /packages/meta/data
-packages/meta/script/Dictionary/genshin.temp.json
+/packages/meta/script/Dictionary/genshin.temp.json
+/packages/server/db

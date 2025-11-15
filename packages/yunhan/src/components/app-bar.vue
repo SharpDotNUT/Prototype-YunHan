@@ -28,7 +28,7 @@ const emits = defineEmits(['openBar']);
             <svg-icon type="mdi" :path="mdiTranslate"></svg-icon>
           </var-button>
           <template #menu>
-            <div style="text-align: right">
+            <div style="text-align: right; padding: 10px">
               <var-cell
                 v-for="lang in status.translated"
                 :lang="lang.lang"
@@ -41,20 +41,35 @@ const emits = defineEmits(['openBar']);
                 {{ lang.name }}
               </var-cell>
               <var-divider />
-              <var-cell
-                v-for="lang in D_GameFontData"
-                lang="en"
-                border
-                @click="
-                  setGameFont(lang.id);
-                  $i18n.locale = 'en';
-                ">
-                <span :style="{ fontFamily: lang.id }">
-                  ({{ lang.name.en }})
-                </span>
-                <br />
-                <span style="font-family: Noto Sans">({{ lang.name.en }})</span>
-              </var-cell>
+              <var-select
+                variant="outlined"
+                size="small"
+                style="width: 200px"
+                value="none"
+                :placeholder="$t('setting.language.game-font')"
+                v-model="mainStore.gameFont">
+                <var-option :label="$t('global.action.close')" :value="false">
+                  <p style="width: 100%; text-align: end">
+                    {{ $t('global.action.close') }}
+                  </p>
+                </var-option>
+                <var-option
+                  v-for="lang in D_GameFontData"
+                  lang="en"
+                  border
+                  :value="lang.id"
+                  :label="lang.name.en">
+                  <div style="width: 100%; text-align: end">
+                    <span :style="{ fontFamily: lang.id }">
+                      {{ lang.name.en }}
+                    </span>
+                    <br />
+                    <span style="font-family: Noto Sans">
+                      ({{ lang.name.en }})
+                    </span>
+                  </div>
+                </var-option>
+              </var-select>
             </div>
           </template>
         </var-menu>

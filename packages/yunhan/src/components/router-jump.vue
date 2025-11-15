@@ -1,15 +1,9 @@
 <script setup lang="ts">
-import SvgIcon from '@jamescoyle/vue-icon';
-import { useTemplateRef } from 'vue';
-import { mdiCog, mdiGithub, mdiInformation, mdiUpdate } from '@mdi/js';
 import { useMainStore } from '@/stores/main';
 import { NavigationData as RouteData } from '@/nav';
 
 const mainStore = useMainStore();
 import Meta from '@/meta';
-function openGithub() {
-  window.open(`https://github.com/${Meta.repo}`, '_blank');
-}
 </script>
 
 <template>
@@ -20,31 +14,6 @@ function openGithub() {
         <br />
         <var-badge :value="'v' + mainStore.version"></var-badge>
       </h3>
-      <var-divider />
-      <var-paper elevation="3" class="app var-button" @click="openGithub">
-        <a class="app-name">
-          <SvgIcon class="icon" type="mdi" :path="mdiGithub" />
-          <span>{{ $t('global.github-os-repo') }}</span>
-        </a>
-      </var-paper>
-      <var-paper elevation="3" class="app var-button">
-        <RouterLink class="app-name" to="/settings">
-          <SvgIcon class="icon" type="mdi" :path="mdiCog" />
-          <span>{{ $t('setting.title') }}</span>
-        </RouterLink>
-      </var-paper>
-      <var-paper elevation="3" class="app var-button">
-        <RouterLink class="app-name" to="/settings/about">
-          <SvgIcon class="icon" type="mdi" :path="mdiInformation" />
-          <span>{{ $t('global.about') }}</span>
-        </RouterLink>
-      </var-paper>
-      <var-paper elevation="3" class="app var-button">
-        <RouterLink class="app-name" to="/settings/update-log">
-          <SvgIcon class="icon" type="mdi" :path="mdiUpdate" />
-          <span>{{ $t('setting.update-log') }}</span>
-        </RouterLink>
-      </var-paper>
       <var-divider />
       <var-paper
         elevation="3"

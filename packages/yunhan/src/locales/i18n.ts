@@ -52,6 +52,8 @@ const i18n = createI18n<typeof ZHS, T_SupportedLanguage>({
   fallbackLocale: 'zh-Hans',
   messages,
   warnHtmlMessage: false,
+  missingWarn: false,
+  fallbackWarn: false,
   legacy: false
 });
 
@@ -70,11 +72,13 @@ export const setGameFont = (className?: string) => {
       '--font-family',
       `${className}, var(--d-font-family)`
     );
+    document.documentElement.style.setProperty('word-break', 'break-all');
   } else {
     document.documentElement.style.setProperty(
       '--font-family',
       'var(--d-font-family)'
     );
+    document.documentElement.style.setProperty('word-break', 'initial');
   }
 };
 setGameFont();

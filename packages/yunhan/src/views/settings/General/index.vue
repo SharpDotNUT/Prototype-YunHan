@@ -8,25 +8,13 @@ import { status } from '@/locales/i18n';
 import { round } from 'es-toolkit';
 import MetaURL from '@/components/meta-url/MetaURL.vue';
 import FontSelector from '@/components/font-select/FontSelector.vue';
+import D_GameFontData from 'hoyo-glyphs-with-meta/data';
 const { locale } = useI18n();
 
-const ui_isTeyvatFont = ref(mainStore.isUsingTeyvatFont);
 const theme = ref('system');
 const router = useRouter();
 watch(theme, () => {
   mainStore.setTheme(theme.value);
-});
-
-watch(ui_isTeyvatFont, () => {
-  if (ui_isTeyvatFont.value) {
-    locale.value = 'en';
-    mainStore.isUsingTeyvatFont = true;
-    router.push({ query: { lang: locale.value } });
-    document.documentElement.classList.add('teyvat');
-  } else {
-    mainStore.isUsingTeyvatFont = false;
-    document.documentElement.classList.remove('teyvat');
-  }
 });
 </script>
 
@@ -55,7 +43,7 @@ watch(ui_isTeyvatFont, () => {
       <h2>{{ $t('setting.language.title') }}</h2>
       <br />
       <var-select
-        :disabled="ui_isTeyvatFont"
+        style="font-family: var(--d-font-family)"
         variant="outlined"
         v-model="locale"
         :placeholder="$t('setting.language.select')">
@@ -73,6 +61,32 @@ watch(ui_isTeyvatFont, () => {
           </var-space>
         </var-option>
       </var-select>
+      <br />
+      <var-select
+        variant="outlined"
+        value="none"
+        :placeholder="$t('setting.language.game-font')"
+        v-model="mainStore.gameFont">
+        <var-option :label="$t('global.action.close')" :value="false">
+          <p style="width: 100%">
+            {{ $t('global.action.close') }}
+          </p>
+        </var-option>
+        <var-option
+          v-for="lang in D_GameFontData"
+          lang="en"
+          border
+          :value="lang.id"
+          :label="lang.name.en">
+          <div style="width: 100%">
+            <span :style="{ fontFamily: lang.id }">
+              {{ lang.name.en }}
+            </span>
+            <br />
+            <span style="font-family: Noto Sans">({{ lang.name.en }})</span>
+          </div>
+        </var-option>
+      </var-select>
       <var-divider />
       <div style="display: flex; gap: 5px; flex-wrap: wrap">
         <span>{{ $t('setting.translation-progress-online') }}</span>
@@ -85,7 +99,7 @@ watch(ui_isTeyvatFont, () => {
         <img
           alt="zh-TW translation"
           src="https://img.shields.io/badge/dynamic/json?color=blue&label=zh-Hant&style=flat&logo=crowdin&query=%24.progress.2.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-15913271-813246.json" />
-        <span>|</span>
+        <br />
         <span>
           <var-link
             target="_blank"
@@ -96,11 +110,6 @@ watch(ui_isTeyvatFont, () => {
       </div>
     </div>
     <var-divider />
-    <div>
-      <h2>{{ $t('setting.language.game-font') }}</h2>
-      <br />
-      <FontSelector />
-    </div>
     <div>
       <h2>{{ $t('setting.res.url') }}</h2>
       <br />

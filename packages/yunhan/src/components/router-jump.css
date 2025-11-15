@@ -21,7 +21,7 @@
   padding: 20px;
   overflow-y: scroll;
 
-  > * {
+  >* {
     flex-shrink: 0;
   }
 }
@@ -34,18 +34,7 @@
   .app-name {
     width: 100%;
     text-wrap: auto;
-    display: flex;
-    gap: 10px;
-    flex-direction: row;
-    display: flex;
-    align-items: center;
     color: var(--color-primary);
-
-    .icon {
-      width: 30px;
-      height: 30px;
-      flex-shrink: 0;
-    }
   }
 }
 

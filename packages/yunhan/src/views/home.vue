@@ -4,6 +4,9 @@ import ky from 'ky';
 import { onMounted } from 'vue';
 import { ref, watch } from 'vue';
 import dayjs from 'dayjs';
+import { mdiCog, mdiGithub, mdiInformation, mdiUpdate } from '@mdi/js';
+import meta from '@/meta';
+import SvgIcon from '@jamescoyle/vue-icon';
 
 interface Wallpaper {
   start_date: string;
@@ -11,6 +14,9 @@ interface Wallpaper {
   url: string;
   copyright: string;
   copyright_link: string;
+}
+function openGithub() {
+  window.open(`https://github.com/${meta.repo}`, '_blank');
 }
 
 const GenshinBG =
@@ -89,6 +95,32 @@ onMounted(() => {
             </var-card>
           </router-link>
         </nav>
+        <div id="extra">
+          <var-card ripple class="card" @click="openGithub">
+            <a class="app-name">
+              <SvgIcon class="icon" type="mdi" :path="mdiGithub" />
+              <span>{{ $t('global.github-os-repo') }}</span>
+            </a>
+          </var-card>
+          <var-card ripple class="app var-button">
+            <RouterLink class="app-name" to="/settings">
+              <SvgIcon class="icon" type="mdi" :path="mdiCog" />
+              <span>{{ $t('setting.title') }}</span>
+            </RouterLink>
+          </var-card>
+          <var-card ripple class="app var-button">
+            <RouterLink class="app-name" to="/settings/about">
+              <SvgIcon class="icon" type="mdi" :path="mdiInformation" />
+              <span>{{ $t('global.about') }}</span>
+            </RouterLink>
+          </var-card>
+          <var-card ripple class="app var-button">
+            <RouterLink class="app-name" to="/settings/update-log">
+              <SvgIcon class="icon" type="mdi" :path="mdiUpdate" />
+              <span>{{ $t('setting.update-log') }}</span>
+            </RouterLink>
+          </var-card>
+        </div>
         <var-card>
           <div
             style="

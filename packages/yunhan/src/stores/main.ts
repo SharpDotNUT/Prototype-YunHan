@@ -1,45 +1,44 @@
 import { ref, watch } from 'vue';
-import { defineStore } from 'pinia';
+import { acceptHMRUpdate, defineStore } from 'pinia';
 import { Themes, StyleProvider } from '@varlet/ui';
 
 import PackageJSON from '../../package.json';
 import { useRouter } from 'vue-router';
+import { setGameFont } from '@/locales/i18n';
+import { useI18n } from 'vue-i18n';
 
 const GameFont = ['GI', 'HSR', 'ZZZ'];
 type GameFont = 'GI' | 'HSR' | 'ZZZ';
 
 export const useMainStore = defineStore('main', () => {
+  const { locale } = useI18n();
   const title = ref('');
   const logoURL = ref('');
   const version = ref(PackageJSON.version);
   const host_name = import.meta.env.VITE_API_HOST as string;
   const theme = ref('');
   const initTasks = ref([] as string[]);
-  const gameFont = ref<GameFont>('HSR');
-  {
-    const game = localStorage.getItem('YunHan:Font');
-    if (game && GameFont.includes(game)) {
-      gameFont.value = game as GameFont;
-    }
-    // else {
-    //   initTasks.value.push('font');
-    //   router.push('/font');
-    // }
-  }
-  watch(
-    gameFont,
-    (game) => {
-      document.documentElement.dataset.game = game;
-      localStorage.setItem('YunHan:Font', game);
-    },
-    { immediate: true }
-  );
-  const isUsingTeyvatFont = ref(false);
+  const gameFont = ref<false | string>(false);
   const windowSize = ref({
     width: window.innerWidth,
     height: window.innerHeight
   });
   let beforeInstallPromptEvent = ref(null);
+  watch(
+    gameFont,
+    (fontName) => {
+      if (fontName) {
+        setGameFont(fontName);
+        locale.value = 'en';
+      } else {
+        setGameFont();
+      }
+    },
+    { immediate: true }
+  );
+  watch(locale, () => {
+    gameFont.value = false;
+  });
   window.addEventListener('beforeinstallprompt', function (e: any) {
     e.preventDefault();
     beforeInstallPromptEvent.value = e;
@@ -86,8 +85,11 @@ export const useMainStore = defineStore('main', () => {
     gameFont,
     initTasks,
     setTheme,
-    isUsingTeyvatFont,
     beforeInstallPromptEvent,
     windowSize
   };
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useMainStore, import.meta.hot));
+}

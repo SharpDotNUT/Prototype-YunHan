@@ -16,7 +16,6 @@ import { copyToClipboard, saveFile } from '@/script/tools';
 import { Snackbar } from '@varlet/ui';
 const { locale } = useI18n();
 import D_FontData from 'hoyo-glyphs-with-meta/data';
-import 'hoyo-glyphs-with-meta/css';
 
 const { t } = useI18n();
 
@@ -32,7 +31,7 @@ const el_result = useTemplateRef('el_result');
 const getFontName = (id?: string) => {
   const font = D_FontData.find((x) => x.id === (id ? id : currentFont.value));
   //@ts-ignore
-  return font.name[locale.value == 'zh-Hans' ? 'zh' : locale];
+  return font.name[locale.value == 'zh-Hans' ? 'zh' : locale.value];
 };
 watch(mode, () => {
   showKeyboard.value = false;

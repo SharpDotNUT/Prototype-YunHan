@@ -63,3 +63,18 @@ export const LanguageTextMapDefault = {
   en: {},
   ja: {}
 } as Record<T_SupportedLanguage, Record<string, string>>;
+
+export const setGameFont = (className?: string) => {
+  if (className) {
+    document.documentElement.style.setProperty(
+      '--font-family',
+      `${className}, var(--d-font-family)`
+    );
+  } else {
+    document.documentElement.style.setProperty(
+      '--font-family',
+      'var(--d-font-family)'
+    );
+  }
+};
+setGameFont();

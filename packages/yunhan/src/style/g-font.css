@@ -3,6 +3,7 @@
 @import url('https://fonts.font.im/css2?family=Noto+Sans+SC:wght@100..900&display=swap');
 @import url('https://fonts.font.im/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
 @import url('https://fonts.font.im/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+@import url('hoyo-glyphs-with-meta/css');
 
 html,
 input {
@@ -10,15 +11,15 @@ input {
 }
 
 html {
-  --font-family: 'Noto Sans SC', 'Noto Sans', sans-serif;
+  --d-font-family: 'Noto Sans SC', 'Noto Sans', sans-serif;
 }
 
 html[lang='zh-Hant'] {
-  --font-family: 'Noto Sans TC', 'Noto Sans', sans-serif;
+  --d-font-family: 'Noto Sans TC', 'Noto Sans', sans-serif;
 }
 
 html[lang='ja'] {
-  --font-family: 'Noto Sans JP', 'Noto Sans', sans-serif;
+  --d-font-family: 'Noto Sans JP', 'Noto Sans', sans-serif;
 }
 
 body {

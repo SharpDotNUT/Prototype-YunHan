@@ -12,7 +12,7 @@ const showAnnounce = ref(false);
 </script>
 
 <template>
-  <div v-if="store.data" class="-home-banner flex">
+  <div class="-home-banner flex">
     <main>
       <div id="control">
         <var-select
@@ -39,13 +39,19 @@ const showAnnounce = ref(false);
           :label="$t('global.game.' + key)"
           :value="game" />
       </var-select>
-      <var-swipe navigation style="aspect-ratio: 690 / 320" :autoplay="5000">
-        <var-swipe-item v-for="banner in store.data.data.content.banners">
-          <var-link target="_blank" :href="banner.image.link">
-            <img :src="banner.image.url" style="width: 100%" />
-          </var-link>
-        </var-swipe-item>
-      </var-swipe>
+      <var-loading :loading="store.loading">
+        <var-swipe
+          v-if="store.data"
+          navigation
+          style="aspect-ratio: 690 / 320"
+          :autoplay="5000">
+          <var-swipe-item v-for="banner in store.data.data.content.banners">
+            <var-link target="_blank" :href="banner.image.link">
+              <img :src="banner.image.url" style="width: 100%" />
+            </var-link>
+          </var-swipe-item>
+        </var-swipe>
+      </var-loading>
       <var-popup v-model:show="showAnnounce">
         <iframe
           id="browser"
@@ -53,11 +59,13 @@ const showAnnounce = ref(false);
       </var-popup>
     </main>
     <div id="posts">
-      <p v-for="post in store.data.data.content.posts">
-        <var-link target="_blank" :href="post.link" type="primary">
-          {{ post.title }}
-        </var-link>
-      </p>
+      <var-loading :loading="store.loading">
+        <p v-if="store.data" v-for="post in store.data.data.content.posts">
+          <var-link target="_blank" :href="post.link" type="primary">
+            {{ post.title }}
+          </var-link>
+        </p>
+      </var-loading>
     </div>
   </div>
 </template>

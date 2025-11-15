@@ -1,5 +1,5 @@
 .-home-banner {
-  gap: 10px;
+  gap: 20px;
 
   > * {
     width: 50%;
@@ -29,6 +29,7 @@ main {
 
 #posts {
   max-height: 300px;
+  padding: 10px;
   overflow-y: auto;
   a {
     text-wrap: auto;

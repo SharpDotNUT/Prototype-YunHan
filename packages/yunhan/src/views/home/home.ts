@@ -6,18 +6,22 @@ import { useI18n } from 'vue-i18n';
 
 export const useHomeStore = defineStore('home', () => {
   const { locale } = useI18n();
-  const Data = ref<Record<string, I_GameContent>>({});
   const data = ref<I_GameContent>();
   const api = useAPIStore();
   const server = ref('china');
   const game = ref('hk4e');
+  const loading = ref(false);
 
   const fetchData = async () => {
-    const res = await api.fetchAPI(
-      `/hoyo-data/game-content/${server.value}/${locale.value}/${game.value}_` +
-        (server.value == 'china' ? 'cn' : 'global')
-    );
-    data.value = await res.json();
+    loading.value = true;
+    await api
+      .fetchAPI(
+        `/hoyo-data/game-content/${server.value}/${locale.value}/${game.value}_` +
+          (server.value == 'china' ? 'cn' : 'global')
+      )
+      .then(async (res) => (data.value = await res.json()))
+      .catch()
+      .finally(() => (loading.value = false));
   };
   watch([server, locale, game], fetchData);
 
@@ -25,6 +29,7 @@ export const useHomeStore = defineStore('home', () => {
     data,
     server,
     game,
+    loading,
     fetchData
   };
 });

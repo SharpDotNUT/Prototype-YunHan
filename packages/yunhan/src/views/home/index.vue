@@ -81,7 +81,6 @@ onMounted(() => {
         <var-card>
           <Banners />
         </var-card>
-        <br />
         <div id="extra">
           <var-card ripple class="card" @click="openGithub">
             <a class="app-name">
@@ -108,7 +107,6 @@ onMounted(() => {
             </RouterLink>
           </var-card>
         </div>
-        <br />
         <var-card>
           <div
             style="

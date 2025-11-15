@@ -48,7 +48,7 @@ function start(id: string) {
 </script>
 
 <template>
-  <div v-if="!failed" class="container">
+  <div v-if="!failed" class="container-quiz-home">
     <div id="list">
       <var-cell
         v-for="item in data"

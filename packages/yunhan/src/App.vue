@@ -116,7 +116,7 @@ if (mainStore.initTasks.length > 0) {
           }"
           v-if="$route.name != 'index'"
           v-model="ui_showMenu" />
-        <RouterView />
+        <RouterView style="width: 100%" />
       </div>
     </div>
   </div>

@@ -1,10 +1,14 @@
-#list {
+.container-quiz-home {
   display: flex;
+  justify-content: center;
+  padding: 20px;
+  overflow: auto;
+}
+
+#list {
   flex-direction: column;
   gap: 10px;
-  width: 100%;
-  padding: 20px var(--base-padding);
-  overflow: auto;
+  width: 600px;
 }
 
 #failed {

@@ -49,88 +49,92 @@ function commit() {
 
 <template>
   <div class="__container">
-    <div id="actions">
-      <var-button block type="primary" @click="ui_commit = true">
-        {{ $t('sp-key.commit-key') }}
-      </var-button>
-      <br />
-      <var-button block @click="get">
-        {{ $t('sp-key.refresh') }}
-      </var-button>
-    </div>
-    <br />
-    <div id="keys">
-      <var-card v-for="item in data" class="card">
-        <div v-for="key in item.key.split(',')" class="key mono">
-          <span>{{ key }}</span>
-          <var-button round @click="copyToClipboard(key)">
-            <SvgIcon type="mdi" :path="mdiContentCopy" />
-          </var-button>
-        </div>
-        <div id="info">
-          <span>
-            {{ $t('sp-key.game') }} :
-            <span>{{ $t('global.game.' + item.game) }}</span>
-          </span>
-          <span>
-            {{ $t('sp-key.server') }} :
-            <span>{{ item.server }}</span>
-          </span>
-          <span>
-            {{ $t('sp-key.version') }} :
-            <span>{{ item.version }}</span>
-          </span>
-          <span>
-            <span>
-              {{ $t('sp-key.expired-time') }} :&nbsp;{{
-                item['available-time-string']
-              }}
-            </span>
-            <span>&nbsp;</span>
-            <var-chip size="small" type="danger" v-if="item.expired">
-              {{ $t('global.expired') }}
-            </var-chip>
-            <var-chip size="small" type="success" v-else>
-              {{ $t('sp-key.time-to-expire', [item['time-to-expire']]) }}
-            </var-chip>
-          </span>
-        </div>
-      </var-card>
-    </div>
-    <var-popup v-model:show="ui_commit" id="commit">
-      <div id="content">
-        <var-alert
-          :title="$t('sp-key.become-a-contributor.title')"
-          :message="$t('sp-key.become-a-contributor.content')" />
-        <var-input
-          v-model="form.token"
-          :placeholder="$t('sp-key.token-to-auth')" />
-        <var-input v-model="form.key" :placeholder="$t('sp-key.key')" />
-        <var-select v-model="form.game" :placeholder="$t('sp-key.game')">
-          <var-option
-            v-for="game in Object.keys(Games)"
-            :label="$t('global.game.' + game)"
-            :value="game" />
-        </var-select>
-        <var-select v-model="form.server" :placeholder="$t('sp-key.server')">
-          <var-option label="中国服 | ChinaMainland (miHoYo) - CN" value="CN" />
-          <var-option
-            label="国际服 | Global (HoYoVERSE) - GLOBAL"
-            value="GLOBAL" />
-        </var-select>
-        <var-input
-          disabled
-          v-model="datetime"
-          :placeholder="$t('sp-key.expired-time')" />
-        <div id="picker">
-          <var-date-picker v-model="date" />
-          <var-time-picker v-model="time" use-seconds />
-        </div>
-        <var-button type="primary" @click="commit">
-          {{ $t('global.commit') }}
+    <main>
+      <div id="actions">
+        <var-button block type="primary" @click="ui_commit = true">
+          {{ $t('sp-key.commit-key') }}
+        </var-button>
+        <br />
+        <var-button block @click="get">
+          {{ $t('sp-key.refresh') }}
         </var-button>
       </div>
-    </var-popup>
+      <br />
+      <div id="keys">
+        <var-card v-for="item in data" class="card">
+          <div v-for="key in item.key.split(',')" class="key mono">
+            <span>{{ key }}</span>
+            <var-button round @click="copyToClipboard(key)">
+              <SvgIcon type="mdi" :path="mdiContentCopy" />
+            </var-button>
+          </div>
+          <div id="info">
+            <span>
+              {{ $t('sp-key.game') }} :
+              <span>{{ $t('global.game.' + item.game) }}</span>
+            </span>
+            <span>
+              {{ $t('sp-key.server') }} :
+              <span>{{ item.server }}</span>
+            </span>
+            <span>
+              {{ $t('sp-key.version') }} :
+              <span>{{ item.version }}</span>
+            </span>
+            <span>
+              <span>
+                {{ $t('sp-key.expired-time') }} :&nbsp;{{
+                  item['available-time-string']
+                }}
+              </span>
+              <span>&nbsp;</span>
+              <var-chip size="small" type="danger" v-if="item.expired">
+                {{ $t('global.expired') }}
+              </var-chip>
+              <var-chip size="small" type="success" v-else>
+                {{ $t('sp-key.time-to-expire', [item['time-to-expire']]) }}
+              </var-chip>
+            </span>
+          </div>
+        </var-card>
+      </div>
+      <var-popup v-model:show="ui_commit" id="commit">
+        <div id="content">
+          <var-alert
+            :title="$t('sp-key.become-a-contributor.title')"
+            :message="$t('sp-key.become-a-contributor.content')" />
+          <var-input
+            v-model="form.token"
+            :placeholder="$t('sp-key.token-to-auth')" />
+          <var-input v-model="form.key" :placeholder="$t('sp-key.key')" />
+          <var-select v-model="form.game" :placeholder="$t('sp-key.game')">
+            <var-option
+              v-for="game in Object.keys(Games)"
+              :label="$t('global.game.' + game)"
+              :value="game" />
+          </var-select>
+          <var-select v-model="form.server" :placeholder="$t('sp-key.server')">
+            <var-option
+              label="中国服 | ChinaMainland (miHoYo) - CN"
+              value="CN" />
+            <var-option
+              label="国际服 | Global (HoYoVERSE) - GLOBAL"
+              value="GLOBAL" />
+          </var-select>
+          <var-input
+            disabled
+            v-model="datetime"
+            :placeholder="$t('sp-key.expired-time')" />
+          <div id="picker">
+            <var-date-picker v-model="date" />
+            <var-time-picker v-model="time" use-seconds />
+          </div>
+          <var-button type="primary" @click="commit">
+            {{ $t('global.commit') }}
+          </var-button>
+        </div>
+      </var-popup>
+    </main>
   </div>
 </template>
 

@@ -114,7 +114,7 @@ if (mainStore.initTasks.length > 0) {
 <template>
   <div id="app">
     <div id="app-container">
-      <div id="app-bar">
+      <div id="app-bar" style="z-index: 1000">
         <AppBar @open-bar="ui_showMenu = !ui_showMenu" />
       </div>
       <div id="content" class="elevation-12">
@@ -128,7 +128,7 @@ if (mainStore.initTasks.length > 0) {
           }"
           v-if="$route.name != 'index'"
           v-model="ui_showMenu" />
-        <RouterView style="width: 100%" />
+        <RouterView style="width: 100%; position: relative" />
       </div>
     </div>
   </div>

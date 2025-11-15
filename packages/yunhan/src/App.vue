@@ -6,11 +6,24 @@ import { useI18n } from 'vue-i18n';
 import { Dialog, Locale, Snackbar } from '@varlet/ui';
 import { matchLanguages } from '@kuriyota/locale-matcher';
 import RouterJump from '@/components/router-jump.vue';
+import { Input, Select, TimePicker } from '@varlet/ui';
+import { useMainStore } from './stores/main';
 import {
-  status,
   SupportedLanguages,
-  type T_SupportedLanguage
+  type T_SupportedLanguage,
+  status
 } from './locales/i18n';
+
+Input.setPropsDefaults({
+  variant: 'outlined'
+});
+TimePicker.setPropsDefaults({
+  format: '24hr'
+});
+
+Select.setPropsDefaults({
+  variant: 'outlined'
+});
 
 const { locale, t } = useI18n();
 const loading = ref(false);
@@ -34,7 +47,6 @@ const updateLocale = (lang: string) => {
 };
 updateLocale(localStorage.getItem('YunHan:lang') ?? navigator.language);
 
-import { useMainStore } from './stores/main';
 const Store = useMainStore();
 const router = useRouter();
 const route = useRoute();

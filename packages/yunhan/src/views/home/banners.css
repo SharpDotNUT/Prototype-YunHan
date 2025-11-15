@@ -6,6 +6,21 @@
   }
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#control {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  > * {
+    flex-shrink: 0;
+  }
+}
+
 #browser {
   height: 90dvh;
   width: 90dvw;
@@ -13,6 +28,8 @@
 }
 
 #posts {
+  max-height: 300px;
+  overflow-y: auto;
   a {
     text-wrap: auto;
   }

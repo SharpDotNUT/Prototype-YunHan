@@ -94,7 +94,6 @@ app.get('/game-content/:server/:lang/:game', async ({ params }) => {
   if (cache.has(url)) {
     return cache.get(url);
   } else {
-    console.log(url);
     const response = await fetch(url);
     const data = await response.json();
     cache.set(url, data);

@@ -5,7 +5,9 @@ import path from 'node:path';
 const dirname = import.meta.dirname as string;
 const filename = import.meta.filename as string;
 
-const db = new Database(path.join(dirname, '../../db/keys.sqlite3'));
+const dbPath = path.join(process.env.DB_FILE!);
+console.log(dbPath);
+const db = new Database(dbPath);
 
 const app = new Elysia({
   prefix: '/sp-keys'

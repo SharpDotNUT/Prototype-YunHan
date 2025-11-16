@@ -60,7 +60,7 @@ main {
     gap: 10px;
     overflow: auto;
 
-    >* {
+    > * {
       flex-shrink: 0;
     }
 

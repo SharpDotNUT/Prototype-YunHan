@@ -32,11 +32,10 @@ main {
   overflow-y: auto;
   padding-top: 20dvh;
 
-  >* {
+  > * {
     flex-shrink: 0;
   }
 }
-
 
 nav,
 #extra {

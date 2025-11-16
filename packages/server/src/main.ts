@@ -9,7 +9,11 @@ app.get('/', () => 'Hello TruE Elysia!');
 
 app.use(
   cors({
-    origin: ['https://yunhan.sharpdotnut.com', /^http:\/\/localhost:\d+$/]
+    origin: [
+      'https://yunhan.sharpdotnut.com',
+      'https://yunhan-dev.sharpdotnut.com',
+      /^http:\/\/localhost:\d+$/
+    ]
   })
 );
 app.use(RKeys);

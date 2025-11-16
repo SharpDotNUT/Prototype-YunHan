@@ -1,141 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
+  <head>
     <title>Yunan Server</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .form-group input[type="checkbox"] {
-            width: auto;
-        }
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            color: white;
-        }
-        .btn-secondary {
-            background-color: #6c757d;
-            color: white;
-        }
-        pre {
-            background: #f8f8f8;
-            padding: 10px;
-            border-radius: 4px;
-            white-space: pre-wrap;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .form-group input[type='checkbox'] {
+        width: auto;
+      }
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .btn-primary {
+        background-color: #007bff;
+        color: white;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+      }
+      pre {
+        background: #f8f8f8;
+        padding: 10px;
+        border-radius: 4px;
+        white-space: pre-wrap;
+      }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="app" class="container">
-        <h1 class="text-center">Welcome to Yunan Server Admin</h1>
-        
-        <div class="form-group">
-            <label for="password">管理员鉴权</label>
-            <input type="text" v-model="password" id="password" placeholder="Enter password">
-        </div>
-        
-        <div class="form-group">
-            <label for="input">设置公告</label>
-            <textarea v-model="input" id="input" placeholder="Enter notice text"></textarea>
-        </div>
-        
-        <div class="form-group">
-            <input type="checkbox" v-model="isShow" id="isShow">
-            <label for="isShow">是否显示公告</label>
-        </div>
-        
-        <button @click="submit" class="btn-primary">提交</button>
-        <button @click="fetchUserList" class="btn-secondary">获取用户列表</button>
-        
-        <pre>{{ userlist }}</pre>
-        <p>{{ message }}</p>
+      <h1 class="text-center">Welcome to Yunan Server Admin</h1>
+
+      <div class="form-group">
+        <label for="password">管理员鉴权</label>
+        <input
+          type="text"
+          v-model="password"
+          id="password"
+          placeholder="Enter password" />
+      </div>
+
+      <div class="form-group">
+        <label for="input">设置公告</label>
+        <textarea
+          v-model="input"
+          id="input"
+          placeholder="Enter notice text"></textarea>
+      </div>
+
+      <div class="form-group">
+        <input type="checkbox" v-model="isShow" id="isShow" />
+        <label for="isShow">是否显示公告</label>
+      </div>
+
+      <button @click="submit" class="btn-primary">提交</button>
+      <button @click="fetchUserList" class="btn-secondary">获取用户列表</button>
+
+      <pre>{{ userlist }}</pre>
+      <p>{{ message }}</p>
     </div>
 
     <script>
-        new Vue({
-            el: '#app',
-            data: {
-                password: '',
-                input: '',
-                isShow: false,
-                userlist: '',
-                message: ''
-            },
-            methods: {
-                submit() {
-                    const params = new URLSearchParams();
-                    params.append('text', this.input);
-                    params.append('show', this.isShow);
-                    params.append('password', this.password);
+      new Vue({
+        el: '#app',
+        data: {
+          password: '',
+          input: '',
+          isShow: false,
+          userlist: '',
+          message: ''
+        },
+        methods: {
+          submit() {
+            const params = new URLSearchParams();
+            params.append('text', this.input);
+            params.append('show', this.isShow);
+            params.append('password', this.password);
 
-                    fetch(`/api/admin/set-notice?${params.toString()}`, {
-                        method: 'GET'
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        this.message = JSON.stringify(data);
-                    })
-                    .catch(error => {
-                        this.message = 'There was a problem setting the notice.';
-                        console.error('There was a problem with the fetch operation:', error);
-                    });
-                },
-                fetchUserList() {
-                    fetch('/admin/userList', {
-                        method: 'GET'
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        this.userlist = JSON.stringify(data, null, 2);
-                    })
-                    .catch(error => {
-                        this.userlist = 'There was a problem fetching the userlist.';
-                        console.error('There was a problem with the fetch operation:', error);
-                    });
+            fetch(`/api/admin/set-notice?${params.toString()}`, {
+              method: 'GET'
+            })
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
                 }
-            }
-        });
+                return response.json();
+              })
+              .then((data) => {
+                this.message = JSON.stringify(data);
+              })
+              .catch((error) => {
+                this.message = 'There was a problem setting the notice.';
+                console.error(
+                  'There was a problem with the fetch operation:',
+                  error
+                );
+              });
+          },
+          fetchUserList() {
+            fetch('/admin/userList', {
+              method: 'GET'
+            })
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                return response.json();
+              })
+              .then((data) => {
+                this.userlist = JSON.stringify(data, null, 2);
+              })
+              .catch((error) => {
+                this.userlist = 'There was a problem fetching the userlist.';
+                console.error(
+                  'There was a problem with the fetch operation:',
+                  error
+                );
+              });
+          }
+        }
+      });
     </script>
-</body>
+  </body>
 </html>

@@ -1,6 +1,18 @@
 <template>
   <div class="update-log-container">
     <div class="list">
+      <var-alert type="warning">
+        「更新日志」正在重制中，2.9.0 及后续版本的更新日志目前不显示，请参见
+        GitHub Release 界面的简略描述。
+        <br />
+        "Update Log" is being rebuilt, and the update logs for versions 2.9.0
+        and later will not be displayed. Please refer to the brief description
+        of the GitHub Release surface.
+        <br />
+        「更新履歴」は現在再構築中です。2.9.0
+        以降のバージョンの更新履歴は現在表示されません。GitHub
+        リリースページの簡易説明をご参照ください。
+      </var-alert>
       <template v-if="UpdateLogsData.length > 0">
         <var-card
           v-for="[version, info] in UpdateLogsData"

@@ -28,7 +28,7 @@
   padding: 20px;
   overflow-y: scroll;
 
-  >* {
+  > * {
     flex-shrink: 0;
   }
 }

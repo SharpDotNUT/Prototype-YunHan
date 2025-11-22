@@ -34,7 +34,8 @@ export const NavigationData = [
   },
   {
     name: 'sp-key',
-    path: '/sp-key'
+    path: '/sp-key',
+    beta: true
   },
   {
     name: 'quiz',

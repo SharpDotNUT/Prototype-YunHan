@@ -34,7 +34,7 @@ app.post(
         server,
         'available-time': availableTime
       } = ctx.body;
-      if (token != 'YunJinYYT0521') {
+      if (true) {
         throw new Error('Unauthorized');
       }
       const data = db

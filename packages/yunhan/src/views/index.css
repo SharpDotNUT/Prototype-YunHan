@@ -1,6 +1,5 @@
 #container {
   position: fixed;
-  top: var(--app-bar-height);
   left: 0;
   right: 0;
   bottom: 0;

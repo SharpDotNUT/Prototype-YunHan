@@ -35,3 +35,12 @@ main {
     text-wrap: auto;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .-home-banner {
+    flex-direction: column;
+    > * {
+      width: 100%;
+    }
+  }
+}

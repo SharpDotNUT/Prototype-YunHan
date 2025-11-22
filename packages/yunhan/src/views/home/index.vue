@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { NavigationData } from '@/nav';
 import ky from 'ky';
 import { onMounted } from 'vue';
 import { ref, watch } from 'vue';
-import dayjs from 'dayjs';
 import { mdiCog, mdiGithub, mdiInformation, mdiUpdate } from '@mdi/js';
 import meta from '@/meta';
 import SvgIcon from '@jamescoyle/vue-icon';
